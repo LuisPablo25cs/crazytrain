@@ -1,0 +1,145 @@
+import {
+  LOCOMOTIVE,
+  nextStationCost,
+  routeClaimError,
+  routePaymentOptions,
+  stationPaymentOptions,
+  UnionFind,
+  type BoardShape,
+  type CardCounts,
+  type GameView,
+  type MapIndex,
+  type Route,
+} from '@rails/shared';
+import { S } from '../strings.js';
+
+export function boardOfView(view: GameView): BoardShape {
+  return { rules: view.rules, routeOwners: view.routeOwners, playerCount: view.players.length };
+}
+
+/** What the viewing player can do right now. A string means "disabled, because…". */
+export interface Affordances {
+  isMyTurn: boolean;
+  banner: string;
+  drawBlind: string | null;
+  drawTickets: string | null;
+  claim: string | null;
+  station: string | null;
+  pass: string | null;
+  /** Whether the face-up card in a slot can be taken; null means yes. */
+  faceUp: (slot: number) => string | null;
+}
+
+/** The state-to-UI table: what each turn state enables for the viewer and what the banner says. */
+export function affordances(view: GameView, map: MapIndex): Affordances {
+  const me = view.me;
+  const current = view.players[view.currentPlayer];
+  const isMyTurn = view.phase === 'playing' && me !== null && me.index === view.currentPlayer;
+  const notYourTurn = view.phase === 'playing' ? S.turnOf(current?.name ?? '?') : 'Choose your tickets first';
+  const none = (reason: string): Affordances => ({
+    isMyTurn,
+    banner: reason,
+    drawBlind: reason,
+    drawTickets: reason,
+    claim: reason,
+    station: reason,
+    pass: reason,
+    faceUp: () => reason,
+  });
+
+  if (view.phase === 'finished') return none(S.finished);
+  if (view.phase === 'initialTickets') {
+    const waiting = view.players.filter((p) => !p.keptInitial).length;
+    return none(me && view.players[me.index]?.keptInitial ? S.waitingTickets(waiting) : S.chooseTickets(view.rules.tickets.initialKeepMin));
+  }
+  if (!isMyTurn || !me) return none(notYourTurn);
+
+  const turn = view.turn;
+  const last = view.lastRound ? ` ${S.lastRound}` : '';
+  if (turn.kind === 'secondDraw') {
+    const reason = S.drawSecond;
+    return {
+      ...none(reason),
+      banner: `${S.yourTurn}: ${S.drawSecond.toLowerCase()}.${last}`,
+      drawBlind: view.drawPileCount + view.discardCount > 0 ? null : 'the draw pile is empty',
+      faceUp: (slot) => {
+        const card = view.market[slot];
+        if (!card) return 'empty slot';
+        return card === LOCOMOTIVE ? 'a face-up locomotive cannot be your second card' : null;
+      },
+    };
+  }
+  if (turn.kind === 'choosingTickets') return { ...none('choose your tickets'), banner: S.chooseTickets(view.rules.tickets.drawKeepMin) };
+  if (turn.kind === 'tunnel') return { ...none('resolve the tunnel'), banner: S.tunnelExtra(turn.extra) };
+
+  const stationCost = nextStationCost(view, view.players[me.index]!);
+  const anyClaim = map.map.routes.some((r) => claimInfo(r, view, map).options.length > 0);
+  const anyAction =
+    view.drawPileCount + view.discardCount > 0 || view.market.some((c) => c !== null) || view.ticketDeckCount > 0 || anyClaim;
+  return {
+    isMyTurn,
+    banner: `${S.yourTurn}!${last}`,
+    drawBlind: view.drawPileCount + view.discardCount > 0 ? null : 'the draw pile is empty',
+    drawTickets: view.ticketDeckCount > 0 ? null : 'the ticket deck is empty',
+    claim: null,
+    station: !view.rules.expansions.stations
+      ? 'stations are off in this game'
+      : stationCost === null
+        ? S.noStations
+        : stationPaymentOptions(stationCost, me.hand).length === 0
+          ? `you need ${stationCost} card(s) of one color`
+          : null,
+    pass: anyAction ? 'you can still take an action' : null,
+    faceUp: (slot) => (view.market[slot] ? null : 'empty slot'),
+  };
+}
+
+export interface ClaimInfo {
+  options: CardCounts[];
+  /** Why the route cannot be claimed by the viewer now, or null. */
+  reason: string | null;
+}
+
+/** Payment options for a route and, when there are none, the reason in plain words. */
+export function claimInfo(route: Route, view: GameView, map: MapIndex): ClaimInfo {
+  const me = view.me;
+  if (!me) return { options: [], reason: 'you are not playing' };
+  const trains = view.players[me.index]!.trains;
+  const blocked = routeClaimError(boardOfView(view), map, route.id, me.index, trains);
+  if (blocked) return { options: [], reason: blocked };
+  const options = routePaymentOptions(route, me.hand, view.rules);
+  if (options.length > 0) return { options, reason: null };
+  if (route.kind === 'ferry' && view.rules.expansions.ferries && me.hand[LOCOMOTIVE] < route.ferryLocomotives) {
+    return { options, reason: `this ferry needs ${route.ferryLocomotives} locomotive(s)` };
+  }
+  return { options, reason: S.noPayment };
+}
+
+/** Tickets the viewer has already connected with their own routes (stations count only at the end). */
+export function ticketProgress(view: GameView, map: MapIndex): Map<string, boolean> {
+  const me = view.me;
+  const out = new Map<string, boolean>();
+  if (!me) return out;
+  const uf = new UnionFind();
+  for (const [routeId, owner] of Object.entries(view.routeOwners)) {
+    if (owner !== me.index) continue;
+    const r = map.routes.get(routeId);
+    if (r) uf.union(r.from, r.to);
+  }
+  for (const id of me.tickets) {
+    const t = map.tickets.get(id);
+    out.set(id, !!t && uf.connected(t.from, t.to));
+  }
+  return out;
+}
+
+/** Cities where the viewer could place a station: none there yet, and a route they do not own touches it. */
+export function stationCandidates(view: GameView, map: MapIndex): string[] {
+  const me = view.me;
+  if (!me) return [];
+  const taken = new Set(view.stations.map((s) => s.cityId));
+  return map.map.cities
+    .filter((c) => !taken.has(c.id))
+    .filter((c) => (map.routesByCity.get(c.id) ?? []).some((r) => view.routeOwners[r.id] !== me.index))
+    .map((c) => c.id);
+}

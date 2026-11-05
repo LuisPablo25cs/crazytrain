@@ -1,0 +1,16589 @@
+{
+ "schemaVersion": 1,
+ "id": "north-america",
+ "name": "North America",
+ "author": "Rails starter map",
+ "description": "The USA reference board extended with Canada, Mexico and Cuba.",
+ "width": 1000,
+ "height": 562.5,
+ "cities": [
+  {
+   "id": "vancouver",
+   "name": "Vancouver",
+   "x": 147.4,
+   "y": 82.2,
+   "geo": {
+    "lat": 49.28,
+    "lon": -123.12
+   },
+   "country": "CA",
+   "major": true
+  },
+  {
+   "id": "seattle",
+   "name": "Seattle",
+   "x": 156.7,
+   "y": 102,
+   "geo": {
+    "lat": 47.61,
+    "lon": -122.33
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "portland",
+   "name": "Portland",
+   "x": 152.6,
+   "y": 126.7,
+   "geo": {
+    "lat": 45.52,
+    "lon": -122.68
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "san-francisco",
+   "name": "San Francisco",
+   "x": 155.6,
+   "y": 218.6,
+   "geo": {
+    "lat": 37.77,
+    "lon": -122.42
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "los-angeles",
+   "name": "Los Angeles",
+   "x": 205.1,
+   "y": 262.6,
+   "geo": {
+    "lat": 34.05,
+    "lon": -118.24
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "las-vegas",
+   "name": "Las Vegas",
+   "x": 241.8,
+   "y": 237.5,
+   "geo": {
+    "lat": 36.17,
+    "lon": -115.14
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "phoenix",
+   "name": "Phoenix",
+   "x": 278.2,
+   "y": 269.8,
+   "geo": {
+    "lat": 33.45,
+    "lon": -112.07
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "el-paso",
+   "name": "El Paso",
+   "x": 344.2,
+   "y": 289.8,
+   "geo": {
+    "lat": 31.76,
+    "lon": -106.49
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "santa-fe",
+   "name": "Santa Fe",
+   "x": 350.7,
+   "y": 243.2,
+   "geo": {
+    "lat": 35.69,
+    "lon": -105.94
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "salt-lake-city",
+   "name": "Salt Lake City",
+   "x": 280.3,
+   "y": 183.1,
+   "geo": {
+    "lat": 40.76,
+    "lon": -111.89
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "helena",
+   "name": "Helena",
+   "x": 278.5,
+   "y": 114.1,
+   "geo": {
+    "lat": 46.59,
+    "lon": -112.04
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "denver",
+   "name": "Denver",
+   "x": 362,
+   "y": 195.2,
+   "geo": {
+    "lat": 39.74,
+    "lon": -104.99
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "omaha",
+   "name": "Omaha",
+   "x": 469.2,
+   "y": 177.2,
+   "geo": {
+    "lat": 41.26,
+    "lon": -95.93
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "duluth",
+   "name": "Duluth",
+   "x": 514.82,
+   "y": 111.7,
+   "geo": {
+    "lat": 46.79,
+    "lon": -92.1
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "kansas-city",
+   "name": "Kansas City",
+   "x": 485.2,
+   "y": 202.8,
+   "geo": {
+    "lat": 39.1,
+    "lon": -94.58
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "oklahoma-city",
+   "name": "Oklahoma City",
+   "x": 450.4,
+   "y": 245.8,
+   "geo": {
+    "lat": 35.47,
+    "lon": -97.52
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "dallas",
+   "name": "Dallas",
+   "x": 458.9,
+   "y": 277.7,
+   "geo": {
+    "lat": 32.78,
+    "lon": -96.8
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "houston",
+   "name": "Houston",
+   "x": 475.9,
+   "y": 313.5,
+   "geo": {
+    "lat": 29.76,
+    "lon": -95.37
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "little-rock",
+   "name": "Little Rock",
+   "x": 512.3,
+   "y": 254.3,
+   "geo": {
+    "lat": 34.75,
+    "lon": -92.29
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "new-orleans",
+   "name": "New Orleans",
+   "x": 538.6,
+   "y": 311.2,
+   "geo": {
+    "lat": 29.95,
+    "lon": -90.07
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "saint-louis",
+   "name": "Saint Louis",
+   "x": 537.1,
+   "y": 208.4,
+   "geo": {
+    "lat": 38.63,
+    "lon": -90.2
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "chicago",
+   "name": "Chicago",
+   "x": 567.5,
+   "y": 169.9,
+   "geo": {
+    "lat": 41.88,
+    "lon": -87.63
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "nashville",
+   "name": "Nashville",
+   "x": 577.6,
+   "y": 237.6,
+   "geo": {
+    "lat": 36.16,
+    "lon": -86.78
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "atlanta",
+   "name": "Atlanta",
+   "x": 605.9,
+   "y": 266.2,
+   "geo": {
+    "lat": 33.75,
+    "lon": -84.39
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "charleston",
+   "name": "Charleston",
+   "x": 658.7,
+   "y": 277.7,
+   "geo": {
+    "lat": 32.78,
+    "lon": -79.93
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "miami",
+   "name": "Miami",
+   "x": 655.6,
+   "y": 360.9,
+   "geo": {
+    "lat": 25.76,
+    "lon": -80.19
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "raleigh",
+   "name": "Raleigh",
+   "x": 673.9,
+   "y": 242.1,
+   "geo": {
+    "lat": 35.78,
+    "lon": -78.64
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "washington",
+   "name": "Washington",
+   "x": 692.9,
+   "y": 205.1,
+   "geo": {
+    "lat": 38.91,
+    "lon": -77.04
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "pittsburgh",
+   "name": "Pittsburgh",
+   "x": 658,
+   "y": 186.9,
+   "geo": {
+    "lat": 40.44,
+    "lon": -79.99
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "new-york",
+   "name": "New York",
+   "x": 728.7,
+   "y": 183.7,
+   "geo": {
+    "lat": 40.71,
+    "lon": -74.01
+   },
+   "country": "US",
+   "major": true
+  },
+  {
+   "id": "boston",
+   "name": "Boston",
+   "x": 763.7,
+   "y": 164.2,
+   "geo": {
+    "lat": 42.36,
+    "lon": -71.06
+   },
+   "country": "US",
+   "major": false
+  },
+  {
+   "id": "calgary",
+   "name": "Calgary",
+   "x": 254.26,
+   "y": 61.2,
+   "geo": {
+    "lat": 51.05,
+    "lon": -114.07
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "winnipeg",
+   "name": "Winnipeg",
+   "x": 454.9,
+   "y": 74.8,
+   "geo": {
+    "lat": 49.9,
+    "lon": -97.14
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "sault-st-marie",
+   "name": "Sault St. Marie",
+   "x": 606.3,
+   "y": 114.9,
+   "geo": {
+    "lat": 46.52,
+    "lon": -84.35
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "toronto",
+   "name": "Toronto",
+   "x": 665.2,
+   "y": 148.9,
+   "geo": {
+    "lat": 43.65,
+    "lon": -79.38
+   },
+   "country": "CA",
+   "major": true
+  },
+  {
+   "id": "montreal",
+   "name": "Montréal",
+   "x": 734,
+   "y": 127,
+   "geo": {
+    "lat": 45.5,
+    "lon": -73.57
+   },
+   "country": "CA",
+   "major": true
+  },
+  {
+   "id": "prince-rupert",
+   "name": "Prince Rupert",
+   "x": 62.1,
+   "y": 22.5,
+   "geo": {
+    "lat": 54.32,
+    "lon": -130.32
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "jasper",
+   "name": "Jasper",
+   "x": 207,
+   "y": 39.6,
+   "geo": {
+    "lat": 52.87,
+    "lon": -118.08
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "edmonton",
+   "name": "Edmonton",
+   "x": 261.4,
+   "y": 31.6,
+   "geo": {
+    "lat": 53.55,
+    "lon": -113.49
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "regina",
+   "name": "Regina",
+   "x": 366.5,
+   "y": 68.3,
+   "geo": {
+    "lat": 50.45,
+    "lon": -104.61
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "churchill",
+   "name": "Churchill",
+   "x": 490.1,
+   "y": 9.7,
+   "geo": {
+    "lat": 58.77,
+    "lon": -94.17
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "ottawa",
+   "name": "Ottawa",
+   "x": 708.7,
+   "y": 127.9,
+   "geo": {
+    "lat": 45.42,
+    "lon": -75.7
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "quebec",
+   "name": "Québec",
+   "x": 761.9,
+   "y": 111.4,
+   "geo": {
+    "lat": 46.81,
+    "lon": -71.21
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "halifax",
+   "name": "Halifax",
+   "x": 852.2,
+   "y": 137,
+   "geo": {
+    "lat": 44.65,
+    "lon": -63.58
+   },
+   "country": "CA",
+   "major": false
+  },
+  {
+   "id": "hermosillo",
+   "name": "Hermosillo",
+   "x": 291.3,
+   "y": 321.6,
+   "geo": {
+    "lat": 29.07,
+    "lon": -110.96
+   },
+   "country": "MX",
+   "major": false
+  },
+  {
+   "id": "ciudad-obregon",
+   "name": "Ciudad Obregón",
+   "x": 303.5,
+   "y": 340.5,
+   "geo": {
+    "lat": 27.48,
+    "lon": -109.93
+   },
+   "country": "MX",
+   "major": false
+  },
+  {
+   "id": "chihuahua",
+   "name": "Chihuahua",
+   "x": 349.2,
+   "y": 326.9,
+   "geo": {
+    "lat": 28.63,
+    "lon": -106.07
+   },
+   "country": "MX",
+   "major": false
+  },
+  {
+   "id": "saltillo",
+   "name": "Saltillo",
+   "x": 402.2,
+   "y": 367.9,
+   "geo": {
+    "lat": 25.42,
+    "lon": -101
+   },
+   "country": "MX",
+   "major": false
+  },
+  {
+   "id": "monterrey",
+   "name": "Monterrey",
+   "x": 422.3,
+   "y": 358.7,
+   "geo": {
+    "lat": 25.69,
+    "lon": -100.32
+   },
+   "country": "MX",
+   "major": true
+  },
+  {
+   "id": "aguascalientes",
+   "name": "Aguascalientes",
+   "x": 394,
+   "y": 406.8,
+   "geo": {
+    "lat": 21.88,
+    "lon": -102.29
+   },
+   "country": "MX",
+   "major": false
+  },
+  {
+   "id": "guadalajara",
+   "name": "Guadalajara",
+   "x": 381.4,
+   "y": 421.3,
+   "geo": {
+    "lat": 20.66,
+    "lon": -103.35
+   },
+   "country": "MX",
+   "major": true
+  },
+  {
+   "id": "ciudad-de-mexico",
+   "name": "Ciudad de México",
+   "x": 431.4,
+   "y": 435.9,
+   "geo": {
+    "lat": 19.43,
+    "lon": -99.13
+   },
+   "country": "MX",
+   "major": true
+  },
+  {
+   "id": "veracruz",
+   "name": "Veracruz",
+   "x": 466.9,
+   "y": 439,
+   "geo": {
+    "lat": 19.17,
+    "lon": -96.13
+   },
+   "country": "MX",
+   "major": false
+  },
+  {
+   "id": "merida",
+   "name": "Mérida",
+   "x": 544.3,
+   "y": 417.6,
+   "geo": {
+    "lat": 20.97,
+    "lon": -89.59
+   },
+   "country": "MX",
+   "major": false
+  },
+  {
+   "id": "la-habana",
+   "name": "La Habana",
+   "x": 629.8,
+   "y": 392.3,
+   "geo": {
+    "lat": 23.11,
+    "lon": -82.37
+   },
+   "country": "CU",
+   "major": true
+  },
+  {
+   "id": "la-paz",
+   "name": "La Paz",
+   "x": 299.85,
+   "y": 378.91,
+   "major": false
+  },
+  {
+   "id": "tijuana",
+   "name": "Tijuana",
+   "x": 222.82,
+   "y": 282.93,
+   "major": false
+  },
+  {
+   "id": "culiacan",
+   "name": "Culiacan",
+   "x": 328.98,
+   "y": 364.19,
+   "major": false
+  },
+  {
+   "id": "mazatlan",
+   "name": "Mazatlan",
+   "x": 344.2,
+   "y": 386.86,
+   "major": false
+  }
+ ],
+ "routes": [
+  {
+   "id": "vancouver-calgary",
+   "from": "vancouver",
+   "to": "calgary",
+   "length": 4,
+   "color": "gray",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "bend": -5.7
+  },
+  {
+   "id": "vancouver-seattle-1",
+   "from": "vancouver",
+   "to": "seattle",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "vancouver-seattle"
+  },
+  {
+   "id": "vancouver-seattle-2",
+   "from": "vancouver",
+   "to": "seattle",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "vancouver-seattle"
+  },
+  {
+   "id": "seattle-calgary",
+   "from": "seattle",
+   "to": "calgary",
+   "length": 5,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 8.3
+  },
+  {
+   "id": "seattle-helena",
+   "from": "seattle",
+   "to": "helena",
+   "length": 6,
+   "color": "yellow",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 12.3
+  },
+  {
+   "id": "seattle-portland-1",
+   "from": "seattle",
+   "to": "portland",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "seattle-portland"
+  },
+  {
+   "id": "seattle-portland-2",
+   "from": "seattle",
+   "to": "portland",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "seattle-portland"
+  },
+  {
+   "id": "portland-san-francisco-1",
+   "from": "portland",
+   "to": "san-francisco",
+   "length": 5,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "portland-san-francisco",
+   "bend": 5.5
+  },
+  {
+   "id": "portland-san-francisco-2",
+   "from": "portland",
+   "to": "san-francisco",
+   "length": 5,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "portland-san-francisco",
+   "bend": 5.5
+  },
+  {
+   "id": "portland-salt-lake-city",
+   "from": "portland",
+   "to": "salt-lake-city",
+   "length": 6,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "calgary-helena",
+   "from": "calgary",
+   "to": "helena",
+   "length": 4,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "helena-winnipeg",
+   "from": "helena",
+   "to": "winnipeg",
+   "length": 6,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 9.8
+  },
+  {
+   "id": "helena-duluth",
+   "from": "helena",
+   "to": "duluth",
+   "length": 8,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 11.9
+  },
+  {
+   "id": "helena-omaha",
+   "from": "helena",
+   "to": "omaha",
+   "length": 7,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 4.5
+  },
+  {
+   "id": "helena-denver",
+   "from": "helena",
+   "to": "denver",
+   "length": 4,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "helena-salt-lake-city",
+   "from": "helena",
+   "to": "salt-lake-city",
+   "length": 3,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "winnipeg-sault-st-marie",
+   "from": "winnipeg",
+   "to": "sault-st-marie",
+   "length": 6,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -11.3
+  },
+  {
+   "id": "san-francisco-salt-lake-city-1",
+   "from": "san-francisco",
+   "to": "salt-lake-city",
+   "length": 5,
+   "color": "orange",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "parallelGroup": "san-francisco-salt-lake-city"
+  },
+  {
+   "id": "san-francisco-salt-lake-city-2",
+   "from": "san-francisco",
+   "to": "salt-lake-city",
+   "length": 5,
+   "color": "white",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "parallelGroup": "san-francisco-salt-lake-city"
+  },
+  {
+   "id": "san-francisco-los-angeles-1",
+   "from": "san-francisco",
+   "to": "los-angeles",
+   "length": 3,
+   "color": "yellow",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "san-francisco-los-angeles",
+   "bend": 3.6
+  },
+  {
+   "id": "san-francisco-los-angeles-2",
+   "from": "san-francisco",
+   "to": "los-angeles",
+   "length": 3,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "san-francisco-los-angeles",
+   "bend": 3.6
+  },
+  {
+   "id": "los-angeles-las-vegas",
+   "from": "los-angeles",
+   "to": "las-vegas",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "los-angeles-phoenix",
+   "from": "los-angeles",
+   "to": "phoenix",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "las-vegas-salt-lake-city",
+   "from": "las-vegas",
+   "to": "salt-lake-city",
+   "length": 3,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "salt-lake-city-denver-1",
+   "from": "salt-lake-city",
+   "to": "denver",
+   "length": 3,
+   "color": "red",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "parallelGroup": "salt-lake-city-denver"
+  },
+  {
+   "id": "salt-lake-city-denver-2",
+   "from": "salt-lake-city",
+   "to": "denver",
+   "length": 3,
+   "color": "yellow",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "parallelGroup": "salt-lake-city-denver"
+  },
+  {
+   "id": "phoenix-denver",
+   "from": "phoenix",
+   "to": "denver",
+   "length": 5,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "phoenix-santa-fe",
+   "from": "phoenix",
+   "to": "santa-fe",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "phoenix-el-paso",
+   "from": "phoenix",
+   "to": "el-paso",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "denver-santa-fe",
+   "from": "denver",
+   "to": "santa-fe",
+   "length": 2,
+   "color": "gray",
+   "kind": "tunnel",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "denver-omaha",
+   "from": "denver",
+   "to": "omaha",
+   "length": 4,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -6.3
+  },
+  {
+   "id": "denver-kansas-city-1",
+   "from": "denver",
+   "to": "kansas-city",
+   "length": 4,
+   "color": "black",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "denver-kansas-city"
+  },
+  {
+   "id": "denver-kansas-city-2",
+   "from": "denver",
+   "to": "kansas-city",
+   "length": 4,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "denver-kansas-city"
+  },
+  {
+   "id": "denver-oklahoma-city",
+   "from": "denver",
+   "to": "oklahoma-city",
+   "length": 4,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "santa-fe-el-paso",
+   "from": "santa-fe",
+   "to": "el-paso",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "santa-fe-oklahoma-city",
+   "from": "santa-fe",
+   "to": "oklahoma-city",
+   "length": 3,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "el-paso-oklahoma-city",
+   "from": "el-paso",
+   "to": "oklahoma-city",
+   "length": 5,
+   "color": "yellow",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "el-paso-dallas",
+   "from": "el-paso",
+   "to": "dallas",
+   "length": 4,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "el-paso-houston",
+   "from": "el-paso",
+   "to": "houston",
+   "length": 6,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "el-paso-houston",
+   "bend": 1.9
+  },
+  {
+   "id": "duluth-sault-st-marie",
+   "from": "duluth",
+   "to": "sault-st-marie",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "duluth-toronto",
+   "from": "duluth",
+   "to": "toronto",
+   "length": 6,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "duluth-chicago",
+   "from": "duluth",
+   "to": "chicago",
+   "length": 3,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "duluth-omaha-1",
+   "from": "duluth",
+   "to": "omaha",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "duluth-omaha",
+   "bend": -9.1
+  },
+  {
+   "id": "duluth-omaha-2",
+   "from": "duluth",
+   "to": "omaha",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "duluth-omaha",
+   "bend": -9.1
+  },
+  {
+   "id": "omaha-chicago",
+   "from": "omaha",
+   "to": "chicago",
+   "length": 4,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "omaha-kansas-city-1",
+   "from": "omaha",
+   "to": "kansas-city",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "omaha-kansas-city"
+  },
+  {
+   "id": "omaha-kansas-city-2",
+   "from": "omaha",
+   "to": "kansas-city",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "omaha-kansas-city"
+  },
+  {
+   "id": "kansas-city-saint-louis-1",
+   "from": "kansas-city",
+   "to": "saint-louis",
+   "length": 2,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "kansas-city-saint-louis"
+  },
+  {
+   "id": "kansas-city-saint-louis-2",
+   "from": "kansas-city",
+   "to": "saint-louis",
+   "length": 2,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "kansas-city-saint-louis"
+  },
+  {
+   "id": "kansas-city-oklahoma-city-1",
+   "from": "kansas-city",
+   "to": "oklahoma-city",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "kansas-city-oklahoma-city"
+  },
+  {
+   "id": "kansas-city-oklahoma-city-2",
+   "from": "kansas-city",
+   "to": "oklahoma-city",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "kansas-city-oklahoma-city"
+  },
+  {
+   "id": "oklahoma-city-little-rock",
+   "from": "oklahoma-city",
+   "to": "little-rock",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "oklahoma-city-dallas-1",
+   "from": "oklahoma-city",
+   "to": "dallas",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "oklahoma-city-dallas"
+  },
+  {
+   "id": "oklahoma-city-dallas-2",
+   "from": "oklahoma-city",
+   "to": "dallas",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "oklahoma-city-dallas"
+  },
+  {
+   "id": "dallas-little-rock",
+   "from": "dallas",
+   "to": "little-rock",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "dallas-houston-1",
+   "from": "dallas",
+   "to": "houston",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "dallas-houston"
+  },
+  {
+   "id": "dallas-houston-2",
+   "from": "dallas",
+   "to": "houston",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "dallas-houston"
+  },
+  {
+   "id": "houston-new-orleans",
+   "from": "houston",
+   "to": "new-orleans",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 4.7
+  },
+  {
+   "id": "little-rock-saint-louis",
+   "from": "little-rock",
+   "to": "saint-louis",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "little-rock-nashville",
+   "from": "little-rock",
+   "to": "nashville",
+   "length": 3,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "little-rock-new-orleans",
+   "from": "little-rock",
+   "to": "new-orleans",
+   "length": 3,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "new-orleans-atlanta-1",
+   "from": "new-orleans",
+   "to": "atlanta",
+   "length": 3,
+   "color": "yellow",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "new-orleans-atlanta",
+   "bend": -2.7
+  },
+  {
+   "id": "new-orleans-atlanta-2",
+   "from": "new-orleans",
+   "to": "atlanta",
+   "length": 3,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "new-orleans-atlanta",
+   "bend": -2.7
+  },
+  {
+   "id": "new-orleans-miami",
+   "from": "new-orleans",
+   "to": "miami",
+   "length": 6,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "saint-louis-chicago-1",
+   "from": "saint-louis",
+   "to": "chicago",
+   "length": 2,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "saint-louis-chicago"
+  },
+  {
+   "id": "saint-louis-chicago-2",
+   "from": "saint-louis",
+   "to": "chicago",
+   "length": 2,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "saint-louis-chicago"
+  },
+  {
+   "id": "saint-louis-pittsburgh",
+   "from": "saint-louis",
+   "to": "pittsburgh",
+   "length": 4,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "saint-louis-nashville",
+   "from": "saint-louis",
+   "to": "nashville",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "chicago-pittsburgh-1",
+   "from": "chicago",
+   "to": "pittsburgh",
+   "length": 3,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "chicago-pittsburgh"
+  },
+  {
+   "id": "chicago-pittsburgh-2",
+   "from": "chicago",
+   "to": "pittsburgh",
+   "length": 3,
+   "color": "black",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "chicago-pittsburgh"
+  },
+  {
+   "id": "chicago-toronto",
+   "from": "chicago",
+   "to": "toronto",
+   "length": 4,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "sault-st-marie-toronto",
+   "from": "sault-st-marie",
+   "to": "toronto",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "toronto-montreal",
+   "from": "toronto",
+   "to": "montreal",
+   "length": 4,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 15.2
+  },
+  {
+   "id": "toronto-pittsburgh",
+   "from": "toronto",
+   "to": "pittsburgh",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "montreal-boston-2",
+   "from": "montreal",
+   "to": "boston",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 0.6
+  },
+  {
+   "id": "montreal-new-york",
+   "from": "montreal",
+   "to": "new-york",
+   "length": 3,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "boston-new-york-1",
+   "from": "boston",
+   "to": "new-york",
+   "length": 2,
+   "color": "yellow",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "boston-new-york"
+  },
+  {
+   "id": "boston-new-york-2",
+   "from": "boston",
+   "to": "new-york",
+   "length": 2,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "boston-new-york"
+  },
+  {
+   "id": "new-york-pittsburgh-1",
+   "from": "new-york",
+   "to": "pittsburgh",
+   "length": 2,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "new-york-pittsburgh",
+   "bend": 6
+  },
+  {
+   "id": "new-york-pittsburgh-2",
+   "from": "new-york",
+   "to": "pittsburgh",
+   "length": 2,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "new-york-pittsburgh",
+   "bend": 6
+  },
+  {
+   "id": "new-york-washington-1",
+   "from": "new-york",
+   "to": "washington",
+   "length": 2,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "new-york-washington",
+   "bend": -6.7
+  },
+  {
+   "id": "new-york-washington-2",
+   "from": "new-york",
+   "to": "washington",
+   "length": 2,
+   "color": "black",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "new-york-washington",
+   "bend": -6.7
+  },
+  {
+   "id": "pittsburgh-washington",
+   "from": "pittsburgh",
+   "to": "washington",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "pittsburgh-raleigh",
+   "from": "pittsburgh",
+   "to": "raleigh",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "pittsburgh-nashville",
+   "from": "pittsburgh",
+   "to": "nashville",
+   "length": 3,
+   "color": "yellow",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 1.3
+  },
+  {
+   "id": "washington-raleigh-1",
+   "from": "washington",
+   "to": "raleigh",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "washington-raleigh"
+  },
+  {
+   "id": "washington-raleigh-2",
+   "from": "washington",
+   "to": "raleigh",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "washington-raleigh"
+  },
+  {
+   "id": "raleigh-nashville",
+   "from": "raleigh",
+   "to": "nashville",
+   "length": 3,
+   "color": "black",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "bend": 7.5
+  },
+  {
+   "id": "raleigh-atlanta-1",
+   "from": "raleigh",
+   "to": "atlanta",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "raleigh-atlanta"
+  },
+  {
+   "id": "raleigh-atlanta-2",
+   "from": "raleigh",
+   "to": "atlanta",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "raleigh-atlanta"
+  },
+  {
+   "id": "raleigh-charleston",
+   "from": "raleigh",
+   "to": "charleston",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "nashville-atlanta",
+   "from": "nashville",
+   "to": "atlanta",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "atlanta-charleston",
+   "from": "atlanta",
+   "to": "charleston",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "atlanta-miami",
+   "from": "atlanta",
+   "to": "miami",
+   "length": 5,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "charleston-miami",
+   "from": "charleston",
+   "to": "miami",
+   "length": 3,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -7.1
+  },
+  {
+   "id": "prince-rupert-vancouver",
+   "from": "prince-rupert",
+   "to": "vancouver",
+   "length": 5,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "path": [
+    {
+     "x": 54.1,
+     "y": 42.8
+    },
+    {
+     "x": 82.5,
+     "y": 66.5
+    }
+   ],
+   "bend": 21
+  },
+  {
+   "id": "prince-rupert-jasper",
+   "from": "prince-rupert",
+   "to": "jasper",
+   "length": 6,
+   "color": "red",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "parallelGroup": "prince-rupert-jasper",
+   "bend": -10.9
+  },
+  {
+   "id": "jasper-edmonton",
+   "from": "jasper",
+   "to": "edmonton",
+   "length": 2,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "jasper-vancouver",
+   "from": "jasper",
+   "to": "vancouver",
+   "length": 3,
+   "color": "yellow",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "bend": 8.8
+  },
+  {
+   "id": "jasper-calgary",
+   "from": "jasper",
+   "to": "calgary",
+   "length": 2,
+   "color": "gray",
+   "kind": "tunnel",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "edmonton-calgary-1",
+   "from": "edmonton",
+   "to": "calgary",
+   "length": 1,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "edmonton-calgary"
+  },
+  {
+   "id": "edmonton-calgary-2",
+   "from": "edmonton",
+   "to": "calgary",
+   "length": 1,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "edmonton-calgary"
+  },
+  {
+   "id": "edmonton-regina",
+   "from": "edmonton",
+   "to": "regina",
+   "length": 5,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -14
+  },
+  {
+   "id": "regina-winnipeg",
+   "from": "regina",
+   "to": "winnipeg",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "regina-helena",
+   "from": "regina",
+   "to": "helena",
+   "length": 4,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -4.2
+  },
+  {
+   "id": "churchill-winnipeg",
+   "from": "churchill",
+   "to": "winnipeg",
+   "length": 4,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "churchill-winnipeg",
+   "bend": -7.5
+  },
+  {
+   "id": "churchill-regina",
+   "from": "churchill",
+   "to": "regina",
+   "length": 6,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "churchill-regina",
+   "bend": 14.8
+  },
+  {
+   "id": "toronto-ottawa",
+   "from": "toronto",
+   "to": "ottawa",
+   "length": 2,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 4.1
+  },
+  {
+   "id": "ottawa-sault-st-marie",
+   "from": "ottawa",
+   "to": "sault-st-marie",
+   "length": 5,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "ottawa-sault-st-marie",
+   "bend": 8.6
+  },
+  {
+   "id": "montreal-quebec-1",
+   "from": "montreal",
+   "to": "quebec",
+   "length": 2,
+   "color": "yellow",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "montreal-quebec"
+  },
+  {
+   "id": "montreal-quebec-2",
+   "from": "montreal",
+   "to": "quebec",
+   "length": 2,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "montreal-quebec"
+  },
+  {
+   "id": "quebec-halifax",
+   "from": "quebec",
+   "to": "halifax",
+   "length": 5,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -6.7
+  },
+  {
+   "id": "quebec-boston",
+   "from": "quebec",
+   "to": "boston",
+   "length": 3,
+   "color": "black",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "bend": -6.3
+  },
+  {
+   "id": "halifax-boston",
+   "from": "halifax",
+   "to": "boston",
+   "length": 4,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "parallelGroup": "halifax-boston",
+   "bend": -7.3
+  },
+  {
+   "id": "hermosillo-phoenix",
+   "from": "hermosillo",
+   "to": "phoenix",
+   "length": 3,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "hermosillo-phoenix"
+  },
+  {
+   "id": "hermosillo-ciudad-obregon",
+   "from": "hermosillo",
+   "to": "ciudad-obregon",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -2.1
+  },
+  {
+   "id": "ciudad-obregon-chihuahua",
+   "from": "ciudad-obregon",
+   "to": "chihuahua",
+   "length": 2,
+   "color": "red",
+   "kind": "tunnel",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "chihuahua-el-paso-1",
+   "from": "chihuahua",
+   "to": "el-paso",
+   "length": 2,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "chihuahua-el-paso"
+  },
+  {
+   "id": "chihuahua-el-paso-2",
+   "from": "chihuahua",
+   "to": "el-paso",
+   "length": 2,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "chihuahua-el-paso"
+  },
+  {
+   "id": "chihuahua-saltillo",
+   "from": "chihuahua",
+   "to": "saltillo",
+   "length": 4,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "saltillo-monterrey-1",
+   "from": "saltillo",
+   "to": "monterrey",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "saltillo-monterrey"
+  },
+  {
+   "id": "saltillo-monterrey-2",
+   "from": "saltillo",
+   "to": "monterrey",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "saltillo-monterrey"
+  },
+  {
+   "id": "saltillo-aguascalientes",
+   "from": "saltillo",
+   "to": "aguascalientes",
+   "length": 2,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "saltillo-aguascalientes",
+   "bend": 3.3
+  },
+  {
+   "id": "monterrey-houston",
+   "from": "monterrey",
+   "to": "houston",
+   "length": 3,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "monterrey-houston",
+   "bend": -1.6
+  },
+  {
+   "id": "monterrey-veracruz",
+   "from": "monterrey",
+   "to": "veracruz",
+   "length": 5,
+   "color": "black",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "aguascalientes-guadalajara-1",
+   "from": "aguascalientes",
+   "to": "guadalajara",
+   "length": 1,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "aguascalientes-guadalajara"
+  },
+  {
+   "id": "aguascalientes-guadalajara-2",
+   "from": "aguascalientes",
+   "to": "guadalajara",
+   "length": 1,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "aguascalientes-guadalajara"
+  },
+  {
+   "id": "aguascalientes-ciudad-de-mexico-1",
+   "from": "aguascalientes",
+   "to": "ciudad-de-mexico",
+   "length": 3,
+   "color": "blue",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "aguascalientes-ciudad-de-mexico",
+   "bend": -9
+  },
+  {
+   "id": "aguascalientes-ciudad-de-mexico-2",
+   "from": "aguascalientes",
+   "to": "ciudad-de-mexico",
+   "length": 3,
+   "color": "purple",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "aguascalientes-ciudad-de-mexico",
+   "bend": -9
+  },
+  {
+   "id": "guadalajara-ciudad-de-mexico",
+   "from": "guadalajara",
+   "to": "ciudad-de-mexico",
+   "length": 3,
+   "color": "red",
+   "kind": "tunnel",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "ciudad-de-mexico-veracruz",
+   "from": "ciudad-de-mexico",
+   "to": "veracruz",
+   "length": 2,
+   "color": "white",
+   "kind": "tunnel",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "veracruz-merida",
+   "from": "veracruz",
+   "to": "merida",
+   "length": 5,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "veracruz-merida",
+   "bend": 29.7
+  },
+  {
+   "id": "veracruz-houston",
+   "from": "veracruz",
+   "to": "houston",
+   "length": 7,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 2,
+   "bend": 4.7
+  },
+  {
+   "id": "new-orleans-merida",
+   "from": "new-orleans",
+   "to": "merida",
+   "length": 6,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 2,
+   "bend": -7.3
+  },
+  {
+   "id": "merida-la-habana",
+   "from": "merida",
+   "to": "la-habana",
+   "length": 4,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "parallelGroup": "merida-la-habana"
+  },
+  {
+   "id": "la-habana-miami",
+   "from": "la-habana",
+   "to": "miami",
+   "length": 3,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 1
+  },
+  {
+   "id": "calgary-regina",
+   "from": "calgary",
+   "to": "regina",
+   "length": 4,
+   "color": "black",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 2.8
+  },
+  {
+   "id": "prince-rupert-jasper-2",
+   "from": "prince-rupert",
+   "to": "jasper",
+   "length": 6,
+   "color": "green",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "parallelGroup": "prince-rupert-jasper",
+   "bend": -10.9
+  },
+  {
+   "id": "winnipeg-duluth",
+   "from": "winnipeg",
+   "to": "duluth",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 5.6
+  },
+  {
+   "id": "churchill-winnipeg-2",
+   "from": "churchill",
+   "to": "winnipeg",
+   "length": 4,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "churchill-winnipeg",
+   "bend": -7.5
+  },
+  {
+   "id": "ottawa-sault-st-marie-2",
+   "from": "ottawa",
+   "to": "sault-st-marie",
+   "length": 5,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "ottawa-sault-st-marie",
+   "bend": 8.6
+  },
+  {
+   "id": "ottawa-montreal",
+   "from": "ottawa",
+   "to": "montreal",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -1.5
+  },
+  {
+   "id": "halifax-boston-2",
+   "from": "halifax",
+   "to": "boston",
+   "length": 4,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "parallelGroup": "halifax-boston",
+   "bend": -7.3
+  },
+  {
+   "id": "veracruz-merida-2",
+   "from": "veracruz",
+   "to": "merida",
+   "length": 5,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "veracruz-merida",
+   "bend": 29.7
+  },
+  {
+   "id": "merida-la-habana-2",
+   "from": "merida",
+   "to": "la-habana",
+   "length": 4,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "parallelGroup": "merida-la-habana"
+  },
+  {
+   "id": "monterrey-houston-2",
+   "from": "monterrey",
+   "to": "houston",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "monterrey-houston",
+   "bend": -1.6
+  },
+  {
+   "id": "el-paso-houston-2",
+   "from": "el-paso",
+   "to": "houston",
+   "length": 6,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "el-paso-houston",
+   "bend": 1.9
+  },
+  {
+   "id": "hermosillo-phoenix-2",
+   "from": "hermosillo",
+   "to": "phoenix",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "hermosillo-phoenix"
+  },
+  {
+   "id": "los-angeles-tijuana",
+   "from": "los-angeles",
+   "to": "tijuana",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "slots": [
+    {
+     "x": 214.96,
+     "y": 273.85,
+     "angle": 0.8425,
+     "length": 13.73,
+     "width": 5.6
+    }
+   ]
+  },
+  {
+   "id": "tijuana-la-paz",
+   "from": "tijuana",
+   "to": "la-paz",
+   "length": 6,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "tijuana-la-paz",
+   "bend": 7.1
+  },
+  {
+   "id": "tijuana-la-paz-2",
+   "from": "tijuana",
+   "to": "la-paz",
+   "length": 6,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "tijuana-la-paz",
+   "bend": 7.1
+  },
+  {
+   "id": "la-paz-ciudad-obregon",
+   "from": "la-paz",
+   "to": "ciudad-obregon",
+   "length": 2,
+   "color": "gray",
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "bend": 3.6
+  },
+  {
+   "id": "churchill-regina-2",
+   "from": "churchill",
+   "to": "regina",
+   "length": 6,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "churchill-regina",
+   "bend": 14.8
+  },
+  {
+   "id": "saltillo-aguascalientes-2",
+   "from": "saltillo",
+   "to": "aguascalientes",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "saltillo-aguascalientes",
+   "bend": 3.3
+  },
+  {
+   "id": "hermosillo-chihuahua",
+   "from": "hermosillo",
+   "to": "chihuahua",
+   "length": 3,
+   "color": "gray",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "bend": -4.2
+  },
+  {
+   "id": "ciudad-obregon-culiacan",
+   "from": "ciudad-obregon",
+   "to": "culiacan",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -4.4
+  },
+  {
+   "id": "la-paz-culiacan",
+   "from": "la-paz",
+   "to": "culiacan",
+   "length": 2,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 3.1
+  },
+  {
+   "id": "culiacan-mazatlan",
+   "from": "culiacan",
+   "to": "mazatlan",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "mazatlan-guadalajara",
+   "from": "mazatlan",
+   "to": "guadalajara",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "la-paz-guadalajara",
+   "from": "la-paz",
+   "to": "guadalajara",
+   "length": 5,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 5.6
+  },
+  {
+   "id": "mazatlan-saltillo",
+   "from": "mazatlan",
+   "to": "saltillo",
+   "length": 3,
+   "color": "gray",
+   "kind": "tunnel",
+   "ferryLocomotives": 0,
+   "bend": -4.8
+  }
+ ],
+ "tickets": [
+  {
+   "id": "denver-el-paso",
+   "from": "denver",
+   "to": "el-paso",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "kansas-city-houston",
+   "from": "kansas-city",
+   "to": "houston",
+   "points": 5,
+   "deck": "regular"
+  },
+  {
+   "id": "new-york-atlanta",
+   "from": "new-york",
+   "to": "atlanta",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "chicago-new-orleans",
+   "from": "chicago",
+   "to": "new-orleans",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "calgary-salt-lake-city",
+   "from": "calgary",
+   "to": "salt-lake-city",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "helena-los-angeles",
+   "from": "helena",
+   "to": "los-angeles",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "duluth-houston",
+   "from": "duluth",
+   "to": "houston",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "sault-st-marie-nashville",
+   "from": "sault-st-marie",
+   "to": "nashville",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "montreal-atlanta",
+   "from": "montreal",
+   "to": "atlanta",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "sault-st-marie-oklahoma-city",
+   "from": "sault-st-marie",
+   "to": "oklahoma-city",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "seattle-los-angeles",
+   "from": "seattle",
+   "to": "los-angeles",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "chicago-santa-fe",
+   "from": "chicago",
+   "to": "santa-fe",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "duluth-el-paso",
+   "from": "duluth",
+   "to": "el-paso",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "toronto-miami",
+   "from": "toronto",
+   "to": "miami",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "portland-phoenix",
+   "from": "portland",
+   "to": "phoenix",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "dallas-new-york",
+   "from": "dallas",
+   "to": "new-york",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "denver-pittsburgh",
+   "from": "denver",
+   "to": "pittsburgh",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "winnipeg-little-rock",
+   "from": "winnipeg",
+   "to": "little-rock",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "winnipeg-houston",
+   "from": "winnipeg",
+   "to": "houston",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "boston-miami",
+   "from": "boston",
+   "to": "miami",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "vancouver-santa-fe",
+   "from": "vancouver",
+   "to": "santa-fe",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "calgary-phoenix",
+   "from": "calgary",
+   "to": "phoenix",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "montreal-new-orleans",
+   "from": "montreal",
+   "to": "new-orleans",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "los-angeles-chicago",
+   "from": "los-angeles",
+   "to": "chicago",
+   "points": 16,
+   "deck": "regular"
+  },
+  {
+   "id": "san-francisco-atlanta",
+   "from": "san-francisco",
+   "to": "atlanta",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "portland-nashville",
+   "from": "portland",
+   "to": "nashville",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "vancouver-montreal",
+   "from": "vancouver",
+   "to": "montreal",
+   "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "los-angeles-miami",
+   "from": "los-angeles",
+   "to": "miami",
+   "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "los-angeles-new-york",
+   "from": "los-angeles",
+   "to": "new-york",
+   "points": 21,
+   "deck": "regular"
+  },
+  {
+   "id": "seattle-new-york",
+   "from": "seattle",
+   "to": "new-york",
+   "points": 22,
+   "deck": "regular"
+  },
+  {
+   "id": "prince-rupert-calgary",
+   "from": "prince-rupert",
+   "to": "calgary",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "edmonton-winnipeg",
+   "from": "edmonton",
+   "to": "winnipeg",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "churchill-duluth",
+   "from": "churchill",
+   "to": "duluth",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "regina-denver",
+   "from": "regina",
+   "to": "denver",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "jasper-seattle",
+   "from": "jasper",
+   "to": "seattle",
+   "points": 5,
+   "deck": "regular"
+  },
+  {
+   "id": "ottawa-new-york",
+   "from": "ottawa",
+   "to": "new-york",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "quebec-chicago",
+   "from": "quebec",
+   "to": "chicago",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "halifax-pittsburgh",
+   "from": "halifax",
+   "to": "pittsburgh",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "hermosillo-los-angeles",
+   "from": "hermosillo",
+   "to": "los-angeles",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "chihuahua-denver",
+   "from": "chihuahua",
+   "to": "denver",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "monterrey-kansas-city",
+   "from": "monterrey",
+   "to": "kansas-city",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "guadalajara-el-paso",
+   "from": "guadalajara",
+   "to": "el-paso",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-de-mexico-dallas",
+   "from": "ciudad-de-mexico",
+   "to": "dallas",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "veracruz-new-orleans",
+   "from": "veracruz",
+   "to": "new-orleans",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "merida-miami",
+   "from": "merida",
+   "to": "miami",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "la-habana-atlanta",
+   "from": "la-habana",
+   "to": "atlanta",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "saltillo-houston",
+   "from": "saltillo",
+   "to": "houston",
+   "points": 5,
+   "deck": "regular"
+  },
+  {
+   "id": "aguascalientes-phoenix",
+   "from": "aguascalientes",
+   "to": "phoenix",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-obregon-las-vegas",
+   "from": "ciudad-obregon",
+   "to": "las-vegas",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "prince-rupert-miami",
+   "from": "prince-rupert",
+   "to": "miami",
+   "points": 27,
+   "deck": "long"
+  },
+  {
+   "id": "halifax-los-angeles",
+   "from": "halifax",
+   "to": "los-angeles",
+   "points": 26,
+   "deck": "long"
+  },
+  {
+   "id": "churchill-ciudad-de-mexico",
+   "from": "churchill",
+   "to": "ciudad-de-mexico",
+   "points": 26,
+   "deck": "long"
+  },
+  {
+   "id": "vancouver-merida",
+   "from": "vancouver",
+   "to": "merida",
+   "points": 26,
+   "deck": "long"
+  },
+  {
+   "id": "quebec-guadalajara",
+   "from": "quebec",
+   "to": "guadalajara",
+   "points": 25,
+   "deck": "long"
+  },
+  {
+   "id": "la-habana-seattle",
+   "from": "la-habana",
+   "to": "seattle",
+   "points": 25,
+   "deck": "long"
+  },
+  {
+   "id": "hermosillo-montreal",
+   "from": "hermosillo",
+   "to": "montreal",
+   "points": 22,
+   "deck": "long"
+  },
+  {
+   "id": "veracruz-calgary",
+   "from": "veracruz",
+   "to": "calgary",
+   "points": 21,
+   "deck": "long"
+  },
+  {
+   "id": "jasper-new-york",
+   "from": "jasper",
+   "to": "new-york",
+   "points": 21,
+   "deck": "long"
+  }
+ ],
+ "terrain": {
+  "land": [
+   [
+    [
+     873.3,
+     84.4
+    ],
+    [
+     858.6,
+     82.8
+    ],
+    [
+     841.5,
+     75
+    ],
+    [
+     860.8,
+     77.1
+    ],
+    [
+     873.1,
+     82.1
+    ],
+    [
+     874.5,
+     83.9
+    ]
+   ],
+   [
+    [
+     881.5,
+     121.7
+    ],
+    [
+     884.4,
+     121.2
+    ],
+    [
+     882.1,
+     124.6
+    ],
+    [
+     885.9,
+     124
+    ],
+    [
+     889.1,
+     121.4
+    ],
+    [
+     885.9,
+     121.6
+    ],
+    [
+     891.1,
+     117.4
+    ],
+    [
+     896.2,
+     119.2
+    ],
+    [
+     896.6,
+     121.5
+    ],
+    [
+     886.6,
+     125.9
+    ],
+    [
+     879.4,
+     126.1
+    ],
+    [
+     877.4,
+     124.4
+    ],
+    [
+     877.9,
+     119
+    ],
+    [
+     888.8,
+     109.1
+    ],
+    [
+     890.7,
+     111.9
+    ],
+    [
+     888.7,
+     117.8
+    ]
+   ],
+   [
+    [
+     690.3,
+     447.4
+    ],
+    [
+     701,
+     451
+    ],
+    [
+     702.7,
+     453.8
+    ],
+    [
+     695.1,
+     453.1
+    ],
+    [
+     690.9,
+     456.2
+    ],
+    [
+     684.3,
+     454.3
+    ],
+    [
+     677.7,
+     448.7
+    ],
+    [
+     683,
+     446.6
+    ]
+   ],
+   [
+    [
+     822,
+     447.5
+    ],
+    [
+     828,
+     448.3
+    ],
+    [
+     823.9,
+     453.1
+    ],
+    [
+     809.4,
+     452.9
+    ],
+    [
+     809.9,
+     446.9
+    ]
+   ],
+   [
+    [
+     54.3,
+     8.6
+    ],
+    [
+     51.8,
+     12
+    ],
+    [
+     48.8,
+     9.6
+    ],
+    [
+     44.5,
+     11.8
+    ],
+    [
+     46.7,
+     4.5
+    ],
+    [
+     50.9,
+     3.1
+    ],
+    [
+     54.1,
+     5.8
+    ]
+   ],
+   [
+    [
+     23.7,
+     -1.5
+    ],
+    [
+     28,
+     -1.2
+    ],
+    [
+     29.2,
+     1.5
+    ],
+    [
+     35.1,
+     3.8
+    ],
+    [
+     40.2,
+     8.7
+    ],
+    [
+     36.2,
+     7.4
+    ],
+    [
+     34.8,
+     8.8
+    ],
+    [
+     42.5,
+     11.9
+    ],
+    [
+     42,
+     17.7
+    ],
+    [
+     29,
+     10.5
+    ],
+    [
+     30.9,
+     9.7
+    ],
+    [
+     30,
+     7.4
+    ],
+    [
+     22.3,
+     5.1
+    ],
+    [
+     27.5,
+     3.5
+    ],
+    [
+     26,
+     2.1
+    ],
+    [
+     21.6,
+     3
+    ],
+    [
+     24.1,
+     0.8
+    ]
+   ],
+   [
+    [
+     26.1,
+     -9.3
+    ],
+    [
+     30.4,
+     -8.5
+    ],
+    [
+     30.9,
+     -5.5
+    ],
+    [
+     26.5,
+     -7.3
+    ],
+    [
+     28.5,
+     -3.3
+    ],
+    [
+     24.7,
+     -2.8
+    ],
+    [
+     18.8,
+     -9.4
+    ]
+   ],
+   [
+    [
+     7.1,
+     -13.5
+    ],
+    [
+     11.2,
+     -6
+    ],
+    [
+     10.5,
+     0
+    ],
+    [
+     6.9,
+     -3.6
+    ],
+    [
+     8.1,
+     -5.5
+    ],
+    [
+     2.8,
+     -7.2
+    ],
+    [
+     4.3,
+     -9.6
+    ],
+    [
+     1.3,
+     -12.2
+    ],
+    [
+     -2.9,
+     -9.4
+    ],
+    [
+     -3,
+     -12.6
+    ],
+    [
+     1.4,
+     -15.6
+    ]
+   ],
+   [
+    [
+     10.5,
+     -23.1
+    ],
+    [
+     15.7,
+     -22.8
+    ],
+    [
+     20.6,
+     -16.7
+    ],
+    [
+     14.9,
+     -21.5
+    ],
+    [
+     19.6,
+     -13.7
+    ],
+    [
+     13.4,
+     -10
+    ],
+    [
+     11.3,
+     -10.9
+    ],
+    [
+     12.8,
+     -15
+    ],
+    [
+     7.5,
+     -25
+    ]
+   ],
+   [
+    [
+     -1.9,
+     -24
+    ],
+    [
+     -0.5,
+     -21
+    ],
+    [
+     2.6,
+     -22.6
+    ],
+    [
+     7.2,
+     -21.3
+    ],
+    [
+     7.1,
+     -19
+    ],
+    [
+     2.7,
+     -18.4
+    ],
+    [
+     7,
+     -17.9
+    ],
+    [
+     7.5,
+     -15
+    ],
+    [
+     0,
+     -17.2
+    ],
+    [
+     -1.5,
+     -14.3
+    ],
+    [
+     -4.1,
+     -14.6
+    ],
+    [
+     -11.9,
+     -20.8
+    ],
+    [
+     -8.9,
+     -23.7
+    ],
+    [
+     -6.8,
+     -22.3
+    ]
+   ],
+   [
+    [
+     83,
+     38.8
+    ],
+    [
+     83.5,
+     43.8
+    ],
+    [
+     81.5,
+     46.5
+    ],
+    [
+     80.8,
+     40.9
+    ],
+    [
+     78.9,
+     42
+    ],
+    [
+     75.6,
+     38.2
+    ],
+    [
+     77.4,
+     34.8
+    ]
+   ],
+   [
+    [
+     34.5,
+     24.8
+    ],
+    [
+     40.3,
+     26.8
+    ],
+    [
+     35.9,
+     30.4
+    ],
+    [
+     40,
+     30
+    ],
+    [
+     40.6,
+     25.9
+    ],
+    [
+     46.2,
+     24.6
+    ],
+    [
+     42.1,
+     35
+    ],
+    [
+     36.1,
+     35.8
+    ],
+    [
+     33.4,
+     34.4
+    ],
+    [
+     37.1,
+     34
+    ],
+    [
+     32.2,
+     32.1
+    ],
+    [
+     29.2,
+     26.2
+    ],
+    [
+     29.8,
+     24.4
+    ]
+   ],
+   [
+    [
+     45.1,
+     35.8
+    ],
+    [
+     46.6,
+     39
+    ],
+    [
+     42.6,
+     39.5
+    ],
+    [
+     48.7,
+     41.6
+    ],
+    [
+     47.1,
+     43.1
+    ],
+    [
+     52.4,
+     46.5
+    ],
+    [
+     51.4,
+     48.1
+    ],
+    [
+     40.3,
+     40.7
+    ],
+    [
+     39.2,
+     38.9
+    ],
+    [
+     40.5,
+     38.1
+    ],
+    [
+     35.8,
+     36.5
+    ]
+   ],
+   [
+    [
+     849.5,
+     115.5
+    ],
+    [
+     870.6,
+     116
+    ],
+    [
+     864.7,
+     118.6
+    ],
+    [
+     864.6,
+     121.3
+    ],
+    [
+     858.8,
+     120.3
+    ],
+    [
+     860.3,
+     119.6
+    ],
+    [
+     858.4,
+     118.4
+    ],
+    [
+     859.3,
+     117.3
+    ],
+    [
+     856.6,
+     119.2
+    ],
+    [
+     851.5,
+     118.3
+    ],
+    [
+     842.7,
+     113.5
+    ],
+    [
+     847.3,
+     108.5
+    ],
+    [
+     846.2,
+     111.9
+    ]
+   ],
+   [
+    [
+     746.5,
+     180.5
+    ],
+    [
+     753.7,
+     179.6
+    ],
+    [
+     738.4,
+     184.4
+    ],
+    [
+     728.5,
+     184.6
+    ],
+    [
+     733.9,
+     181.2
+    ],
+    [
+     749.3,
+     178.5
+    ]
+   ],
+   [
+    [
+     636.1,
+     391.6
+    ],
+    [
+     650.1,
+     392.4
+    ],
+    [
+     660,
+     394.9
+    ],
+    [
+     666.4,
+     400.6
+    ],
+    [
+     673.4,
+     401.1
+    ],
+    [
+     685.8,
+     407.8
+    ],
+    [
+     687.5,
+     406.9
+    ],
+    [
+     691.6,
+     409.6
+    ],
+    [
+     689,
+     410
+    ],
+    [
+     690.4,
+     411.5
+    ],
+    [
+     692.2,
+     410.3
+    ],
+    [
+     694.9,
+     413.4
+    ],
+    [
+     708.5,
+     416
+    ],
+    [
+     710,
+     417.3
+    ],
+    [
+     708.4,
+     420.6
+    ],
+    [
+     718.4,
+     421.4
+    ],
+    [
+     727,
+     427.1
+    ],
+    [
+     715.7,
+     430.3
+    ],
+    [
+     715.2,
+     429
+    ],
+    [
+     713.6,
+     430.4
+    ],
+    [
+     703.3,
+     429.2
+    ],
+    [
+     684.9,
+     430.8
+    ],
+    [
+     692.1,
+     424.3
+    ],
+    [
+     690.6,
+     421.5
+    ],
+    [
+     680.1,
+     420.1
+    ],
+    [
+     675.7,
+     416.6
+    ],
+    [
+     672.9,
+     410.2
+    ],
+    [
+     665.4,
+     410.3
+    ],
+    [
+     655.1,
+     406.9
+    ],
+    [
+     652.1,
+     404
+    ],
+    [
+     645.6,
+     404.5
+    ],
+    [
+     643.8,
+     402.2
+    ],
+    [
+     642.6,
+     404.1
+    ],
+    [
+     635.9,
+     402.9
+    ],
+    [
+     633.2,
+     400.8
+    ],
+    [
+     637.6,
+     399.5
+    ],
+    [
+     636.1,
+     397.5
+    ],
+    [
+     625.4,
+     397.3
+    ],
+    [
+     617.8,
+     402.8
+    ],
+    [
+     611.7,
+     403.4
+    ],
+    [
+     610.1,
+     406.1
+    ],
+    [
+     600.6,
+     407.5
+    ],
+    [
+     606.6,
+     404.5
+    ],
+    [
+     606.2,
+     400.9
+    ],
+    [
+     609.9,
+     397.5
+    ],
+    [
+     619.3,
+     394
+    ]
+   ],
+   [
+    [
+     99.1,
+     66.1
+    ],
+    [
+     119.4,
+     69.9
+    ],
+    [
+     127.1,
+     79.2
+    ],
+    [
+     137,
+     82.8
+    ],
+    [
+     145.4,
+     92
+    ],
+    [
+     142,
+     93.5
+    ],
+    [
+     126.7,
+     89.6
+    ],
+    [
+     123.4,
+     87.8
+    ],
+    [
+     127.3,
+     83
+    ],
+    [
+     126,
+     85.3
+    ],
+    [
+     119.3,
+     86.3
+    ],
+    [
+     115.3,
+     84.4
+    ],
+    [
+     117.5,
+     83.3
+    ],
+    [
+     113.8,
+     82.6
+    ],
+    [
+     114,
+     80.7
+    ],
+    [
+     106.8,
+     80.5
+    ],
+    [
+     106.8,
+     78.5
+    ],
+    [
+     111.7,
+     77.5
+    ],
+    [
+     102.6,
+     74.3
+    ],
+    [
+     100.1,
+     75.1
+    ],
+    [
+     98.5,
+     72
+    ],
+    [
+     91.2,
+     72.1
+    ],
+    [
+     90.7,
+     68.4
+    ],
+    [
+     95.7,
+     68.9
+    ],
+    [
+     95.9,
+     66.7
+    ],
+    [
+     88.9,
+     67.8
+    ],
+    [
+     86,
+     64.2
+    ],
+    [
+     90.6,
+     63.4
+    ]
+   ],
+   [
+    [
+     753.1,
+     432.4
+    ],
+    [
+     764.9,
+     430.1
+    ],
+    [
+     776.7,
+     433
+    ],
+    [
+     779.3,
+     437.4
+    ],
+    [
+     785.3,
+     437.7
+    ],
+    [
+     780.7,
+     439.6
+    ],
+    [
+     791.8,
+     442.1
+    ],
+    [
+     795.6,
+     446.4
+    ],
+    [
+     791.8,
+     450.3
+    ],
+    [
+     784.8,
+     447.6
+    ],
+    [
+     770.5,
+     450.2
+    ],
+    [
+     768.6,
+     448.8
+    ],
+    [
+     764,
+     449.6
+    ],
+    [
+     759.2,
+     457.1
+    ],
+    [
+     751.8,
+     450.1
+    ],
+    [
+     734.6,
+     449.9
+    ],
+    [
+     730.2,
+     452.3
+    ],
+    [
+     723.4,
+     448.2
+    ],
+    [
+     724.3,
+     445.4
+    ],
+    [
+     743.2,
+     447.7
+    ],
+    [
+     748.4,
+     445.4
+    ],
+    [
+     742.9,
+     440.1
+    ],
+    [
+     744.2,
+     435.7
+    ],
+    [
+     736,
+     433.2
+    ],
+    [
+     736,
+     431.4
+    ],
+    [
+     742.2,
+     430
+    ]
+   ],
+   [
+    [
+     684.5,
+     373.3
+    ],
+    [
+     684.5,
+     376.2
+    ],
+    [
+     681,
+     378.3
+    ],
+    [
+     676.4,
+     374.3
+    ],
+    [
+     678.6,
+     374
+    ],
+    [
+     679.6,
+     367.5
+    ]
+   ],
+   [
+    [
+     18.7,
+     -7.5
+    ],
+    [
+     21.7,
+     -5.1
+    ],
+    [
+     19.1,
+     1
+    ],
+    [
+     16.3,
+     1.6
+    ],
+    [
+     17.6,
+     -2.8
+    ],
+    [
+     14.1,
+     -7.4
+    ]
+   ],
+   [
+    [
+     579.8,
+     -175.3
+    ],
+    [
+     591,
+     -177
+    ],
+    [
+     600.7,
+     -175.5
+    ],
+    [
+     602.2,
+     -182.7
+    ],
+    [
+     594.6,
+     -183.4
+    ],
+    [
+     587.8,
+     -186.9
+    ],
+    [
+     594.8,
+     -189.8
+    ],
+    [
+     607.1,
+     -187.5
+    ],
+    [
+     600.5,
+     -190.7
+    ],
+    [
+     603.1,
+     -191.5
+    ],
+    [
+     594.6,
+     -192
+    ],
+    [
+     590.9,
+     -195.6
+    ],
+    [
+     595.5,
+     -198.3
+    ],
+    [
+     607.4,
+     -196.5
+    ],
+    [
+     593.3,
+     -200.1
+    ],
+    [
+     605.6,
+     -204.3
+    ],
+    [
+     613.1,
+     -203.8
+    ],
+    [
+     611.6,
+     -205.1
+    ],
+    [
+     617.5,
+     -206.4
+    ],
+    [
+     638.8,
+     -207.1
+    ],
+    [
+     644.2,
+     -202.6
+    ],
+    [
+     650.7,
+     -200.3
+    ],
+    [
+     650.8,
+     -198
+    ],
+    [
+     654.6,
+     -196.1
+    ],
+    [
+     643.3,
+     -190.7
+    ],
+    [
+     650.6,
+     -192.4
+    ],
+    [
+     646.7,
+     -189.5
+    ],
+    [
+     649.7,
+     -188.2
+    ],
+    [
+     646.9,
+     -187.9
+    ],
+    [
+     646.9,
+     -185.9
+    ],
+    [
+     655.7,
+     -189.5
+    ],
+    [
+     659.2,
+     -189.1
+    ],
+    [
+     656.5,
+     -191
+    ],
+    [
+     659.8,
+     -192.3
+    ],
+    [
+     669.7,
+     -190.2
+    ],
+    [
+     669.6,
+     -187.5
+    ],
+    [
+     674.6,
+     -185.6
+    ],
+    [
+     671.3,
+     -188.2
+    ],
+    [
+     673.2,
+     -191.2
+    ],
+    [
+     687.2,
+     -189.1
+    ],
+    [
+     678.1,
+     -191.3
+    ],
+    [
+     675.8,
+     -192.6
+    ],
+    [
+     676.5,
+     -193.8
+    ],
+    [
+     694.6,
+     -195.6
+    ],
+    [
+     715.6,
+     -191.5
+    ],
+    [
+     716.4,
+     -189.7
+    ],
+    [
+     706.1,
+     -183.7
+    ],
+    [
+     715.3,
+     -187.8
+    ],
+    [
+     725.7,
+     -187.5
+    ],
+    [
+     725.1,
+     -185.2
+    ],
+    [
+     714.6,
+     -183.6
+    ],
+    [
+     720.6,
+     -183.2
+    ],
+    [
+     717.1,
+     -177.8
+    ],
+    [
+     723.1,
+     -182.9
+    ],
+    [
+     730.4,
+     -184.3
+    ],
+    [
+     732.3,
+     -183.7
+    ],
+    [
+     726.5,
+     -180
+    ],
+    [
+     732.3,
+     -182.1
+    ],
+    [
+     738.6,
+     -178.5
+    ],
+    [
+     737.4,
+     -181.6
+    ],
+    [
+     741.9,
+     -183.2
+    ],
+    [
+     756.8,
+     -181.3
+    ],
+    [
+     761.8,
+     -178
+    ],
+    [
+     745,
+     -173.2
+    ],
+    [
+     755.6,
+     -175.7
+    ],
+    [
+     768.3,
+     -175.8
+    ],
+    [
+     767.2,
+     -172.7
+    ],
+    [
+     753.8,
+     -168.4
+    ],
+    [
+     761.1,
+     -169.3
+    ],
+    [
+     759.3,
+     -164.8
+    ],
+    [
+     764.6,
+     -170.2
+    ],
+    [
+     769.6,
+     -172.1
+    ],
+    [
+     786.1,
+     -172.4
+    ],
+    [
+     795.6,
+     -169
+    ],
+    [
+     775.5,
+     -163.8
+    ],
+    [
+     790.7,
+     -165.7
+    ],
+    [
+     788,
+     -163.1
+    ],
+    [
+     791.1,
+     -162.6
+    ],
+    [
+     799.2,
+     -167.1
+    ],
+    [
+     807.4,
+     -163.7
+    ],
+    [
+     809.7,
+     -160.9
+    ],
+    [
+     785.1,
+     -157.5
+    ],
+    [
+     793.8,
+     -158.3
+    ],
+    [
+     815.5,
+     -154.9
+    ],
+    [
+     814.1,
+     -153.3
+    ],
+    [
+     800.6,
+     -154.4
+    ],
+    [
+     787.6,
+     -152.6
+    ],
+    [
+     801.9,
+     -152.3
+    ],
+    [
+     802.8,
+     -150.7
+    ],
+    [
+     801.3,
+     -148.9
+    ],
+    [
+     784.3,
+     -149.8
+    ],
+    [
+     797.4,
+     -148
+    ],
+    [
+     800.6,
+     -145.8
+    ],
+    [
+     814.8,
+     -145.1
+    ],
+    [
+     811.3,
+     -143.5
+    ],
+    [
+     813.7,
+     -142.2
+    ],
+    [
+     812.6,
+     -140.4
+    ],
+    [
+     815.7,
+     -140
+    ],
+    [
+     816.1,
+     -142.1
+    ],
+    [
+     821.1,
+     -142.9
+    ],
+    [
+     818.3,
+     -137.7
+    ],
+    [
+     824.3,
+     -140.5
+    ],
+    [
+     825.2,
+     -138.7
+    ],
+    [
+     829.4,
+     -139.3
+    ],
+    [
+     830.7,
+     -135.8
+    ],
+    [
+     830.5,
+     -138.2
+    ],
+    [
+     836.3,
+     -140
+    ],
+    [
+     835.2,
+     -137.1
+    ],
+    [
+     839.7,
+     -137.7
+    ],
+    [
+     849,
+     -134.5
+    ],
+    [
+     846.3,
+     -133.7
+    ],
+    [
+     847.2,
+     -131.9
+    ],
+    [
+     839,
+     -131.9
+    ],
+    [
+     849.2,
+     -130.9
+    ],
+    [
+     852.1,
+     -132.3
+    ],
+    [
+     858.6,
+     -130.6
+    ],
+    [
+     850.8,
+     -125.7
+    ],
+    [
+     866.4,
+     -126.7
+    ],
+    [
+     869.5,
+     -128.3
+    ],
+    [
+     879.2,
+     -123.6
+    ],
+    [
+     869.5,
+     -123.6
+    ],
+    [
+     875.9,
+     -120.8
+    ],
+    [
+     872.5,
+     -119.6
+    ],
+    [
+     864.4,
+     -120.8
+    ],
+    [
+     866.1,
+     -119.7
+    ],
+    [
+     864.6,
+     -118.6
+    ],
+    [
+     871,
+     -116.3
+    ],
+    [
+     863.5,
+     -116.1
+    ],
+    [
+     866.4,
+     -114
+    ],
+    [
+     863.1,
+     -111.7
+    ],
+    [
+     857.1,
+     -111.9
+    ],
+    [
+     853.7,
+     -114.2
+    ],
+    [
+     854.1,
+     -112.5
+    ],
+    [
+     851.4,
+     -111.9
+    ],
+    [
+     855.1,
+     -111.4
+    ],
+    [
+     854.8,
+     -106.8
+    ],
+    [
+     851.9,
+     -103.2
+    ],
+    [
+     843.2,
+     -106.1
+    ],
+    [
+     844.1,
+     -108.8
+    ],
+    [
+     840.7,
+     -105.5
+    ],
+    [
+     830.7,
+     -113.1
+    ],
+    [
+     842,
+     -119.7
+    ],
+    [
+     835.4,
+     -116.9
+    ],
+    [
+     825.6,
+     -115.9
+    ],
+    [
+     827.6,
+     -118.4
+    ],
+    [
+     822.8,
+     -117.5
+    ],
+    [
+     811.9,
+     -123.4
+    ],
+    [
+     808.1,
+     -122.7
+    ],
+    [
+     809.1,
+     -119.6
+    ],
+    [
+     801.3,
+     -121.5
+    ],
+    [
+     809.6,
+     -116.3
+    ],
+    [
+     807.6,
+     -115.1
+    ],
+    [
+     794.5,
+     -118.9
+    ],
+    [
+     791,
+     -118.3
+    ],
+    [
+     797.3,
+     -116.9
+    ],
+    [
+     797.7,
+     -114.4
+    ],
+    [
+     801.5,
+     -113.3
+    ],
+    [
+     800.6,
+     -110.8
+    ],
+    [
+     805,
+     -111.7
+    ],
+    [
+     810.3,
+     -109.3
+    ],
+    [
+     807.7,
+     -108.2
+    ],
+    [
+     813.7,
+     -105
+    ],
+    [
+     815.3,
+     -101.9
+    ],
+    [
+     816.1,
+     -104.1
+    ],
+    [
+     820.9,
+     -102.4
+    ],
+    [
+     821,
+     -100.8
+    ],
+    [
+     824.3,
+     -102.7
+    ],
+    [
+     830.3,
+     -100.8
+    ],
+    [
+     832.2,
+     -99.7
+    ],
+    [
+     829.1,
+     -98.2
+    ],
+    [
+     834.5,
+     -97.4
+    ],
+    [
+     828.5,
+     -95.7
+    ],
+    [
+     833.4,
+     -92.6
+    ],
+    [
+     839.2,
+     -92.6
+    ],
+    [
+     837.8,
+     -91.2
+    ],
+    [
+     842.4,
+     -88.8
+    ],
+    [
+     840.6,
+     -88.4
+    ],
+    [
+     841.2,
+     -83.5
+    ],
+    [
+     839.4,
+     -83.3
+    ],
+    [
+     833.1,
+     -89.4
+    ],
+    [
+     834.6,
+     -83.5
+    ],
+    [
+     839.3,
+     -79.5
+    ],
+    [
+     833.5,
+     -79.6
+    ],
+    [
+     834.1,
+     -76
+    ],
+    [
+     820.9,
+     -81.7
+    ],
+    [
+     820.9,
+     -80.3
+    ],
+    [
+     818.7,
+     -80.7
+    ],
+    [
+     815.8,
+     -83.5
+    ],
+    [
+     815.3,
+     -81.2
+    ],
+    [
+     801.2,
+     -89.1
+    ],
+    [
+     802.7,
+     -85.4
+    ],
+    [
+     794,
+     -89
+    ],
+    [
+     789.1,
+     -88.7
+    ],
+    [
+     798.2,
+     -82.4
+    ],
+    [
+     803.7,
+     -81.5
+    ],
+    [
+     803,
+     -80.5
+    ],
+    [
+     823.8,
+     -71
+    ],
+    [
+     822,
+     -69.7
+    ],
+    [
+     822.9,
+     -67.5
+    ],
+    [
+     819.7,
+     -67
+    ],
+    [
+     792.4,
+     -71.9
+    ],
+    [
+     780.9,
+     -77.6
+    ],
+    [
+     773.4,
+     -77.6
+    ],
+    [
+     763.1,
+     -80.4
+    ],
+    [
+     765,
+     -81.8
+    ],
+    [
+     760.3,
+     -81.2
+    ],
+    [
+     752.6,
+     -85.3
+    ],
+    [
+     759.9,
+     -87.3
+    ],
+    [
+     749.1,
+     -89
+    ],
+    [
+     750.5,
+     -91
+    ],
+    [
+     746.6,
+     -90.1
+    ],
+    [
+     735.3,
+     -97
+    ],
+    [
+     737.5,
+     -99.1
+    ],
+    [
+     729.9,
+     -99.1
+    ],
+    [
+     728.1,
+     -97.3
+    ],
+    [
+     727.3,
+     -99.4
+    ],
+    [
+     720.8,
+     -102.1
+    ],
+    [
+     718,
+     -101.3
+    ],
+    [
+     720.6,
+     -98.1
+    ],
+    [
+     708.6,
+     -98.4
+    ],
+    [
+     707.9,
+     -96.9
+    ],
+    [
+     695.1,
+     -95.1
+    ],
+    [
+     681,
+     -98.1
+    ],
+    [
+     679.2,
+     -100.1
+    ],
+    [
+     680.4,
+     -103.4
+    ],
+    [
+     689.1,
+     -106.4
+    ],
+    [
+     687.9,
+     -108.3
+    ],
+    [
+     689.5,
+     -109.5
+    ],
+    [
+     707.2,
+     -106.8
+    ],
+    [
+     711.7,
+     -102.2
+    ],
+    [
+     712.8,
+     -104.2
+    ],
+    [
+     707.6,
+     -107.6
+    ],
+    [
+     734.2,
+     -109.8
+    ],
+    [
+     723.9,
+     -117.9
+    ],
+    [
+     740.3,
+     -124.6
+    ],
+    [
+     743.2,
+     -128.1
+    ],
+    [
+     749.9,
+     -130.8
+    ],
+    [
+     737.3,
+     -143.9
+    ],
+    [
+     731,
+     -143.9
+    ],
+    [
+     731,
+     -147.8
+    ],
+    [
+     727.5,
+     -147.9
+    ],
+    [
+     729,
+     -146.1
+    ],
+    [
+     725.7,
+     -146
+    ],
+    [
+     718.3,
+     -149.2
+    ],
+    [
+     720.1,
+     -150.4
+    ],
+    [
+     717.6,
+     -151
+    ],
+    [
+     720.4,
+     -152
+    ],
+    [
+     698.3,
+     -147.9
+    ],
+    [
+     698.6,
+     -151.6
+    ],
+    [
+     705.7,
+     -151.8
+    ],
+    [
+     709.4,
+     -154
+    ],
+    [
+     699.7,
+     -157
+    ],
+    [
+     699.1,
+     -158.5
+    ],
+    [
+     702.4,
+     -159.3
+    ],
+    [
+     692.3,
+     -159
+    ],
+    [
+     695,
+     -160.7
+    ],
+    [
+     686.3,
+     -161.5
+    ],
+    [
+     684.2,
+     -166.2
+    ],
+    [
+     678.2,
+     -166
+    ],
+    [
+     668.9,
+     -170.5
+    ],
+    [
+     664.9,
+     -168.1
+    ],
+    [
+     670.5,
+     -166.8
+    ],
+    [
+     671.8,
+     -163.4
+    ],
+    [
+     663.6,
+     -162
+    ],
+    [
+     639.4,
+     -164.6
+    ],
+    [
+     646.9,
+     -161.6
+    ],
+    [
+     646.9,
+     -160.1
+    ],
+    [
+     639.3,
+     -162.7
+    ],
+    [
+     630.7,
+     -161.4
+    ],
+    [
+     620.5,
+     -163.4
+    ],
+    [
+     589.4,
+     -163.8
+    ],
+    [
+     583,
+     -165
+    ],
+    [
+     580.9,
+     -167.5
+    ],
+    [
+     582.1,
+     -168.8
+    ],
+    [
+     565,
+     -166.3
+    ],
+    [
+     553.1,
+     -169.5
+    ],
+    [
+     545.9,
+     -175.9
+    ],
+    [
+     573.3,
+     -175.3
+    ],
+    [
+     541.3,
+     -181
+    ],
+    [
+     539.2,
+     -186.4
+    ],
+    [
+     543.5,
+     -189.1
+    ],
+    [
+     541.1,
+     -190
+    ],
+    [
+     541.1,
+     -191.9
+    ],
+    [
+     547,
+     -196.6
+    ],
+    [
+     548.6,
+     -200.2
+    ],
+    [
+     566.4,
+     -207.4
+    ],
+    [
+     582,
+     -209
+    ],
+    [
+     598.5,
+     -208.1
+    ],
+    [
+     585.8,
+     -202
+    ],
+    [
+     578.9,
+     -196.1
+    ],
+    [
+     583,
+     -192.5
+    ],
+    [
+     584.2,
+     -185.8
+    ],
+    [
+     598.4,
+     -179.4
+    ]
+   ],
+   [
+    [
+     488.4,
+     -184.2
+    ],
+    [
+     494.3,
+     -184.3
+    ],
+    [
+     503.6,
+     -179.2
+    ],
+    [
+     505.3,
+     -176
+    ],
+    [
+     504.2,
+     -173.4
+    ],
+    [
+     520.9,
+     -165.4
+    ],
+    [
+     512,
+     -166.1
+    ],
+    [
+     509.7,
+     -164.6
+    ],
+    [
+     516,
+     -163.8
+    ],
+    [
+     505.3,
+     -159.4
+    ],
+    [
+     516.8,
+     -157.8
+    ],
+    [
+     525.2,
+     -159.1
+    ],
+    [
+     522.4,
+     -157.7
+    ],
+    [
+     534.5,
+     -156.9
+    ],
+    [
+     524.8,
+     -154.9
+    ],
+    [
+     533.8,
+     -150.1
+    ],
+    [
+     532.7,
+     -145.3
+    ],
+    [
+     536.5,
+     -142.8
+    ],
+    [
+     540.7,
+     -145.4
+    ],
+    [
+     543.4,
+     -151.7
+    ],
+    [
+     548,
+     -154.5
+    ],
+    [
+     562.6,
+     -149.3
+    ],
+    [
+     565.2,
+     -143.2
+    ],
+    [
+     559,
+     -143
+    ],
+    [
+     559.4,
+     -139
+    ],
+    [
+     570.7,
+     -129.9
+    ],
+    [
+     580.2,
+     -133.5
+    ],
+    [
+     582.1,
+     -137.3
+    ],
+    [
+     587.4,
+     -140.5
+    ],
+    [
+     590.5,
+     -147.6
+    ],
+    [
+     600.2,
+     -148.8
+    ],
+    [
+     597.4,
+     -149.6
+    ],
+    [
+     600.3,
+     -152.4
+    ],
+    [
+     594.1,
+     -154.2
+    ],
+    [
+     592.6,
+     -161.5
+    ],
+    [
+     629.7,
+     -159.1
+    ],
+    [
+     625.2,
+     -157.3
+    ],
+    [
+     630.5,
+     -156.3
+    ],
+    [
+     631.5,
+     -154.4
+    ],
+    [
+     641.5,
+     -153.7
+    ],
+    [
+     634.7,
+     -150.1
+    ],
+    [
+     643,
+     -148.4
+    ],
+    [
+     635.2,
+     -145.1
+    ],
+    [
+     627.6,
+     -144.9
+    ],
+    [
+     631.5,
+     -141.3
+    ],
+    [
+     634,
+     -141.9
+    ],
+    [
+     633.4,
+     -138.8
+    ],
+    [
+     642.5,
+     -133.7
+    ],
+    [
+     640.5,
+     -128.6
+    ],
+    [
+     617.5,
+     -120.3
+    ],
+    [
+     604.1,
+     -127.5
+    ],
+    [
+     597.3,
+     -126.7
+    ],
+    [
+     601.7,
+     -127
+    ],
+    [
+     607.8,
+     -124
+    ],
+    [
+     612,
+     -118.5
+    ],
+    [
+     603,
+     -118.4
+    ],
+    [
+     591.5,
+     -122.7
+    ],
+    [
+     578.4,
+     -122.1
+    ],
+    [
+     578.7,
+     -120.2
+    ],
+    [
+     587.3,
+     -117.3
+    ],
+    [
+     569.6,
+     -108.1
+    ],
+    [
+     563.5,
+     -108.2
+    ],
+    [
+     542.4,
+     -115.2
+    ],
+    [
+     522.7,
+     -115.4
+    ],
+    [
+     540.3,
+     -113.3
+    ],
+    [
+     551.6,
+     -108.2
+    ],
+    [
+     574.6,
+     -106.4
+    ],
+    [
+     561.9,
+     -94.4
+    ],
+    [
+     553.4,
+     -92.1
+    ],
+    [
+     548.9,
+     -93.6
+    ],
+    [
+     549.7,
+     -91.9
+    ],
+    [
+     539,
+     -93.9
+    ],
+    [
+     541.2,
+     -91.7
+    ],
+    [
+     537.5,
+     -92
+    ],
+    [
+     539.3,
+     -89.9
+    ],
+    [
+     537.6,
+     -88.6
+    ],
+    [
+     529.8,
+     -87.3
+    ],
+    [
+     495.7,
+     -94
+    ],
+    [
+     497.3,
+     -90.6
+    ],
+    [
+     500.7,
+     -90.4
+    ],
+    [
+     499.4,
+     -91.6
+    ],
+    [
+     513.9,
+     -88.6
+    ],
+    [
+     510.3,
+     -87
+    ],
+    [
+     517.6,
+     -88.7
+    ],
+    [
+     531,
+     -84
+    ],
+    [
+     530.2,
+     -80.1
+    ],
+    [
+     522.3,
+     -78.1
+    ],
+    [
+     511.5,
+     -78.2
+    ],
+    [
+     516.5,
+     -75.6
+    ],
+    [
+     509.2,
+     -75
+    ],
+    [
+     506.7,
+     -73
+    ],
+    [
+     509.5,
+     -70.5
+    ],
+    [
+     501.5,
+     -72.9
+    ],
+    [
+     505,
+     -71.1
+    ],
+    [
+     500,
+     -67.7
+    ],
+    [
+     497,
+     -67.8
+    ],
+    [
+     500.2,
+     -65.8
+    ],
+    [
+     493.1,
+     -62.4
+    ],
+    [
+     486.1,
+     -52
+    ],
+    [
+     483.1,
+     -50.7
+    ],
+    [
+     484.4,
+     -49.8
+    ],
+    [
+     482.8,
+     -36.2
+    ],
+    [
+     480.8,
+     -33.8
+    ],
+    [
+     488.7,
+     -29.6
+    ],
+    [
+     488.2,
+     -24.7
+    ],
+    [
+     490.6,
+     -29.9
+    ],
+    [
+     501.8,
+     -29.7
+    ],
+    [
+     510.6,
+     -13.1
+    ],
+    [
+     506.3,
+     -8.4
+    ],
+    [
+     532.4,
+     -11.9
+    ],
+    [
+     553.3,
+     -7.1
+    ],
+    [
+     569.3,
+     2.3
+    ],
+    [
+     590.6,
+     7.3
+    ],
+    [
+     596.1,
+     10.3
+    ],
+    [
+     594.3,
+     13.5
+    ],
+    [
+     597.9,
+     11
+    ],
+    [
+     611.5,
+     10.7
+    ],
+    [
+     629.5,
+     13.6
+    ],
+    [
+     631.6,
+     16.6
+    ],
+    [
+     629.1,
+     23.4
+    ],
+    [
+     632.5,
+     28.4
+    ],
+    [
+     630.7,
+     37.7
+    ],
+    [
+     638.9,
+     44.8
+    ],
+    [
+     636.2,
+     47.3
+    ],
+    [
+     640.5,
+     47.5
+    ],
+    [
+     650,
+     52.8
+    ],
+    [
+     652.6,
+     57.2
+    ],
+    [
+     647.8,
+     60.3
+    ],
+    [
+     656.6,
+     58.4
+    ],
+    [
+     665.6,
+     64.6
+    ],
+    [
+     661.2,
+     60.4
+    ],
+    [
+     661.5,
+     57.7
+    ],
+    [
+     666.2,
+     54.4
+    ],
+    [
+     670.8,
+     59.4
+    ],
+    [
+     672.9,
+     55.9
+    ],
+    [
+     669.9,
+     52.6
+    ],
+    [
+     676.2,
+     46.9
+    ],
+    [
+     672.7,
+     42.2
+    ],
+    [
+     668.5,
+     30.3
+    ],
+    [
+     669.7,
+     26.2
+    ],
+    [
+     661.2,
+     18.3
+    ],
+    [
+     684.2,
+     11
+    ],
+    [
+     696.2,
+     2.6
+    ],
+    [
+     698.9,
+     -3.4
+    ],
+    [
+     698.4,
+     -11.4
+    ],
+    [
+     694.6,
+     -18.3
+    ],
+    [
+     686.8,
+     -24
+    ],
+    [
+     675.5,
+     -28.8
+    ],
+    [
+     676.4,
+     -31.8
+    ],
+    [
+     684.3,
+     -37.5
+    ],
+    [
+     683.2,
+     -38.6
+    ],
+    [
+     684.8,
+     -41
+    ],
+    [
+     689.2,
+     -39.9
+    ],
+    [
+     687.6,
+     -41.1
+    ],
+    [
+     689.9,
+     -45.1
+    ],
+    [
+     686.4,
+     -45.9
+    ],
+    [
+     688,
+     -46.6
+    ],
+    [
+     685.3,
+     -49.9
+    ],
+    [
+     687.4,
+     -51.3
+    ],
+    [
+     684,
+     -52.4
+    ],
+    [
+     686.2,
+     -54.6
+    ],
+    [
+     679.4,
+     -54.5
+    ],
+    [
+     687.3,
+     -63.3
+    ],
+    [
+     681.3,
+     -66.5
+    ],
+    [
+     679.9,
+     -71.9
+    ],
+    [
+     688.9,
+     -75.3
+    ],
+    [
+     707.4,
+     -72.3
+    ],
+    [
+     709,
+     -71.5
+    ],
+    [
+     707.7,
+     -70.7
+    ],
+    [
+     713,
+     -72.2
+    ],
+    [
+     721.4,
+     -69.9
+    ],
+    [
+     732.4,
+     -74.1
+    ],
+    [
+     744.4,
+     -70
+    ],
+    [
+     743.4,
+     -66.6
+    ],
+    [
+     749.9,
+     -66.5
+    ],
+    [
+     752.1,
+     -64.7
+    ],
+    [
+     750,
+     -63.6
+    ],
+    [
+     756.8,
+     -64
+    ],
+    [
+     754.3,
+     -61.9
+    ],
+    [
+     759.4,
+     -58.6
+    ],
+    [
+     772.9,
+     -57.5
+    ],
+    [
+     776.3,
+     -55
+    ],
+    [
+     782.5,
+     -56.8
+    ],
+    [
+     783.3,
+     -54.9
+    ],
+    [
+     779.2,
+     -50.6
+    ],
+    [
+     780.1,
+     -45.7
+    ],
+    [
+     768.5,
+     -45.1
+    ],
+    [
+     779.4,
+     -43.9
+    ],
+    [
+     781.2,
+     -41
+    ],
+    [
+     780,
+     -37
+    ],
+    [
+     784,
+     -36.6
+    ],
+    [
+     781.8,
+     -31.4
+    ],
+    [
+     778.8,
+     -32.5
+    ],
+    [
+     774.4,
+     -30.2
+    ],
+    [
+     778.7,
+     -29.3
+    ],
+    [
+     791.6,
+     -31.9
+    ],
+    [
+     795.4,
+     -30
+    ],
+    [
+     797.2,
+     -26.9
+    ],
+    [
+     795.7,
+     -23.1
+    ],
+    [
+     787.6,
+     -20
+    ],
+    [
+     795,
+     -21.8
+    ],
+    [
+     799.6,
+     -26.9
+    ],
+    [
+     801.2,
+     -24.6
+    ],
+    [
+     799.1,
+     -22.8
+    ],
+    [
+     802.8,
+     -25.9
+    ],
+    [
+     803.7,
+     -21
+    ],
+    [
+     805,
+     -23.7
+    ],
+    [
+     815,
+     -27
+    ],
+    [
+     819.3,
+     -30.5
+    ],
+    [
+     823.5,
+     -26.2
+    ],
+    [
+     823.1,
+     -30.9
+    ],
+    [
+     830.9,
+     -33.7
+    ],
+    [
+     827.1,
+     -35.5
+    ],
+    [
+     830.5,
+     -36.7
+    ],
+    [
+     829.8,
+     -38.6
+    ],
+    [
+     835,
+     -37.6
+    ],
+    [
+     830.6,
+     -39.4
+    ],
+    [
+     830.3,
+     -42.2
+    ],
+    [
+     835.1,
+     -42.1
+    ],
+    [
+     833.4,
+     -43.7
+    ],
+    [
+     837.6,
+     -48.8
+    ],
+    [
+     841.3,
+     -48
+    ],
+    [
+     842.3,
+     -46.9
+    ],
+    [
+     838.2,
+     -45
+    ],
+    [
+     843.9,
+     -45.6
+    ],
+    [
+     844.6,
+     -41.8
+    ],
+    [
+     846.6,
+     -42.7
+    ],
+    [
+     850.2,
+     -39.1
+    ],
+    [
+     847.9,
+     -37.5
+    ],
+    [
+     854.2,
+     -35.3
+    ],
+    [
+     847.6,
+     -33.6
+    ],
+    [
+     856.2,
+     -33.8
+    ],
+    [
+     855.8,
+     -31.4
+    ],
+    [
+     858.5,
+     -31.5
+    ],
+    [
+     860.6,
+     -29.1
+    ],
+    [
+     852.7,
+     -25.1
+    ],
+    [
+     863.9,
+     -26.8
+    ],
+    [
+     861.3,
+     -23.5
+    ],
+    [
+     856,
+     -21.3
+    ],
+    [
+     865.2,
+     -23
+    ],
+    [
+     871.4,
+     -20.1
+    ],
+    [
+     871.3,
+     -16.5
+    ],
+    [
+     865.1,
+     -15.1
+    ],
+    [
+     871.9,
+     -14.3
+    ],
+    [
+     871.2,
+     -12.2
+    ],
+    [
+     878.8,
+     -9.4
+    ],
+    [
+     878.4,
+     -5.5
+    ],
+    [
+     865,
+     -6.9
+    ],
+    [
+     874,
+     -3.7
+    ],
+    [
+     871.6,
+     -2.5
+    ],
+    [
+     877.7,
+     -1.7
+    ],
+    [
+     874.3,
+     -0.2
+    ],
+    [
+     878.4,
+     0
+    ],
+    [
+     879.2,
+     2
+    ],
+    [
+     877.4,
+     2.6
+    ],
+    [
+     890.6,
+     5.1
+    ],
+    [
+     889.8,
+     6.7
+    ],
+    [
+     892.3,
+     8.7
+    ],
+    [
+     887.3,
+     13.7
+    ],
+    [
+     897.5,
+     10.7
+    ],
+    [
+     901.3,
+     12.3
+    ],
+    [
+     896.5,
+     16.6
+    ],
+    [
+     903.4,
+     12
+    ],
+    [
+     906.5,
+     12.6
+    ],
+    [
+     909,
+     16.3
+    ],
+    [
+     918.7,
+     15.9
+    ],
+    [
+     925.3,
+     19.3
+    ],
+    [
+     910.8,
+     25.7
+    ],
+    [
+     896.7,
+     28.2
+    ],
+    [
+     892.9,
+     31
+    ],
+    [
+     889.9,
+     30.4
+    ],
+    [
+     893.4,
+     32.3
+    ],
+    [
+     890.7,
+     35
+    ],
+    [
+     910.6,
+     26.5
+    ],
+    [
+     919,
+     25.2
+    ],
+    [
+     914.6,
+     23.9
+    ],
+    [
+     925.2,
+     24.3
+    ],
+    [
+     928.5,
+     28.7
+    ],
+    [
+     923.9,
+     30.9
+    ],
+    [
+     926.2,
+     32.5
+    ],
+    [
+     935.8,
+     29
+    ],
+    [
+     942.4,
+     32.5
+    ],
+    [
+     944.3,
+     35.6
+    ],
+    [
+     944.3,
+     42.3
+    ],
+    [
+     938.1,
+     43.5
+    ],
+    [
+     945,
+     44.3
+    ],
+    [
+     941.8,
+     45.3
+    ],
+    [
+     945.8,
+     47.7
+    ],
+    [
+     930.4,
+     56.4
+    ],
+    [
+     912.2,
+     58.3
+    ],
+    [
+     893.7,
+     70.6
+    ],
+    [
+     874.2,
+     72.4
+    ],
+    [
+     862.5,
+     70.1
+    ],
+    [
+     817.7,
+     71.1
+    ],
+    [
+     812.4,
+     73.7
+    ],
+    [
+     807.3,
+     81.4
+    ],
+    [
+     796.6,
+     83.2
+    ],
+    [
+     780.1,
+     95
+    ],
+    [
+     764.2,
+     91.9
+    ],
+    [
+     777.8,
+     95.3
+    ],
+    [
+     778.9,
+     96.2
+    ],
+    [
+     776.3,
+     100.4
+    ],
+    [
+     761.2,
+     111.6
+    ],
+    [
+     750.1,
+     114.4
+    ],
+    [
+     740.9,
+     118.6
+    ],
+    [
+     735.1,
+     124.2
+    ],
+    [
+     725.1,
+     126.6
+    ],
+    [
+     729.2,
+     128.8
+    ],
+    [
+     720.5,
+     132.8
+    ],
+    [
+     734.1,
+     127.9
+    ],
+    [
+     738.8,
+     120.9
+    ],
+    [
+     753.7,
+     113.6
+    ],
+    [
+     770.1,
+     108.8
+    ],
+    [
+     782.5,
+     97.7
+    ],
+    [
+     797.1,
+     89.9
+    ],
+    [
+     816.5,
+     84
+    ],
+    [
+     829.2,
+     82.3
+    ],
+    [
+     837.4,
+     83.2
+    ],
+    [
+     844.1,
+     86.4
+    ],
+    [
+     844.8,
+     87.8
+    ],
+    [
+     841.2,
+     87.4
+    ],
+    [
+     844.3,
+     89.2
+    ],
+    [
+     843.1,
+     92.3
+    ],
+    [
+     832.3,
+     97.1
+    ],
+    [
+     824.4,
+     95.1
+    ],
+    [
+     815.2,
+     97.1
+    ],
+    [
+     825.4,
+     98.4
+    ],
+    [
+     828.2,
+     101.3
+    ],
+    [
+     835.4,
+     99.2
+    ],
+    [
+     838.9,
+     100.6
+    ],
+    [
+     836.5,
+     104.8
+    ],
+    [
+     831.6,
+     108
+    ],
+    [
+     837.4,
+     108.5
+    ],
+    [
+     836.5,
+     110.5
+    ],
+    [
+     840.8,
+     118.2
+    ],
+    [
+     848.2,
+     119.1
+    ],
+    [
+     849.2,
+     119.8
+    ],
+    [
+     846.6,
+     120.8
+    ],
+    [
+     850.8,
+     122.7
+    ],
+    [
+     862.6,
+     124.1
+    ],
+    [
+     862,
+     125.2
+    ],
+    [
+     871.4,
+     122.6
+    ],
+    [
+     873.6,
+     125.1
+    ],
+    [
+     878.6,
+     126.1
+    ],
+    [
+     879.4,
+     127.7
+    ],
+    [
+     877.3,
+     128.5
+    ],
+    [
+     882.4,
+     129.4
+    ],
+    [
+     855.5,
+     137.1
+    ],
+    [
+     851.9,
+     136.7
+    ],
+    [
+     851.9,
+     139.1
+    ],
+    [
+     847.3,
+     137.1
+    ],
+    [
+     846.1,
+     139
+    ],
+    [
+     843.9,
+     138.2
+    ],
+    [
+     844,
+     140.8
+    ],
+    [
+     829.7,
+     150.5
+    ],
+    [
+     822.1,
+     146.9
+    ],
+    [
+     821.3,
+     143
+    ],
+    [
+     825.1,
+     138
+    ],
+    [
+     822.5,
+     138.8
+    ],
+    [
+     841.9,
+     128.9
+    ],
+    [
+     845.7,
+     132.6
+    ],
+    [
+     846.1,
+     130.3
+    ],
+    [
+     854.7,
+     128.6
+    ],
+    [
+     836.9,
+     128.7
+    ],
+    [
+     843.5,
+     123
+    ],
+    [
+     839.8,
+     121.7
+    ],
+    [
+     838,
+     125.3
+    ],
+    [
+     824.9,
+     130.3
+    ],
+    [
+     822.3,
+     129.1
+    ],
+    [
+     823.3,
+     127.9
+    ],
+    [
+     818.4,
+     131.8
+    ],
+    [
+     810.3,
+     130.9
+    ],
+    [
+     811.9,
+     134.9
+    ],
+    [
+     799.2,
+     140.2
+    ],
+    [
+     794.6,
+     138.7
+    ],
+    [
+     793.6,
+     141.7
+    ],
+    [
+     790.3,
+     140.7
+    ],
+    [
+     790.9,
+     138
+    ],
+    [
+     785.4,
+     144.9
+    ],
+    [
+     780.7,
+     146.2
+    ],
+    [
+     780.3,
+     144.8
+    ],
+    [
+     778.5,
+     147.4
+    ],
+    [
+     774.1,
+     147.5
+    ],
+    [
+     766.4,
+     158.7
+    ],
+    [
+     769,
+     161.1
+    ],
+    [
+     763.8,
+     164.5
+    ],
+    [
+     767.5,
+     165.7
+    ],
+    [
+     771.2,
+     171.3
+    ],
+    [
+     776.2,
+     170.5
+    ],
+    [
+     773.4,
+     167.6
+    ],
+    [
+     774.9,
+     167.5
+    ],
+    [
+     776.8,
+     172.3
+    ],
+    [
+     768.4,
+     174
+    ],
+    [
+     767.9,
+     171.8
+    ],
+    [
+     762.4,
+     174.5
+    ],
+    [
+     762.6,
+     171.5
+    ],
+    [
+     759.8,
+     170.9
+    ],
+    [
+     758.2,
+     175.8
+    ],
+    [
+     741.6,
+     176.9
+    ],
+    [
+     729,
+     183.2
+    ],
+    [
+     730.4,
+     179.6
+    ],
+    [
+     729.2,
+     177.3
+    ],
+    [
+     729.7,
+     181.3
+    ],
+    [
+     725.7,
+     185.9
+    ],
+    [
+     729.2,
+     187.4
+    ],
+    [
+     727.9,
+     194.7
+    ],
+    [
+     727.7,
+     192.4
+    ],
+    [
+     723.8,
+     199.4
+    ],
+    [
+     717.9,
+     204.7
+    ],
+    [
+     718.2,
+     202.3
+    ],
+    [
+     710.8,
+     198.2
+    ],
+    [
+     712,
+     194.6
+    ],
+    [
+     716.1,
+     192.3
+    ],
+    [
+     711.5,
+     194.7
+    ],
+    [
+     710.2,
+     198.3
+    ],
+    [
+     716,
+     206.6
+    ],
+    [
+     714.8,
+     208.8
+    ],
+    [
+     716.6,
+     210.8
+    ],
+    [
+     706,
+     225.9
+    ],
+    [
+     705.5,
+     223
+    ],
+    [
+     709.2,
+     216.4
+    ],
+    [
+     707,
+     216.2
+    ],
+    [
+     706.9,
+     211.5
+    ],
+    [
+     704.6,
+     212.5
+    ],
+    [
+     702.1,
+     210.7
+    ],
+    [
+     702.1,
+     208.7
+    ],
+    [
+     705,
+     208.4
+    ],
+    [
+     701.2,
+     207.4
+    ],
+    [
+     703.2,
+     205.7
+    ],
+    [
+     701.3,
+     205.1
+    ],
+    [
+     703.6,
+     203
+    ],
+    [
+     702.4,
+     201.7
+    ],
+    [
+     706.7,
+     197.9
+    ],
+    [
+     704.4,
+     197.3
+    ],
+    [
+     700.2,
+     201.3
+    ],
+    [
+     698.4,
+     200.8
+    ],
+    [
+     700.1,
+     202.5
+    ],
+    [
+     698.6,
+     203.2
+    ],
+    [
+     700.5,
+     211.5
+    ],
+    [
+     697.3,
+     209.5
+    ],
+    [
+     701.2,
+     214.8
+    ],
+    [
+     693.3,
+     210.6
+    ],
+    [
+     690.6,
+     211
+    ],
+    [
+     693,
+     205.3
+    ],
+    [
+     689.6,
+     211.1
+    ],
+    [
+     702.1,
+     217.1
+    ],
+    [
+     701.1,
+     219.7
+    ],
+    [
+     699.4,
+     219.6
+    ],
+    [
+     692,
+     213.9
+    ],
+    [
+     701.6,
+     220.9
+    ],
+    [
+     702.1,
+     223.5
+    ],
+    [
+     699.8,
+     224.4
+    ],
+    [
+     696.2,
+     221.7
+    ],
+    [
+     701.8,
+     227.1
+    ],
+    [
+     690.4,
+     223.8
+    ],
+    [
+     697.2,
+     225.6
+    ],
+    [
+     699.4,
+     228.9
+    ],
+    [
+     705.2,
+     228.7
+    ],
+    [
+     710.7,
+     241.7
+    ],
+    [
+     705.8,
+     231.7
+    ],
+    [
+     707.3,
+     238.2
+    ],
+    [
+     703.4,
+     236.2
+    ],
+    [
+     703.4,
+     237.8
+    ],
+    [
+     698.6,
+     239.4
+    ],
+    [
+     696.5,
+     236.8
+    ],
+    [
+     696.6,
+     240
+    ],
+    [
+     704.4,
+     239.9
+    ],
+    [
+     704.2,
+     243.2
+    ],
+    [
+     706.9,
+     240
+    ],
+    [
+     708,
+     241.4
+    ],
+    [
+     707.9,
+     243.7
+    ],
+    [
+     703.1,
+     247.2
+    ],
+    [
+     692.9,
+     245.1
+    ],
+    [
+     699.1,
+     248.2
+    ],
+    [
+     696,
+     251.5
+    ],
+    [
+     692.5,
+     249.5
+    ],
+    [
+     693.6,
+     251.1
+    ],
+    [
+     699.8,
+     251.5
+    ],
+    [
+     700,
+     253.2
+    ],
+    [
+     689.8,
+     256.1
+    ],
+    [
+     688.5,
+     254.6
+    ],
+    [
+     688.9,
+     257
+    ],
+    [
+     684.5,
+     259.9
+    ],
+    [
+     682.4,
+     263.9
+    ],
+    [
+     682.1,
+     261.2
+    ],
+    [
+     681.4,
+     264.3
+    ],
+    [
+     671.6,
+     266.5
+    ],
+    [
+     667.4,
+     272.2
+    ],
+    [
+     667,
+     270.3
+    ],
+    [
+     666.4,
+     273.5
+    ],
+    [
+     658.6,
+     277.3
+    ],
+    [
+     658.5,
+     279
+    ],
+    [
+     650.3,
+     280.9
+    ],
+    [
+     652.2,
+     281.9
+    ],
+    [
+     651,
+     283.5
+    ],
+    [
+     648.3,
+     281.6
+    ],
+    [
+     649.6,
+     284.4
+    ],
+    [
+     644.7,
+     288.4
+    ],
+    [
+     643.9,
+     292.5
+    ],
+    [
+     641.5,
+     294.6
+    ],
+    [
+     642.6,
+     295.7
+    ],
+    [
+     640.8,
+     296.4
+    ],
+    [
+     639.9,
+     301.1
+    ],
+    [
+     643,
+     313.1
+    ],
+    [
+     651.6,
+     328.6
+    ],
+    [
+     652.4,
+     335.5
+    ],
+    [
+     650.6,
+     328.1
+    ],
+    [
+     649.6,
+     330.2
+    ],
+    [
+     647.9,
+     325.3
+    ],
+    [
+     649,
+     329.8
+    ],
+    [
+     657.2,
+     348.5
+    ],
+    [
+     656.3,
+     360
+    ],
+    [
+     652.1,
+     367.1
+    ],
+    [
+     644.7,
+     368.2
+    ],
+    [
+     644.4,
+     366.2
+    ],
+    [
+     646.7,
+     366.7
+    ],
+    [
+     641.7,
+     360
+    ],
+    [
+     637.5,
+     358.2
+    ],
+    [
+     634.6,
+     352.2
+    ],
+    [
+     636.2,
+     349.9
+    ],
+    [
+     633.7,
+     351.5
+    ],
+    [
+     634,
+     346.6
+    ],
+    [
+     630.7,
+     347.7
+    ],
+    [
+     625.7,
+     340.3
+    ],
+    [
+     629.4,
+     336.3
+    ],
+    [
+     626.6,
+     334.6
+    ],
+    [
+     626.3,
+     337.7
+    ],
+    [
+     624.2,
+     336.2
+    ],
+    [
+     626.4,
+     323.8
+    ],
+    [
+     610,
+     309.4
+    ],
+    [
+     594.9,
+     314.4
+    ],
+    [
+     590.6,
+     309.2
+    ],
+    [
+     591.5,
+     307.2
+    ],
+    [
+     589.3,
+     308.6
+    ],
+    [
+     581.4,
+     305.9
+    ],
+    [
+     585.3,
+     305.8
+    ],
+    [
+     583.8,
+     304.8
+    ],
+    [
+     572.6,
+     306.6
+    ],
+    [
+     575,
+     303.9
+    ],
+    [
+     571.6,
+     306.6
+    ],
+    [
+     563.1,
+     307.9
+    ],
+    [
+     565.6,
+     307.2
+    ],
+    [
+     563,
+     302.4
+    ],
+    [
+     561.5,
+     306.3
+    ],
+    [
+     552.4,
+     305.7
+    ],
+    [
+     544.3,
+     308.7
+    ],
+    [
+     538,
+     306.3
+    ],
+    [
+     535.5,
+     307.3
+    ],
+    [
+     534.6,
+     309
+    ],
+    [
+     537.4,
+     310.3
+    ],
+    [
+     542.6,
+     308.6
+    ],
+    [
+     541.6,
+     310.5
+    ],
+    [
+     543.8,
+     311.8
+    ],
+    [
+     546.5,
+     310.1
+    ],
+    [
+     547.1,
+     312.8
+    ],
+    [
+     542.8,
+     315.1
+    ],
+    [
+     551.1,
+     320.1
+    ],
+    [
+     549.4,
+     322.3
+    ],
+    [
+     546.8,
+     322.7
+    ],
+    [
+     546,
+     320.2
+    ],
+    [
+     537.6,
+     316.1
+    ],
+    [
+     537.8,
+     320.9
+    ],
+    [
+     533.5,
+     318.9
+    ],
+    [
+     530.6,
+     320.9
+    ],
+    [
+     524.2,
+     319.1
+    ],
+    [
+     525.8,
+     318.7
+    ],
+    [
+     524.7,
+     315.8
+    ],
+    [
+     521.5,
+     315.9
+    ],
+    [
+     517,
+     312.6
+    ],
+    [
+     512.7,
+     315.9
+    ],
+    [
+     501.8,
+     313.2
+    ],
+    [
+     494.2,
+     313.9
+    ],
+    [
+     494,
+     310.9
+    ],
+    [
+     493.4,
+     314.3
+    ],
+    [
+     483.1,
+     317.9
+    ],
+    [
+     485.9,
+     316
+    ],
+    [
+     482.9,
+     316
+    ],
+    [
+     483.3,
+     313.6
+    ],
+    [
+     480,
+     314.2
+    ],
+    [
+     481.6,
+     318.1
+    ],
+    [
+     470.2,
+     326.7
+    ],
+    [
+     465.6,
+     328.5
+    ],
+    [
+     468.3,
+     326.8
+    ],
+    [
+     460.8,
+     325.9
+    ],
+    [
+     463.4,
+     328.9
+    ],
+    [
+     459.3,
+     329.3
+    ],
+    [
+     458.5,
+     332
+    ],
+    [
+     454.7,
+     332.6
+    ],
+    [
+     455.7,
+     334.5
+    ],
+    [
+     451.5,
+     336.3
+    ],
+    [
+     453.2,
+     338.2
+    ],
+    [
+     451.4,
+     342.3
+    ],
+    [
+     447.5,
+     340.8
+    ],
+    [
+     450.8,
+     343.4
+    ],
+    [
+     451.4,
+     352.3
+    ],
+    [
+     454.9,
+     357.7
+    ],
+    [
+     448.7,
+     377.1
+    ],
+    [
+     446.4,
+     398
+    ],
+    [
+     447.5,
+     404.2
+    ],
+    [
+     452.8,
+     410.6
+    ],
+    [
+     451.7,
+     414
+    ],
+    [
+     452,
+     410.6
+    ],
+    [
+     447.7,
+     405.1
+    ],
+    [
+     449,
+     410.1
+    ],
+    [
+     454.4,
+     420.6
+    ],
+    [
+     463,
+     430.7
+    ],
+    [
+     465,
+     436.9
+    ],
+    [
+     471,
+     443.3
+    ],
+    [
+     469.4,
+     443.1
+    ],
+    [
+     478.1,
+     444.5
+    ],
+    [
+     486.6,
+     450.8
+    ],
+    [
+     510.6,
+     444.8
+    ],
+    [
+     516.1,
+     444.3
+    ],
+    [
+     516.8,
+     446.5
+    ],
+    [
+     521.3,
+     447.4
+    ],
+    [
+     524.4,
+     445.4
+    ],
+    [
+     522.4,
+     442.3
+    ],
+    [
+     530.7,
+     436.8
+    ],
+    [
+     531.2,
+     432.3
+    ],
+    [
+     533.6,
+     429.7
+    ],
+    [
+     535.3,
+     417.2
+    ],
+    [
+     541.6,
+     414
+    ],
+    [
+     557.6,
+     410.5
+    ],
+    [
+     572,
+     412
+    ],
+    [
+     572.7,
+     410.8
+    ],
+    [
+     570.6,
+     410.5
+    ],
+    [
+     574.5,
+     410.3
+    ],
+    [
+     577,
+     412.3
+    ],
+    [
+     577.1,
+     417.2
+    ],
+    [
+     566.8,
+     433.4
+    ],
+    [
+     569.9,
+     434.1
+    ],
+    [
+     567.2,
+     436.8
+    ],
+    [
+     569,
+     437.6
+    ],
+    [
+     564.9,
+     449.6
+    ],
+    [
+     562.5,
+     446.6
+    ],
+    [
+     562.7,
+     442.9
+    ],
+    [
+     559,
+     448.6
+    ],
+    [
+     562.1,
+     450.1
+    ],
+    [
+     559.4,
+     469
+    ],
+    [
+     552.5,
+     477.8
+    ],
+    [
+     556,
+     479.3
+    ],
+    [
+     556.1,
+     477.1
+    ],
+    [
+     561.6,
+     480.1
+    ],
+    [
+     566.7,
+     477.6
+    ],
+    [
+     576.1,
+     479.3
+    ],
+    [
+     582.6,
+     479.1
+    ],
+    [
+     587,
+     476.2
+    ],
+    [
+     592.9,
+     477.7
+    ],
+    [
+     598.9,
+     476.6
+    ],
+    [
+     607.4,
+     478.6
+    ],
+    [
+     613.1,
+     483.2
+    ],
+    [
+     609.5,
+     482.3
+    ],
+    [
+     609.4,
+     483.6
+    ],
+    [
+     613.3,
+     485.8
+    ],
+    [
+     616.4,
+     485.7
+    ],
+    [
+     614.7,
+     484
+    ],
+    [
+     617.9,
+     485.5
+    ],
+    [
+     620.4,
+     488.4
+    ],
+    [
+     617.4,
+     490.4
+    ],
+    [
+     620.1,
+     496.2
+    ],
+    [
+     616.5,
+     503.3
+    ],
+    [
+     616.3,
+     519
+    ],
+    [
+     615.3,
+     515.5
+    ],
+    [
+     613.4,
+     518
+    ],
+    [
+     614.3,
+     523.6
+    ],
+    [
+     612.5,
+     525.6
+    ],
+    [
+     614.6,
+     528.2
+    ],
+    [
+     612,
+     532.2
+    ],
+    [
+     618.2,
+     543.9
+    ],
+    [
+     629.8,
+     554.4
+    ],
+    [
+     633.2,
+     560.2
+    ],
+    [
+     636.8,
+     560
+    ],
+    [
+     635.4,
+     557.8
+    ],
+    [
+     639.5,
+     561.5
+    ],
+    [
+     645.2,
+     561.7
+    ],
+    [
+     662.8,
+     552.4
+    ],
+    [
+     668.3,
+     553.1
+    ],
+    [
+     683.5,
+     558.7
+    ],
+    [
+     695.9,
+     572.1
+    ],
+    [
+     694.3,
+     564.5
+    ],
+    [
+     701.9,
+     559.6
+    ],
+    [
+     704.9,
+     555.1
+    ],
+    [
+     709.5,
+     554.1
+    ],
+    [
+     710.6,
+     545.2
+    ],
+    [
+     708.6,
+     545.9
+    ],
+    [
+     714.1,
+     538.3
+    ],
+    [
+     718.9,
+     534.5
+    ],
+    [
+     725,
+     535.8
+    ],
+    [
+     722.8,
+     537.4
+    ],
+    [
+     724.1,
+     538.5
+    ],
+    [
+     727.2,
+     532
+    ],
+    [
+     737,
+     532.3
+    ],
+    [
+     757.3,
+     518.8
+    ],
+    [
+     761.3,
+     519.9
+    ],
+    [
+     762.8,
+     523.4
+    ],
+    [
+     759.5,
+     526.8
+    ],
+    [
+     753.1,
+     529
+    ],
+    [
+     757.3,
+     539.8
+    ],
+    [
+     751.2,
+     549.8
+    ],
+    [
+     757,
+     558.9
+    ],
+    [
+     761.5,
+     557.6
+    ],
+    [
+     763.8,
+     551.1
+    ],
+    [
+     758.5,
+     541.3
+    ],
+    [
+     758.8,
+     536.2
+    ],
+    [
+     775.1,
+     529.6
+    ],
+    [
+     778.5,
+     530.1
+    ],
+    [
+     778.4,
+     527.8
+    ],
+    [
+     773.9,
+     528.4
+    ],
+    [
+     772.8,
+     525.3
+    ],
+    [
+     776.2,
+     521.8
+    ],
+    [
+     780.6,
+     530.1
+    ],
+    [
+     790.1,
+     530.6
+    ],
+    [
+     795.2,
+     533.9
+    ],
+    [
+     798.2,
+     541.8
+    ],
+    [
+     820.6,
+     540.1
+    ],
+    [
+     825.3,
+     544.6
+    ],
+    [
+     833.9,
+     546.8
+    ],
+    [
+     850.4,
+     541.6
+    ],
+    [
+     843.7,
+     540.1
+    ],
+    [
+     872.4,
+     538.8
+    ],
+    [
+     860.1,
+     541.3
+    ],
+    [
+     862.8,
+     544.2
+    ],
+    [
+     862.2,
+     546.9
+    ],
+    [
+     864.4,
+     545.2
+    ],
+    [
+     867.1,
+     550.2
+    ],
+    [
+     870,
+     547.9
+    ],
+    [
+     874.1,
+     552
+    ],
+    [
+     873.7,
+     549.8
+    ],
+    [
+     875.8,
+     548.9
+    ],
+    [
+     885.2,
+     555.2
+    ],
+    [
+     879.8,
+     564.2
+    ],
+    [
+     875.4,
+     564.2
+    ],
+    [
+     879.2,
+     566.4
+    ],
+    [
+     892.6,
+     564
+    ],
+    [
+     908.7,
+     574.4
+    ],
+    [
+     912.6,
+     579.3
+    ],
+    [
+     910.3,
+     590.4
+    ],
+    [
+     913.4,
+     584.9
+    ],
+    [
+     918.5,
+     585.7
+    ],
+    [
+     927.4,
+     592.9
+    ],
+    [
+     928,
+     600.6
+    ],
+    [
+     930.5,
+     595.1
+    ],
+    [
+     943.2,
+     598.6
+    ],
+    [
+     944,
+     595.5
+    ],
+    [
+     961.4,
+     596.1
+    ],
+    [
+     965,
+     597.3
+    ],
+    [
+     963.8,
+     602.6
+    ],
+    [
+     967.4,
+     597.6
+    ],
+    [
+     978.7,
+     601.8
+    ],
+    [
+     985.9,
+     607.5
+    ],
+    [
+     985.5,
+     609.6
+    ],
+    [
+     986.7,
+     608.5
+    ],
+    [
+     988.6,
+     610.2
+    ],
+    [
+     989.3,
+     614.5
+    ],
+    [
+     991.3,
+     611.2
+    ],
+    [
+     993.4,
+     618
+    ],
+    [
+     994.7,
+     615
+    ],
+    [
+     998.5,
+     617.6
+    ],
+    [
+     1004.5,
+     640.8
+    ],
+    [
+     1007.6,
+     644.4
+    ],
+    [
+     1013.5,
+     646.4
+    ],
+    [
+     1014.2,
+     652.3
+    ],
+    [
+     1004.1,
+     663.5
+    ],
+    [
+     997.8,
+     667.1
+    ],
+    [
+     989.5,
+     682.3
+    ],
+    [
+     981.5,
+     684.5
+    ],
+    [
+     989.9,
+     684.9
+    ],
+    [
+     1002.4,
+     677.2
+    ],
+    [
+     1004.8,
+     687
+    ],
+    [
+     1008.2,
+     690
+    ],
+    [
+     1021.1,
+     686.6
+    ],
+    [
+     1017.3,
+     697.6
+    ],
+    [
+     1022.3,
+     688.8
+    ],
+    [
+     1028.3,
+     683.7
+    ],
+    [
+     1031.2,
+     685.2
+    ],
+    [
+     1032.5,
+     683.7
+    ],
+    [
+     1031.3,
+     679.7
+    ],
+    [
+     1035.3,
+     674.8
+    ],
+    [
+     1043.5,
+     675.2
+    ],
+    [
+     1043.8,
+     673.5
+    ],
+    [
+     1066.7,
+     682.2
+    ],
+    [
+     1068.3,
+     686.4
+    ],
+    [
+     1071.3,
+     683.5
+    ],
+    [
+     1074.8,
+     687.4
+    ],
+    [
+     1076.3,
+     686.8
+    ],
+    [
+     1077.7,
+     690.4
+    ],
+    [
+     1075.1,
+     692.9
+    ],
+    [
+     1076.2,
+     694.2
+    ],
+    [
+     1078.9,
+     691.8
+    ],
+    [
+     1079.5,
+     694.1
+    ],
+    [
+     1077,
+     696.6
+    ],
+    [
+     1075.5,
+     704.1
+    ],
+    [
+     1081.3,
+     695.4
+    ],
+    [
+     1082.8,
+     695.6
+    ],
+    [
+     1081.7,
+     699.4
+    ],
+    [
+     1091.4,
+     694.3
+    ],
+    [
+     1113.9,
+     700.7
+    ],
+    [
+     1131.8,
+     700
+    ],
+    [
+     1149.4,
+     710.1
+    ],
+    [
+     1164.8,
+     724.3
+    ],
+    [
+     1184.9,
+     727.3
+    ],
+    [
+     1192.5,
+     749.3
+    ],
+    [
+     1192.5,
+     760.5
+    ],
+    [
+     1186.5,
+     775.5
+    ],
+    [
+     1180,
+     780.9
+    ],
+    [
+     1174,
+     790.3
+    ],
+    [
+     1167.6,
+     794.3
+    ],
+    [
+     1163.2,
+     800.9
+    ],
+    [
+     1162.6,
+     799.4
+    ],
+    [
+     1158.7,
+     809.5
+    ],
+    [
+     1152.2,
+     818.3
+    ],
+    [
+     1149.1,
+     819.6
+    ],
+    [
+     1146.9,
+     815.7
+    ],
+    [
+     1145,
+     817.6
+    ],
+    [
+     1145.2,
+     821.9
+    ],
+    [
+     1142.2,
+     827.1
+    ],
+    [
+     1142.6,
+     832.5
+    ],
+    [
+     1143.9,
+     832.4
+    ],
+    [
+     1142.5,
+     839.7
+    ],
+    [
+     1144.6,
+     854.1
+    ],
+    [
+     1140.8,
+     869.6
+    ],
+    [
+     1141.4,
+     875.9
+    ],
+    [
+     1135.5,
+     882.4
+    ],
+    [
+     1133.9,
+     898
+    ],
+    [
+     1120.1,
+     917.7
+    ],
+    [
+     1119.5,
+     926.8
+    ],
+    [
+     1111.2,
+     930.4
+    ],
+    [
+     1107.9,
+     933.7
+    ],
+    [
+     1107.2,
+     938
+    ],
+    [
+     1096.4,
+     938.2
+    ],
+    [
+     1094,
+     935.4
+    ],
+    [
+     1093.2,
+     938.5
+    ],
+    [
+     1085.2,
+     939.8
+    ],
+    [
+     1087.9,
+     938.7
+    ],
+    [
+     1085.6,
+     937.6
+    ],
+    [
+     1076.5,
+     939.3
+    ],
+    [
+     1077.3,
+     941.9
+    ],
+    [
+     1068.3,
+     945.7
+    ],
+    [
+     1066.7,
+     948.1
+    ],
+    [
+     1060.7,
+     948.1
+    ],
+    [
+     1050.1,
+     953.3
+    ],
+    [
+     1036.8,
+     962.7
+    ],
+    [
+     1037.5,
+     964.3
+    ],
+    [
+     1034.3,
+     967.3
+    ],
+    [
+     1031.9,
+     965.5
+    ],
+    [
+     1031,
+     967.6
+    ],
+    [
+     1028,
+     966.7
+    ],
+    [
+     1031.9,
+     969.4
+    ],
+    [
+     1028.8,
+     972.3
+    ],
+    [
+     1029.3,
+     976.3
+    ],
+    [
+     1027.8,
+     977.4
+    ],
+    [
+     1030.1,
+     988.3
+    ],
+    [
+     1027.2,
+     1004.7
+    ],
+    [
+     1016,
+     1014
+    ],
+    [
+     1002.1,
+     1036.5
+    ],
+    [
+     988.9,
+     1046.6
+    ],
+    [
+     988.6,
+     1043.3
+    ],
+    [
+     993.1,
+     1042.6
+    ],
+    [
+     997.9,
+     1039.1
+    ],
+    [
+     999.2,
+     1034.8
+    ],
+    [
+     1004.8,
+     1029.9
+    ],
+    [
+     1004.5,
+     1026.6
+    ],
+    [
+     1006.1,
+     1026.8
+    ],
+    [
+     1006.3,
+     1024.6
+    ],
+    [
+     1000.9,
+     1025.9
+    ],
+    [
+     997.6,
+     1022
+    ],
+    [
+     999.3,
+     1025.9
+    ],
+    [
+     997.8,
+     1030.5
+    ],
+    [
+     996.9,
+     1029.6
+    ],
+    [
+     995.2,
+     1034.6
+    ],
+    [
+     989.6,
+     1038
+    ],
+    [
+     987,
+     1043.9
+    ],
+    [
+     987.8,
+     1047.3
+    ],
+    [
+     981.6,
+     1058.7
+    ],
+    [
+     963.6,
+     1076.9
+    ],
+    [
+     955,
+     1080
+    ],
+    [
+     945.8,
+     1078.2
+    ],
+    [
+     939.6,
+     1079.7
+    ],
+    [
+     928.1,
+     1074.3
+    ],
+    [
+     920.3,
+     1074.6
+    ],
+    [
+     913.1,
+     1065.6
+    ],
+    [
+     914,
+     1059.3
+    ],
+    [
+     917.2,
+     1056.7
+    ],
+    [
+     915.9,
+     1050.9
+    ],
+    [
+     916.3,
+     1056.6
+    ],
+    [
+     913.3,
+     1058.4
+    ],
+    [
+     911.8,
+     1065
+    ],
+    [
+     913.6,
+     1071.3
+    ],
+    [
+     912.1,
+     1072.5
+    ],
+    [
+     914.9,
+     1077.1
+    ],
+    [
+     928.1,
+     1085.1
+    ],
+    [
+     925.7,
+     1091.5
+    ],
+    [
+     929.2,
+     1096.2
+    ],
+    [
+     933.5,
+     1097.3
+    ],
+    [
+     933.4,
+     1104
+    ],
+    [
+     923.6,
+     1117.4
+    ],
+    [
+     916.2,
+     1121.5
+    ],
+    [
+     881.4,
+     1128.1
+    ],
+    [
+     867,
+     1125.8
+    ],
+    [
+     867.4,
+     1131.1
+    ],
+    [
+     870.3,
+     1132.6
+    ],
+    [
+     868.8,
+     1132.7
+    ],
+    [
+     869.4,
+     1138
+    ],
+    [
+     866.2,
+     1142.4
+    ],
+    [
+     868,
+     1148.1
+    ],
+    [
+     866.3,
+     1150.6
+    ],
+    [
+     851.7,
+     1153.8
+    ],
+    [
+     837,
+     1148.8
+    ],
+    [
+     834.6,
+     1149.6
+    ],
+    [
+     833.6,
+     1153.2
+    ],
+    [
+     835.6,
+     1165
+    ],
+    [
+     842.3,
+     1168.9
+    ],
+    [
+     846.1,
+     1168.4
+    ],
+    [
+     846.5,
+     1166.9
+    ],
+    [
+     844.5,
+     1166.3
+    ],
+    [
+     849.7,
+     1165.1
+    ],
+    [
+     851.6,
+     1167.1
+    ],
+    [
+     851.8,
+     1172
+    ],
+    [
+     846.8,
+     1174.2
+    ],
+    [
+     841.5,
+     1169.8
+    ],
+    [
+     835.8,
+     1171.6
+    ],
+    [
+     835.1,
+     1172.7
+    ],
+    [
+     843.5,
+     1175.2
+    ],
+    [
+     832.4,
+     1182.4
+    ],
+    [
+     832.3,
+     1190.8
+    ],
+    [
+     827.7,
+     1195.3
+    ],
+    [
+     827.8,
+     1199.4
+    ],
+    [
+     821.3,
+     1198.9
+    ],
+    [
+     812.4,
+     1202.3
+    ],
+    [
+     804.6,
+     1211.8
+    ],
+    [
+     805.7,
+     1216.4
+    ],
+    [
+     814.4,
+     1223.1
+    ],
+    [
+     825.3,
+     1224.9
+    ],
+    [
+     826.2,
+     1229.7
+    ],
+    [
+     820.9,
+     1232.8
+    ],
+    [
+     825.8,
+     1234.1
+    ],
+    [
+     806.2,
+     1246.1
+    ],
+    [
+     800.9,
+     1258.4
+    ],
+    [
+     796.9,
+     1259.8
+    ],
+    [
+     792,
+     1255.6
+    ],
+    [
+     792.1,
+     1257.8
+    ],
+    [
+     788.3,
+     1258.6
+    ],
+    [
+     794.9,
+     1260.4
+    ],
+    [
+     788.8,
+     1263.1
+    ],
+    [
+     783.8,
+     1270.7
+    ],
+    [
+     785.7,
+     1270.3
+    ],
+    [
+     787.4,
+     1276.9
+    ],
+    [
+     782.6,
+     1277.3
+    ],
+    [
+     788.5,
+     1278.4
+    ],
+    [
+     795.2,
+     1285.9
+    ],
+    [
+     785.2,
+     1284.7
+    ],
+    [
+     780.7,
+     1287.8
+    ],
+    [
+     766.8,
+     1291.4
+    ],
+    [
+     764.4,
+     1303.3
+    ],
+    [
+     760.9,
+     1304.6
+    ],
+    [
+     750.5,
+     1301.6
+    ],
+    [
+     747.7,
+     1298.2
+    ],
+    [
+     753.2,
+     1296.9
+    ],
+    [
+     753.8,
+     1300.3
+    ],
+    [
+     755,
+     1299.8
+    ],
+    [
+     755.6,
+     1296.9
+    ],
+    [
+     761,
+     1294.5
+    ],
+    [
+     761.7,
+     1291.9
+    ],
+    [
+     749.3,
+     1295.7
+    ],
+    [
+     746,
+     1299.6
+    ],
+    [
+     740.1,
+     1297
+    ],
+    [
+     743.9,
+     1291.3
+    ],
+    [
+     758.3,
+     1289.4
+    ],
+    [
+     744.1,
+     1288.6
+    ],
+    [
+     739.3,
+     1295
+    ],
+    [
+     733.1,
+     1292.2
+    ],
+    [
+     737.9,
+     1290.6
+    ],
+    [
+     739.2,
+     1288
+    ],
+    [
+     733.8,
+     1290.4
+    ],
+    [
+     728.7,
+     1289.8
+    ],
+    [
+     725.7,
+     1283.5
+    ],
+    [
+     730.8,
+     1285
+    ],
+    [
+     732.6,
+     1283.2
+    ],
+    [
+     737.6,
+     1284.1
+    ],
+    [
+     743.1,
+     1281.7
+    ],
+    [
+     745.8,
+     1284.6
+    ],
+    [
+     744.1,
+     1286.5
+    ],
+    [
+     746.4,
+     1285.3
+    ],
+    [
+     746.1,
+     1278.8
+    ],
+    [
+     738.7,
+     1275.8
+    ],
+    [
+     745.4,
+     1279.9
+    ],
+    [
+     734.6,
+     1282.7
+    ],
+    [
+     731.8,
+     1279.8
+    ],
+    [
+     726.5,
+     1278.5
+    ],
+    [
+     729.7,
+     1277.7
+    ],
+    [
+     729.6,
+     1273.5
+    ],
+    [
+     719.2,
+     1271.1
+    ],
+    [
+     715.9,
+     1266.6
+    ],
+    [
+     720.7,
+     1266.4
+    ],
+    [
+     719.7,
+     1264.1
+    ],
+    [
+     721.2,
+     1262.8
+    ],
+    [
+     731.1,
+     1269.7
+    ],
+    [
+     733,
+     1264.4
+    ],
+    [
+     729.1,
+     1268.3
+    ],
+    [
+     726.7,
+     1264.3
+    ],
+    [
+     729.5,
+     1264.6
+    ],
+    [
+     721.4,
+     1260.8
+    ],
+    [
+     724.9,
+     1258.3
+    ],
+    [
+     729.3,
+     1258.5
+    ],
+    [
+     725,
+     1256
+    ],
+    [
+     725.4,
+     1253.9
+    ],
+    [
+     730.8,
+     1253.9
+    ],
+    [
+     727.8,
+     1251.8
+    ],
+    [
+     729.6,
+     1246.9
+    ],
+    [
+     726.2,
+     1252.6
+    ],
+    [
+     724.5,
+     1251.4
+    ],
+    [
+     724.8,
+     1241.9
+    ],
+    [
+     728.8,
+     1240.5
+    ],
+    [
+     723.3,
+     1240.3
+    ],
+    [
+     721.9,
+     1234.8
+    ],
+    [
+     736.1,
+     1236.6
+    ],
+    [
+     732.2,
+     1230.8
+    ],
+    [
+     729.6,
+     1234
+    ],
+    [
+     726.2,
+     1234.5
+    ],
+    [
+     721.1,
+     1231.3
+    ],
+    [
+     722.5,
+     1229.7
+    ],
+    [
+     727.3,
+     1230
+    ],
+    [
+     723.1,
+     1228.1
+    ],
+    [
+     727,
+     1225.2
+    ],
+    [
+     725.1,
+     1220.5
+    ],
+    [
+     722.8,
+     1221.6
+    ],
+    [
+     717,
+     1219.9
+    ],
+    [
+     717.2,
+     1217.2
+    ],
+    [
+     710.6,
+     1219.4
+    ],
+    [
+     711.9,
+     1222.2
+    ],
+    [
+     708.7,
+     1219.5
+    ],
+    [
+     717.9,
+     1213
+    ],
+    [
+     716.2,
+     1209.7
+    ],
+    [
+     727,
+     1208.4
+    ],
+    [
+     729.4,
+     1204.1
+    ],
+    [
+     730.9,
+     1204.6
+    ],
+    [
+     728.6,
+     1211.8
+    ],
+    [
+     724.2,
+     1213.7
+    ],
+    [
+     729.2,
+     1213
+    ],
+    [
+     732,
+     1208.9
+    ],
+    [
+     729.5,
+     1217.5
+    ],
+    [
+     730.7,
+     1217.9
+    ],
+    [
+     733.7,
+     1210
+    ],
+    [
+     732,
+     1205
+    ],
+    [
+     737.6,
+     1203.4
+    ],
+    [
+     741.5,
+     1204.7
+    ],
+    [
+     735.4,
+     1202.1
+    ],
+    [
+     735.9,
+     1200.5
+    ],
+    [
+     744.5,
+     1194.5
+    ],
+    [
+     744.7,
+     1192.6
+    ],
+    [
+     737.6,
+     1189.5
+    ],
+    [
+     740.7,
+     1183.1
+    ],
+    [
+     739.8,
+     1179.4
+    ],
+    [
+     743.6,
+     1176.1
+    ],
+    [
+     742.5,
+     1171.7
+    ],
+    [
+     745.1,
+     1169.8
+    ],
+    [
+     743.4,
+     1166.8
+    ],
+    [
+     745.1,
+     1166.1
+    ],
+    [
+     747.7,
+     1168.4
+    ],
+    [
+     746.6,
+     1163.5
+    ],
+    [
+     742.8,
+     1162.7
+    ],
+    [
+     748.8,
+     1157.8
+    ],
+    [
+     746.1,
+     1160.1
+    ],
+    [
+     741.3,
+     1158
+    ],
+    [
+     737.8,
+     1161.2
+    ],
+    [
+     732,
+     1160.7
+    ],
+    [
+     733.3,
+     1158.8
+    ],
+    [
+     731.1,
+     1158
+    ],
+    [
+     729.1,
+     1151.6
+    ],
+    [
+     732.8,
+     1139.6
+    ],
+    [
+     735.8,
+     1137.6
+    ],
+    [
+     738,
+     1130.9
+    ],
+    [
+     734.5,
+     1122.4
+    ],
+    [
+     735.2,
+     1116.8
+    ],
+    [
+     732.9,
+     1108.6
+    ],
+    [
+     733.6,
+     1106.7
+    ],
+    [
+     738.1,
+     1106.5
+    ],
+    [
+     745.2,
+     1087.8
+    ],
+    [
+     749.9,
+     1082
+    ],
+    [
+     752.5,
+     1070.9
+    ],
+    [
+     756.5,
+     1064.9
+    ],
+    [
+     755.6,
+     1058.2
+    ],
+    [
+     759,
+     1053.1
+    ],
+    [
+     756,
+     1029
+    ],
+    [
+     756.5,
+     1025.5
+    ],
+    [
+     759.6,
+     1023.3
+    ],
+    [
+     760.6,
+     1017.4
+    ],
+    [
+     758.2,
+     1008.8
+    ],
+    [
+     762.2,
+     1002.3
+    ],
+    [
+     768.6,
+     978.1
+    ],
+    [
+     767.8,
+     971.6
+    ],
+    [
+     770.9,
+     965.3
+    ],
+    [
+     769.4,
+     958.1
+    ],
+    [
+     771.6,
+     945.3
+    ],
+    [
+     769.2,
+     941.6
+    ],
+    [
+     772.3,
+     936.8
+    ],
+    [
+     775.2,
+     920.8
+    ],
+    [
+     771.9,
+     884.1
+    ],
+    [
+     760.4,
+     875.6
+    ],
+    [
+     758.1,
+     871
+    ],
+    [
+     715.8,
+     848.7
+    ],
+    [
+     706,
+     839.5
+    ],
+    [
+     700.7,
+     830.4
+    ],
+    [
+     702.5,
+     824.5
+    ],
+    [
+     691.5,
+     809
+    ],
+    [
+     690.7,
+     804.3
+    ],
+    [
+     685.9,
+     799.9
+    ],
+    [
+     672.5,
+     768.2
+    ],
+    [
+     657.9,
+     746.3
+    ],
+    [
+     644.3,
+     737.9
+    ],
+    [
+     644.1,
+     735.7
+    ],
+    [
+     646.8,
+     735.3
+    ],
+    [
+     647.4,
+     732.9
+    ],
+    [
+     642,
+     721.4
+    ],
+    [
+     643.2,
+     716.3
+    ],
+    [
+     648.4,
+     710.3
+    ],
+    [
+     657.5,
+     704.3
+    ],
+    [
+     661,
+     696.7
+    ],
+    [
+     659.7,
+     690.6
+    ],
+    [
+     658.7,
+     696.3
+    ],
+    [
+     657.8,
+     694
+    ],
+    [
+     654.5,
+     698.2
+    ],
+    [
+     646.4,
+     692
+    ],
+    [
+     648.8,
+     689
+    ],
+    [
+     647.2,
+     678.9
+    ],
+    [
+     651.3,
+     676.1
+    ],
+    [
+     652.4,
+     673
+    ],
+    [
+     654.5,
+     673.5
+    ],
+    [
+     652.1,
+     670.5
+    ],
+    [
+     657.3,
+     664.3
+    ],
+    [
+     656.8,
+     656.8
+    ],
+    [
+     670.9,
+     651.8
+    ],
+    [
+     671.3,
+     648.9
+    ],
+    [
+     669.4,
+     646.9
+    ],
+    [
+     672.1,
+     644.2
+    ],
+    [
+     674.7,
+     645.1
+    ],
+    [
+     674.5,
+     638.2
+    ],
+    [
+     683.7,
+     633.9
+    ],
+    [
+     692.4,
+     619.7
+    ],
+    [
+     690.2,
+     620
+    ],
+    [
+     690.1,
+     618
+    ],
+    [
+     689.1,
+     619.4
+    ],
+    [
+     688.5,
+     615.8
+    ],
+    [
+     687.2,
+     616.2
+    ],
+    [
+     690,
+     610.1
+    ],
+    [
+     687,
+     600.5
+    ],
+    [
+     690.4,
+     597.6
+    ],
+    [
+     687.8,
+     592.9
+    ],
+    [
+     689,
+     588.2
+    ],
+    [
+     676.5,
+     570.6
+    ],
+    [
+     679.8,
+     566.7
+    ],
+    [
+     684.3,
+     569.7
+    ],
+    [
+     680.3,
+     565.4
+    ],
+    [
+     678.9,
+     566.6
+    ],
+    [
+     676.8,
+     565.3
+    ],
+    [
+     676.7,
+     567.1
+    ],
+    [
+     675.4,
+     563.9
+    ],
+    [
+     670.2,
+     560.3
+    ],
+    [
+     664.4,
+     559.4
+    ],
+    [
+     661.5,
+     561.2
+    ],
+    [
+     660.8,
+     564.2
+    ],
+    [
+     652.4,
+     568.8
+    ],
+    [
+     657.7,
+     577.2
+    ],
+    [
+     647.8,
+     580.5
+    ],
+    [
+     645.2,
+     572.5
+    ],
+    [
+     642.8,
+     575.8
+    ],
+    [
+     640,
+     574.6
+    ],
+    [
+     637.4,
+     569.7
+    ],
+    [
+     626.1,
+     567.5
+    ],
+    [
+     623.8,
+     570.5
+    ],
+    [
+     618.9,
+     563.4
+    ],
+    [
+     616.8,
+     562.9
+    ],
+    [
+     618.9,
+     566.5
+    ],
+    [
+     615.2,
+     565.6
+    ],
+    [
+     613.6,
+     557.7
+    ],
+    [
+     603.6,
+     552.7
+    ],
+    [
+     602,
+     548.8
+    ],
+    [
+     595.8,
+     544.7
+    ],
+    [
+     600,
+     549.7
+    ],
+    [
+     597.7,
+     552.3
+    ],
+    [
+     591.2,
+     548.8
+    ],
+    [
+     588.6,
+     544.1
+    ],
+    [
+     590.8,
+     540.1
+    ],
+    [
+     587.9,
+     537
+    ],
+    [
+     589.8,
+     534.7
+    ],
+    [
+     567.1,
+     513.2
+    ],
+    [
+     568,
+     511.6
+    ],
+    [
+     571,
+     512.7
+    ],
+    [
+     569.2,
+     507.9
+    ],
+    [
+     565.3,
+     507.3
+    ],
+    [
+     562.9,
+     510.1
+    ],
+    [
+     555,
+     508.7
+    ],
+    [
+     557.1,
+     509.9
+    ],
+    [
+     533.8,
+     501.4
+    ],
+    [
+     523.1,
+     500.3
+    ],
+    [
+     487.7,
+     473.1
+    ],
+    [
+     492.1,
+     476.3
+    ],
+    [
+     481.4,
+     471.6
+    ],
+    [
+     480,
+     473.2
+    ],
+    [
+     482.6,
+     474
+    ],
+    [
+     462.4,
+     480.6
+    ],
+    [
+     447.6,
+     476.9
+    ],
+    [
+     435.7,
+     470.2
+    ],
+    [
+     424.7,
+     468
+    ],
+    [
+     411,
+     462.3
+    ],
+    [
+     398.3,
+     453.3
+    ],
+    [
+     380.3,
+     449
+    ],
+    [
+     374.8,
+     443
+    ],
+    [
+     362.6,
+     437.3
+    ],
+    [
+     356.2,
+     429.4
+    ],
+    [
+     353.9,
+     424.5
+    ],
+    [
+     358.8,
+     422.3
+    ],
+    [
+     355.8,
+     419.5
+    ],
+    [
+     359.1,
+     415.9
+    ],
+    [
+     359.4,
+     411.5
+    ],
+    [
+     354.2,
+     405.6
+    ],
+    [
+     352.5,
+     398
+    ],
+    [
+     339,
+     383.1
+    ],
+    [
+     329.1,
+     376.1
+    ],
+    [
+     332,
+     377.5
+    ],
+    [
+     332.1,
+     375.9
+    ],
+    [
+     326.9,
+     374.4
+    ],
+    [
+     323,
+     368.9
+    ],
+    [
+     325.8,
+     369.1
+    ],
+    [
+     317,
+     363.5
+    ],
+    [
+     314.2,
+     364.2
+    ],
+    [
+     315.9,
+     361.2
+    ],
+    [
+     310.9,
+     362.4
+    ],
+    [
+     309.5,
+     357.6
+    ],
+    [
+     313.1,
+     355
+    ],
+    [
+     311.2,
+     351.7
+    ],
+    [
+     305.6,
+     349.7
+    ],
+    [
+     303.3,
+     345.2
+    ],
+    [
+     297,
+     342.3
+    ],
+    [
+     295.4,
+     338.4
+    ],
+    [
+     296.4,
+     335.9
+    ],
+    [
+     289.4,
+     334.7
+    ],
+    [
+     282.8,
+     328.7
+    ],
+    [
+     270.3,
+     310.8
+    ],
+    [
+     265.9,
+     301.2
+    ],
+    [
+     266.6,
+     296.7
+    ],
+    [
+     259.8,
+     294.7
+    ],
+    [
+     258.2,
+     292.2
+    ],
+    [
+     253.6,
+     292.8
+    ],
+    [
+     244.3,
+     288.1
+    ],
+    [
+     247.9,
+     308.8
+    ],
+    [
+     268.7,
+     329.3
+    ],
+    [
+     270.3,
+     336.4
+    ],
+    [
+     275.1,
+     340
+    ],
+    [
+     280.6,
+     350
+    ],
+    [
+     282.6,
+     351.1
+    ],
+    [
+     281.4,
+     347.6
+    ],
+    [
+     284.1,
+     349.6
+    ],
+    [
+     287.4,
+     360.5
+    ],
+    [
+     294.5,
+     371.4
+    ],
+    [
+     294.9,
+     377.7
+    ],
+    [
+     298.3,
+     380.5
+    ],
+    [
+     299.6,
+     377.6
+    ],
+    [
+     309.5,
+     387.9
+    ],
+    [
+     308.6,
+     391.7
+    ],
+    [
+     302.6,
+     394.8
+    ],
+    [
+     298.4,
+     386.4
+    ],
+    [
+     278.1,
+     371.8
+    ],
+    [
+     278.2,
+     363.1
+    ],
+    [
+     274.5,
+     355.5
+    ],
+    [
+     266.9,
+     351.1
+    ],
+    [
+     265.3,
+     346.8
+    ],
+    [
+     260.1,
+     349.5
+    ],
+    [
+     243.6,
+     337.5
+    ],
+    [
+     243.1,
+     336.2
+    ],
+    [
+     251.8,
+     335.8
+    ],
+    [
+     254.5,
+     338.2
+    ],
+    [
+     252.2,
+     335.1
+    ],
+    [
+     254.8,
+     329.3
+    ],
+    [
+     244.2,
+     318.3
+    ],
+    [
+     235.5,
+     313.5
+    ],
+    [
+     230.9,
+     301.1
+    ],
+    [
+     223.8,
+     292.1
+    ],
+    [
+     224.3,
+     288.7
+    ],
+    [
+     219.1,
+     282.9
+    ],
+    [
+     214.3,
+     271.6
+    ],
+    [
+     207,
+     266.5
+    ],
+    [
+     203.1,
+     266.3
+    ],
+    [
+     202,
+     263
+    ],
+    [
+     194.4,
+     261.9
+    ],
+    [
+     189,
+     258.3
+    ],
+    [
+     176.7,
+     256.4
+    ],
+    [
+     176.5,
+     249.9
+    ],
+    [
+     162.1,
+     235.6
+    ],
+    [
+     162.9,
+     229.5
+    ],
+    [
+     155.9,
+     225.2
+    ],
+    [
+     154.7,
+     221.3
+    ],
+    [
+     154.5,
+     218.5
+    ],
+    [
+     156.1,
+     218.3
+    ],
+    [
+     159.8,
+     222
+    ],
+    [
+     156.9,
+     215.8
+    ],
+    [
+     166.2,
+     215.2
+    ],
+    [
+     156,
+     214.1
+    ],
+    [
+     154.4,
+     217.9
+    ],
+    [
+     148.8,
+     216
+    ],
+    [
+     149.9,
+     213.5
+    ],
+    [
+     140.5,
+     205.1
+    ],
+    [
+     138.9,
+     194.8
+    ],
+    [
+     132.7,
+     187.7
+    ],
+    [
+     136.1,
+     174.8
+    ],
+    [
+     130.5,
+     158.8
+    ],
+    [
+     135.2,
+     148.4
+    ],
+    [
+     137.1,
+     118.5
+    ],
+    [
+     146.2,
+     119.2
+    ],
+    [
+     136.1,
+     117.7
+    ],
+    [
+     136.4,
+     113.9
+    ],
+    [
+     137.6,
+     115.9
+    ],
+    [
+     138.3,
+     113.2
+    ],
+    [
+     135.6,
+     110.8
+    ],
+    [
+     138.8,
+     109.6
+    ],
+    [
+     135.3,
+     109.7
+    ],
+    [
+     132.5,
+     101.4
+    ],
+    [
+     129.1,
+     97.7
+    ],
+    [
+     128.5,
+     92.8
+    ],
+    [
+     137.2,
+     95.4
+    ],
+    [
+     151.4,
+     95.7
+    ],
+    [
+     152.8,
+     98.8
+    ],
+    [
+     147.2,
+     105
+    ],
+    [
+     149.7,
+     104.4
+    ],
+    [
+     148.2,
+     103.5
+    ],
+    [
+     154.3,
+     98.3
+    ],
+    [
+     152.6,
+     101.9
+    ],
+    [
+     153.8,
+     105.7
+    ],
+    [
+     151.5,
+     106.6
+    ],
+    [
+     150.8,
+     105.2
+    ],
+    [
+     148.4,
+     107.6
+    ],
+    [
+     153.2,
+     107.5
+    ],
+    [
+     156.4,
+     104.8
+    ],
+    [
+     155.9,
+     99.9
+    ],
+    [
+     157.7,
+     97.2
+    ],
+    [
+     152.8,
+     92.1
+    ],
+    [
+     154.7,
+     91.4
+    ],
+    [
+     154.2,
+     88.3
+    ],
+    [
+     146.5,
+     83.7
+    ],
+    [
+     146.1,
+     82.4
+    ],
+    [
+     150.2,
+     80.8
+    ],
+    [
+     145.5,
+     81.4
+    ],
+    [
+     146.6,
+     77.4
+    ],
+    [
+     142.5,
+     80.8
+    ],
+    [
+     137.6,
+     79.2
+    ],
+    [
+     137,
+     76.8
+    ],
+    [
+     139.1,
+     78.5
+    ],
+    [
+     141.9,
+     77.4
+    ],
+    [
+     138.4,
+     76.8
+    ],
+    [
+     138.4,
+     71.6
+    ],
+    [
+     135.3,
+     76.1
+    ],
+    [
+     128.6,
+     74.1
+    ],
+    [
+     124.4,
+     68.7
+    ],
+    [
+     126.8,
+     63.3
+    ],
+    [
+     124.4,
+     67.6
+    ],
+    [
+     119.5,
+     67.8
+    ],
+    [
+     118.7,
+     66
+    ],
+    [
+     117.5,
+     68.1
+    ],
+    [
+     112.1,
+     67.8
+    ],
+    [
+     108,
+     66.7
+    ],
+    [
+     114.4,
+     65.3
+    ],
+    [
+     107.2,
+     65.6
+    ],
+    [
+     108.8,
+     63.7
+    ],
+    [
+     107.1,
+     63.4
+    ],
+    [
+     107.1,
+     61.1
+    ],
+    [
+     100.7,
+     63.4
+    ],
+    [
+     93,
+     60
+    ],
+    [
+     96.4,
+     54.6
+    ],
+    [
+     105.1,
+     53.5
+    ],
+    [
+     97.4,
+     53.4
+    ],
+    [
+     93.5,
+     56.1
+    ],
+    [
+     91.3,
+     53.8
+    ],
+    [
+     92,
+     47.7
+    ],
+    [
+     96.2,
+     45.7
+    ],
+    [
+     98.6,
+     45.3
+    ],
+    [
+     104.8,
+     49.2
+    ],
+    [
+     99.1,
+     44.5
+    ],
+    [
+     102,
+     41.4
+    ],
+    [
+     101.3,
+     40
+    ],
+    [
+     100.6,
+     42.2
+    ],
+    [
+     91.5,
+     47
+    ],
+    [
+     88.4,
+     52.5
+    ],
+    [
+     85.3,
+     48.1
+    ],
+    [
+     90.3,
+     43.5
+    ],
+    [
+     86.4,
+     45.7
+    ],
+    [
+     89,
+     39.2
+    ],
+    [
+     85.3,
+     40.2
+    ],
+    [
+     83.4,
+     36.4
+    ],
+    [
+     75.7,
+     31.8
+    ],
+    [
+     79.5,
+     29.8
+    ],
+    [
+     78.9,
+     31.5
+    ],
+    [
+     90.4,
+     34.8
+    ],
+    [
+     81.6,
+     31.5
+    ],
+    [
+     80.5,
+     29.3
+    ],
+    [
+     83.3,
+     27.9
+    ],
+    [
+     78.2,
+     28.1
+    ],
+    [
+     71.1,
+     35.1
+    ],
+    [
+     61.9,
+     29.5
+    ],
+    [
+     65.4,
+     24.7
+    ],
+    [
+     70.3,
+     23.5
+    ],
+    [
+     64.9,
+     24.1
+    ],
+    [
+     60.8,
+     21.3
+    ],
+    [
+     71.1,
+     8.9
+    ],
+    [
+     68.3,
+     7.8
+    ],
+    [
+     65.3,
+     13.7
+    ],
+    [
+     65.6,
+     3.9
+    ],
+    [
+     64.2,
+     6.7
+    ],
+    [
+     65.5,
+     10.9
+    ],
+    [
+     63.5,
+     15
+    ],
+    [
+     59.6,
+     17.4
+    ],
+    [
+     55.8,
+     16.7
+    ],
+    [
+     53.5,
+     12.5
+    ],
+    [
+     57.1,
+     10.6
+    ],
+    [
+     52.6,
+     3
+    ],
+    [
+     53.7,
+     1.5
+    ],
+    [
+     44.8,
+     4
+    ],
+    [
+     42.9,
+     7.8
+    ],
+    [
+     40.8,
+     7.7
+    ],
+    [
+     39.8,
+     5.5
+    ],
+    [
+     44.1,
+     0.7
+    ],
+    [
+     47.5,
+     0.1
+    ],
+    [
+     40.1,
+     -2.4
+    ],
+    [
+     32.5,
+     -10
+    ],
+    [
+     24.9,
+     -11.3
+    ],
+    [
+     22.7,
+     -16.9
+    ],
+    [
+     29,
+     -16
+    ],
+    [
+     24.1,
+     -19.2
+    ],
+    [
+     28.1,
+     -19.7
+    ],
+    [
+     21.8,
+     -19.3
+    ],
+    [
+     18.2,
+     -22
+    ],
+    [
+     20,
+     -27.3
+    ],
+    [
+     16.1,
+     -23.9
+    ],
+    [
+     10.7,
+     -25.7
+    ],
+    [
+     5.2,
+     -31.1
+    ],
+    [
+     2.4,
+     -38
+    ],
+    [
+     0.8,
+     -35.4
+    ],
+    [
+     5.6,
+     -24.1
+    ],
+    [
+     -3.9,
+     -25.9
+    ],
+    [
+     -5.6,
+     -30.9
+    ],
+    [
+     -3.1,
+     -31.8
+    ],
+    [
+     -5.3,
+     -31.5
+    ],
+    [
+     -6.9,
+     -33.6
+    ],
+    [
+     -7.8,
+     -30.2
+    ],
+    [
+     -17,
+     -33.2
+    ],
+    [
+     -17.7,
+     -31.5
+    ],
+    [
+     -12.4,
+     -30.7
+    ],
+    [
+     -5.8,
+     -26.5
+    ],
+    [
+     -12.3,
+     -24
+    ],
+    [
+     -23.4,
+     -28
+    ],
+    [
+     -34.9,
+     -35
+    ],
+    [
+     -49.8,
+     -39.2
+    ],
+    [
+     -46.7,
+     -41.3
+    ],
+    [
+     -46.7,
+     -44.3
+    ],
+    [
+     -44.6,
+     -43.4
+    ],
+    [
+     -44,
+     -40.2
+    ],
+    [
+     -43.3,
+     -42.7
+    ],
+    [
+     -40.5,
+     -42.9
+    ],
+    [
+     -45.7,
+     -45
+    ],
+    [
+     -57.5,
+     -41.4
+    ],
+    [
+     -69.1,
+     -43.7
+    ],
+    [
+     -67.8,
+     -44.9
+    ],
+    [
+     -69.2,
+     -46.2
+    ],
+    [
+     -72.2,
+     -44.5
+    ],
+    [
+     -87.4,
+     -46
+    ],
+    [
+     -101.6,
+     -45
+    ],
+    [
+     -102,
+     -46.6
+    ],
+    [
+     -110.5,
+     -48.8
+    ],
+    [
+     -108,
+     -52.8
+    ],
+    [
+     -114.6,
+     -49.3
+    ],
+    [
+     -122.3,
+     -50.5
+    ],
+    [
+     -119.7,
+     -52.6
+    ],
+    [
+     -130.3,
+     -53.5
+    ],
+    [
+     -128.2,
+     -54.4
+    ],
+    [
+     -131.1,
+     -55.5
+    ],
+    [
+     -130.6,
+     -57.3
+    ],
+    [
+     -126.9,
+     -58
+    ],
+    [
+     -145.9,
+     -55.4
+    ],
+    [
+     -147.2,
+     -56.3
+    ],
+    [
+     -144.3,
+     -59.3
+    ],
+    [
+     -151.2,
+     -57.4
+    ],
+    [
+     -149.7,
+     -57
+    ],
+    [
+     -151.3,
+     -55
+    ],
+    [
+     -153.8,
+     -54.6
+    ],
+    [
+     -150.2,
+     -52.8
+    ],
+    [
+     -154.8,
+     -50.6
+    ],
+    [
+     -146.8,
+     -50.6
+    ],
+    [
+     -152.3,
+     -44.7
+    ],
+    [
+     -163.7,
+     -46.1
+    ],
+    [
+     -166.1,
+     -42.1
+    ],
+    [
+     -167.5,
+     -43.9
+    ],
+    [
+     -173.2,
+     -39.7
+    ],
+    [
+     -178.1,
+     -39.7
+    ],
+    [
+     -181.9,
+     -35.9
+    ],
+    [
+     -191.4,
+     -35.2
+    ],
+    [
+     -193.9,
+     -36.1
+    ],
+    [
+     -193.2,
+     -37.6
+    ],
+    [
+     -183.2,
+     -42.1
+    ],
+    [
+     -188,
+     -40.7
+    ],
+    [
+     -192.8,
+     -42.3
+    ],
+    [
+     -187.4,
+     -48.1
+    ],
+    [
+     -186.9,
+     -53.4
+    ],
+    [
+     -176.1,
+     -57
+    ],
+    [
+     -159.9,
+     -55.2
+    ],
+    [
+     -171.5,
+     -58.7
+    ],
+    [
+     -162.9,
+     -62.6
+    ],
+    [
+     -166.4,
+     -62.4
+    ],
+    [
+     -170.6,
+     -60
+    ],
+    [
+     -178.1,
+     -60.3
+    ],
+    [
+     -189.7,
+     -56.5
+    ],
+    [
+     -200.9,
+     -48
+    ],
+    [
+     -206.7,
+     -48.3
+    ],
+    [
+     -202.4,
+     -44.8
+    ],
+    [
+     -208.9,
+     -43
+    ],
+    [
+     -206.7,
+     -42.4
+    ],
+    [
+     -207.5,
+     -41.4
+    ],
+    [
+     -214.1,
+     -40.7
+    ],
+    [
+     -220.3,
+     -34.8
+    ],
+    [
+     -211.3,
+     -32.5
+    ],
+    [
+     -211.6,
+     -30.1
+    ],
+    [
+     -221.6,
+     -24.7
+    ],
+    [
+     -221.1,
+     -23
+    ],
+    [
+     -230.1,
+     -21.3
+    ],
+    [
+     -247.1,
+     -13.6
+    ],
+    [
+     -246.6,
+     -11.7
+    ],
+    [
+     -249.3,
+     -9.4
+    ],
+    [
+     -270.5,
+     -2.6
+    ],
+    [
+     -272.1,
+     -1.2
+    ],
+    [
+     -268.8,
+     0.2
+    ],
+    [
+     -271.2,
+     1.7
+    ],
+    [
+     -272.6,
+     0.4
+    ],
+    [
+     -285.2,
+     7
+    ],
+    [
+     -286.5,
+     4.4
+    ],
+    [
+     -303.2,
+     9.8
+    ],
+    [
+     -306.6,
+     9.9
+    ],
+    [
+     -306,
+     8.1
+    ],
+    [
+     -303.5,
+     8
+    ],
+    [
+     -307.2,
+     7.1
+    ],
+    [
+     -313.8,
+     12.8
+    ],
+    [
+     -317.5,
+     13.8
+    ],
+    [
+     -320.4,
+     11.5
+    ],
+    [
+     -320.9,
+     14.4
+    ],
+    [
+     -326.2,
+     13.6
+    ],
+    [
+     -328.7,
+     16.3
+    ],
+    [
+     -328.1,
+     13
+    ],
+    [
+     -309.3,
+     3.7
+    ],
+    [
+     -303.6,
+     2.3
+    ],
+    [
+     -299.9,
+     2.6
+    ],
+    [
+     -301.1,
+     3.9
+    ],
+    [
+     -298.8,
+     5.5
+    ],
+    [
+     -297.6,
+     4.1
+    ],
+    [
+     -292.7,
+     4.9
+    ],
+    [
+     -295.6,
+     2.5
+    ],
+    [
+     -292.8,
+     -1.2
+    ],
+    [
+     -276.4,
+     -7.9
+    ],
+    [
+     -273.6,
+     -6.9
+    ],
+    [
+     -273.4,
+     -9.8
+    ],
+    [
+     -269.4,
+     -12.8
+    ],
+    [
+     -263.7,
+     -15.5
+    ],
+    [
+     -259.2,
+     -15.3
+    ],
+    [
+     -262,
+     -17.3
+    ],
+    [
+     -261,
+     -21.7
+    ],
+    [
+     -256,
+     -23.4
+    ],
+    [
+     -259.5,
+     -24.2
+    ],
+    [
+     -259.9,
+     -26.1
+    ],
+    [
+     -253.4,
+     -29.9
+    ],
+    [
+     -251.5,
+     -34.6
+    ],
+    [
+     -255.4,
+     -31.5
+    ],
+    [
+     -267.8,
+     -28.4
+    ],
+    [
+     -271.5,
+     -31.2
+    ],
+    [
+     -270.6,
+     -33
+    ],
+    [
+     -266.5,
+     -32.7
+    ],
+    [
+     -270.6,
+     -34.1
+    ],
+    [
+     -275.2,
+     -32.7
+    ],
+    [
+     -274.9,
+     -26.4
+    ],
+    [
+     -276.8,
+     -25.9
+    ],
+    [
+     -285.3,
+     -31.9
+    ],
+    [
+     -288.3,
+     -30.9
+    ],
+    [
+     -293.5,
+     -33.6
+    ],
+    [
+     -305.4,
+     -29.1
+    ],
+    [
+     -314.6,
+     -28.8
+    ],
+    [
+     -309.7,
+     -30.5
+    ],
+    [
+     -310.4,
+     -33.2
+    ],
+    [
+     -308.7,
+     -34.3
+    ],
+    [
+     -312.7,
+     -34.7
+    ],
+    [
+     -310.9,
+     -40
+    ],
+    [
+     -317.9,
+     -48.2
+    ],
+    [
+     -312.3,
+     -53
+    ],
+    [
+     -321,
+     -48
+    ],
+    [
+     -319.2,
+     -47.2
+    ],
+    [
+     -319.7,
+     -44.7
+    ],
+    [
+     -335.5,
+     -42.6
+    ],
+    [
+     -348.8,
+     -50.8
+    ],
+    [
+     -352.6,
+     -51.2
+    ],
+    [
+     -346.1,
+     -55.4
+    ],
+    [
+     -340.4,
+     -54
+    ],
+    [
+     -341,
+     -51.9
+    ],
+    [
+     -336.6,
+     -53.9
+    ],
+    [
+     -333.4,
+     -51.8
+    ],
+    [
+     -329.7,
+     -53.8
+    ],
+    [
+     -335.5,
+     -55
+    ],
+    [
+     -331.7,
+     -55.5
+    ],
+    [
+     -349.8,
+     -55.9
+    ],
+    [
+     -346.9,
+     -58
+    ],
+    [
+     -351.7,
+     -59.9
+    ],
+    [
+     -355.1,
+     -57.9
+    ],
+    [
+     -358.7,
+     -60.7
+    ],
+    [
+     -358.4,
+     -63
+    ],
+    [
+     -361.4,
+     -62.7
+    ],
+    [
+     -362.3,
+     -64.4
+    ],
+    [
+     -358,
+     -64.9
+    ],
+    [
+     -361.2,
+     -66.2
+    ],
+    [
+     -355.7,
+     -67
+    ],
+    [
+     -356.8,
+     -69.7
+    ],
+    [
+     -350.8,
+     -74.2
+    ],
+    [
+     -345.6,
+     -74.4
+    ],
+    [
+     -346.6,
+     -75.4
+    ],
+    [
+     -343.6,
+     -76.9
+    ],
+    [
+     -346,
+     -75.9
+    ],
+    [
+     -346.1,
+     -79.4
+    ],
+    [
+     -341.2,
+     -80.7
+    ],
+    [
+     -342.8,
+     -81.9
+    ],
+    [
+     -341.4,
+     -82.9
+    ],
+    [
+     -328.2,
+     -80.9
+    ],
+    [
+     -316.3,
+     -86.7
+    ],
+    [
+     -307.1,
+     -85.9
+    ],
+    [
+     -300.2,
+     -88.2
+    ],
+    [
+     -298.5,
+     -90.1
+    ],
+    [
+     -300.9,
+     -95.2
+    ],
+    [
+     -306.9,
+     -97.4
+    ],
+    [
+     -300.3,
+     -99.1
+    ],
+    [
+     -299.8,
+     -101.7
+    ],
+    [
+     -302.6,
+     -103.2
+    ],
+    [
+     -310.1,
+     -101.9
+    ],
+    [
+     -322.5,
+     -96.7
+    ],
+    [
+     -327.2,
+     -100
+    ],
+    [
+     -325.4,
+     -98.4
+    ],
+    [
+     -326.5,
+     -97.3
+    ],
+    [
+     -333.2,
+     -99.2
+    ],
+    [
+     -348.2,
+     -97.6
+    ],
+    [
+     -362,
+     -99.1
+    ],
+    [
+     -366,
+     -100.9
+    ],
+    [
+     -365.2,
+     -103.2
+    ],
+    [
+     -371.3,
+     -105.9
+    ],
+    [
+     -362.1,
+     -107.5
+    ],
+    [
+     -376.9,
+     -109.1
+    ],
+    [
+     -385,
+     -111.9
+    ],
+    [
+     -365,
+     -117.6
+    ],
+    [
+     -355.9,
+     -117.5
+    ],
+    [
+     -357.6,
+     -119.7
+    ],
+    [
+     -342,
+     -122.9
+    ],
+    [
+     -332.3,
+     -122.7
+    ],
+    [
+     -335.3,
+     -122.8
+    ],
+    [
+     -333.9,
+     -122.2
+    ],
+    [
+     -337,
+     -118.5
+    ],
+    [
+     -333,
+     -116.9
+    ],
+    [
+     -312.1,
+     -116.4
+    ],
+    [
+     -306.5,
+     -119.3
+    ],
+    [
+     -301.5,
+     -118.2
+    ],
+    [
+     -302.5,
+     -119.9
+    ],
+    [
+     -311.9,
+     -120.8
+    ],
+    [
+     -319.4,
+     -125.5
+    ],
+    [
+     -320.1,
+     -126.5
+    ],
+    [
+     -317.2,
+     -127.2
+    ],
+    [
+     -308.1,
+     -121.4
+    ],
+    [
+     -292,
+     -120.9
+    ],
+    [
+     -293.5,
+     -123.2
+    ],
+    [
+     -305.8,
+     -122.5
+    ],
+    [
+     -311.2,
+     -124.2
+    ],
+    [
+     -308.5,
+     -127.5
+    ],
+    [
+     -309.6,
+     -128
+    ],
+    [
+     -331.1,
+     -129
+    ],
+    [
+     -338.1,
+     -135
+    ],
+    [
+     -369.6,
+     -143.9
+    ],
+    [
+     -364.8,
+     -144.7
+    ],
+    [
+     -362.8,
+     -150.1
+    ],
+    [
+     -340.2,
+     -150.7
+    ],
+    [
+     -331.1,
+     -153.5
+    ],
+    [
+     -326.7,
+     -156.1
+    ],
+    [
+     -324.2,
+     -160.5
+    ],
+    [
+     -311.5,
+     -167.3
+    ],
+    [
+     -310.1,
+     -166.4
+    ],
+    [
+     -313.8,
+     -165.2
+    ],
+    [
+     -301,
+     -166.9
+    ],
+    [
+     -290.6,
+     -170.3
+    ],
+    [
+     -288.8,
+     -170.1
+    ],
+    [
+     -290.4,
+     -167.3
+    ],
+    [
+     -287.7,
+     -166.6
+    ],
+    [
+     -287.1,
+     -169.2
+    ],
+    [
+     -282,
+     -169.5
+    ],
+    [
+     -290.2,
+     -170.9
+    ],
+    [
+     -285.5,
+     -172.7
+    ],
+    [
+     -264.5,
+     -173.5
+    ],
+    [
+     -247.5,
+     -180
+    ],
+    [
+     -247.5,
+     -178.6
+    ],
+    [
+     -236.9,
+     -176.6
+    ],
+    [
+     -243.6,
+     -174.3
+    ],
+    [
+     -241.6,
+     -173.3
+    ],
+    [
+     -232,
+     -176.4
+    ],
+    [
+     -220.5,
+     -172.8
+    ],
+    [
+     -209.1,
+     -174.4
+    ],
+    [
+     -198.1,
+     -173.4
+    ],
+    [
+     -200.1,
+     -171.1
+    ],
+    [
+     -191.8,
+     -170
+    ],
+    [
+     -193.9,
+     -168.7
+    ],
+    [
+     -162.2,
+     -169.3
+    ],
+    [
+     -143.7,
+     -165.9
+    ],
+    [
+     -107.2,
+     -163.1
+    ],
+    [
+     -90.6,
+     -164.7
+    ],
+    [
+     -69.1,
+     -159.2
+    ],
+    [
+     -42.8,
+     -157.6
+    ],
+    [
+     -27.3,
+     -152.6
+    ],
+    [
+     3.6,
+     -147.7
+    ],
+    [
+     -3.9,
+     -150.6
+    ],
+    [
+     -0.1,
+     -151.8
+    ],
+    [
+     -4.1,
+     -152.8
+    ],
+    [
+     5,
+     -157
+    ],
+    [
+     13.1,
+     -157.1
+    ],
+    [
+     13.7,
+     -159.6
+    ],
+    [
+     20,
+     -157.5
+    ],
+    [
+     16.5,
+     -154.5
+    ],
+    [
+     58,
+     -164.8
+    ],
+    [
+     70.4,
+     -165.3
+    ],
+    [
+     70.1,
+     -163.3
+    ],
+    [
+     34.1,
+     -154.6
+    ],
+    [
+     25.4,
+     -149.6
+    ],
+    [
+     28.8,
+     -148.5
+    ],
+    [
+     26.4,
+     -149.5
+    ],
+    [
+     35.4,
+     -149.7
+    ],
+    [
+     33.7,
+     -152.4
+    ],
+    [
+     44.7,
+     -156.6
+    ],
+    [
+     53.3,
+     -156.8
+    ],
+    [
+     54.4,
+     -154
+    ],
+    [
+     64.5,
+     -160
+    ],
+    [
+     78.9,
+     -162.9
+    ],
+    [
+     75.9,
+     -161
+    ],
+    [
+     79.5,
+     -160.4
+    ],
+    [
+     93.3,
+     -166.4
+    ],
+    [
+     87.6,
+     -168.3
+    ],
+    [
+     89.7,
+     -170.1
+    ],
+    [
+     98.7,
+     -166.8
+    ],
+    [
+     110.3,
+     -157.9
+    ],
+    [
+     118.9,
+     -155.6
+    ],
+    [
+     123.1,
+     -156.6
+    ],
+    [
+     120.9,
+     -158.9
+    ],
+    [
+     127.8,
+     -163.2
+    ],
+    [
+     125.2,
+     -163.6
+    ],
+    [
+     130.4,
+     -165.1
+    ],
+    [
+     132.1,
+     -160.6
+    ],
+    [
+     135.5,
+     -159.7
+    ],
+    [
+     131.2,
+     -156.5
+    ],
+    [
+     132.9,
+     -155.8
+    ],
+    [
+     142.5,
+     -156.1
+    ],
+    [
+     148.5,
+     -161.1
+    ],
+    [
+     159.8,
+     -161.1
+    ],
+    [
+     217.1,
+     -150.4
+    ],
+    [
+     230.9,
+     -149.5
+    ],
+    [
+     228.8,
+     -151.2
+    ],
+    [
+     233.9,
+     -151.3
+    ],
+    [
+     243.6,
+     -149.7
+    ],
+    [
+     255.7,
+     -144.4
+    ],
+    [
+     242,
+     -141.2
+    ],
+    [
+     238.3,
+     -138.5
+    ],
+    [
+     241.9,
+     -137.5
+    ],
+    [
+     273,
+     -135.9
+    ],
+    [
+     301.8,
+     -139.5
+    ],
+    [
+     307.1,
+     -136.5
+    ],
+    [
+     314.1,
+     -136
+    ],
+    [
+     316.3,
+     -132.8
+    ],
+    [
+     319.1,
+     -134.9
+    ],
+    [
+     326.5,
+     -130.8
+    ],
+    [
+     326.5,
+     -128.9
+    ],
+    [
+     320.5,
+     -128.9
+    ],
+    [
+     335.1,
+     -120.7
+    ],
+    [
+     329.8,
+     -124.7
+    ],
+    [
+     329.4,
+     -127.3
+    ],
+    [
+     336.3,
+     -126.4
+    ],
+    [
+     326.9,
+     -137.5
+    ],
+    [
+     329.2,
+     -138.5
+    ],
+    [
+     328.7,
+     -140.1
+    ],
+    [
+     345,
+     -142
+    ],
+    [
+     353,
+     -146.6
+    ],
+    [
+     323.3,
+     -141.4
+    ],
+    [
+     317.9,
+     -143.1
+    ],
+    [
+     322.6,
+     -146.9
+    ],
+    [
+     348.1,
+     -150.5
+    ],
+    [
+     353.7,
+     -149.4
+    ],
+    [
+     357.4,
+     -144.5
+    ],
+    [
+     367.9,
+     -140.4
+    ],
+    [
+     379.9,
+     -141
+    ],
+    [
+     393.6,
+     -136.5
+    ],
+    [
+     415.7,
+     -137.7
+    ],
+    [
+     433.8,
+     -136.4
+    ],
+    [
+     439.9,
+     -137.3
+    ],
+    [
+     436.4,
+     -139.2
+    ],
+    [
+     437.3,
+     -140.5
+    ],
+    [
+     451.2,
+     -135.1
+    ],
+    [
+     454.7,
+     -136.4
+    ],
+    [
+     454.1,
+     -137.9
+    ],
+    [
+     442.5,
+     -138.7
+    ],
+    [
+     437,
+     -143.9
+    ],
+    [
+     447.2,
+     -144.2
+    ],
+    [
+     445.5,
+     -145.7
+    ],
+    [
+     446.8,
+     -145.9
+    ],
+    [
+     452.6,
+     -145.3
+    ],
+    [
+     456.9,
+     -142.7
+    ],
+    [
+     463.3,
+     -143.3
+    ],
+    [
+     459.9,
+     -140.1
+    ],
+    [
+     468.8,
+     -142.6
+    ],
+    [
+     464,
+     -133.8
+    ],
+    [
+     466.7,
+     -131
+    ],
+    [
+     471.7,
+     -131.5
+    ],
+    [
+     471,
+     -130
+    ],
+    [
+     475.3,
+     -129.6
+    ],
+    [
+     475.3,
+     -127.9
+    ],
+    [
+     463.4,
+     -128.4
+    ],
+    [
+     470.9,
+     -123.2
+    ],
+    [
+     468,
+     -127
+    ],
+    [
+     475.5,
+     -127.2
+    ],
+    [
+     477.2,
+     -130.9
+    ],
+    [
+     472.6,
+     -136.5
+    ],
+    [
+     474.8,
+     -139.9
+    ],
+    [
+     483.3,
+     -140.5
+    ],
+    [
+     498.6,
+     -147
+    ],
+    [
+     496.3,
+     -147.1
+    ],
+    [
+     493.8,
+     -151.5
+    ],
+    [
+     491.3,
+     -148.9
+    ],
+    [
+     485,
+     -149.1
+    ],
+    [
+     491.1,
+     -152.9
+    ],
+    [
+     489.1,
+     -153.3
+    ],
+    [
+     489.1,
+     -155.2
+    ],
+    [
+     496.6,
+     -156.4
+    ],
+    [
+     495.1,
+     -154.2
+    ],
+    [
+     498.8,
+     -155.9
+    ],
+    [
+     496.2,
+     -157.6
+    ],
+    [
+     488.9,
+     -156.9
+    ],
+    [
+     484.6,
+     -159.2
+    ],
+    [
+     467.8,
+     -161.3
+    ],
+    [
+     462.6,
+     -164.8
+    ],
+    [
+     462,
+     -167.2
+    ],
+    [
+     465.7,
+     -169.8
+    ],
+    [
+     469.8,
+     -169.8
+    ],
+    [
+     468.6,
+     -170.6
+    ],
+    [
+     469.8,
+     -171.6
+    ],
+    [
+     464.2,
+     -171.4
+    ],
+    [
+     461.9,
+     -172.9
+    ],
+    [
+     462.2,
+     -176.7
+    ],
+    [
+     467.7,
+     -180.1
+    ],
+    [
+     473.6,
+     -179.2
+    ],
+    [
+     475.4,
+     -181
+    ],
+    [
+     469.9,
+     -182
+    ],
+    [
+     477.9,
+     -185.9
+    ],
+    [
+     485.5,
+     -186.8
+    ]
+   ],
+   [
+    [
+     649.2,
+     41.1
+    ],
+    [
+     633.7,
+     37.5
+    ],
+    [
+     636,
+     35.9
+    ],
+    [
+     644.4,
+     35.7
+    ]
+   ],
+   [
+    [
+     634.2,
+     -79.8
+    ],
+    [
+     632.8,
+     -76.3
+    ],
+    [
+     622.1,
+     -71
+    ],
+    [
+     614,
+     -70.4
+    ],
+    [
+     611.5,
+     -73.6
+    ],
+    [
+     617.9,
+     -79.3
+    ]
+   ],
+   [
+    [
+     663.2,
+     -73.4
+    ],
+    [
+     666.5,
+     -70.7
+    ],
+    [
+     661.8,
+     -64.3
+    ],
+    [
+     654.7,
+     -66.4
+    ],
+    [
+     654.8,
+     -69.8
+    ],
+    [
+     657.6,
+     -72.6
+    ]
+   ],
+   [
+    [
+     599.6,
+     -107.2
+    ],
+    [
+     604.5,
+     -109.5
+    ],
+    [
+     633.6,
+     -99.9
+    ],
+    [
+     638,
+     -94.8
+    ],
+    [
+     635.5,
+     -92.4
+    ],
+    [
+     648,
+     -93.3
+    ],
+    [
+     654.7,
+     -89.9
+    ],
+    [
+     645.5,
+     -85.9
+    ],
+    [
+     629.7,
+     -88.8
+    ],
+    [
+     628.6,
+     -91.4
+    ],
+    [
+     618.7,
+     -93.9
+    ],
+    [
+     603,
+     -84
+    ],
+    [
+     594,
+     -81.8
+    ],
+    [
+     589.5,
+     -88.7
+    ],
+    [
+     573.2,
+     -87.3
+    ],
+    [
+     575.8,
+     -91.1
+    ],
+    [
+     583.8,
+     -93.9
+    ],
+    [
+     582.4,
+     -98.9
+    ],
+    [
+     585.9,
+     -110.4
+    ],
+    [
+     589,
+     -113.9
+    ],
+    [
+     592.1,
+     -115
+    ],
+    [
+     595.8,
+     -113.5
+    ],
+    [
+     597.4,
+     -111.5
+    ],
+    [
+     595.8,
+     -110.1
+    ]
+   ],
+   [
+    [
+     670.4,
+     -0.6
+    ],
+    [
+     667.6,
+     3.9
+    ],
+    [
+     667.5,
+     0
+    ],
+    [
+     663.8,
+     4
+    ],
+    [
+     660.6,
+     4.8
+    ],
+    [
+     663.2,
+     1
+    ],
+    [
+     657.7,
+     3.6
+    ],
+    [
+     664.2,
+     -3.8
+    ],
+    [
+     663.3,
+     0.4
+    ],
+    [
+     666.5,
+     -4.6
+    ]
+   ],
+   [
+    [
+     948.4,
+     55.4
+    ],
+    [
+     941.6,
+     57.9
+    ],
+    [
+     944.3,
+     61.4
+    ],
+    [
+     933.3,
+     73.6
+    ],
+    [
+     932.2,
+     78.2
+    ],
+    [
+     939.8,
+     72.3
+    ],
+    [
+     940.1,
+     74.4
+    ],
+    [
+     947.8,
+     73.9
+    ],
+    [
+     940.3,
+     78.2
+    ],
+    [
+     943.5,
+     77.6
+    ],
+    [
+     940.9,
+     80.1
+    ],
+    [
+     949.3,
+     79.7
+    ],
+    [
+     949.7,
+     81.1
+    ],
+    [
+     951.1,
+     79.5
+    ],
+    [
+     949.6,
+     84.6
+    ],
+    [
+     959.7,
+     79.3
+    ],
+    [
+     960.3,
+     81.6
+    ],
+    [
+     966.1,
+     80.3
+    ],
+    [
+     970.1,
+     81.7
+    ],
+    [
+     970.7,
+     83.8
+    ],
+    [
+     963.7,
+     88
+    ],
+    [
+     967.4,
+     87.7
+    ],
+    [
+     966,
+     89
+    ],
+    [
+     969.1,
+     89.6
+    ],
+    [
+     964.3,
+     92.7
+    ],
+    [
+     977.1,
+     89.8
+    ],
+    [
+     975.9,
+     92.6
+    ],
+    [
+     967.2,
+     97.1
+    ],
+    [
+     969.9,
+     97.2
+    ],
+    [
+     967.2,
+     99.9
+    ],
+    [
+     969.5,
+     101.5
+    ],
+    [
+     974.1,
+     97.4
+    ],
+    [
+     979.1,
+     96
+    ],
+    [
+     975.5,
+     103.1
+    ],
+    [
+     980.1,
+     100.1
+    ],
+    [
+     981.6,
+     102.7
+    ],
+    [
+     976.6,
+     113
+    ],
+    [
+     970.5,
+     113.5
+    ],
+    [
+     970.4,
+     107.5
+    ],
+    [
+     965.5,
+     111.1
+    ],
+    [
+     963.6,
+     110.6
+    ],
+    [
+     967.4,
+     104
+    ],
+    [
+     963.4,
+     99
+    ],
+    [
+     959.9,
+     104.4
+    ],
+    [
+     960,
+     102.7
+    ],
+    [
+     955.5,
+     104.6
+    ],
+    [
+     950.1,
+     110.3
+    ],
+    [
+     944.5,
+     110.8
+    ],
+    [
+     942.9,
+     109
+    ],
+    [
+     956.3,
+     101.3
+    ],
+    [
+     949.5,
+     101.4
+    ],
+    [
+     947,
+     103.7
+    ],
+    [
+     940.5,
+     103.2
+    ],
+    [
+     943.5,
+     102.2
+    ],
+    [
+     943.6,
+     99.5
+    ],
+    [
+     932.8,
+     102.5
+    ],
+    [
+     914.3,
+     100.5
+    ],
+    [
+     903.4,
+     101.7
+    ],
+    [
+     902.4,
+     98.1
+    ],
+    [
+     914.4,
+     91.2
+    ],
+    [
+     904.5,
+     90.7
+    ],
+    [
+     908.3,
+     88.5
+    ],
+    [
+     907.6,
+     89.6
+    ],
+    [
+     909.8,
+     90.3
+    ],
+    [
+     913.5,
+     84.5
+    ],
+    [
+     918.4,
+     85.6
+    ],
+    [
+     917.1,
+     84.6
+    ],
+    [
+     918.5,
+     82.8
+    ],
+    [
+     915.8,
+     80.9
+    ],
+    [
+     918.1,
+     79.1
+    ],
+    [
+     920.8,
+     79.7
+    ],
+    [
+     919.2,
+     77.2
+    ],
+    [
+     925,
+     67.7
+    ],
+    [
+     928,
+     66.4
+    ],
+    [
+     926.6,
+     65.4
+    ],
+    [
+     929.7,
+     61.7
+    ],
+    [
+     933.9,
+     57.9
+    ],
+    [
+     941.7,
+     55.1
+    ]
+   ],
+   [
+    [
+     1250.3,
+     -324.1
+    ],
+    [
+     1299.5,
+     -320.5
+    ],
+    [
+     1225.7,
+     -317.2
+    ],
+    [
+     1307.5,
+     -319.3
+    ],
+    [
+     1315.2,
+     -315.9
+    ],
+    [
+     1348.1,
+     -313.6
+    ],
+    [
+     1350.1,
+     -312.6
+    ],
+    [
+     1349,
+     -312
+    ],
+    [
+     1331.2,
+     -309.4
+    ],
+    [
+     1251.1,
+     -306.2
+    ],
+    [
+     1255.2,
+     -304.8
+    ],
+    [
+     1307.2,
+     -305.5
+    ],
+    [
+     1317.3,
+     -302
+    ],
+    [
+     1326.8,
+     -302.8
+    ],
+    [
+     1331.4,
+     -305.7
+    ],
+    [
+     1352.3,
+     -306.3
+    ],
+    [
+     1354.8,
+     -304.7
+    ],
+    [
+     1353.6,
+     -300.8
+    ],
+    [
+     1331.8,
+     -292.8
+    ],
+    [
+     1331.2,
+     -291
+    ],
+    [
+     1372.5,
+     -301.3
+    ],
+    [
+     1398.3,
+     -298.4
+    ],
+    [
+     1414.1,
+     -302.9
+    ],
+    [
+     1436.3,
+     -303.3
+    ],
+    [
+     1469.6,
+     -299.1
+    ],
+    [
+     1449.5,
+     -294.7
+    ],
+    [
+     1433.8,
+     -293.6
+    ],
+    [
+     1436.5,
+     -292.1
+    ],
+    [
+     1433.2,
+     -290.9
+    ],
+    [
+     1406.5,
+     -288.6
+    ],
+    [
+     1416.2,
+     -286.9
+    ],
+    [
+     1409.7,
+     -284.8
+    ],
+    [
+     1374.9,
+     -284.9
+    ],
+    [
+     1366.4,
+     -281.9
+    ],
+    [
+     1367.3,
+     -279.1
+    ],
+    [
+     1375.8,
+     -278.7
+    ],
+    [
+     1375.1,
+     -274.1
+    ],
+    [
+     1380.1,
+     -272.1
+    ],
+    [
+     1354.7,
+     -265.9
+    ],
+    [
+     1356.8,
+     -264.7
+    ],
+    [
+     1347.7,
+     -254.7
+    ],
+    [
+     1357.9,
+     -257.1
+    ],
+    [
+     1374.2,
+     -254.8
+    ],
+    [
+     1376.5,
+     -253.6
+    ],
+    [
+     1374.4,
+     -253
+    ],
+    [
+     1360.1,
+     -253.6
+    ],
+    [
+     1362.7,
+     -251.6
+    ],
+    [
+     1376.4,
+     -248.9
+    ],
+    [
+     1386.6,
+     -249.3
+    ],
+    [
+     1388.4,
+     -247.8
+    ],
+    [
+     1387.8,
+     -245.3
+    ],
+    [
+     1384.6,
+     -243.5
+    ],
+    [
+     1362.4,
+     -245.3
+    ],
+    [
+     1349,
+     -242.6
+    ],
+    [
+     1340.5,
+     -243.8
+    ],
+    [
+     1337.3,
+     -242.5
+    ],
+    [
+     1345.9,
+     -241.2
+    ],
+    [
+     1350.5,
+     -237.6
+    ],
+    [
+     1369.8,
+     -235.9
+    ],
+    [
+     1368.6,
+     -234.4
+    ],
+    [
+     1374,
+     -231.6
+    ],
+    [
+     1375.2,
+     -228.4
+    ],
+    [
+     1373.8,
+     -224.7
+    ],
+    [
+     1362.4,
+     -226.3
+    ],
+    [
+     1348.6,
+     -222.8
+    ],
+    [
+     1341.7,
+     -224
+    ],
+    [
+     1348.1,
+     -222.1
+    ],
+    [
+     1356.5,
+     -223.4
+    ],
+    [
+     1358.7,
+     -220.3
+    ],
+    [
+     1355.9,
+     -218.5
+    ],
+    [
+     1357.9,
+     -218.3
+    ],
+    [
+     1363.2,
+     -222.3
+    ],
+    [
+     1368.3,
+     -222.3
+    ],
+    [
+     1376.6,
+     -217.2
+    ],
+    [
+     1376.8,
+     -214.8
+    ],
+    [
+     1354.8,
+     -212
+    ],
+    [
+     1345,
+     -213.6
+    ],
+    [
+     1347.3,
+     -216.4
+    ],
+    [
+     1344.7,
+     -217.4
+    ],
+    [
+     1344.8,
+     -215.3
+    ],
+    [
+     1340.5,
+     -214.1
+    ],
+    [
+     1342.1,
+     -213.2
+    ],
+    [
+     1340.5,
+     -211.5
+    ],
+    [
+     1363.8,
+     -208.9
+    ],
+    [
+     1360.6,
+     -204.4
+    ],
+    [
+     1340.4,
+     -202.1
+    ],
+    [
+     1329.9,
+     -203.6
+    ],
+    [
+     1318.9,
+     -207.9
+    ],
+    [
+     1312.8,
+     -206
+    ],
+    [
+     1302.8,
+     -209
+    ],
+    [
+     1311.4,
+     -204.9
+    ],
+    [
+     1296.4,
+     -201.9
+    ],
+    [
+     1282.1,
+     -204
+    ],
+    [
+     1290.7,
+     -201.8
+    ],
+    [
+     1278.6,
+     -200.5
+    ],
+    [
+     1319.2,
+     -203.7
+    ],
+    [
+     1344,
+     -197.9
+    ],
+    [
+     1343.6,
+     -191.8
+    ],
+    [
+     1341.2,
+     -191.1
+    ],
+    [
+     1341,
+     -188.4
+    ],
+    [
+     1320,
+     -192.9
+    ],
+    [
+     1313.3,
+     -199.3
+    ],
+    [
+     1289.3,
+     -195.5
+    ],
+    [
+     1311.2,
+     -197.7
+    ],
+    [
+     1313.1,
+     -193.9
+    ],
+    [
+     1307.6,
+     -191.1
+    ],
+    [
+     1314,
+     -192
+    ],
+    [
+     1344.9,
+     -184
+    ],
+    [
+     1338.5,
+     -181.1
+    ],
+    [
+     1338.8,
+     -179.7
+    ],
+    [
+     1339.5,
+     -178.1
+    ],
+    [
+     1340.9,
+     -180.3
+    ],
+    [
+     1347.4,
+     -180.8
+    ],
+    [
+     1350.1,
+     -169.6
+    ],
+    [
+     1339.9,
+     -168.8
+    ],
+    [
+     1339.3,
+     -173.5
+    ],
+    [
+     1336.3,
+     -168.5
+    ],
+    [
+     1328.7,
+     -168.7
+    ],
+    [
+     1321.1,
+     -171
+    ],
+    [
+     1314.1,
+     -177.8
+    ],
+    [
+     1298.5,
+     -182
+    ],
+    [
+     1284.2,
+     -182.6
+    ],
+    [
+     1299,
+     -180.9
+    ],
+    [
+     1300.2,
+     -177.4
+    ],
+    [
+     1288.6,
+     -174.6
+    ],
+    [
+     1268.7,
+     -175.1
+    ],
+    [
+     1273.5,
+     -173.9
+    ],
+    [
+     1272.6,
+     -171.6
+    ],
+    [
+     1260.7,
+     -168.6
+    ],
+    [
+     1289.8,
+     -168.8
+    ],
+    [
+     1290.3,
+     -167.6
+    ],
+    [
+     1278.6,
+     -164.8
+    ],
+    [
+     1277.8,
+     -163.7
+    ],
+    [
+     1280.7,
+     -163.2
+    ],
+    [
+     1284.9,
+     -165.7
+    ],
+    [
+     1302.7,
+     -167.5
+    ],
+    [
+     1341.1,
+     -163.7
+    ],
+    [
+     1322.4,
+     -160.2
+    ],
+    [
+     1323.9,
+     -158.5
+    ],
+    [
+     1317.3,
+     -158.4
+    ],
+    [
+     1317.3,
+     -156.7
+    ],
+    [
+     1306.7,
+     -154.6
+    ],
+    [
+     1307.9,
+     -153.4
+    ],
+    [
+     1300.7,
+     -150.2
+    ],
+    [
+     1291.4,
+     -147.6
+    ],
+    [
+     1247.4,
+     -142
+    ],
+    [
+     1241.2,
+     -142.6
+    ],
+    [
+     1242.5,
+     -141
+    ],
+    [
+     1238.2,
+     -140.4
+    ],
+    [
+     1222.2,
+     -144.8
+    ],
+    [
+     1224,
+     -142.7
+    ],
+    [
+     1221.7,
+     -142.2
+    ],
+    [
+     1224.1,
+     -139.5
+    ],
+    [
+     1213,
+     -135.6
+    ],
+    [
+     1201.2,
+     -124.5
+    ],
+    [
+     1194.9,
+     -121.1
+    ],
+    [
+     1188.3,
+     -118.9
+    ],
+    [
+     1180.3,
+     -121.2
+    ],
+    [
+     1183.1,
+     -117.6
+    ],
+    [
+     1174.2,
+     -113.9
+    ],
+    [
+     1172.5,
+     -116
+    ],
+    [
+     1170.9,
+     -113.4
+    ],
+    [
+     1166.1,
+     -114.4
+    ],
+    [
+     1158,
+     -111.1
+    ],
+    [
+     1155,
+     -112.5
+    ],
+    [
+     1163.6,
+     -119.5
+    ],
+    [
+     1153.2,
+     -120.5
+    ],
+    [
+     1158,
+     -119
+    ],
+    [
+     1153.4,
+     -114.8
+    ],
+    [
+     1148.9,
+     -116.1
+    ],
+    [
+     1152.6,
+     -112.5
+    ],
+    [
+     1129.3,
+     -110.7
+    ],
+    [
+     1135.5,
+     -107.5
+    ],
+    [
+     1128.4,
+     -104.7
+    ],
+    [
+     1118.5,
+     -104.5
+    ],
+    [
+     1119.9,
+     -102.5
+    ],
+    [
+     1123.6,
+     -103.1
+    ],
+    [
+     1129.2,
+     -97.9
+    ],
+    [
+     1122.1,
+     -94.9
+    ],
+    [
+     1112.7,
+     -95.8
+    ],
+    [
+     1124.1,
+     -93.8
+    ],
+    [
+     1124.9,
+     -89
+    ],
+    [
+     1119,
+     -86.5
+    ],
+    [
+     1114.9,
+     -81.1
+    ],
+    [
+     1105.6,
+     -82.9
+    ],
+    [
+     1112,
+     -80.1
+    ],
+    [
+     1108.8,
+     -77.3
+    ],
+    [
+     1096.5,
+     -77.1
+    ],
+    [
+     1105.9,
+     -75.3
+    ],
+    [
+     1103.9,
+     -70.3
+    ],
+    [
+     1106.4,
+     -66.8
+    ],
+    [
+     1100.8,
+     -65.2
+    ],
+    [
+     1103.6,
+     -64
+    ],
+    [
+     1099.2,
+     -53.9
+    ],
+    [
+     1095.3,
+     -51
+    ],
+    [
+     1084.9,
+     -51.9
+    ],
+    [
+     1093.3,
+     -49.5
+    ],
+    [
+     1094.4,
+     -45.6
+    ],
+    [
+     1092.1,
+     -44
+    ],
+    [
+     1084.6,
+     -45.1
+    ],
+    [
+     1088.1,
+     -43.2
+    ],
+    [
+     1085.1,
+     -42.6
+    ],
+    [
+     1079.1,
+     -43.9
+    ],
+    [
+     1081.4,
+     -48.1
+    ],
+    [
+     1076.8,
+     -45
+    ],
+    [
+     1067.7,
+     -47.2
+    ],
+    [
+     1067.8,
+     -49.3
+    ],
+    [
+     1075.1,
+     -52.7
+    ],
+    [
+     1067.7,
+     -50.1
+    ],
+    [
+     1059.8,
+     -52.1
+    ],
+    [
+     1058.7,
+     -54
+    ],
+    [
+     1061.9,
+     -59.3
+    ],
+    [
+     1050,
+     -54.5
+    ],
+    [
+     1034.5,
+     -54
+    ],
+    [
+     1039.4,
+     -56.7
+    ],
+    [
+     1032.1,
+     -56.7
+    ],
+    [
+     1031.6,
+     -58.9
+    ],
+    [
+     1025.8,
+     -60
+    ],
+    [
+     1024.2,
+     -62.9
+    ],
+    [
+     1021.4,
+     -63.7
+    ],
+    [
+     1022.5,
+     -64.8
+    ],
+    [
+     1020.3,
+     -67.2
+    ],
+    [
+     1026.9,
+     -69.5
+    ],
+    [
+     1017.4,
+     -68.5
+    ],
+    [
+     1018.3,
+     -71.3
+    ],
+    [
+     1009.2,
+     -74.1
+    ],
+    [
+     1009.4,
+     -77.1
+    ],
+    [
+     1015.4,
+     -80.9
+    ],
+    [
+     1008.4,
+     -78.3
+    ],
+    [
+     995.6,
+     -88
+    ],
+    [
+     994.7,
+     -92.3
+    ],
+    [
+     1009.9,
+     -94.8
+    ],
+    [
+     1007.2,
+     -94.7
+    ],
+    [
+     1007.8,
+     -95.9
+    ],
+    [
+     994.7,
+     -93.4
+    ],
+    [
+     992.8,
+     -94.7
+    ],
+    [
+     998.4,
+     -98.9
+    ],
+    [
+     1004.9,
+     -100.3
+    ],
+    [
+     1008.8,
+     -100.3
+    ],
+    [
+     1012.9,
+     -97.5
+    ],
+    [
+     1011.5,
+     -100.6
+    ],
+    [
+     1006.9,
+     -101.3
+    ],
+    [
+     1001.6,
+     -106.5
+    ],
+    [
+     1004.4,
+     -101.7
+    ],
+    [
+     998.5,
+     -99.7
+    ],
+    [
+     999.5,
+     -101.5
+    ],
+    [
+     998.1,
+     -101.2
+    ],
+    [
+     990.2,
+     -94.8
+    ],
+    [
+     986.2,
+     -105.9
+    ],
+    [
+     982.9,
+     -108
+    ],
+    [
+     1000.1,
+     -113.3
+    ],
+    [
+     982.8,
+     -109.5
+    ],
+    [
+     975.1,
+     -111.1
+    ],
+    [
+     976.2,
+     -115.7
+    ],
+    [
+     972.8,
+     -116.5
+    ],
+    [
+     998.5,
+     -126.4
+    ],
+    [
+     977,
+     -118.3
+    ],
+    [
+     970.2,
+     -117.8
+    ],
+    [
+     970,
+     -120.8
+    ],
+    [
+     972.5,
+     -123.6
+    ],
+    [
+     984.7,
+     -126.4
+    ],
+    [
+     969.3,
+     -127.6
+    ],
+    [
+     967,
+     -129.4
+    ],
+    [
+     968,
+     -132.7
+    ],
+    [
+     983.3,
+     -136.8
+    ],
+    [
+     1005.7,
+     -134
+    ],
+    [
+     999.1,
+     -136
+    ],
+    [
+     1001.5,
+     -137.3
+    ],
+    [
+     985.2,
+     -137.7
+    ],
+    [
+     968.8,
+     -134.3
+    ],
+    [
+     975.7,
+     -142.1
+    ],
+    [
+     994.1,
+     -140.3
+    ],
+    [
+     998.7,
+     -143.5
+    ],
+    [
+     972.9,
+     -143.1
+    ],
+    [
+     977,
+     -146.9
+    ],
+    [
+     999.6,
+     -146.7
+    ],
+    [
+     1003.5,
+     -149
+    ],
+    [
+     998.2,
+     -148.4
+    ],
+    [
+     1000.1,
+     -153
+    ],
+    [
+     1009.5,
+     -153.5
+    ],
+    [
+     1000.2,
+     -154
+    ],
+    [
+     1003.5,
+     -159.3
+    ],
+    [
+     1008.9,
+     -160.9
+    ],
+    [
+     1007.1,
+     -162.6
+    ],
+    [
+     1009.2,
+     -163.6
+    ],
+    [
+     986.3,
+     -164
+    ],
+    [
+     965.5,
+     -168.3
+    ],
+    [
+     959.3,
+     -171.6
+    ],
+    [
+     963.7,
+     -173
+    ],
+    [
+     979.8,
+     -172.2
+    ],
+    [
+     1004.9,
+     -168
+    ],
+    [
+     997.3,
+     -170.3
+    ],
+    [
+     998.1,
+     -173.4
+    ],
+    [
+     992,
+     -175.3
+    ],
+    [
+     1000.9,
+     -175.2
+    ],
+    [
+     977.4,
+     -177.3
+    ],
+    [
+     976.1,
+     -178.9
+    ],
+    [
+     978.8,
+     -180.6
+    ],
+    [
+     991.9,
+     -183.3
+    ],
+    [
+     972.3,
+     -182
+    ],
+    [
+     975.8,
+     -184.7
+    ],
+    [
+     973.5,
+     -184.5
+    ],
+    [
+     969.3,
+     -188.9
+    ],
+    [
+     967.9,
+     -190.5
+    ],
+    [
+     969.8,
+     -191.3
+    ],
+    [
+     966.5,
+     -190.8
+    ],
+    [
+     972,
+     -185.8
+    ],
+    [
+     965.4,
+     -183
+    ],
+    [
+     966.1,
+     -180.6
+    ],
+    [
+     957.5,
+     -179.5
+    ],
+    [
+     946.8,
+     -181.7
+    ],
+    [
+     945.9,
+     -183.4
+    ],
+    [
+     950.1,
+     -188.3
+    ],
+    [
+     955.7,
+     -191.2
+    ],
+    [
+     946.9,
+     -189.1
+    ],
+    [
+     946.3,
+     -190.6
+    ],
+    [
+     950.3,
+     -191.2
+    ],
+    [
+     946.7,
+     -192.4
+    ],
+    [
+     954.7,
+     -193.8
+    ],
+    [
+     956.9,
+     -197.4
+    ],
+    [
+     945.9,
+     -199
+    ],
+    [
+     950.4,
+     -202.7
+    ],
+    [
+     940.7,
+     -205.5
+    ],
+    [
+     943.9,
+     -207.9
+    ],
+    [
+     939.3,
+     -212.3
+    ],
+    [
+     927.4,
+     -212.2
+    ],
+    [
+     933.6,
+     -213.3
+    ],
+    [
+     933.5,
+     -215.8
+    ],
+    [
+     938.9,
+     -217
+    ],
+    [
+     911.6,
+     -226.8
+    ],
+    [
+     915.3,
+     -228.6
+    ],
+    [
+     912.2,
+     -230.7
+    ],
+    [
+     855.6,
+     -238.6
+    ],
+    [
+     831,
+     -236
+    ],
+    [
+     811.8,
+     -236.9
+    ],
+    [
+     815.6,
+     -234.1
+    ],
+    [
+     813.8,
+     -234.1
+    ],
+    [
+     796.1,
+     -235.5
+    ],
+    [
+     782.3,
+     -239.1
+    ],
+    [
+     798.5,
+     -242.1
+    ],
+    [
+     780.1,
+     -243.1
+    ],
+    [
+     777.5,
+     -244.2
+    ],
+    [
+     779.8,
+     -246.1
+    ],
+    [
+     769,
+     -244.2
+    ],
+    [
+     762.5,
+     -247.1
+    ],
+    [
+     798.3,
+     -250.8
+    ],
+    [
+     819,
+     -249.6
+    ],
+    [
+     820,
+     -253
+    ],
+    [
+     813.8,
+     -254.4
+    ],
+    [
+     783.9,
+     -251.8
+    ],
+    [
+     769.9,
+     -254.6
+    ],
+    [
+     774.9,
+     -256.2
+    ],
+    [
+     761.2,
+     -255.9
+    ],
+    [
+     742.9,
+     -260.4
+    ],
+    [
+     746.9,
+     -263.8
+    ],
+    [
+     756.7,
+     -265.5
+    ],
+    [
+     788.1,
+     -268.3
+    ],
+    [
+     795.4,
+     -270.4
+    ],
+    [
+     825.6,
+     -272
+    ],
+    [
+     832,
+     -275.1
+    ],
+    [
+     837.9,
+     -281.8
+    ],
+    [
+     845.1,
+     -283
+    ],
+    [
+     813.6,
+     -282.7
+    ],
+    [
+     809.4,
+     -284.4
+    ],
+    [
+     811.8,
+     -286.7
+    ],
+    [
+     841.1,
+     -293.7
+    ],
+    [
+     850.5,
+     -294.3
+    ],
+    [
+     858.7,
+     -292.4
+    ],
+    [
+     856.3,
+     -294.7
+    ],
+    [
+     859.2,
+     -296.1
+    ],
+    [
+     877.6,
+     -295.3
+    ],
+    [
+     881.6,
+     -298.4
+    ],
+    [
+     880.4,
+     -302.5
+    ],
+    [
+     889.5,
+     -304.6
+    ],
+    [
+     903.1,
+     -304.1
+    ],
+    [
+     934.7,
+     -298
+    ],
+    [
+     903.3,
+     -305.6
+    ],
+    [
+     959.1,
+     -309.7
+    ],
+    [
+     969.5,
+     -307.5
+    ],
+    [
+     970.9,
+     -301.4
+    ],
+    [
+     977,
+     -304
+    ],
+    [
+     978.4,
+     -306
+    ],
+    [
+     976.3,
+     -306.9
+    ],
+    [
+     977.2,
+     -309.3
+    ],
+    [
+     1002.4,
+     -304.3
+    ],
+    [
+     1018.4,
+     -304.5
+    ],
+    [
+     1001.9,
+     -310.1
+    ],
+    [
+     1012.6,
+     -311.1
+    ],
+    [
+     1075.4,
+     -302.9
+    ],
+    [
+     1077.7,
+     -303.7
+    ],
+    [
+     1076.5,
+     -306.7
+    ],
+    [
+     1081.2,
+     -309.9
+    ],
+    [
+     1080.1,
+     -311.1
+    ],
+    [
+     1065.6,
+     -314.4
+    ],
+    [
+     1115.2,
+     -314.4
+    ],
+    [
+     1058.7,
+     -315.7
+    ],
+    [
+     1054.7,
+     -316.8
+    ],
+    [
+     1058.3,
+     -318.1
+    ],
+    [
+     1095.8,
+     -320.5
+    ],
+    [
+     1116,
+     -318.6
+    ],
+    [
+     1127.1,
+     -321.3
+    ],
+    [
+     1153.2,
+     -317.4
+    ],
+    [
+     1155.8,
+     -319.3
+    ],
+    [
+     1146.2,
+     -321.8
+    ],
+    [
+     1158.3,
+     -323.3
+    ]
+   ]
+  ],
+  "lakes": [
+   [
+    [
+     621.1,
+     165.1
+    ],
+    [
+     621,
+     167.6
+    ],
+    [
+     628.1,
+     169.2
+    ],
+    [
+     641.2,
+     161
+    ],
+    [
+     656.7,
+     162
+    ],
+    [
+     652.5,
+     161.2
+    ],
+    [
+     655.2,
+     159.3
+    ],
+    [
+     669,
+     158.2
+    ],
+    [
+     670.6,
+     157.5
+    ],
+    [
+     668.9,
+     155.3
+    ],
+    [
+     670.9,
+     155.9
+    ],
+    [
+     671.1,
+     159
+    ],
+    [
+     667.2,
+     161.9
+    ],
+    [
+     637.4,
+     174.2
+    ],
+    [
+     622,
+     174.9
+    ],
+    [
+     625.8,
+     174
+    ],
+    [
+     616.9,
+     171.5
+    ]
+   ],
+   [
+    [
+     464,
+     65
+    ],
+    [
+     464.9,
+     66.3
+    ],
+    [
+     462,
+     65
+    ],
+    [
+     460.3,
+     68.9
+    ],
+    [
+     457.4,
+     68.2
+    ],
+    [
+     457.3,
+     61.1
+    ],
+    [
+     461,
+     58
+    ],
+    [
+     456.8,
+     59.4
+    ],
+    [
+     459.6,
+     55.2
+    ],
+    [
+     458.6,
+     53.4
+    ],
+    [
+     453.6,
+     56.5
+    ],
+    [
+     452.4,
+     49.5
+    ],
+    [
+     449.8,
+     50.9
+    ],
+    [
+     450.7,
+     48.4
+    ],
+    [
+     447.8,
+     48.4
+    ],
+    [
+     447.2,
+     51
+    ],
+    [
+     445.2,
+     50.8
+    ],
+    [
+     442.5,
+     46.6
+    ],
+    [
+     435.2,
+     41.4
+    ],
+    [
+     434.1,
+     39.1
+    ],
+    [
+     439.3,
+     37.6
+    ],
+    [
+     430.2,
+     35.9
+    ],
+    [
+     433.7,
+     27.8
+    ],
+    [
+     445.8,
+     29.8
+    ],
+    [
+     441.2,
+     26
+    ],
+    [
+     444.5,
+     21.4
+    ],
+    [
+     446.9,
+     22.7
+    ],
+    [
+     442.2,
+     26
+    ],
+    [
+     444,
+     27.1
+    ],
+    [
+     447.9,
+     25.3
+    ],
+    [
+     445,
+     26.6
+    ],
+    [
+     446.8,
+     30.5
+    ],
+    [
+     452.4,
+     37.8
+    ],
+    [
+     458.4,
+     51.5
+    ],
+    [
+     465,
+     58.8
+    ]
+   ],
+   [
+    [
+     314.3,
+     -78.1
+    ],
+    [
+     311.5,
+     -75.6
+    ],
+    [
+     309.8,
+     -77.3
+    ],
+    [
+     299.3,
+     -78.3
+    ],
+    [
+     287.7,
+     -76.4
+    ],
+    [
+     305.8,
+     -76.2
+    ],
+    [
+     293.6,
+     -75
+    ],
+    [
+     294.3,
+     -73.2
+    ],
+    [
+     287.4,
+     -71.9
+    ],
+    [
+     276.5,
+     -64.1
+    ],
+    [
+     259.1,
+     -60.3
+    ],
+    [
+     259.7,
+     -57.9
+    ],
+    [
+     257.3,
+     -56.7
+    ],
+    [
+     233.1,
+     -54.9
+    ],
+    [
+     217.1,
+     -57.6
+    ],
+    [
+     211.9,
+     -60.3
+    ],
+    [
+     219,
+     -58.5
+    ],
+    [
+     222.9,
+     -59.3
+    ],
+    [
+     222.6,
+     -60.6
+    ],
+    [
+     232.2,
+     -58.9
+    ],
+    [
+     233.3,
+     -60.3
+    ],
+    [
+     231.2,
+     -61.2
+    ],
+    [
+     235,
+     -61.9
+    ],
+    [
+     236.9,
+     -65.5
+    ],
+    [
+     247.7,
+     -66.8
+    ],
+    [
+     240.1,
+     -71.3
+    ],
+    [
+     240.1,
+     -74.2
+    ],
+    [
+     235.2,
+     -74.3
+    ],
+    [
+     231.6,
+     -77.6
+    ],
+    [
+     246.9,
+     -73
+    ],
+    [
+     252,
+     -73.4
+    ],
+    [
+     263.5,
+     -68.6
+    ],
+    [
+     275.4,
+     -70.1
+    ],
+    [
+     286.2,
+     -77.1
+    ],
+    [
+     294.7,
+     -79.5
+    ]
+   ],
+   [
+    [
+     707.7,
+     139
+    ],
+    [
+     701,
+     143.5
+    ],
+    [
+     704.3,
+     144.8
+    ],
+    [
+     701.8,
+     146.3
+    ],
+    [
+     702.8,
+     149.8
+    ],
+    [
+     693.8,
+     153.5
+    ],
+    [
+     679.4,
+     151.9
+    ],
+    [
+     665.7,
+     154.2
+    ],
+    [
+     660.5,
+     153
+    ],
+    [
+     668.9,
+     146.7
+    ],
+    [
+     685.3,
+     144.2
+    ],
+    [
+     692.7,
+     146.1
+    ],
+    [
+     695,
+     143.6
+    ],
+    [
+     686.9,
+     143.3
+    ],
+    [
+     694.4,
+     142.4
+    ],
+    [
+     693.4,
+     143.9
+    ]
+   ],
+   [
+    [
+     209.8,
+     -121
+    ],
+    [
+     213.7,
+     -121.4
+    ],
+    [
+     205.6,
+     -114.8
+    ],
+    [
+     209.8,
+     -114
+    ],
+    [
+     208.6,
+     -112.7
+    ],
+    [
+     188.8,
+     -113.3
+    ],
+    [
+     184.4,
+     -111
+    ],
+    [
+     190.1,
+     -108.4
+    ],
+    [
+     169.7,
+     -102
+    ],
+    [
+     166.8,
+     -103.3
+    ],
+    [
+     177.8,
+     -107.5
+    ],
+    [
+     179.9,
+     -110.1
+    ],
+    [
+     178.8,
+     -111
+    ],
+    [
+     166,
+     -108.4
+    ],
+    [
+     165.2,
+     -105.2
+    ],
+    [
+     160.1,
+     -103.6
+    ],
+    [
+     143.2,
+     -105.9
+    ],
+    [
+     150.5,
+     -107.4
+    ],
+    [
+     151.5,
+     -108.9
+    ],
+    [
+     150.1,
+     -109.9
+    ],
+    [
+     158.2,
+     -113
+    ],
+    [
+     154.1,
+     -115.8
+    ],
+    [
+     166.8,
+     -115.4
+    ],
+    [
+     169.2,
+     -117
+    ],
+    [
+     148.6,
+     -119
+    ],
+    [
+     147.4,
+     -116.6
+    ],
+    [
+     131,
+     -117.7
+    ],
+    [
+     127.3,
+     -115.2
+    ],
+    [
+     124,
+     -117.8
+    ],
+    [
+     185.7,
+     -128.1
+    ],
+    [
+     195,
+     -126.7
+    ],
+    [
+     183.3,
+     -123.7
+    ],
+    [
+     179,
+     -120.6
+    ],
+    [
+     199,
+     -119.9
+    ],
+    [
+     211.2,
+     -123.7
+    ]
+   ],
+   [
+    [
+     600.8,
+     532.7
+    ],
+    [
+     599.9,
+     535.3
+    ],
+    [
+     590.5,
+     532
+    ],
+    [
+     588,
+     527.4
+    ],
+    [
+     588.3,
+     522.8
+    ],
+    [
+     595.6,
+     526.5
+    ]
+   ],
+   [
+    [
+     428.8,
+     35.7
+    ],
+    [
+     427.5,
+     37.5
+    ],
+    [
+     425.3,
+     35.9
+    ],
+    [
+     421.4,
+     36.9
+    ],
+    [
+     410.5,
+     32.5
+    ],
+    [
+     417.2,
+     31.1
+    ],
+    [
+     417,
+     27.5
+    ],
+    [
+     415.1,
+     27.2
+    ],
+    [
+     417.5,
+     26.6
+    ],
+    [
+     416.9,
+     23.7
+    ],
+    [
+     419.6,
+     23.3
+    ],
+    [
+     422.6,
+     24.1
+    ],
+    [
+     418.4,
+     26.1
+    ],
+    [
+     419.4,
+     28.1
+    ],
+    [
+     425.8,
+     26.1
+    ],
+    [
+     418.5,
+     30.6
+    ],
+    [
+     422.3,
+     35.1
+    ],
+    [
+     427.7,
+     34.1
+    ]
+   ],
+   [
+    [
+     279.3,
+     180.3
+    ],
+    [
+     274.6,
+     183.8
+    ],
+    [
+     273.3,
+     181
+    ],
+    [
+     272.1,
+     182.1
+    ],
+    [
+     270.4,
+     180.1
+    ],
+    [
+     267,
+     173.2
+    ],
+    [
+     270.2,
+     172.5
+    ],
+    [
+     273.8,
+     177.7
+    ],
+    [
+     274.6,
+     174.9
+    ],
+    [
+     278.2,
+     175.6
+    ],
+    [
+     275.4,
+     176.9
+    ]
+   ],
+   [
+    [
+     601.4,
+     123.5
+    ],
+    [
+     597.6,
+     125.7
+    ],
+    [
+     599.5,
+     128
+    ],
+    [
+     594.2,
+     129.6
+    ],
+    [
+     592.1,
+     135.6
+    ],
+    [
+     591.9,
+     130.4
+    ],
+    [
+     583.7,
+     136.5
+    ],
+    [
+     583.3,
+     140.8
+    ],
+    [
+     580.6,
+     144.1
+    ],
+    [
+     580.4,
+     149
+    ],
+    [
+     584.2,
+     157.8
+    ],
+    [
+     582,
+     165.8
+    ],
+    [
+     577.4,
+     170.9
+    ],
+    [
+     573.1,
+     172.6
+    ],
+    [
+     568.9,
+     171.7
+    ],
+    [
+     565.5,
+     165.9
+    ],
+    [
+     564.3,
+     153.7
+    ],
+    [
+     571,
+     135.5
+    ],
+    [
+     567.8,
+     134.7
+    ],
+    [
+     563.5,
+     138.2
+    ],
+    [
+     563.7,
+     135.7
+    ],
+    [
+     575.2,
+     122
+    ],
+    [
+     575.7,
+     124.6
+    ],
+    [
+     580.1,
+     122.4
+    ],
+    [
+     579.4,
+     125.5
+    ],
+    [
+     583.6,
+     121.8
+    ],
+    [
+     594.1,
+     119.8
+    ]
+   ],
+   [
+    [
+     605.4,
+     114.9
+    ],
+    [
+     598.2,
+     115.1
+    ],
+    [
+     598.5,
+     111.8
+    ],
+    [
+     585.2,
+     112.9
+    ],
+    [
+     579.3,
+     115.7
+    ],
+    [
+     570.7,
+     114.8
+    ],
+    [
+     565.8,
+     110.5
+    ],
+    [
+     560.6,
+     109.8
+    ],
+    [
+     557.8,
+     111.5
+    ],
+    [
+     555.4,
+     106.4
+    ],
+    [
+     533.9,
+     114.1
+    ],
+    [
+     528.3,
+     113.7
+    ],
+    [
+     529.5,
+     109.6
+    ],
+    [
+     517.7,
+     112.7
+    ],
+    [
+     514.5,
+     112
+    ],
+    [
+     529.4,
+     102.3
+    ],
+    [
+     547.2,
+     95.9
+    ],
+    [
+     548.9,
+     92
+    ],
+    [
+     554,
+     90.4
+    ],
+    [
+     552.1,
+     93.4
+    ],
+    [
+     554.4,
+     92.8
+    ],
+    [
+     557.2,
+     87.5
+    ],
+    [
+     559.3,
+     88.6
+    ],
+    [
+     556.5,
+     92.1
+    ],
+    [
+     560.4,
+     90.3
+    ],
+    [
+     561.8,
+     88.2
+    ],
+    [
+     560,
+     85.8
+    ],
+    [
+     562.3,
+     85.5
+    ],
+    [
+     581.7,
+     88.4
+    ],
+    [
+     587.8,
+     97
+    ],
+    [
+     600.4,
+     97.9
+    ],
+    [
+     598.5,
+     101.6
+    ],
+    [
+     603.4,
+     105.4
+    ],
+    [
+     601.3,
+     109.2
+    ],
+    [
+     605.9,
+     110.3
+    ],
+    [
+     603.9,
+     111.5
+    ],
+    [
+     605.3,
+     112.5
+    ],
+    [
+     603.8,
+     114.6
+    ]
+   ],
+   [
+    [
+     606.4,
+     114.8
+    ],
+    [
+     616.9,
+     118.2
+    ],
+    [
+     648.1,
+     121.6
+    ],
+    [
+     653.7,
+     128.2
+    ],
+    [
+     657.2,
+     128.5
+    ],
+    [
+     656.8,
+     131.6
+    ],
+    [
+     661.6,
+     135.6
+    ],
+    [
+     656.6,
+     135.2
+    ],
+    [
+     656.8,
+     139
+    ],
+    [
+     649.9,
+     136.1
+    ],
+    [
+     647.1,
+     137.4
+    ],
+    [
+     647.2,
+     135.5
+    ],
+    [
+     644.5,
+     135.6
+    ],
+    [
+     646.3,
+     133.3
+    ],
+    [
+     644.4,
+     133.9
+    ],
+    [
+     642.6,
+     130
+    ],
+    [
+     637.7,
+     129.9
+    ],
+    [
+     641.8,
+     133.2
+    ],
+    [
+     642.7,
+     137.1
+    ],
+    [
+     637.6,
+     143.2
+    ],
+    [
+     636.7,
+     152.7
+    ],
+    [
+     629.2,
+     156.4
+    ],
+    [
+     626.3,
+     146.5
+    ],
+    [
+     623.8,
+     144.2
+    ],
+    [
+     617.8,
+     145.6
+    ],
+    [
+     614.4,
+     149.2
+    ],
+    [
+     611.2,
+     147.8
+    ],
+    [
+     611.9,
+     145.2
+    ],
+    [
+     618.4,
+     140.3
+    ],
+    [
+     618.8,
+     135.4
+    ],
+    [
+     617,
+     133
+    ],
+    [
+     619,
+     132.3
+    ],
+    [
+     616.6,
+     128.9
+    ],
+    [
+     601.4,
+     123.5
+    ],
+    [
+     603,
+     120.4
+    ],
+    [
+     611.7,
+     121.3
+    ],
+    [
+     607.5,
+     118.6
+    ]
+   ],
+   [
+    [
+     387.5,
+     -25.1
+    ],
+    [
+     382.5,
+     -21.8
+    ],
+    [
+     381.6,
+     -17.6
+    ],
+    [
+     381.3,
+     -19.5
+    ],
+    [
+     375.7,
+     -18.5
+    ],
+    [
+     377.8,
+     -20.2
+    ],
+    [
+     376,
+     -20.5
+    ],
+    [
+     379,
+     -26.5
+    ],
+    [
+     386.1,
+     -27.5
+    ]
+   ],
+   [
+    [
+     311.8,
+     -34.5
+    ],
+    [
+     301.8,
+     -32.4
+    ],
+    [
+     297.9,
+     -30.2
+    ],
+    [
+     298.2,
+     -28.8
+    ],
+    [
+     292.7,
+     -27.2
+    ],
+    [
+     292,
+     -28.6
+    ],
+    [
+     290,
+     -27.1
+    ],
+    [
+     287.5,
+     -30.5
+    ],
+    [
+     290.6,
+     -30.2
+    ],
+    [
+     309.8,
+     -40.1
+    ],
+    [
+     316.9,
+     -39
+    ],
+    [
+     316.2,
+     -37.6
+    ],
+    [
+     323.8,
+     -38.6
+    ],
+    [
+     349.8,
+     -36.2
+    ],
+    [
+     329.8,
+     -37
+    ],
+    [
+     323.9,
+     -34.9
+    ]
+   ],
+   [
+    [
+     741.9,
+     60.1
+    ],
+    [
+     735.3,
+     64.3
+    ],
+    [
+     738.7,
+     59.9
+    ],
+    [
+     733.2,
+     63.9
+    ],
+    [
+     731,
+     71.2
+    ],
+    [
+     726.3,
+     73
+    ],
+    [
+     730.9,
+     70.7
+    ],
+    [
+     730.8,
+     66.1
+    ],
+    [
+     727.3,
+     68.9
+    ],
+    [
+     730.1,
+     62
+    ],
+    [
+     739.9,
+     57.2
+    ],
+    [
+     743.2,
+     57.6
+    ],
+    [
+     739.9,
+     59.9
+    ],
+    [
+     744.4,
+     58.9
+    ]
+   ],
+   [
+    [
+     491.5,
+     81.1
+    ],
+    [
+     490.7,
+     83.1
+    ],
+    [
+     489.1,
+     79.9
+    ],
+    [
+     484.4,
+     80.2
+    ],
+    [
+     482.9,
+     81.5
+    ],
+    [
+     491.2,
+     83.7
+    ],
+    [
+     483.7,
+     87.1
+    ],
+    [
+     476.5,
+     86.4
+    ],
+    [
+     477.2,
+     83.9
+    ],
+    [
+     480.5,
+     83.2
+    ],
+    [
+     480.1,
+     81.1
+    ],
+    [
+     484.5,
+     78.4
+    ],
+    [
+     479,
+     80
+    ],
+    [
+     478.5,
+     78.1
+    ],
+    [
+     485.1,
+     76.9
+    ],
+    [
+     484.8,
+     73.7
+    ],
+    [
+     488.4,
+     77.4
+    ],
+    [
+     487.7,
+     78.8
+    ]
+   ],
+   [
+    [
+     562.8,
+     74.1
+    ],
+    [
+     561,
+     80
+    ],
+    [
+     558.3,
+     80.9
+    ],
+    [
+     556.7,
+     79
+    ],
+    [
+     554,
+     80.1
+    ],
+    [
+     555.9,
+     77.8
+    ],
+    [
+     551.8,
+     79.6
+    ],
+    [
+     552.1,
+     76.6
+    ],
+    [
+     550.2,
+     76.3
+    ],
+    [
+     555.6,
+     70.4
+    ],
+    [
+     559.4,
+     71.9
+    ],
+    [
+     559.1,
+     70.4
+    ],
+    [
+     561.1,
+     72.1
+    ],
+    [
+     560.3,
+     73.8
+    ]
+   ],
+   [
+    [
+     400.7,
+     -20.1
+    ],
+    [
+     402.8,
+     -19
+    ],
+    [
+     396.1,
+     -14.4
+    ],
+    [
+     399.3,
+     -12.5
+    ],
+    [
+     397,
+     -11.6
+    ],
+    [
+     397.8,
+     -9.6
+    ],
+    [
+     391.9,
+     -4.6
+    ],
+    [
+     382.3,
+     -0.7
+    ],
+    [
+     384.3,
+     -7.5
+    ],
+    [
+     385.8,
+     -4.1
+    ],
+    [
+     390.6,
+     -7.3
+    ],
+    [
+     389.2,
+     -11.8
+    ],
+    [
+     386.3,
+     -13.6
+    ],
+    [
+     389.2,
+     -17.4
+    ],
+    [
+     396.8,
+     -22.4
+    ],
+    [
+     397.7,
+     -20.7
+    ],
+    [
+     399.5,
+     -21.9
+    ],
+    [
+     399.6,
+     -19.3
+    ]
+   ],
+   [
+    [
+     398.2,
+     -83
+    ],
+    [
+     402.7,
+     -85.8
+    ],
+    [
+     413.4,
+     -85.9
+    ],
+    [
+     408.7,
+     -83.8
+    ],
+    [
+     408,
+     -81.6
+    ],
+    [
+     410.6,
+     -79.9
+    ],
+    [
+     405.8,
+     -76.4
+    ],
+    [
+     404.7,
+     -79.5
+    ],
+    [
+     403,
+     -76.4
+    ],
+    [
+     397,
+     -79.5
+    ],
+    [
+     395.5,
+     -82.3
+    ]
+   ],
+   [
+    [
+     484.7,
+     -94.1
+    ],
+    [
+     489.2,
+     -93.7
+    ],
+    [
+     486.7,
+     -92.2
+    ],
+    [
+     471,
+     -92.9
+    ],
+    [
+     465.2,
+     -95.8
+    ]
+   ],
+   [
+    [
+     704,
+     29.4
+    ],
+    [
+     695.3,
+     32.2
+    ],
+    [
+     685.2,
+     30.1
+    ],
+    [
+     694.5,
+     28.1
+    ],
+    [
+     696.5,
+     26.5
+    ],
+    [
+     694.9,
+     25.4
+    ],
+    [
+     699.2,
+     25.7
+    ],
+    [
+     698.6,
+     24.4
+    ],
+    [
+     700.8,
+     24
+    ],
+    [
+     703.9,
+     24.9
+    ],
+    [
+     696.3,
+     29.5
+    ]
+   ],
+   [
+    [
+     857,
+     24.7
+    ],
+    [
+     857.5,
+     26.6
+    ],
+    [
+     849.3,
+     27.9
+    ],
+    [
+     839.5,
+     24.9
+    ],
+    [
+     839,
+     26.7
+    ],
+    [
+     831.9,
+     29.1
+    ],
+    [
+     835.2,
+     33.1
+    ],
+    [
+     829.1,
+     32.3
+    ],
+    [
+     831.7,
+     30.9
+    ],
+    [
+     831.4,
+     27.7
+    ],
+    [
+     818.4,
+     19.6
+    ],
+    [
+     819.1,
+     24.3
+    ],
+    [
+     816.3,
+     20.1
+    ],
+    [
+     817.6,
+     18.5
+    ],
+    [
+     816.5,
+     14.1
+    ],
+    [
+     819.5,
+     14.7
+    ],
+    [
+     818.5,
+     16.6
+    ],
+    [
+     821.3,
+     20.6
+    ],
+    [
+     830.7,
+     26.2
+    ],
+    [
+     837.6,
+     25.4
+    ],
+    [
+     831.8,
+     20.8
+    ],
+    [
+     832.8,
+     18.6
+    ],
+    [
+     836.8,
+     24.5
+    ],
+    [
+     844.7,
+     24.1
+    ],
+    [
+     841.6,
+     23
+    ],
+    [
+     842.6,
+     17.5
+    ],
+    [
+     843.5,
+     20.1
+    ],
+    [
+     850.2,
+     25.1
+    ]
+   ],
+   [
+    [
+     768.6,
+     -100.4
+    ],
+    [
+     764.4,
+     -101.6
+    ],
+    [
+     757.7,
+     -99.5
+    ],
+    [
+     751.9,
+     -103
+    ],
+    [
+     758.3,
+     -103
+    ],
+    [
+     755.7,
+     -108.9
+    ],
+    [
+     768,
+     -104.4
+    ],
+    [
+     771.7,
+     -100.6
+    ],
+    [
+     771.3,
+     -99.1
+    ]
+   ],
+   [
+    [
+     445.2,
+     69.4
+    ],
+    [
+     438.6,
+     70.8
+    ],
+    [
+     432.8,
+     60.5
+    ],
+    [
+     434.7,
+     61.3
+    ],
+    [
+     434.1,
+     59.6
+    ],
+    [
+     431,
+     55.4
+    ],
+    [
+     426.7,
+     55.3
+    ],
+    [
+     426.4,
+     53.3
+    ],
+    [
+     430.3,
+     54.3
+    ],
+    [
+     430.9,
+     52.6
+    ],
+    [
+     433.9,
+     57.1
+    ],
+    [
+     433.2,
+     53.8
+    ],
+    [
+     434.9,
+     53.7
+    ],
+    [
+     438,
+     58.9
+    ],
+    [
+     436,
+     62.6
+    ],
+    [
+     441.9,
+     65.1
+    ]
+   ],
+   [
+    [
+     424.9,
+     54.5
+    ],
+    [
+     421.8,
+     53.3
+    ],
+    [
+     421.3,
+     49.5
+    ],
+    [
+     421.1,
+     53
+    ],
+    [
+     419.7,
+     51.2
+    ],
+    [
+     420.3,
+     40.9
+    ],
+    [
+     417.6,
+     39.8
+    ],
+    [
+     417.8,
+     42.6
+    ],
+    [
+     414,
+     38.1
+    ],
+    [
+     411.3,
+     41
+    ],
+    [
+     408.1,
+     36.9
+    ],
+    [
+     415,
+     36.1
+    ],
+    [
+     424.8,
+     39.2
+    ],
+    [
+     424.9,
+     44.3
+    ],
+    [
+     423,
+     47.1
+    ]
+   ],
+   [
+    [
+     796.9,
+     57.1
+    ],
+    [
+     797.3,
+     58.7
+    ],
+    [
+     792.3,
+     61.9
+    ],
+    [
+     791.1,
+     65.2
+    ],
+    [
+     790.6,
+     61.8
+    ],
+    [
+     786,
+     58
+    ],
+    [
+     785.1,
+     53.7
+    ],
+    [
+     787.3,
+     51.9
+    ],
+    [
+     787.9,
+     54.3
+    ],
+    [
+     791.6,
+     53.6
+    ],
+    [
+     794.5,
+     51.3
+    ],
+    [
+     794.4,
+     53.8
+    ],
+    [
+     797.6,
+     53.6
+    ]
+   ],
+   [
+    [
+     319.7,
+     -3.5
+    ],
+    [
+     316.2,
+     -5.8
+    ],
+    [
+     317.3,
+     -7.1
+    ],
+    [
+     321.3,
+     -4.9
+    ],
+    [
+     321.5,
+     -2.9
+    ],
+    [
+     325.5,
+     -2
+    ],
+    [
+     324.8,
+     2.1
+    ],
+    [
+     318.9,
+     7.9
+    ],
+    [
+     317.4,
+     3.7
+    ],
+    [
+     312.6,
+     1.8
+    ],
+    [
+     320.2,
+     4
+    ],
+    [
+     323.2,
+     -0.3
+    ]
+   ],
+   [
+    [
+     441.2,
+     -15.1
+    ],
+    [
+     444.8,
+     -13.9
+    ],
+    [
+     441.8,
+     -10.6
+    ],
+    [
+     426.1,
+     -5
+    ],
+    [
+     424.8,
+     -6.1
+    ],
+    [
+     432.7,
+     -10.3
+    ],
+    [
+     432.8,
+     -8.4
+    ],
+    [
+     434.4,
+     -8.7
+    ],
+    [
+     438.7,
+     -12.8
+    ],
+    [
+     438.2,
+     -16.5
+    ],
+    [
+     442.3,
+     -17
+    ]
+   ]
+  ],
+  "image": {
+   "src": "/maps/north-america.jpg",
+   "x": 0,
+   "y": 0,
+   "width": 1000,
+   "height": 562.5,
+   "surround": "#5169a3"
+  }
+ },
+ "edited": true
+}

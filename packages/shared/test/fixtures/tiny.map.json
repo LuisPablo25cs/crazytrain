@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "id": "tiny",
+  "name": "Tiny test map",
+  "width": 800,
+  "height": 500,
+  "cities": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "x": 100,
+      "y": 100,
+      "major": true
+    },
+    {
+      "id": "bravo",
+      "name": "Bravo",
+      "x": 300,
+      "y": 100,
+      "major": false
+    },
+    {
+      "id": "charlie",
+      "name": "Charlie",
+      "x": 500,
+      "y": 100,
+      "major": false
+    },
+    {
+      "id": "delta",
+      "name": "Delta",
+      "x": 100,
+      "y": 300,
+      "major": false
+    },
+    {
+      "id": "echo",
+      "name": "Echo",
+      "x": 300,
+      "y": 300,
+      "major": true
+    },
+    {
+      "id": "foxtrot",
+      "name": "Foxtrot",
+      "x": 500,
+      "y": 300,
+      "major": false
+    },
+    {
+      "id": "golf",
+      "name": "Golf",
+      "x": 700,
+      "y": 200,
+      "major": false
+    },
+    {
+      "id": "hotel",
+      "name": "Hotel",
+      "x": 700,
+      "y": 400,
+      "major": false
+    }
+  ],
+  "routes": [
+    {
+      "id": "alpha-bravo-1",
+      "from": "alpha",
+      "to": "bravo",
+      "length": 2,
+      "color": "red",
+      "parallelGroup": "alpha-bravo"
+    },
+    {
+      "id": "alpha-bravo-2",
+      "from": "alpha",
+      "to": "bravo",
+      "length": 2,
+      "color": "blue",
+      "parallelGroup": "alpha-bravo"
+    },
+    {
+      "id": "bravo-charlie",
+      "from": "bravo",
+      "to": "charlie",
+      "length": 3,
+      "color": "gray"
+    },
+    {
+      "id": "alpha-delta",
+      "from": "alpha",
+      "to": "delta",
+      "length": 2,
+      "color": "green"
+    },
+    {
+      "id": "bravo-echo-1",
+      "from": "bravo",
+      "to": "echo",
+      "length": 2,
+      "color": "gray",
+      "parallelGroup": "bravo-echo"
+    },
+    {
+      "id": "bravo-echo-2",
+      "from": "bravo",
+      "to": "echo",
+      "length": 2,
+      "color": "gray",
+      "parallelGroup": "bravo-echo"
+    },
+    {
+      "id": "bravo-echo-3",
+      "from": "bravo",
+      "to": "echo",
+      "length": 2,
+      "color": "gray",
+      "parallelGroup": "bravo-echo"
+    },
+    {
+      "id": "delta-echo",
+      "from": "delta",
+      "to": "echo",
+      "length": 3,
+      "color": "yellow"
+    },
+    {
+      "id": "echo-foxtrot",
+      "from": "echo",
+      "to": "foxtrot",
+      "length": 2,
+      "color": "black"
+    },
+    {
+      "id": "charlie-echo",
+      "from": "charlie",
+      "to": "echo",
+      "length": 1,
+      "color": "red"
+    },
+    {
+      "id": "charlie-foxtrot",
+      "from": "charlie",
+      "to": "foxtrot",
+      "length": 4,
+      "color": "white",
+      "kind": "tunnel"
+    },
+    {
+      "id": "charlie-golf",
+      "from": "charlie",
+      "to": "golf",
+      "length": 3,
+      "color": "orange"
+    },
+    {
+      "id": "foxtrot-golf",
+      "from": "foxtrot",
+      "to": "golf",
+      "length": 2,
+      "color": "purple",
+      "kind": "tunnel"
+    },
+    {
+      "id": "foxtrot-hotel",
+      "from": "foxtrot",
+      "to": "hotel",
+      "length": 3,
+      "color": "gray",
+      "kind": "ferry",
+      "ferryLocomotives": 1
+    },
+    {
+      "id": "golf-hotel",
+      "from": "golf",
+      "to": "hotel",
+      "length": 1,
+      "color": "gray"
+    },
+    {
+      "id": "delta-hotel",
+      "from": "delta",
+      "to": "hotel",
+      "length": 6,
+      "color": "gray"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "charlie-echo",
+      "from": "charlie",
+      "to": "echo",
+      "points": 1,
+      "deck": "regular"
+    },
+    {
+      "id": "golf-hotel",
+      "from": "golf",
+      "to": "hotel",
+      "points": 1,
+      "deck": "regular"
+    },
+    {
+      "id": "alpha-bravo",
+      "from": "alpha",
+      "to": "bravo",
+      "points": 2,
+      "deck": "regular"
+    },
+    {
+      "id": "alpha-delta",
+      "from": "alpha",
+      "to": "delta",
+      "points": 2,
+      "deck": "regular"
+    },
+    {
+      "id": "bravo-echo",
+      "from": "bravo",
+      "to": "echo",
+      "points": 2,
+      "deck": "regular"
+    },
+    {
+      "id": "echo-foxtrot",
+      "from": "echo",
+      "to": "foxtrot",
+      "points": 2,
+      "deck": "regular"
+    },
+    {
+      "id": "foxtrot-golf",
+      "from": "foxtrot",
+      "to": "golf",
+      "points": 2,
+      "deck": "regular"
+    },
+    {
+      "id": "bravo-charlie",
+      "from": "bravo",
+      "to": "charlie",
+      "points": 3,
+      "deck": "regular"
+    },
+    {
+      "id": "charlie-foxtrot",
+      "from": "charlie",
+      "to": "foxtrot",
+      "points": 3,
+      "deck": "regular"
+    },
+    {
+      "id": "charlie-golf",
+      "from": "charlie",
+      "to": "golf",
+      "points": 3,
+      "deck": "regular"
+    },
+    {
+      "id": "delta-echo",
+      "from": "delta",
+      "to": "echo",
+      "points": 3,
+      "deck": "regular"
+    },
+    {
+      "id": "foxtrot-hotel",
+      "from": "foxtrot",
+      "to": "hotel",
+      "points": 3,
+      "deck": "regular"
+    },
+    {
+      "id": "alpha-echo",
+      "from": "alpha",
+      "to": "echo",
+      "points": 4,
+      "deck": "regular"
+    },
+    {
+      "id": "bravo-delta",
+      "from": "bravo",
+      "to": "delta",
+      "points": 4,
+      "deck": "regular"
+    },
+    {
+      "id": "bravo-foxtrot",
+      "from": "bravo",
+      "to": "foxtrot",
+      "points": 4,
+      "deck": "regular"
+    },
+    {
+      "id": "charlie-delta",
+      "from": "charlie",
+      "to": "delta",
+      "points": 4,
+      "deck": "regular"
+    },
+    {
+      "id": "charlie-hotel",
+      "from": "charlie",
+      "to": "hotel",
+      "points": 4,
+      "deck": "regular"
+    },
+    {
+      "id": "echo-golf",
+      "from": "echo",
+      "to": "golf",
+      "points": 4,
+      "deck": "regular"
+    },
+    {
+      "id": "alpha-charlie",
+      "from": "alpha",
+      "to": "charlie",
+      "points": 5,
+      "deck": "regular"
+    },
+    {
+      "id": "delta-foxtrot",
+      "from": "delta",
+      "to": "foxtrot",
+      "points": 5,
+      "deck": "regular"
+    },
+    {
+      "id": "echo-hotel",
+      "from": "echo",
+      "to": "hotel",
+      "points": 5,
+      "deck": "regular"
+    },
+    {
+      "id": "alpha-foxtrot",
+      "from": "alpha",
+      "to": "foxtrot",
+      "points": 6,
+      "deck": "long"
+    },
+    {
+      "id": "bravo-golf",
+      "from": "bravo",
+      "to": "golf",
+      "points": 6,
+      "deck": "long"
+    },
+    {
+      "id": "delta-hotel",
+      "from": "delta",
+      "to": "hotel",
+      "points": 6,
+      "deck": "long"
+    },
+    {
+      "id": "bravo-hotel",
+      "from": "bravo",
+      "to": "hotel",
+      "points": 7,
+      "deck": "long"
+    },
+    {
+      "id": "delta-golf",
+      "from": "delta",
+      "to": "golf",
+      "points": 7,
+      "deck": "long"
+    },
+    {
+      "id": "alpha-golf",
+      "from": "alpha",
+      "to": "golf",
+      "points": 8,
+      "deck": "long"
+    },
+    {
+      "id": "alpha-hotel",
+      "from": "alpha",
+      "to": "hotel",
+      "points": 8,
+      "deck": "long"
+    }
+  ],
+  "terrain": {
+    "land": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          800,
+          0
+        ],
+        [
+          800,
+          500
+        ],
+        [
+          0,
+          500
+        ]
+      ]
+    ],
+    "lakes": []
+  }
+}

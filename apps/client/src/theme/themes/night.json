@@ -1,0 +1,52 @@
+{
+  "id": "night",
+  "name": "Night",
+  "cardColors": {
+    "red": "#ad1b45",
+    "orange": "#e37200",
+    "yellow": "#eea809",
+    "green": "#84c72c",
+    "blue": "#5292e1",
+    "purple": "#df7989",
+    "black": "#111111",
+    "white": "#fff5ed",
+    "locomotive": "#d8b23a",
+    "gray": "#8e8e86"
+  },
+  "playerColors": {
+    "red": "#ff5a52",
+    "blue": "#4aa3ff",
+    "green": "#4fd16a",
+    "yellow": "#ffe14d",
+    "purple": "#c065ff",
+    "orange": "#ff9d2e",
+    "white": "#ffffff"
+  },
+  "terrain": {
+    "background": "#0d1b2a",
+    "water": "#1b3a57",
+    "land": "#41553a",
+    "landVariation": 0.1,
+    "lake": "#24527a",
+    "imageTint": "#7d89a6"
+  },
+  "board": {
+    "city": "#d9a066",
+    "majorCity": "#ff8a65",
+    "label": "#f1f1f1",
+    "labelOutline": "#0d1b2a",
+    "highlight": "#ffe066",
+    "blocked": "#2a2a2a"
+  },
+  "ui": {
+    "panel": "#1d2633",
+    "panelText": "#e8eaed",
+    "accent": "#ff8a65",
+    "muted": "#9aa4b1"
+  },
+  "lighting": {
+    "ambient": 0.55,
+    "sun": 0.9,
+    "sunColor": "#c9d8ff"
+  }
+}

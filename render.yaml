@@ -1,0 +1,16 @@
+# Render Blueprint: one web service serves the client, the API and the WebSocket (KTD11).
+# In Render: New > Blueprint, pick this repository, and apply.
+services:
+  - type: web
+    name: rails
+    runtime: node
+    plan: free
+    # Dev dependencies (Vite, esbuild, TypeScript) are needed to build.
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    # A deploy restarts the server and ends every game in progress. Deploy by hand, not on push.
+    autoDeployTrigger: "off"
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

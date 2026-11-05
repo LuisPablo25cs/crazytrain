@@ -1,0 +1,40 @@
+{
+  "name": "rails",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c blue,green \"npm run dev -w @rails/server\" \"npm run dev -w @rails/client\"",
+    "build": "npm run build -w @rails/client && npm run build -w @rails/server",
+    "start": "node apps/server/dist/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build && playwright test",
+    "typecheck": "tsc -p packages/shared && tsc -p apps/server && tsc -p apps/client && tsc -p tools",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "validate:maps": "tsx tools/map-validate/validate.ts assets/maps",
+    "build:map": "tsx tools/map-build/build.ts",
+    "export:schema": "tsx tools/map-schema/export.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/d3-geo": "^3.1.1",
+    "@types/node": "^22.20.5",
+    "concurrently": "^10.0.6",
+    "d3-geo": "^3.1.1",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.4"
+  }
+}

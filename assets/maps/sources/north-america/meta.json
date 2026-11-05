@@ -1,0 +1,21 @@
+{
+  "id": "north-america",
+  "name": "North America",
+  "author": "Rails starter map",
+  "description": "The USA reference board extended with Canada, Mexico and Cuba.",
+  "width": 1000,
+  "projection": {
+    "kind": "image",
+    "src": "/maps/north-america.jpg",
+    "source": "maps/sources/Omar Mapa.png",
+    "pixelWidth": 1920,
+    "pixelHeight": 1080,
+    "lon0": -100,
+    "lat0": 40,
+    "x0": 808.44,
+    "y0": 368.91,
+    "sx": 22.73,
+    "sy": 22.75,
+    "surround": "#5169a3"
+  }
+}
