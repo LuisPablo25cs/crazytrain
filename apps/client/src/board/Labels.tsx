@@ -1,7 +1,8 @@
 import { useFrame, useThree } from '@react-three/fiber';
-import type { MutableRefObject } from 'react';
+import { useState, type MutableRefObject } from 'react';
 import * as THREE from 'three';
 import type { City, Theme } from '@rails/shared';
+import { cityLabelUrl } from './cityLabelArt.js';
 import { LAND_HEIGHT } from './Terrain.js';
 
 export type LabelRefs = MutableRefObject<Map<string, HTMLDivElement>>;
@@ -28,36 +29,57 @@ export function LabelProjector({ cities, refs }: { cities: City[]; refs: LabelRe
   return null;
 }
 
-/** Outside the canvas: one DOM layer with a label per city. Minor labels fade out when zoomed out. */
+/**
+ * Outside the canvas: one DOM layer with a label per city. Minor labels fade out when zoomed out.
+ * A city with label art (see cityLabelArt.ts) shows its picture instead of plain text; if the picture fails, the name returns.
+ */
 export function LabelLayer({
   cities,
   refs,
   theme,
   showMinor,
   emphasized,
+  art,
 }: {
   cities: City[];
   refs: LabelRefs;
   theme: Theme;
   showMinor: boolean;
   emphasized: Set<string>;
+  /** City ids that have label art. */
+  art?: Set<string>;
 }) {
+  const [broken, setBroken] = useState<Set<string>>(() => new Set());
   const style = { color: theme.board.label, textShadow: `0 0 3px ${theme.board.labelOutline}, 0 0 2px ${theme.board.labelOutline}` };
   return (
     <div className="labels-layer" aria-hidden="true">
-      {cities.map((c) => (
-        <div
-          key={c.id}
-          ref={(el) => {
-            if (el) refs.current.set(c.id, el);
-            else refs.current.delete(c.id);
-          }}
-          className={`city-label ${c.major ? 'major' : ''} ${c.major || showMinor || emphasized.has(c.id) ? '' : 'hidden'}`}
-          style={style}
-        >
-          {c.name}
-        </div>
-      ))}
+      {cities.map((c) => {
+        const pictured = !!art?.has(c.id) && !broken.has(c.id);
+        const shown = c.major || showMinor || emphasized.has(c.id);
+        return (
+          <div
+            key={c.id}
+            ref={(el) => {
+              if (el) refs.current.set(c.id, el);
+              else refs.current.delete(c.id);
+            }}
+            className={`city-label ${c.major ? 'major' : ''} ${pictured ? 'pictured' : ''} ${shown ? '' : 'hidden'}`}
+            style={pictured ? undefined : style}
+          >
+            {pictured ? (
+              <img
+                className="city-label-art"
+                src={cityLabelUrl(c.id)}
+                alt={c.name}
+                draggable={false}
+                onError={() => setBroken((b) => new Set(b).add(c.id))}
+              />
+            ) : (
+              c.name
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

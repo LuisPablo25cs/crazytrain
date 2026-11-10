@@ -53,6 +53,11 @@
         "gray": {
           "type": "string",
           "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "excavator": {
+          "default": "#d9a21b",
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
         }
       },
       "required": [

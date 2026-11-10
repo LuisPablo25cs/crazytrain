@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/cardo": "^5.3.0",
     "@rails/shared": "*",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
+    "gifenc": "^1.0.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "socket.io-client": "^4.8.4",

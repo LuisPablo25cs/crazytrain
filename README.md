@@ -117,6 +117,8 @@ Train cards live in `assets/train_cards` (`<Color>.png`, with `rainbow.png` as t
 
 After changing any artwork, run `python tools/assets/prepare-art.py` (needs Pillow). It writes small web copies to `assets/web/slots` and `assets/web/cards`, which the server serves at `/art`, and lists any image that is missing. Grey slots can be named `grey_*` or `gray_*`.
 
+City names on the board use lettering from the Canva design "Assets Crazy Train-1". Which style a city gets (snow, earthquake, volcano, tsunami) follows the hazard list in `assets/city_labels/hazards.json`, and `assets/city_labels/pages.json` says which Canva page holds each city. To update them, export all pages of the design as PNG with a transparent background into `assets/city_labels/export`, then run `python tools/assets/prepare-city-labels.py` (needs numpy and Pillow). It writes `assets/web/cities/<city-id>.webp` and lists cities that still need a page. Cities without art keep their plain text name.
+
 ### Rules
 
 All game numbers are in [packages/shared/src/rules/defaults.ts](packages/shared/src/rules/defaults.ts): trains, stations, deck, scoring, ticket deals, parallel lanes per player count, player limits and player colors. Values are applied in this order:
@@ -130,6 +132,32 @@ Raising the player limit only needs `players.max` and enough `playerColors`.
 ### Themes
 
 Themes are JSON files in [apps/client/src/theme/themes](apps/client/src/theme/themes): card colors, player colors, terrain, board, UI and lighting. To add one, copy `classic.json`, change the `id` and colors, and add it to the `THEMES` list in `apps/client/src/theme/themes.ts`. A broken theme falls back to the default. Players pick a theme from the menu, and the choice is saved in their browser.
+
+## Seasons mode
+
+Pick **Seasons** in the lobby (Classic stays available) and a game length of 1 to 5 years. Each round is one
+month. Each month a disaster may strike a city that is prone to it; the map stores each city's risk
+(`hazards`, editable in the editor's city panel), and real seasons apply (hurricanes June to November,
+tornados March to June, snow in winter). Damaged routes stop connecting until their owner repairs them,
+which takes a turn. Unrepaired routes are lost after a year (points come off, trains go back). Some
+ground needs **excavator** cards, a few of which are in the deck. All the numbers live in `rules.seasons`
+(`packages/shared/src/rules/defaults.ts`), and a map can override them.
+
+To try it, open the editor's **Player view**, which starts in Seasons mode and has a **Strike** button to
+make any disaster hit any city right away. The announcement animations come from `assets/animations`;
+run `python tools/assets/prepare-art.py` after changing them.
+
+## Animations
+
+`npm run dev`, then open http://localhost:5173/animations (hidden, only there while the editor is on).
+Pick a hurricane, snow storm, tsunami, earthquake or volcano, drag the sliders and colors with a live
+preview, and **Save GIF** writes `assets/animations/<name>.gif` plus `<name>.json` with its settings.
+The Saved buttons load those settings back, and a new file name keeps several versions of one animation.
+
+Each animation is one file in `apps/client/src/animations/`, drawn entirely in code. Every setting is one
+line in its `params` list, and the page builds the control from that line. Anything counted "per loop"
+must stay a whole number, which is what makes the GIF loop without a jump. To add an animation, copy a
+file and add it to `index.ts`.
 
 ## House rules worth knowing
 

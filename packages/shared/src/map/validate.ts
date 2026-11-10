@@ -1,7 +1,7 @@
 import { resolveRules, maxScoredLength, RulesError } from '../rules/resolve.js';
 import type { RulesConfig } from '../rules/schema.js';
 import { components, indexMap, type MapIndex } from './graph.js';
-import { MapSchema, ROUTE_COLORS, type MapDefinition, type RouteColor } from './schema.js';
+import { MapSchema, ROUTE_COLORS, ticketCities, type MapDefinition, type RouteColor } from './schema.js';
 
 export interface ValidationIssue {
   /** Dotted path to the bad item, for example `routes[3].to` or `routes.denver-omaha`. */
@@ -156,11 +156,14 @@ export function validateMap(input: unknown): MapValidationResult {
 
   for (const t of map.tickets) {
     const p = `tickets.${t.id}`;
-    for (const end of [t.from, t.to]) {
+    for (const end of ticketCities(t)) {
       if (!cityIds.has(end)) errors.push({ path: p, message: `ticket "${t.id}" points to missing city "${end}"` });
     }
-    if (t.from === t.to) errors.push({ path: p, message: `ticket "${t.id}" starts and ends at "${t.from}"` });
-    if (cityIds.has(t.from) && cityIds.has(t.to) && mainPart.has(t.from) !== mainPart.has(t.to)) {
+    if (new Set(ticketCities(t)).size !== ticketCities(t).length) {
+      errors.push({ path: p, message: `ticket "${t.id}" names the same city twice` });
+    }
+    const named = ticketCities(t).filter((c) => cityIds.has(c));
+    if (named.some((c) => mainPart.has(c) !== mainPart.has(named[0]!))) {
       errors.push({ path: p, message: `ticket "${t.id}" connects cities that cannot reach each other` });
     }
   }

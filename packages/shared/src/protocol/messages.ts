@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ALL_CARDS } from '../map/schema.js';
 import type { GameEvent } from '../engine/types.js';
 import type { GameView } from '../engine/view.js';
-import type { ExpansionToggles } from '../rules/schema.js';
+import { GameModeSchema, type ExpansionToggles, type GameMode } from '../rules/schema.js';
 
 /** Largest map document a host may upload, in bytes of JSON. */
 export const MAX_MAP_UPLOAD_BYTES = 2_000_000;
@@ -19,6 +19,7 @@ export const ClientActionSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('claimRoute'), routeId: id, payment: cardCounts }),
   z.object({ type: z.literal('resolveTunnel'), extra: cardCounts }),
   z.object({ type: z.literal('withdrawTunnel') }),
+  z.object({ type: z.literal('repairRoute'), routeId: id, payment: cardCounts }),
   z.object({ type: z.literal('drawTickets') }),
   z.object({ type: z.literal('keepTickets'), ticketIds: z.array(id).max(20) }),
   z.object({ type: z.literal('buildStation'), cityId: id, payment: cardCounts, borrowRouteId: id }),
@@ -42,6 +43,8 @@ export const IntentSchema = z.discriminatedUnion('type', [
       .object({ tunnels: z.boolean(), ferries: z.boolean(), stations: z.boolean(), longTickets: z.boolean() })
       .partial(),
   }),
+  /** Classic or Seasons, and how many years a Seasons game lasts. */
+  z.object({ type: z.literal('setMode'), mode: GameModeSchema, years: z.number().int().min(1).max(10).optional() }),
   /** `map: null` returns to the starter map. The map document is validated separately. */
   z.object({ type: z.literal('setMap'), map: z.unknown().nullable() }),
   z.object({ type: z.literal('setColor'), color: z.string().min(1).max(30) }),
@@ -75,6 +78,9 @@ export interface RoomView {
   hostSeatId: string;
   seats: SeatView[];
   toggles: ExpansionToggles;
+  mode: GameMode;
+  /** Seasons mode: game length in years. */
+  years: number;
   map: { id: string; name: string; cityCount: number; routeCount: number; custom: boolean };
   limits: { minPlayers: number; maxPlayers: number; playerColors: string[] };
 }

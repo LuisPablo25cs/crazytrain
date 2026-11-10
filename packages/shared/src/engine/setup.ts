@@ -48,6 +48,14 @@ export function createGame({ map, rules, players, seed }: CreateGameOptions): { 
     consecutivePasses: 0,
     rng: holder.rng,
     results: null,
+    month: 0,
+    firstPlayer: 0,
+    zones: [],
+    nextZoneId: 1,
+    damage: {},
+    blocked: {},
+    abandoned: {},
+    recolored: {},
   };
 
   state.players = players.map((p): PlayerState => {
@@ -75,6 +83,7 @@ export function createGame({ map, rules, players, seed }: CreateGameOptions): { 
   // Long tickets that were not dealt leave the game (R11).
   refillMarket(state, events);
   state.currentPlayer = randomInt(state, players.length);
+  state.firstPlayer = state.currentPlayer;
   if (state.players.every((p) => p.keptInitial)) {
     state.phase = 'playing';
     events.push({ type: 'turnStarted', player: state.currentPlayer });

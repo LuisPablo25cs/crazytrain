@@ -19,10 +19,16 @@ export function EventLog({ view, map }: { view: GameView; map: MapIndex }) {
   }, [lines.length]);
 
   return (
-    <section className="event-log panel" aria-label={S.log}>
+    <section className={`event-log panel ${open ? '' : 'minimized'}`} aria-label={S.log}>
       <h2>
-        <button className="link" onClick={() => setOpen(!open)} aria-expanded={open}>
-          {open ? '▾' : '▸'} {S.log}
+        <span>{S.log}</span>
+        <button
+          className="small secondary log-toggle"
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          title={open ? 'Minimize the log' : 'Show the log'}
+        >
+          {open ? '–' : '+'}
         </button>
       </h2>
       {open && (

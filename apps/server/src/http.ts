@@ -1,5 +1,5 @@
 import express from 'express';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 export interface HttpOptions {
@@ -23,6 +23,24 @@ export function createHttpApp(options: HttpOptions = {}): express.Express {
   if (mapImagesDir && existsSync(mapImagesDir)) {
     app.use('/maps', express.static(mapImagesDir, { maxAge: '1d', fallthrough: false }));
   }
+  // Which optional art exists, so the client never asks for a file that is not there.
+  app.get('/api/art', (_req, res) => {
+    res.set('Cache-Control', 'no-cache');
+    const fonts = artDir && existsSync(join(artDir, 'fonts')) ? readdirSync(join(artDir, 'fonts')) : [];
+    const numberFont = fonts.find((f) => /rosella/i.test(f)) ?? fonts[0];
+    // City label art (assets/web/cities/<city-id>.webp, from tools/assets/prepare-city-labels.py).
+    const cityLabels =
+      artDir && existsSync(join(artDir, 'cities'))
+        ? readdirSync(join(artDir, 'cities'))
+            .filter((f) => f.endsWith('.webp'))
+            .map((f) => f.slice(0, -'.webp'.length))
+        : [];
+    res.json({
+      ticketTemplate: !!artDir && existsSync(join(artDir, 'ui', 'ticket.webp')),
+      numberFont: numberFont ? `/art/fonts/${numberFont}` : null,
+      cityLabels,
+    });
+  });
   if (artDir && existsSync(artDir)) {
     app.use('/art', express.static(artDir, { maxAge: '1d', fallthrough: false }));
   }

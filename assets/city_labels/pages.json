@@ -1,0 +1,184 @@
+{
+  "$comment": "Which page of the Canva design 'Assets Crazy Train-1' holds each city's label art, by page number as of 2026-11-09 (pages get reordered in Canva: canvaId identifies the page, so the numbers can be refreshed). label: [left, top, width, height] and marker: [left, top, size] are where the city name and the round marker sit, in Canva page pixels (the page is 1173 wide); without them the script finds the marker by its color. Export ALL pages as PNG (transparent background) into assets/city_labels/export, then run python tools/assets/prepare-city-labels.py.",
+  "design": "https://www.canva.com/design/DAHZVALNAkE/edit",
+  "examples": {
+    "snow": 40,
+    "earthquake": 69,
+    "volcano": 70,
+    "tsunami": 76,
+    "hurricane": 74,
+    "tornado": null
+  },
+  "pages": {
+    "40": {
+      "city": "calgary",
+      "canvaId": "PBv68TPT70gV3vCj",
+      "label": [55.3, 420.1, 1062.4, 410.6],
+      "marker": [510.7, 830.7, 151.6]
+    },
+    "41": {
+      "city": "edmonton",
+      "canvaId": "PB4T7t9mTQxkmblV",
+      "label": [55.3, 499.5, 1062.4, 251.9],
+      "marker": [510.7, 830.7, 151.6]
+    },
+    "42": {
+      "city": "jasper",
+      "canvaId": "PBL9h8Djv4W6DkSc",
+      "label": [55.3, 438.9, 1062.4, 373.0],
+      "marker": [510.7, 830.7, 151.6]
+    },
+    "43": {
+      "city": "montreal",
+      "canvaId": "PBFW6s44n1YCfLXz",
+      "label": [55.3, 491.2, 1062.4, 268.5],
+      "marker": [510.7, 830.7, 151.6]
+    },
+    "44": {
+      "city": "regina",
+      "canvaId": "PBkGpSYgm1tZKg2p",
+      "label": [55.3, 406.4, 1062.4, 438.1],
+      "marker": [510.7, 830.7, 151.6]
+    },
+    "45": {
+      "city": "halifax",
+      "canvaId": "PBCSbTTL8Z4M49w3",
+      "label": [55.3, 419.4, 1062.4, 412.2],
+      "marker": [510.7, 869.0, 151.6]
+    },
+    "46": {
+      "city": "quebec",
+      "canvaId": "PBHw6nY7ST01VZMz",
+      "label": [55.3, 483.6, 1062.4, 283.8],
+      "marker": [510.7, 741.5, 151.6]
+    },
+    "47": {
+      "city": "winnipeg",
+      "canvaId": "PB9Z1n9XxMyR7vvV",
+      "label": [55.3, 419.5, 1062.4, 411.9],
+      "marker": [510.7, 793.2, 151.6]
+    },
+    "48": {
+      "city": "prince-rupert",
+      "canvaId": "PB1Z2vCk6Cc4mYmG",
+      "label": [55.3, 521.7, 1062.4, 207.5],
+      "marker": [510.7, 793.2, 151.6]
+    },
+    "49": {
+      "city": "toronto",
+      "canvaId": "PBh5pGzCB08GLWLY",
+      "label": [55.3, 477.2, 1062.4, 296.5],
+      "marker": [510.7, 793.2, 151.6]
+    },
+    "50": {
+      "city": "helena",
+      "canvaId": "PBP44c4rVj5gPXkz",
+      "label": [55.3, 433.1, 1062.4, 384.7],
+      "marker": [510.7, 793.2, 151.6]
+    },
+    "51": {
+      "city": "vancouver",
+      "canvaId": "PB5fP50GQgc4SbGZ",
+      "label": [55.3, 513.9, 1062.4, 223.1],
+      "marker": [510.7, 793.2, 151.6]
+    },
+    "52": {
+      "city": "churchill",
+      "canvaId": "PBXJJNytFz5TLgWj",
+      "label": [55.3, 482.8, 1062.4, 285.3],
+      "marker": [510.7, 793.2, 151.6]
+    },
+    "56": {
+      "city": "ottawa",
+      "canvaId": "PBK88nNKY1pMz12n"
+    },
+    "57": {
+      "city": "sault-st-marie",
+      "canvaId": "PBGGjFCBnx6p9lw5"
+    },
+    "58": {
+      "city": "pittsburgh",
+      "canvaId": "PBCD8yfqTXK2ddfb"
+    },
+    "59": {
+      "city": "omaha",
+      "canvaId": "PBGZ1323SP3s8Jhb"
+    },
+    "60": {
+      "city": "denver",
+      "canvaId": "PBKNnfPsq7Cf5DjD"
+    },
+    "61": {
+      "city": "chicago",
+      "canvaId": "PBQ1cCLH5TPvqWcq"
+    },
+    "62": {
+      "city": "new-york",
+      "canvaId": "PBnKX5ZN0ZcSJsBz"
+    },
+    "63": {
+      "city": "santa-fe",
+      "canvaId": "PBP8zv75xdWq5h6T"
+    },
+    "65": {
+      "city": "ciudad-obregon",
+      "canvaId": "PByy8TXTJp89b3yn",
+      "label": [326.0, 683.2, 551.3, 284.8],
+      "marker": [525.9, 968.0, 151.6]
+    },
+    "66": {
+      "city": "hermosillo",
+      "canvaId": "PBVrkKYNMZvsZws2",
+      "label": [266.7, 764.2, 676.4, 202.1],
+      "marker": [525.9, 968.0, 151.6]
+    },
+    "69": {
+      "city": "los-angeles",
+      "canvaId": "PByQ18lZFx5Zlys6",
+      "label": [266.7, 767.0, 676.4, 196.3],
+      "marker": [525.9, 968.0, 151.6]
+    },
+    "70": {
+      "city": "ciudad-de-mexico",
+      "canvaId": "PB2bCKk9JQRBNX3y",
+      "label": [125.2, 787.1, 1000.5, 111.1],
+      "marker": [549.7, 957.5, 151.6]
+    },
+    "74": {
+      "city": "miami",
+      "canvaId": "PB5dy5SDzkHS1gm0",
+      "label": [375.4, 206.5, 469.2, 200.6],
+      "marker": [552.4, 498.5, 151.6]
+    },
+    "76": {
+      "city": "la-paz",
+      "canvaId": "PBZDVS9Yfm2Nkb69",
+      "label": [393.5, 310.5, 469.2, 188.0],
+      "marker": [552.4, 498.5, 151.6]
+    },
+    "78": {
+      "city": "mazatlan",
+      "canvaId": "PBFGmcgPff57qC5L"
+    },
+    "79": {
+      "city": "acapulco",
+      "canvaId": "PB9yY2595s3PpJPK"
+    },
+    "82": {
+      "city": "houston",
+      "canvaId": "PB1HywfbnqsBxvzM"
+    },
+    "83": {
+      "city": "new-orleans",
+      "canvaId": "PBfjYdCZrkKZRXr6"
+    },
+    "100": {
+      "city": "saltillo",
+      "canvaId": "PBsJGnbsvjzv8hJh"
+    },
+    "101": {
+      "city": "monterrey",
+      "canvaId": "PBCPMkxrbBlVZR71"
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import {
+  HAZARDS,
+  type HazardLevel,
   maxScoredLength,
   MapSchema,
   resolveRules,
@@ -21,8 +23,9 @@ import {
   type SlotTransform,
 } from '../board/geometry.js';
 import { useTheme } from '../theme/ThemeProvider.js';
+import { PlayerPreview } from './PlayerPreview.js';
 import { playerHex } from '../theme/themes.js';
-import { CARD_NAMES } from '../ui/strings.js';
+import { CARD_NAMES, HAZARD_NAMES } from '../ui/strings.js';
 import {
   addCity,
   addLane,
@@ -43,6 +46,7 @@ import {
   resizeSlots,
   restoreRouteProps,
   rotateSlots,
+  setCityHazard,
   setCityMajor,
   setDisplay,
   setFerryLocomotives,
@@ -55,6 +59,7 @@ import {
   type History,
   type MapDoc,
   type Target,
+  HISTORY_LIMIT,
 } from './mapOps.js';
 
 /**
@@ -103,6 +108,8 @@ export function EditorScreen() {
   const [routeStart, setRouteStart] = useState<string | null>(null);
   const [view, setView] = useState<View | null>(null);
   const [showLabels, setShowLabels] = useState(true);
+  const [playerView, setPlayerView] = useState(false);
+  const [autosave, setAutosave] = useState(true);
   // Claimed preview: editor-only, never saved. Shows train cars as if a player owned the route.
   const [claimed, setClaimed] = useState<Set<string>>(() => new Set());
   const [allClaimed, setAllClaimed] = useState(false);
@@ -201,6 +208,13 @@ export function EditorScreen() {
       setStatus(`Not saved:\n${body.error ?? 'unknown error'}`);
     }
   }, [history]);
+
+  // Autosave: a moment after the last change, if the map is valid. Undo history keeps the last 30 changes.
+  useEffect(() => {
+    if (!autosave || !dirty || !check?.ok) return;
+    const timer = setTimeout(() => void save(), 1200);
+    return () => clearTimeout(timer);
+  }, [autosave, dirty, check, save]);
 
   // Keyboard shortcuts. Typing in a field never triggers them.
   useEffect(() => {
@@ -429,6 +443,8 @@ export function EditorScreen() {
           : 'Click the first city of the new route.'
         : null;
 
+  if (playerView) return <PlayerPreview doc={doc} onClose={() => setPlayerView(false)} />;
+
   return (
     <div className="editor">
       <svg
@@ -517,6 +533,14 @@ export function EditorScreen() {
             Redo
           </button>
         </div>
+        <label className="small-print">
+          <input type="checkbox" checked={autosave} onChange={(e) => setAutosave(e.target.checked)} /> Autosave
+          {autosave && dirty && !check.ok ? ' (paused: fix the problems below)' : ''}
+          {' · '}undo keeps the last {HISTORY_LIMIT} changes ({history.past.length} stored)
+        </label>
+        <button className="secondary" disabled={!check.ok} title={check.ok ? undefined : 'Fix the map problems first'} onClick={() => setPlayerView(true)}>
+          Player view
+        </button>
         {check.ok ? (
           <p className="small-print editor-ok">
             ✓ Map is valid: {doc.cities.length} cities, {doc.routes.length} routes, {doc.tickets.length} tickets.
@@ -703,6 +727,22 @@ export function EditorScreen() {
               />{' '}
               Major city (bigger marker, name always shown)
             </label>
+            <fieldset className="editor-hazards">
+              <legend>Natural disasters (Seasons mode)</legend>
+              {HAZARDS.map((h) => (
+                <label key={h} className="editor-hazard">
+                  <span>{HAZARD_NAMES[h]}</span>
+                  <select
+                    value={selectedCity.hazards?.[h] ?? ''}
+                    onChange={(e) => apply((d) => setCityHazard(d, selectedCity.id, h, (e.target.value || null) as HazardLevel | null))}
+                  >
+                    <option value="">Never</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+              ))}
+            </fieldset>
             <p className="muted small-print">
               id {selectedCity.id} · {(index.routesByCity.get(selectedCity.id) ?? []).length} routes ·{' '}
               {doc.tickets.filter((t) => t.from === selectedCity.id || t.to === selectedCity.id).length} tickets
@@ -724,6 +764,26 @@ export function EditorScreen() {
           </section>
         )}
         {!selectedRoute && !selectedCity && <p className="muted">Click a slot or a city to edit it.</p>}
+
+        <h2>Disaster cities</h2>
+        <table className="editor-counts">
+          <thead>
+            <tr>
+              <th />
+              <th>High</th>
+              <th>Medium</th>
+            </tr>
+          </thead>
+          <tbody>
+            {HAZARDS.map((h) => (
+              <tr key={h}>
+                <td>{HAZARD_NAMES[h]}</td>
+                <td>{doc.cities.filter((c) => c.hazards?.[h] === 'high').length}</td>
+                <td>{doc.cities.filter((c) => c.hazards?.[h] === 'medium').length}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         <h2>Lines per color</h2>
         <table className="editor-counts">

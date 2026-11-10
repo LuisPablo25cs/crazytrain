@@ -12,6 +12,74 @@ export type ExpansionToggles = z.infer<typeof ExpansionTogglesSchema>;
 export type ExpansionName = keyof ExpansionToggles;
 export const EXPANSION_NAMES: ExpansionName[] = ['tunnels', 'ferries', 'stations', 'longTickets'];
 
+export const GAME_MODES = ['classic', 'seasons'] as const;
+export const GameModeSchema = z.enum(GAME_MODES);
+export type GameMode = z.infer<typeof GameModeSchema>;
+
+const month = () => int().min(0).max(11);
+const months = () => z.array(month());
+const share = () => z.number().min(0).max(1);
+
+/**
+ * Seasons mode settings: the calendar and the natural disasters. Months are 0 (January) to 11.
+ * Radii are in map units (the map is usually 1000 wide).
+ */
+export const SeasonsSchema = z.object({
+  /** Game length in years. Each round (every player takes a turn) is one month. */
+  years: int().min(1).max(10),
+  /** Chance each month that a disaster strikes somewhere. */
+  disasterChance: share(),
+  /** How much more often a "high" city is picked than a "medium" one. */
+  weights: z.object({ high: z.number().min(0), medium: z.number().min(0) }),
+  /** Excavator cards shuffled into the train deck. */
+  excavatorCards: int().min(0),
+  /** Months to repair a damaged route before it is lost. */
+  repairMonths: int().min(1),
+  earthquake: z.object({
+    months: months(),
+    radius: z.number().positive(),
+    /** Repair cost by route length: entry 0 is for length 1. Longer routes use the last entry. */
+    repairCost: z.array(int().min(0)).min(1),
+    tunnelFactor: z.number().min(1),
+  }),
+  hurricane: z.object({
+    months: months(),
+    radius: z.number().positive(),
+    /** One more piece breaks this often (months). */
+    spreadEvery: int().min(1),
+    /** Months that building inside the hurricane's circle needs excavators. */
+    zoneMonths: int().min(0),
+    excavators: int().min(0),
+  }),
+  volcano: z.object({ months: months(), radius: z.number().positive(), blockMonths: int().min(1) }),
+  tornado: z.object({
+    months: months(),
+    radius: z.number().positive(),
+    /** How far from the city the tornado can touch down. */
+    drift: z.number().min(0),
+    /** Chance that each train piece inside the circle flies off. */
+    pieceChance: share(),
+    zoneMonths: int().min(0),
+    /** Building inside the circle needs one excavator per this many route length (rounded up). */
+    lengthPerExcavator: int().min(1),
+  }),
+  tsunami: z.object({
+    months: months(),
+    radius: z.number().positive(),
+    /** Repairing needs one excavator per this many washed-away pieces (rounded up). */
+    piecesPerExcavator: int().min(1),
+  }),
+  snow: z.object({
+    /** Cities this far north (degrees latitude) or more with a "high" rating get the long winter. */
+    northLatitude: z.number(),
+    longWinter: months(),
+    winter: months(),
+    /** Winter for "medium" cities. */
+    shortWinter: months(),
+  }),
+});
+export type SeasonsConfig = z.infer<typeof SeasonsSchema>;
+
 /** One row of the parallel-lane table: at `minPlayers` or more, `lanes` lanes of a group can be claimed. */
 export const ParallelLaneRuleSchema = z.object({
   minPlayers: int().min(1),
@@ -49,6 +117,8 @@ export const RulesConfigSchema = z
     parallelLanes: z.array(ParallelLaneRuleSchema).min(1),
     tunnelRevealCount: int().min(0),
     expansions: ExpansionTogglesSchema,
+    mode: GameModeSchema,
+    seasons: SeasonsSchema,
   })
   .superRefine((rules, ctx) => {
     if (rules.players.min > rules.players.max) {
@@ -105,6 +175,9 @@ export const RulesOverrideSchema = z
     parallelLanes: z.array(ParallelLaneRuleSchema).min(1),
     tunnelRevealCount: int().min(0),
     expansions: ExpansionTogglesSchema.partial(),
+    mode: GameModeSchema,
+    /** Checked in full after merging with the defaults. */
+    seasons: z.record(z.string(), z.unknown()),
   })
   .partial();
 

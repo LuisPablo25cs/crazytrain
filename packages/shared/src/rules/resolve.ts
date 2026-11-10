@@ -2,6 +2,7 @@ import { DEFAULT_RULES } from './defaults.js';
 import {
   RulesConfigSchema,
   type ExpansionToggles,
+  type GameMode,
   type RulesConfig,
   type RulesOverride,
 } from './schema.js';
@@ -25,6 +26,12 @@ function deepMerge<T>(base: T, override: unknown): T {
 
 export class RulesError extends Error {}
 
+/** What the lobby picks besides the expansion toggles. */
+export interface LobbyChoices {
+  mode?: GameMode;
+  years?: number;
+}
+
 /**
  * Resolve the rules for one game (KTD14): defaults, then map overrides, then lobby toggles.
  * The result is validated and frozen.
@@ -33,9 +40,12 @@ export function resolveRules(
   mapOverride?: RulesOverride,
   toggles?: Partial<ExpansionToggles>,
   base: RulesConfig = DEFAULT_RULES,
+  lobby?: LobbyChoices,
 ): Readonly<RulesConfig> {
   let merged = deepMerge(base, mapOverride ?? {});
   if (toggles) merged = deepMerge(merged, { expansions: toggles });
+  if (lobby?.mode) merged = deepMerge(merged, { mode: lobby.mode });
+  if (lobby?.years) merged = deepMerge(merged, { seasons: { years: lobby.years } });
   const parsed = RulesConfigSchema.safeParse(merged);
   if (!parsed.success) {
     const detail = parsed.error.issues

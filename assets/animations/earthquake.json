@@ -1,0 +1,36 @@
+{
+ "effect": "earthquake",
+ "output": {
+  "width": 480,
+  "height": 360,
+  "seconds": 4,
+  "fps": 20,
+  "seed": 7,
+  "transparent": false
+ },
+ "params": {
+  "intensity": 5,
+  "shakes": 16,
+  "pause": 0.15,
+  "drop": 16,
+  "crack": 20,
+  "faultAt": 0.52,
+  "rings": true,
+  "buildings": 7,
+  "dust": 30,
+  "debris": 34,
+  "poles": true,
+  "skyTop": "#a3c6d8",
+  "skyBottom": "#f4e4c4",
+  "hill": "#9fb18b",
+  "building": "#b3836a",
+  "building2": "#7f8f9f",
+  "windowColor": "#35495c",
+  "topsoil": "#7c9151",
+  "soil": "#8d6946",
+  "clay": "#71513a",
+  "rock": "#4d3d36",
+  "ringColor": "#ffb347",
+  "dustColor": "#cdbb9b"
+ }
+}

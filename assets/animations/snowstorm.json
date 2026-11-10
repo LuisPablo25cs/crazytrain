@@ -1,0 +1,33 @@
+{
+ "effect": "snowstorm",
+ "output": {
+  "width": 480,
+  "height": 360,
+  "seconds": 4,
+  "fps": 20,
+  "seed": 7,
+  "transparent": false
+ },
+ "params": {
+  "wind": 3,
+  "fall": 2,
+  "sway": 1,
+  "density": 1.7,
+  "flakeSize": 1,
+  "gusts": 34,
+  "whiteout": 0.6,
+  "mountains": true,
+  "pines": 11,
+  "cabin": true,
+  "skyTop": "#3d5470",
+  "skyBottom": "#a9bccb",
+  "mountain": "#6c8199",
+  "mountainShade": "#536980",
+  "snow": "#eef4f9",
+  "snowShade": "#c3d3e2",
+  "pine": "#2c4f4b",
+  "wood": "#6d4531",
+  "window": "#ffc861",
+  "flakeColor": "#ffffff"
+ }
+}

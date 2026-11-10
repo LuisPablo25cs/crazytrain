@@ -1,0 +1,28 @@
+{
+  "$comment": "How likely each natural hazard is per city (city ids from assets/maps/north-america.map.json). Drives which label art style a city gets; see tools/assets/prepare-city-labels.py.",
+  "volcano": {
+    "high": ["ciudad-de-mexico", "portland", "tuxtla", "seattle"],
+    "medium": ["guadalajara", "phoenix", "santa-fe"]
+  },
+  "earthquake": {
+    "high": ["acapulco", "ciudad-de-mexico", "guadalajara", "los-angeles", "salt-lake-city", "san-francisco", "seattle", "tijuana", "tuxtla", "vancouver"],
+    "medium": ["culiacan", "el-paso", "helena", "la-paz", "las-vegas", "mazatlan", "montreal", "ottawa", "prince-rupert", "quebec", "veracruz"]
+  },
+  "tsunami": {
+    "high": ["prince-rupert", "seattle"],
+    "medium": ["acapulco", "charleston", "la-paz", "los-angeles", "mazatlan", "san-francisco", "vancouver"]
+  },
+  "hurricane": {
+    "high": ["acapulco", "charleston", "houston", "la-habana", "la-paz", "mazatlan", "merida", "miami", "new-orleans", "raleigh", "veracruz"],
+    "medium": ["atlanta", "boston", "ciudad-obregon", "culiacan", "halifax", "hermosillo", "new-york", "tuxtla", "washington"]
+  },
+  "tornado": {
+    "high": ["atlanta", "chicago", "dallas", "houston", "kansas-city", "little-rock", "nashville", "oklahoma-city", "omaha", "regina", "saint-louis", "winnipeg"],
+    "medium": ["calgary", "chihuahua", "denver", "edmonton", "monterrey", "montreal", "new-orleans", "ottawa", "pittsburgh", "raleigh", "saltillo", "sault-st-marie", "toronto"]
+  },
+  "snowstorm": {
+    "high": ["boston", "calgary", "chicago", "churchill", "denver", "duluth", "edmonton", "halifax", "helena", "jasper", "montreal", "new-york", "omaha", "ottawa", "pittsburgh", "quebec", "regina", "salt-lake-city", "santa-fe", "sault-st-marie", "toronto", "winnipeg"],
+    "medium": ["chihuahua", "dallas", "kansas-city", "prince-rupert", "saltillo", "seattle", "vancouver", "washington"]
+  },
+  "canadaBorder": ["seattle", "helena", "duluth"]
+}

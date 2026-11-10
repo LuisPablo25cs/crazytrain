@@ -1,4 +1,4 @@
-import type { Card, CardCounts, GameEvent, MapIndex } from '@rails/shared';
+import { MONTH_NAMES, yearOf, monthOfYear, type Card, type CardCounts, type GameEvent, type GameMode, type Hazard, type MapIndex } from '@rails/shared';
 
 /** Every user-facing string lives here so the UI can be translated later. */
 export const S = {
@@ -112,6 +112,7 @@ export const CARD_NAMES: Record<Card | 'gray', string> = {
   black: 'Black',
   white: 'White',
   locomotive: 'Locomotive',
+  excavator: 'Excavator',
   gray: 'Any color',
 };
 
@@ -126,8 +127,43 @@ export const CARD_LETTERS: Record<Card | 'gray', string> = {
   black: 'K',
   white: 'W',
   locomotive: '★',
+  excavator: '⛏',
   gray: '·',
 };
+
+export const HAZARD_NAMES: Record<Hazard, string> = {
+  earthquake: 'Earthquake',
+  volcano: 'Volcano',
+  tsunami: 'Tsunami',
+  hurricane: 'Hurricane',
+  tornado: 'Tornado',
+  snow: 'Snow storm',
+};
+
+/** What each disaster does, for the announcement card. */
+export const HAZARD_EFFECTS: Record<Hazard, string> = {
+  earthquake: 'Built routes touching nearby cities are broken. Repair them within a year or lose them, and anyone may claim them by paying the repair.',
+  volcano: 'Nearby routes are buried in ash for a year: they cannot be used or built. Then they turn gray and free.',
+  tsunami: 'Track inside the wave is washed away. Partly washed lines need excavators to repair (1 per 2 pieces) within a year.',
+  hurricane: 'Built routes lose a piece now and one more every 3 months until repaired. Building here needs an excavator for a year.',
+  tornado: 'Pieces inside the funnel may fly off and need repairs. Building here this month needs excavators.',
+  snow: 'Nothing can be built here in winter.',
+};
+
+export const MODE_NAMES: Record<GameMode, string> = {
+  classic: 'Classic',
+  seasons: 'Seasons',
+};
+
+export const MODE_BLURBS: Record<GameMode, string> = {
+  classic: 'The board game rules.',
+  seasons: 'Each round is a month. Earthquakes, hurricanes, tornados, tsunamis, volcanoes and snow hit the board; repair your lines or lose them.',
+};
+
+/** "March, year 2" */
+export function monthLabel(month: number): string {
+  return `${MONTH_NAMES[monthOfYear(month)]}, year ${yearOf(month)}`;
+}
 
 export function describeCards(cards: CardCounts): string {
   return Object.entries(cards)
@@ -176,5 +212,21 @@ export function describeEvent(e: GameEvent, names: string[], map: MapIndex | nul
       return 'The discard pile was shuffled into the draw pile.';
     case 'turnStarted':
       return null;
+    case 'monthStarted':
+      return `— ${monthLabel(e.month)} —`;
+    case 'disaster': {
+      const hits = e.damaged.length + e.lost.length + e.blocked.length;
+      return `${HAZARD_NAMES[e.kind]} near ${cityName(e.cityId)}${hits ? `: ${hits} route(s) hit` : ', no track hit'}.`;
+    }
+    case 'damageSpread':
+      return `Hurricane damage spreads on ${who(e.player)}'s ${routeName(e.routeId)} (${e.broken} pieces broken).`;
+    case 'routeRepaired':
+      return e.claimed ? `${who(e.player)} repaired and claimed ${routeName(e.routeId)}.` : `${who(e.player)} repaired ${routeName(e.routeId)}.`;
+    case 'routeLost': {
+      const why = e.reason === 'volcano' ? 'to the volcano' : e.reason === 'destroyed' ? 'to the disaster' : 'after a year without repairs';
+      return `${who(e.player)} lost ${routeName(e.routeId)} ${why}.${e.claimable ? ' Anyone may repair it to claim it.' : ''}`;
+    }
+    case 'routeGrayed':
+      return `The ash settled: ${routeName(e.routeId)} is gray and free again.`;
   }
 }

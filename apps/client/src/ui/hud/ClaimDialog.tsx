@@ -1,19 +1,36 @@
-import { routeStatus, type GameView, type MapIndex } from '@rails/shared';
+import { effectiveRoute, routeStatus, type CardCounts, type GameView, type MapIndex } from '@rails/shared';
 import { sendAction } from '../../net/socket.js';
 import { setUi } from '../../state/store.js';
-import { CARD_NAMES, S } from '../strings.js';
-import { boardOfView, claimInfo, type Affordances } from './affordances.js';
+import { CARD_NAMES, HAZARD_NAMES, monthLabel, S } from '../strings.js';
+import { boardOfView, claimInfo, repairInfo, type Affordances } from './affordances.js';
 import { CardChip, CardSet } from './CardChip.js';
+
+function PaymentList({ options, label, onPay }: { options: CardCounts[]; label: string; onPay: (payment: CardCounts) => void }) {
+  return (
+    <ul className="payment-options">
+      {options.map((payment, i) => (
+        <li key={i}>
+          <button className="payment" onClick={() => onPay(payment)}>
+            <CardSet cards={payment} />
+            <span>{label}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 /** Route details and payment choices for the selected lane. Each lane is its own target (KTD7). */
 export function ClaimDialog({ routeId, view, map, can }: { routeId: string; view: GameView; map: MapIndex; can: Affordances }) {
-  const route = map.routes.get(routeId);
+  const board = boardOfView(view);
+  const route = effectiveRoute(board, map, routeId);
   if (!route) return null;
   const from = map.cities.get(route.from)?.name ?? route.from;
   const to = map.cities.get(route.to)?.name ?? route.to;
-  const status = routeStatus(boardOfView(view), map, routeId, view.me?.index ?? null);
+  const status = routeStatus(board, map, routeId, view.me?.index ?? null);
   const info = claimInfo(route, view, map);
-  const reason = status.kind === 'owned' ? S.owned(view.players[status.owner]?.name ?? '?') : (can.claim ?? info.reason);
+  const repair = repairInfo(routeId, view, map);
+  const damage = view.damage[routeId];
   const close = () => setUi({ selectedRoute: null });
   const kind =
     route.kind === 'tunnel' && view.rules.expansions.tunnels
@@ -21,6 +38,21 @@ export function ClaimDialog({ routeId, view, map, can }: { routeId: string; view
       : route.kind === 'ferry' && view.rules.expansions.ferries
         ? `${S.ferry} (${route.ferryLocomotives} ${CARD_NAMES.locomotive.toLowerCase()})`
         : null;
+
+  // What the board says about this route right now (Seasons mode).
+  const notes: string[] = [];
+  if (status.kind === 'owned') notes.push(S.owned(view.players[status.owner]?.name ?? '?'));
+  if (damage) {
+    const pieces = damage.cause === 'earthquake' ? 'the whole line' : `${damage.broken.length} of ${route.length} pieces`;
+    notes.push(`${HAZARD_NAMES[damage.cause]} damage: ${pieces} broken. Lost if not repaired by ${monthLabel(damage.deadline)}.`);
+  }
+  if (view.blocked[routeId] !== undefined) notes.push(`Under volcanic ash until ${monthLabel(view.blocked[routeId])}; then it turns gray and free.`);
+  if (view.recolored[routeId]) notes.push('A volcano turned this route gray: any color builds it.');
+  if (status.kind === 'abandoned') notes.push(`An earthquake broke it and its owner gave up. Repair it (${status.cost} card(s)) to claim it.`);
+
+  const repairing = repair && (repair.claim || status.kind === 'owned');
+  const reason = repairing ? (can.claim ?? repair.reason) : status.kind === 'owned' ? null : (can.claim ?? info.reason);
+  const excavators = info.options[0]?.excavator ?? 0;
 
   return (
     <div className="claim-dialog panel" role="dialog" aria-label={S.claimRoute(from, to)}>
@@ -35,26 +67,37 @@ export function ClaimDialog({ routeId, view, map, can }: { routeId: string; view
         {kind && <span className="badge">{kind}</span>}
         {route.parallelGroup && <span className="muted"> · lane {route.id.split('-').pop()}</span>}
       </p>
-      {reason ? (
+      {notes.map((n) => (
+        <p key={n} className="route-note">
+          {n}
+        </p>
+      ))}
+      {repairing ? (
+        reason ? (
+          <p className="muted">{reason}</p>
+        ) : (
+          <>
+            <p>{repair.claim ? 'Repair to claim it with:' : `Repair (${repair.cost.excavators ? `${repair.cost.excavators} excavator(s)` : `${repair.cost.cards} card(s)`}) with:`}</p>
+            <PaymentList
+              options={repair.options}
+              label={repair.claim ? 'Repair & claim' : 'Repair'}
+              onPay={(payment) => void sendAction({ type: 'repairRoute', routeId, payment }).then((ok) => ok && close())}
+            />
+          </>
+        )
+      ) : status.kind === 'owned' ? null : reason ? (
         <p className="muted">{reason}</p>
       ) : (
         <>
-          <p>{S.payWith}</p>
-          <ul className="payment-options">
-            {info.options.map((payment, i) => (
-              <li key={i}>
-                <button
-                  className="payment"
-                  onClick={() => {
-                    void sendAction({ type: 'claimRoute', routeId, payment }).then((ok) => ok && close());
-                  }}
-                >
-                  <CardSet cards={payment} />
-                  <span>{S.claim}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
+          <p>
+            {S.payWith}
+            {excavators > 0 && <span className="muted"> (disaster ground: +{excavators} excavator)</span>}
+          </p>
+          <PaymentList
+            options={info.options}
+            label={S.claim}
+            onPay={(payment) => void sendAction({ type: 'claimRoute', routeId, payment }).then((ok) => ok && close())}
+          />
         </>
       )}
     </div>

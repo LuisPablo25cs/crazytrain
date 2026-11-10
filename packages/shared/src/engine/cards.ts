@@ -1,4 +1,4 @@
-import { ALL_CARDS, CARD_COLORS, LOCOMOTIVE, type Card } from '../map/schema.js';
+import { ALL_CARDS, CARD_COLORS, EXCAVATOR, LOCOMOTIVE, type Card } from '../map/schema.js';
 import type { RulesConfig } from '../rules/schema.js';
 import { shuffle } from './rng.js';
 import type { CardCounts, GameEvent, GameState, Hand } from './types.js';
@@ -45,6 +45,7 @@ export function buildDeck(rules: RulesConfig): Card[] {
   const deck: Card[] = [];
   for (const color of CARD_COLORS) for (let i = 0; i < rules.deck.perColor; i++) deck.push(color);
   for (let i = 0; i < rules.deck.locomotives; i++) deck.push(LOCOMOTIVE);
+  if (rules.mode === 'seasons') for (let i = 0; i < rules.seasons.excavatorCards; i++) deck.push(EXCAVATOR);
   return deck;
 }
 

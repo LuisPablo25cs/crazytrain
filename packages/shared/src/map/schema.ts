@@ -13,8 +13,10 @@ export const CARD_COLORS = [
 ] as const;
 export type CardColor = (typeof CARD_COLORS)[number];
 export const LOCOMOTIVE = 'locomotive' as const;
-export type Card = CardColor | typeof LOCOMOTIVE;
-export const ALL_CARDS: readonly Card[] = [...CARD_COLORS, LOCOMOTIVE];
+/** Seasons mode: needed to build on ground a disaster tore up, and to repair tsunami damage. Never a color or wild card. */
+export const EXCAVATOR = 'excavator' as const;
+export type Card = CardColor | typeof LOCOMOTIVE | typeof EXCAVATOR;
+export const ALL_CARDS: readonly Card[] = [...CARD_COLORS, LOCOMOTIVE, EXCAVATOR];
 
 export const ROUTE_COLORS = [...CARD_COLORS, 'gray'] as const;
 export type RouteColor = (typeof ROUTE_COLORS)[number];
@@ -34,6 +36,16 @@ export type Point = z.infer<typeof PointSchema>;
 export const RingSchema = z.array(z.tuple([z.number(), z.number()])).min(3);
 export type Ring = z.infer<typeof RingSchema>;
 
+/** Natural disasters (Seasons mode). Snow storms are a season, not a random event. */
+export const HAZARDS = ['earthquake', 'volcano', 'tsunami', 'hurricane', 'tornado', 'snow'] as const;
+export type Hazard = (typeof HAZARDS)[number];
+export const HazardLevelSchema = z.enum(['high', 'medium']);
+export type HazardLevel = z.infer<typeof HazardLevelSchema>;
+export const CityHazardsSchema = z.strictObject(
+  Object.fromEntries(HAZARDS.map((h) => [h, HazardLevelSchema.optional()])) as Record<Hazard, z.ZodOptional<typeof HazardLevelSchema>>,
+);
+export type CityHazards = z.infer<typeof CityHazardsSchema>;
+
 export const CitySchema = z.object({
   id: id(),
   name: z.string().min(1),
@@ -42,6 +54,8 @@ export const CitySchema = z.object({
   geo: z.object({ lat: z.number(), lon: z.number() }).optional(),
   country: z.string().optional(),
   major: z.boolean().default(false),
+  /** How likely each natural disaster is here (Seasons mode). Missing means never. */
+  hazards: CityHazardsSchema.optional(),
 });
 export type City = z.infer<typeof CitySchema>;
 
@@ -94,8 +108,15 @@ export const TicketSchema = z.object({
   to: id(),
   points: z.number().int().min(1),
   deck: TicketDeckSchema.default('regular'),
+  /** A third city for a triple ticket: done once the player's network joins all three cities. */
+  via: id().optional(),
 });
 export type Ticket = z.infer<typeof TicketSchema>;
+
+/** The cities a ticket needs connected, in reading order: from, via (if any), to. */
+export function ticketCities(t: Pick<Ticket, 'from' | 'to' | 'via'>): string[] {
+  return t.via ? [t.from, t.via, t.to] : [t.from, t.to];
+}
 
 /**
  * A picture drawn as the ground under the board, placed in map space. The source is a file the
@@ -125,6 +146,48 @@ export const TerrainSchema = z.object({
 });
 export type Terrain = z.infer<typeof TerrainSchema>;
 
+/**
+ * How ticket text sits on the ticket artwork. Positions and sizes are in the artwork's drawing
+ * space, 1000 units wide. Missing values use DEFAULT_TICKET_STYLE.
+ */
+export const TicketStyleSchema = z.object({
+  /** The curved city line: where its middle sits, size, longest width, bend and letter spacing. */
+  cityX: z.number().optional(),
+  cityY: z.number().optional(),
+  citySize: z.number().positive().optional(),
+  cityMaxWidth: z.number().positive().optional(),
+  /** Degrees of arc the city line spans. 0 is straight; larger bends it more. */
+  cityCurve: z.number().min(0).max(180).optional(),
+  citySpacing: z.number().optional(),
+  numberX: z.number().optional(),
+  numberY: z.number().optional(),
+  numberSize: z.number().positive().optional(),
+  numberAngle: z.number().optional(),
+});
+export type TicketStyle = z.infer<typeof TicketStyleSchema>;
+export type ResolvedTicketStyle = Required<TicketStyle>;
+
+export const DEFAULT_TICKET_STYLE: ResolvedTicketStyle = {
+  cityX: 443,
+  cityY: 291,
+  citySize: 18,
+  cityMaxWidth: 215,
+  cityCurve: 55,
+  citySpacing: 1,
+  numberX: 791,
+  numberY: 369,
+  numberSize: 68,
+  numberAngle: -33,
+};
+
+export function resolveTicketStyle(style?: TicketStyle): ResolvedTicketStyle {
+  const out = { ...DEFAULT_TICKET_STYLE };
+  for (const [key, value] of Object.entries(style ?? {})) {
+    if (typeof value === 'number') (out as Record<string, number>)[key] = value;
+  }
+  return out;
+}
+
 /** How the board draws slots when a route has no hand-placed ones. */
 export const MapDisplaySchema = z.object({
   slotWidth: z.number().positive().optional(),
@@ -148,6 +211,8 @@ export const MapSchema = z.object({
   /** Optional rules overrides for this map (KTD14). */
   rules: RulesOverrideSchema.optional(),
   display: MapDisplaySchema.optional(),
+  /** Where ticket text sits on the ticket artwork (set in the hidden /tickets page). */
+  ticketStyle: TicketStyleSchema.optional(),
   /** Set by the map editor. `npm run build:map` will not overwrite an edited map without --force. */
   edited: z.boolean().optional(),
 });

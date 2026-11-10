@@ -73,6 +73,54 @@
           "major": {
             "default": false,
             "type": "boolean"
+          },
+          "hazards": {
+            "type": "object",
+            "properties": {
+              "earthquake": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium"
+                ]
+              },
+              "volcano": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium"
+                ]
+              },
+              "tsunami": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium"
+                ]
+              },
+              "hurricane": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium"
+                ]
+              },
+              "tornado": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium"
+                ]
+              },
+              "snow": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium"
+                ]
+              }
+            },
+            "additionalProperties": false
           }
         },
         "required": [
@@ -237,6 +285,11 @@
               "regular",
               "long"
             ]
+          },
+          "via": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
           }
         },
         "required": [
@@ -519,6 +572,20 @@
               "type": "boolean"
             }
           }
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "classic",
+            "seasons"
+          ]
+        },
+        "seasons": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
         }
       }
     },
@@ -532,6 +599,46 @@
         "laneSpacing": {
           "type": "number",
           "exclusiveMinimum": 0
+        }
+      }
+    },
+    "ticketStyle": {
+      "type": "object",
+      "properties": {
+        "cityX": {
+          "type": "number"
+        },
+        "cityY": {
+          "type": "number"
+        },
+        "citySize": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "cityMaxWidth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "cityCurve": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 180
+        },
+        "citySpacing": {
+          "type": "number"
+        },
+        "numberX": {
+          "type": "number"
+        },
+        "numberY": {
+          "type": "number"
+        },
+        "numberSize": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "numberAngle": {
+          "type": "number"
         }
       }
     },

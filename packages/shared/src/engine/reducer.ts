@@ -6,11 +6,14 @@ import { boardOf, canDrawSecondCard, hasLegalNonPassAction, nextStationCost } fr
 import {
   isTunnelActive,
   paymentShape,
+  repairPaymentError,
   routePaymentError,
   stationPaymentError,
   tunnelExtraError,
 } from './payments.js';
-import { routeClaimError } from './routes.js';
+import { advanceMonth } from './disasters.js';
+import { routeClaimError, routeStatus } from './routes.js';
+import { effectiveRoute, excavatorsNeeded, isSeasons, repairCost, repairError } from './seasons.js';
 import { computeResults } from './scoring.js';
 import type { Action, ApplyResult, CardCounts, GameEvent, GameState, PlayerState } from './types.js';
 
@@ -67,6 +70,8 @@ function dispatch(ctx: Ctx, player: number, action: Action): void {
       return buildStation(ctx, player, action.cityId, action.payment, action.borrowRouteId);
     case 'pass':
       return pass(ctx, player);
+    case 'repairRoute':
+      return repairRoute(ctx, player, action.routeId, action.payment);
     case 'skip':
       return skip(ctx, player);
     default:
@@ -175,10 +180,12 @@ function getRoute(ctx: Ctx, routeId: string): Route {
 function claimRoute(ctx: Ctx, player: number, routeId: string, payment: CardCounts): void {
   const p = requireTurn(ctx, player, 'await');
   const { s } = ctx;
-  const route = getRoute(ctx, routeId);
-  const blocked = routeClaimError(boardOf(s), ctx.map, routeId, player, p.trains);
+  getRoute(ctx, routeId);
+  const board = boardOf(s);
+  const route = effectiveRoute(board, ctx.map, routeId)!;
+  const blocked = routeClaimError(board, ctx.map, routeId, player, p.trains);
   check(blocked === null, blocked ?? '');
-  const payError = routePaymentError(route, payment, p.hand, s.rules);
+  const payError = routePaymentError(route, payment, p.hand, s.rules, excavatorsNeeded(board, ctx.map, route));
   check(payError === null, payError ?? '');
   s.consecutivePasses = 0;
   removeCards(p.hand, payment);
@@ -286,6 +293,38 @@ function buildStation(ctx: Ctx, player: number, cityId: string, payment: CardCou
   endTurn(ctx);
 }
 
+/** Seasons mode: repair a damaged route you own, or claim an earthquake-abandoned one by repairing it. */
+function repairRoute(ctx: Ctx, player: number, routeId: string, payment: CardCounts): void {
+  const p = requireTurn(ctx, player, 'await');
+  const { s, map } = ctx;
+  getRoute(ctx, routeId);
+  const board = boardOf(s);
+  const route = effectiveRoute(board, map, routeId)!;
+  const error = repairError(board, map, routeId, player, p.trains);
+  check(error === null, error ?? '');
+  const claiming = s.abandoned[routeId] !== undefined;
+  if (claiming) {
+    const status = routeStatus(board, map, routeId, player);
+    check(status.kind === 'abandoned', status.kind === 'blockedForYou' ? 'you already own a lane of this route' : 'this route cannot be claimed now');
+  }
+  const cost = repairCost(board, map, routeId)!;
+  const payError = repairPaymentError(route, cost, payment, p.hand);
+  check(payError === null, payError ?? '');
+  removeCards(p.hand, payment);
+  s.discard.push(...toCardList(payment));
+  s.consecutivePasses = 0;
+  if (claiming) {
+    delete s.abandoned[routeId];
+    s.routeOwners[routeId] = player;
+    p.trains -= route.length;
+    p.routePoints += routePoints(s.rules, route.length);
+  } else {
+    delete s.damage[routeId];
+  }
+  ctx.events.push({ type: 'routeRepaired', player, routeId, payment, claimed: claiming });
+  endTurn(ctx);
+}
+
 function pass(ctx: Ctx, player: number): void {
   requireTurn(ctx, player, 'await');
   check(!hasLegalNonPassAction(ctx.s, ctx.map, player), 'you can still take an action');
@@ -334,6 +373,10 @@ function endTurn(ctx: Ctx): void {
     ctx.events.push({ type: 'lastRoundStarted', player: current });
   }
   s.currentPlayer = (current + 1) % s.players.length;
+  // Seasons: a new month begins each time play comes back to the first player.
+  if (isSeasons(s.rules) && s.phase === 'playing' && s.currentPlayer === s.firstPlayer) {
+    if (advanceMonth(s, ctx.map, ctx.events)) return finish(ctx);
+  }
   s.turn = { kind: 'await' };
   s.turnNumber += 1;
   ctx.events.push({ type: 'turnStarted', player: s.currentPlayer });

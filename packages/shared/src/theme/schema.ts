@@ -11,7 +11,7 @@ export const ThemeSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   /** Colors for train cards and route slots. `gray` is the color of gray routes. */
-  cardColors: z.object(cardColorShape),
+  cardColors: z.object({ ...cardColorShape, excavator: hex().default('#d9a21b') }),
   /** Player color ids (from the rules config) to display colors. */
   playerColors: z.record(z.string(), hex()),
   terrain: z.object({

@@ -6,6 +6,7 @@ import {
   addLane,
   addRoute,
   commit,
+  HISTORY_LIMIT,
   deleteCity,
   deleteRoute,
   indexDoc,
@@ -182,6 +183,13 @@ describe('routes', () => {
 });
 
 describe('undo history', () => {
+  it('keeps only the last 30 changes', () => {
+    let h = { past: [] as ReturnType<typeof base>[], present: base(), future: [] as ReturnType<typeof base>[] };
+    for (let i = 0; i < 45; i++) h = commit(h, setRouteLength(h.present, ROUTE, (i % 5) + 1));
+    expect(HISTORY_LIMIT).toBe(30);
+    expect(h.past).toHaveLength(30);
+  });
+
   it('undoes and redoes; a new edit clears redo', () => {
     const a = base();
     const b = moveCity(a, 'alpha', 1, 1);

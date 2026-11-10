@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import type { ThreeEvent } from '@react-three/fiber';
-import { routeStatus, type BoardShape, type MapIndex, type Route, type Theme } from '@rails/shared';
+import { effectiveRoute, routeStatus, type BoardShape, type MapIndex, type Route, type Theme } from '@rails/shared';
 import { slotTransforms, type SlotTransform } from './geometry.js';
 import { LAND_HEIGHT } from './Terrain.js';
 
@@ -136,25 +136,35 @@ export function Routes({ map, slots, theme, board, viewer, hovered, selected, on
   const groups = useMemo(() => {
     const byKey = new Map<string, { route: Route; slots: Slot[] }>();
     for (const s of slots) {
-      const route = map.routes.get(s.routeId)!;
+      // A volcano may have turned the route gray.
+      const route = (board ? effectiveRoute(board, map, s.routeId) : undefined) ?? map.routes.get(s.routeId)!;
       const key = slotArtKey(route);
       const g = byKey.get(key) ?? { route, slots: [] };
       g.slots.push(s);
       byKey.set(key, g);
     }
     return [...byKey.entries()].map(([key, g]) => ({ key, ...g }));
-  }, [slots, map]);
+  }, [slots, map, board]);
   const textures = useSlotTextures(useMemo(() => groups.map((g) => g.key).sort(), [groups]));
 
   const tintsByKey = useMemo(() => {
     const out = new Map<string, THREE.Color[]>();
     const dim = new THREE.Color(0.38, 0.38, 0.38);
     const white = new THREE.Color(1, 1, 1);
+    const ash = new THREE.Color(0.3, 0.27, 0.27);
+    const frost = new THREE.Color(0.72, 0.86, 1);
+    const broken = new THREE.Color(1, 0.3, 0.25);
+    const cracked = new THREE.Color(1, 0.62, 0.5);
     for (const g of groups) {
       out.set(
         g.key,
         g.slots.map((s) => {
           const status = board ? routeStatus(board, map, s.routeId, viewer) : { kind: 'free' as const };
+          const damage = board?.damage?.[s.routeId];
+          if (damage) return damage.broken.includes(s.index) ? broken : cracked;
+          if (status.kind === 'ash' || (status.kind === 'owned' && status.blocked)) return ash;
+          if (status.kind === 'abandoned') return cracked;
+          if (status.kind === 'winter') return frost;
           return status.kind === 'closed' || status.kind === 'blockedForYou' ? dim : white;
         }),
       );

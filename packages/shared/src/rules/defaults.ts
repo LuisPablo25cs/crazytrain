@@ -1,5 +1,7 @@
 import type { RulesConfig } from './schema.js';
 
+const ALL_MONTHS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
 /** Default rules: Ticket to Ride USA base values plus the Europe expansion rules. Rebalance after the MVP. */
 export const DEFAULT_RULES: RulesConfig = {
   players: { min: 2, max: 7 },
@@ -28,4 +30,18 @@ export const DEFAULT_RULES: RulesConfig = {
   ],
   tunnelRevealCount: 3,
   expansions: { tunnels: true, ferries: true, stations: true, longTickets: true },
+  mode: 'classic',
+  seasons: {
+    years: 3,
+    disasterChance: 0.35,
+    weights: { high: 3, medium: 1 },
+    excavatorCards: 4,
+    repairMonths: 12,
+    earthquake: { months: ALL_MONTHS, radius: 90, repairCost: [1, 1, 2, 2, 3, 3, 4], tunnelFactor: 1.5 },
+    hurricane: { months: [5, 6, 7, 8, 9, 10], radius: 110, spreadEvery: 3, zoneMonths: 12, excavators: 1 },
+    volcano: { months: ALL_MONTHS, radius: 80, blockMonths: 12 },
+    tornado: { months: [2, 3, 4, 5], radius: 45, drift: 40, pieceChance: 0.33, zoneMonths: 1, lengthPerExcavator: 3 },
+    tsunami: { months: ALL_MONTHS, radius: 100, piecesPerExcavator: 2 },
+    snow: { northLatitude: 50, longWinter: [10, 11, 0, 1, 2], winter: [11, 0, 1], shortWinter: [0] },
+  },
 };

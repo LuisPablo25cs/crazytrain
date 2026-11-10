@@ -39,7 +39,20 @@ export function connect(): Socket {
   return socket;
 }
 
+/**
+ * Lets the map editor's player view run a game inside the browser: while set, intents go here
+ * instead of to the server.
+ */
+export interface LocalMode {
+  intent: (intent: Intent) => IntentReply;
+}
+let local: LocalMode | null = null;
+export function setLocalMode(mode: LocalMode | null): void {
+  local = mode;
+}
+
 export function send(intent: Intent): Promise<IntentReply> {
+  if (local) return Promise.resolve(local.intent(intent));
   const s = connect();
   return new Promise((resolve) => {
     s.timeout(10_000).emit(EVENTS.intent, intent, (err: Error | null, reply: IntentReply) => {
@@ -85,6 +98,10 @@ async function rejoin(): Promise<void> {
 }
 
 export async function leaveRoom(): Promise<void> {
+  if (local) {
+    local.intent({ type: 'leaveRoom' });
+    return;
+  }
   if (currentRoom) session.forget(currentRoom.code);
   currentRoom = null;
   await send({ type: 'leaveRoom' });

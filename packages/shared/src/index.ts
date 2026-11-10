@@ -1,5 +1,6 @@
 export * from './map/schema.js';
 export * from './map/graph.js';
+export * from './map/geometry.js';
 export * from './map/validate.js';
 export * from './map/ticketPoints.js';
 export * from './rules/schema.js';
@@ -16,5 +17,7 @@ export * from './engine/setup.js';
 export * from './engine/reducer.js';
 export * from './engine/longest.js';
 export * from './engine/scoring.js';
+export * from './engine/seasons.js';
+export * from './engine/disasters.js';
 export * from './engine/view.js';
 export * from './protocol/messages.js';

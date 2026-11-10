@@ -13,6 +13,7 @@ import {
   type Action,
   type ClientAction,
   type ExpansionToggles,
+  type GameMode,
   type GameEvent,
   type GameMessage,
   type GameState,
@@ -60,6 +61,8 @@ export class Room {
   mapIndex: MapIndex;
   customMap = false;
   toggles: ExpansionToggles;
+  mode: GameMode = 'classic';
+  years: number;
   game: { state: GameState; version: number } | null = null;
   lastActivity: number;
   finishedAt: number | null = null;
@@ -73,7 +76,10 @@ export class Room {
   ) {
     this.map = starterMap;
     this.mapIndex = indexMap(starterMap);
-    this.toggles = { ...resolveRules(starterMap.rules).expansions };
+    const defaults = resolveRules(starterMap.rules);
+    this.toggles = { ...defaults.expansions };
+    this.mode = defaults.mode;
+    this.years = defaults.seasons.years;
     this.lastActivity = options.now();
   }
 
@@ -83,7 +89,12 @@ export class Room {
   }
 
   rules(): RulesConfig {
-    return resolveRules(this.map.rules, this.toggles);
+    return resolveRules(this.map.rules, this.toggles, undefined, this.lobby());
+  }
+
+  /** What the lobby chose besides the expansion toggles. */
+  private lobby() {
+    return { mode: this.mode, years: this.years };
   }
 
   connectedSeats(): Seat[] {
@@ -222,6 +233,16 @@ export class Room {
     return OK;
   }
 
+  setMode(seat: Seat, mode: GameMode, years?: number): IntentReply {
+    const denied = this.requireHostInLobby(seat);
+    if (denied) return denied;
+    this.mode = mode;
+    if (years !== undefined) this.years = years;
+    this.touch();
+    this.broadcastRoom();
+    return OK;
+  }
+
   setMap(seat: Seat, doc: unknown): IntentReply {
     const denied = this.requireHostInLobby(seat);
     if (denied) return denied;
@@ -241,7 +262,7 @@ export class Room {
     }
     let rules: RulesConfig;
     try {
-      rules = resolveRules(map.rules, this.toggles);
+      rules = resolveRules(map.rules, this.toggles, undefined, this.lobby());
     } catch (e) {
       return fail(e instanceof RulesError ? e.message : String(e), 'invalid');
     }
@@ -375,6 +396,8 @@ export class Room {
         playerIndex: s.playerIndex,
       })),
       toggles: { ...this.toggles },
+      mode: this.mode,
+      years: this.years,
       map: {
         id: this.map.id,
         name: this.map.name,

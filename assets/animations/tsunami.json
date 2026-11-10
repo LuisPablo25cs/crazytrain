@@ -1,0 +1,35 @@
+{
+ "effect": "tsunami",
+ "output": {
+  "width": 480,
+  "height": 360,
+  "seconds": 4,
+  "fps": 20,
+  "seed": 7,
+  "transparent": false
+ },
+ "params": {
+  "height": 0.56,
+  "length": 0.9,
+  "curl": 0.42,
+  "seaLevel": 0.76,
+  "crests": 1,
+  "chop": 1,
+  "foam": 1,
+  "spray": 70,
+  "streaks": 12,
+  "city": true,
+  "buildings": 11,
+  "boat": true,
+  "skyTop": "#5c7f9f",
+  "skyBottom": "#efd9b4",
+  "cloud": "#f5e9d6",
+  "cityColor": "#6a7588",
+  "windowColor": "#f2d68b",
+  "seaLight": "#4fc0cf",
+  "seaMid": "#1f8fb0",
+  "seaDeep": "#135f86",
+  "seaDeepest": "#0c3f62",
+  "foamColor": "#fbffff"
+ }
+}

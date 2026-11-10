@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { GameView, MapIndex } from '@rails/shared';
+import { ticketCities, type GameView, type MapIndex } from '@rails/shared';
 import { sendAction } from '../../net/socket.js';
 import { setUi } from '../../state/store.js';
 import { S } from '../strings.js';
@@ -38,7 +38,7 @@ export function TicketChoice({ view, map }: { view: GameView; map: MapIndex }) {
             return (
               <li
                 key={id}
-                onMouseEnter={() => t && setUi({ highlightCities: [t.from, t.to] })}
+                onMouseEnter={() => t && setUi({ highlightCities: ticketCities(t) })}
                 onMouseLeave={() => setUi({ highlightCities: [] })}
               >
                 <label>

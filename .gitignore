@@ -4,5 +4,6 @@ dist/
 test-results/
 playwright-report/
 tools/map-build/.cache/
+assets/city_labels/export/
 *.log
 .DS_Store

@@ -1,0 +1,37 @@
+{
+ "effect": "volcano",
+ "output": {
+  "width": 480,
+  "height": 360,
+  "seconds": 4,
+  "fps": 20,
+  "seed": 7,
+  "transparent": false
+ },
+ "params": {
+  "plumeHeight": 1,
+  "plumeWidth": 1,
+  "puffs": 70,
+  "rise": 2,
+  "wind": 0.35,
+  "fountain": 1,
+  "bombs": 26,
+  "rivers": 5,
+  "flow": 3,
+  "ash": 90,
+  "bolts": 3,
+  "trees": true,
+  "skyTop": "#2c2747",
+  "skyBottom": "#e0794e",
+  "farHills": "#553c58",
+  "rock": "#5b4648",
+  "rockDark": "#352a35",
+  "ashDark": "#352f36",
+  "ashLight": "#8f8789",
+  "lavaDeep": "#b81f12",
+  "lava": "#f25c13",
+  "lavaHot": "#ffd23e",
+  "flash": "#d6d9ff",
+  "treeColor": "#1b1826"
+ }
+}

@@ -16,8 +16,9 @@ import { Market } from './Market.js';
 import { Scoreboard } from './Scoreboard.js';
 import { StationDialog } from './StationMode.js';
 import { TicketChoice } from './TicketChoice.js';
-import { Tickets } from './Tickets.js';
+import { TicketCards } from './Tickets.js';
 import { TunnelPrompt } from './TunnelPrompt.js';
+import { DisasterCard, SeasonClock } from './Seasons.js';
 import { TurnBanner } from './TurnBanner.js';
 import { nextStationCost } from '@rails/shared';
 
@@ -61,7 +62,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
   const choosingDrawn = view.turn.kind === 'choosingTickets' && can.isMyTurn;
 
   return (
-    <div className="game">
+    <div className={`game ${me && view.phase !== 'finished' ? 'has-dock' : ''}`}>
       <BoardScene
         map={map.index}
         theme={theme}
@@ -84,6 +85,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
 
       <header className="hud-top">
         <TurnBanner view={view} can={can} theme={theme} />
+        <SeasonClock view={view} />
         <CitySearch map={map.index} />
         <button
           className="secondary small"
@@ -102,13 +104,13 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
       </aside>
 
       <aside className="hud-right">
-        <Tickets view={view} map={map.index} />
         <EventLog view={view} map={map.index} />
       </aside>
 
       {me && view.phase !== 'finished' && (
         <footer className="hud-bottom">
-          <Hand hand={me.hand} />
+          <TicketCards view={view} map={map.index} />
+          <Hand hand={me.hand} excavators={view.rules.mode === 'seasons'} />
           <Market view={view} can={can} />
           <div className="actions">
             {view.rules.expansions.stations && (
@@ -142,6 +144,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
       {ui.mode.kind === 'station' && ui.selectedCity && myTurnStart && (
         <StationDialog key={ui.selectedCity} cityId={ui.selectedCity} view={view} map={map.index} />
       )}
+      <DisasterCard events={lastEvents} map={map.index} />
       {view.phase === 'finished' && (
         <EndScreen view={view} map={map.index} room={room} theme={theme} onHighlight={setTrail} onLeave={onLeave} />
       )}

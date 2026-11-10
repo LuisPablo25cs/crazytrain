@@ -18,11 +18,11 @@ const server = createRailsServer({
   clientDist,
   mapImagesDir,
   artDir,
-  editor: editorEnabled ? { mapFile: starterMapPath } : undefined,
+  editor: editorEnabled ? { mapFile: starterMapPath, animationsDir: resolve(repoRoot, 'assets/animations') } : undefined,
 });
 server.httpServer.listen(port, () => {
   console.log(`Rails server listening on http://localhost:${port}`);
-  if (editorEnabled) console.log('Map editor is on: open /editor (in dev, http://localhost:5173/editor)');
+  if (editorEnabled) console.log('Map editor is on: open /editor, /tickets or /animations (in dev, on http://localhost:5173)');
 });
 
 const shutdown = () => {

@@ -1,12 +1,26 @@
 import { UnionFind, type MapIndex } from '../map/graph.js';
+import { ticketCities, type Ticket } from '../map/schema.js';
 import { longestTrail, longestTrailPath, type TrailEdge } from './longest.js';
 import type { GameResults, GameState, PlayerResult } from './types.js';
 
-/** Routes a player owns, as trail edges that remember their route id. */
-export function ownedEdges(state: Pick<GameState, 'routeOwners'>, map: MapIndex, player: number): (TrailEdge & { routeId: string })[] {
+/** A ticket is done when one network joins all of its cities (two, or three for a triple ticket). */
+export function ticketDone(network: UnionFind, ticket: Pick<Ticket, 'from' | 'to' | 'via'>): boolean {
+  const [first, ...rest] = ticketCities(ticket);
+  return rest.every((c) => network.connected(first!, c));
+}
+
+type Network = Pick<GameState, 'routeOwners'> & Partial<Pick<GameState, 'damage' | 'blocked'>>;
+
+/** Whether a route carries trains now: not waiting for repairs and not under volcanic ash (Seasons). */
+export function routeWorks(state: Partial<Pick<GameState, 'damage' | 'blocked'>>, routeId: string): boolean {
+  return state.damage?.[routeId] === undefined && state.blocked?.[routeId] === undefined;
+}
+
+/** Routes a player owns and can use, as trail edges that remember their route id. */
+export function ownedEdges(state: Network, map: MapIndex, player: number): (TrailEdge & { routeId: string })[] {
   const edges: (TrailEdge & { routeId: string })[] = [];
   for (const [routeId, owner] of Object.entries(state.routeOwners)) {
-    if (owner !== player) continue;
+    if (owner !== player || !routeWorks(state, routeId)) continue;
     const r = map.routes.get(routeId);
     if (r) edges.push({ routeId, from: r.from, to: r.to, length: r.length });
   }
@@ -14,7 +28,7 @@ export function ownedEdges(state: Pick<GameState, 'routeOwners'>, map: MapIndex,
 }
 
 /** Route ids on one of the player's longest trails, for highlighting at the end. */
-export function longestTrailRoutes(state: Pick<GameState, 'routeOwners'>, map: MapIndex, player: number): string[] {
+export function longestTrailRoutes(state: Network, map: MapIndex, player: number): string[] {
   const edges = ownedEdges(state, map, player);
   return longestTrailPath(edges).edges.map((i) => edges[i]!.routeId);
 }
@@ -24,7 +38,7 @@ export function longestTrailRoutes(state: Pick<GameState, 'routeOwners'>, map: M
  * player owns it (R10, KTD8). Borrowed routes never count for the longest trail.
  */
 export function ticketNetwork(
-  state: Pick<GameState, 'routeOwners' | 'stations' | 'rules'>,
+  state: Pick<GameState, 'routeOwners' | 'stations' | 'rules'> & Partial<Pick<GameState, 'damage' | 'blocked'>>,
   map: MapIndex,
   player: number,
 ): UnionFind {
@@ -35,7 +49,7 @@ export function ticketNetwork(
       if (s.player !== player) continue;
       const owner = state.routeOwners[s.borrowRouteId];
       const r = map.routes.get(s.borrowRouteId);
-      if (r && owner !== undefined && owner !== player) uf.union(r.from, r.to);
+      if (r && owner !== undefined && owner !== player && routeWorks(state, s.borrowRouteId)) uf.union(r.from, r.to);
     }
   }
   return uf;
@@ -50,7 +64,7 @@ export function computeResults(state: GameState, map: MapIndex): GameResults {
     const network = ticketNetwork(state, map, i);
     const tickets = p.tickets.map((id) => {
       const t = map.tickets.get(id);
-      const completed = t ? network.connected(t.from, t.to) : false;
+      const completed = t ? ticketDone(network, t) : false;
       return { id, points: t?.points ?? 0, completed };
     });
     const ticketPoints = tickets.reduce((sum, t) => sum + (t.completed ? t.points : -t.points), 0);

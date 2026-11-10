@@ -4,7 +4,16 @@ import {
   routeClaimError,
   routePaymentOptions,
   stationPaymentOptions,
+  ticketDone,
   UnionFind,
+  EXCAVATOR,
+  effectiveRoute,
+  excavatorsNeeded,
+  repairCost,
+  repairError,
+  repairPaymentOptions,
+  routeWorks,
+  type RepairCost,
   type BoardShape,
   type CardCounts,
   type GameView,
@@ -14,7 +23,17 @@ import {
 import { S } from '../strings.js';
 
 export function boardOfView(view: GameView): BoardShape {
-  return { rules: view.rules, routeOwners: view.routeOwners, playerCount: view.players.length };
+  return {
+    rules: view.rules,
+    routeOwners: view.routeOwners,
+    playerCount: view.players.length,
+    month: view.month,
+    zones: view.zones,
+    damage: view.damage,
+    blocked: view.blocked,
+    abandoned: view.abandoned,
+    recolored: view.recolored,
+  };
 }
 
 /** What the viewing player can do right now. A string means "disabled, because…". */
@@ -73,7 +92,7 @@ export function affordances(view: GameView, map: MapIndex): Affordances {
   if (turn.kind === 'tunnel') return { ...none('resolve the tunnel'), banner: S.tunnelExtra(turn.extra) };
 
   const stationCost = nextStationCost(view, view.players[me.index]!);
-  const anyClaim = map.map.routes.some((r) => claimInfo(r, view, map).options.length > 0);
+  const anyClaim = map.map.routes.some((r) => claimInfo(r, view, map).options.length > 0 || repairInfo(r.id, view, map)?.options.length);
   const anyAction =
     view.drawPileCount + view.discardCount > 0 || view.market.some((c) => c !== null) || view.ticketDeckCount > 0 || anyClaim;
   return {
@@ -105,10 +124,14 @@ export function claimInfo(route: Route, view: GameView, map: MapIndex): ClaimInf
   const me = view.me;
   if (!me) return { options: [], reason: 'you are not playing' };
   const trains = view.players[me.index]!.trains;
-  const blocked = routeClaimError(boardOfView(view), map, route.id, me.index, trains);
+  const board = boardOfView(view);
+  const blocked = routeClaimError(board, map, route.id, me.index, trains);
   if (blocked) return { options: [], reason: blocked };
-  const options = routePaymentOptions(route, me.hand, view.rules);
+  const live = effectiveRoute(board, map, route.id) ?? route;
+  const excavators = excavatorsNeeded(board, map, live);
+  const options = routePaymentOptions(live, me.hand, view.rules, excavators);
   if (options.length > 0) return { options, reason: null };
+  if (excavators > me.hand[EXCAVATOR]) return { options, reason: `building here needs ${excavators} excavator card(s)` };
   if (route.kind === 'ferry' && view.rules.expansions.ferries && me.hand[LOCOMOTIVE] < route.ferryLocomotives) {
     return { options, reason: `this ferry needs ${route.ferryLocomotives} locomotive(s)` };
   }
@@ -122,13 +145,14 @@ export function ticketProgress(view: GameView, map: MapIndex): Map<string, boole
   if (!me) return out;
   const uf = new UnionFind();
   for (const [routeId, owner] of Object.entries(view.routeOwners)) {
-    if (owner !== me.index) continue;
+    if (owner !== me.index || !routeWorks(view, routeId)) continue;
     const r = map.routes.get(routeId);
     if (r) uf.union(r.from, r.to);
   }
   for (const id of me.tickets) {
     const t = map.tickets.get(id);
-    out.set(id, !!t && uf.connected(t.from, t.to));
+    // Damaged or ash-covered routes do not connect (Seasons mode).
+    out.set(id, !!t && ticketDone(uf, t));
   }
   return out;
 }
@@ -142,4 +166,33 @@ export function stationCandidates(view: GameView, map: MapIndex): string[] {
     .filter((c) => !taken.has(c.id))
     .filter((c) => (map.routesByCity.get(c.id) ?? []).some((r) => view.routeOwners[r.id] !== me.index))
     .map((c) => c.id);
+}
+
+export interface RepairInfo {
+  cost: RepairCost;
+  options: CardCounts[];
+  /** Why the viewer cannot repair it now, or null. */
+  reason: string | null;
+  /** Claiming an earthquake-abandoned route by repairing it, rather than fixing your own. */
+  claim: boolean;
+}
+
+/** Seasons mode: what repairing a route costs the viewer, or null when there is nothing to repair. */
+export function repairInfo(routeId: string, view: GameView, map: MapIndex): RepairInfo | null {
+  const me = view.me;
+  const board = boardOfView(view);
+  const cost = repairCost(board, map, routeId);
+  if (!me || !cost) return null;
+  const claim = view.abandoned[routeId] !== undefined;
+  if (!claim && view.routeOwners[routeId] !== me.index) return null;
+  const route = effectiveRoute(board, map, routeId)!;
+  const blocked = repairError(board, map, routeId, me.index, view.players[me.index]!.trains);
+  if (blocked) return { cost, options: [], reason: blocked, claim };
+  const options = repairPaymentOptions(route, cost, me.hand, view.rules);
+  const reason = options.length
+    ? null
+    : cost.excavators
+      ? `you need ${cost.excavators} excavator card(s)`
+      : `you need ${cost.cards} ${route.color === 'gray' ? 'cards of one color' : `${route.color} cards`} (or locomotives)`;
+  return { cost, options, reason, claim };
 }

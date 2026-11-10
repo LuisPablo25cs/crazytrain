@@ -1,4 +1,4 @@
-import type { Card, CardColor } from '../map/schema.js';
+import type { Card, CardColor, Hazard } from '../map/schema.js';
 import type { RulesConfig } from '../rules/schema.js';
 
 /** Card counts in a hand. Every card type has an entry. */
@@ -73,6 +73,33 @@ export interface GameResults {
 
 export type GamePhase = 'initialTickets' | 'playing' | 'finished';
 
+/** Disasters that strike at random. Snow is a season instead. */
+export type DisasterKind = Exclude<Hazard, 'snow'>;
+export const DISASTER_KINDS: readonly DisasterKind[] = ['earthquake', 'volcano', 'tsunami', 'hurricane', 'tornado'];
+
+/** The area a disaster hit, kept while it still matters (building needs excavators, or for the board). */
+export interface DisasterZone {
+  id: number;
+  kind: DisasterKind;
+  cityId: string;
+  x: number;
+  y: number;
+  radius: number;
+  /** Month it struck, and the month it stops mattering (exclusive). */
+  from: number;
+  until: number;
+}
+
+/** A built route that needs repair. While damaged it does not connect cities (Seasons mode). */
+export interface RouteDamage {
+  cause: 'earthquake' | 'hurricane' | 'tornado' | 'tsunami';
+  since: number;
+  /** Month the owner loses the route if it is still not repaired. */
+  deadline: number;
+  /** Indexes of the broken train pieces, from the route's `from` end. */
+  broken: number[];
+}
+
 export interface GameState {
   rules: RulesConfig;
   mapId: string;
@@ -94,6 +121,19 @@ export interface GameState {
   /** Seeded RNG state. Server-only. */
   rng: number;
   results: GameResults | null;
+  /** Seasons mode. Months since the game started: 0 is January of year 1. */
+  month: number;
+  /** Who started the first round; a new month begins each time play comes back to them. */
+  firstPlayer: number;
+  zones: DisasterZone[];
+  nextZoneId: number;
+  damage: Record<string, RouteDamage>;
+  /** Routes under volcanic ash, until the given month (exclusive). They turn gray afterwards. */
+  blocked: Record<string, number>;
+  /** Routes an earthquake took from their owner: anyone may claim one by paying this repair cost. */
+  abandoned: Record<string, number>;
+  /** Routes a volcano turned gray. */
+  recolored: Record<string, 'gray'>;
 }
 
 export type Action =
@@ -107,6 +147,8 @@ export type Action =
   | { type: 'keepTickets'; ticketIds: string[] }
   | { type: 'buildStation'; cityId: string; payment: CardCounts; borrowRouteId: string }
   | { type: 'pass' }
+  /** Seasons mode: repair a damaged route you own, or claim an abandoned one by repairing it. */
+  | { type: 'repairRoute'; routeId: string; payment: CardCounts }
   /** Host-forced: resolves the target player's pending choice and ends their turn. */
   | { type: 'skip' };
 
@@ -131,6 +173,26 @@ export type GameEvent =
   | { type: 'passed'; player: number }
   | { type: 'skipped'; player: number }
   | { type: 'lastRoundStarted'; player: number }
+  | { type: 'monthStarted'; month: number }
+  | {
+      type: 'disaster';
+      kind: DisasterKind;
+      cityId: string;
+      x: number;
+      y: number;
+      radius: number;
+      /** Built routes that now need repair. */
+      damaged: string[];
+      /** Built routes their owners lost at once (a tsunami washed all of it away). */
+      lost: string[];
+      /** Routes under volcanic ash. */
+      blocked: string[];
+    }
+  | { type: 'damageSpread'; player: number; routeId: string; broken: number }
+  | { type: 'routeRepaired'; player: number; routeId: string; payment: CardCounts; claimed: boolean }
+  /** `reason`: damage not repaired in time, fully broken or washed away, or the ash settled. */
+  | { type: 'routeLost'; player: number; routeId: string; reason: 'deadline' | 'destroyed' | 'volcano'; claimable: boolean }
+  | { type: 'routeGrayed'; routeId: string }
   | { type: 'gameFinished'; winners: number[] };
 
 export type ApplyResult =

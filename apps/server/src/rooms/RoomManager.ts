@@ -63,6 +63,8 @@ export class RoomManager {
         return { ok: true };
       case 'setToggles':
         return room.setToggles(seat, intent.toggles);
+      case 'setMode':
+        return room.setMode(seat, intent.mode, intent.years);
       case 'setMap':
         return room.setMap(seat, intent.map);
       case 'setColor':

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import type { GameEvent, Theme } from '@rails/shared';
+import type { GameEvent, RouteDamage, Theme } from '@rails/shared';
 import { playerHex } from '../theme/themes.js';
 import { TRAIN_LENGTH_RATIO, TRAIN_WIDTH_RATIO } from './geometry.js';
 import { SLOT_Y, type Slot } from './Routes.js';
@@ -13,15 +13,21 @@ interface TrainsProps {
   theme: Theme;
   lastEvents: GameEvent[];
   highlighted?: string[];
+  /** Seasons mode: broken pieces are missing, damaged or ash-covered cars are darker. */
+  damage?: Record<string, RouteDamage>;
+  blocked?: Record<string, number>;
 }
 
 const DROP_MS = 450;
 const tmp = new THREE.Object3D();
 
 /** Train cars on claimed routes in the owner's color (R19). New claims drop in as a short cue. */
-export function Trains({ slots, owners, playerColors, theme, lastEvents, highlighted }: TrainsProps) {
+export function Trains({ slots, owners, playerColors, theme, lastEvents, highlighted, damage, blocked }: TrainsProps) {
   const mesh = useRef<THREE.InstancedMesh>(null);
-  const cars = useMemo(() => slots.filter((s) => owners[s.routeId] !== undefined), [slots, owners]);
+  const cars = useMemo(
+    () => slots.filter((s) => owners[s.routeId] !== undefined && !damage?.[s.routeId]?.broken.includes(s.index)),
+    [slots, owners, damage],
+  );
   const body = useMemo(() => {
     // A low-poly car: a box with a raised roof, merged into one geometry.
     const base = new THREE.BoxGeometry(1, 0.65, 1).translate(0, 0.325, 0);
@@ -49,10 +55,12 @@ export function Trains({ slots, owners, playerColors, theme, lastEvents, highlig
     cars.forEach((s, i) => {
       color.set(playerHex(theme, playerColors[owners[s.routeId]!] ?? ''));
       if (marked.has(s.routeId)) color.lerp(glow, 0.55);
+      if (damage?.[s.routeId]) color.lerp(new THREE.Color('#3b2a24'), 0.45);
+      if (blocked?.[s.routeId] !== undefined) color.lerp(new THREE.Color('#5d5555'), 0.7);
       m.setColorAt(i, color);
     });
     if (m.instanceColor) m.instanceColor.needsUpdate = true;
-  }, [cars, owners, playerColors, theme, highlighted]);
+  }, [cars, owners, playerColors, theme, highlighted, damage, blocked]);
 
   useFrame(() => {
     const m = mesh.current;

@@ -17,7 +17,12 @@
     "lon": -123.12
    },
    "country": "CA",
-   "major": true
+   "major": true,
+   "hazards": {
+    "earthquake": "high",
+    "tsunami": "medium",
+    "snow": "medium"
+   }
   },
   {
    "id": "seattle",
@@ -29,7 +34,13 @@
     "lon": -122.33
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "earthquake": "high",
+    "volcano": "high",
+    "tsunami": "high",
+    "snow": "medium"
+   }
   },
   {
    "id": "portland",
@@ -41,7 +52,10 @@
     "lon": -122.68
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "volcano": "high"
+   }
   },
   {
    "id": "san-francisco",
@@ -53,7 +67,11 @@
     "lon": -122.42
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "earthquake": "high",
+    "tsunami": "medium"
+   }
   },
   {
    "id": "los-angeles",
@@ -65,7 +83,11 @@
     "lon": -118.24
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "earthquake": "high",
+    "tsunami": "medium"
+   }
   },
   {
    "id": "las-vegas",
@@ -77,7 +99,10 @@
     "lon": -115.14
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium"
+   }
   },
   {
    "id": "phoenix",
@@ -89,7 +114,10 @@
     "lon": -112.07
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "volcano": "medium"
+   }
   },
   {
    "id": "el-paso",
@@ -101,7 +129,10 @@
     "lon": -106.49
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium"
+   }
   },
   {
    "id": "santa-fe",
@@ -113,7 +144,11 @@
     "lon": -105.94
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "volcano": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "salt-lake-city",
@@ -125,7 +160,11 @@
     "lon": -111.89
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "high",
+    "snow": "high"
+   }
   },
   {
    "id": "helena",
@@ -137,7 +176,11 @@
     "lon": -112.04
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "denver",
@@ -149,7 +192,11 @@
     "lon": -104.99
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "omaha",
@@ -161,7 +208,11 @@
     "lon": -95.93
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high",
+    "snow": "high"
+   }
   },
   {
    "id": "duluth",
@@ -173,7 +224,10 @@
     "lon": -92.1
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "snow": "high"
+   }
   },
   {
    "id": "kansas-city",
@@ -185,7 +239,11 @@
     "lon": -94.58
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high",
+    "snow": "medium"
+   }
   },
   {
    "id": "oklahoma-city",
@@ -197,7 +255,10 @@
     "lon": -97.52
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high"
+   }
   },
   {
    "id": "dallas",
@@ -209,7 +270,11 @@
     "lon": -96.8
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "tornado": "high",
+    "snow": "medium"
+   }
   },
   {
    "id": "houston",
@@ -221,7 +286,11 @@
     "lon": -95.37
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "hurricane": "high",
+    "tornado": "high"
+   }
   },
   {
    "id": "little-rock",
@@ -233,7 +302,10 @@
     "lon": -92.29
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high"
+   }
   },
   {
    "id": "new-orleans",
@@ -245,7 +317,11 @@
     "lon": -90.07
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "high",
+    "tornado": "medium"
+   }
   },
   {
    "id": "saint-louis",
@@ -257,7 +333,10 @@
     "lon": -90.2
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high"
+   }
   },
   {
    "id": "chicago",
@@ -269,7 +348,11 @@
     "lon": -87.63
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "tornado": "high",
+    "snow": "high"
+   }
   },
   {
    "id": "nashville",
@@ -281,7 +364,10 @@
     "lon": -86.78
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high"
+   }
   },
   {
    "id": "atlanta",
@@ -293,7 +379,11 @@
     "lon": -84.39
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "medium",
+    "tornado": "high"
+   }
   },
   {
    "id": "charleston",
@@ -305,7 +395,11 @@
     "lon": -79.93
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tsunami": "medium",
+    "hurricane": "high"
+   }
   },
   {
    "id": "miami",
@@ -317,7 +411,10 @@
     "lon": -80.19
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "hurricane": "high"
+   }
   },
   {
    "id": "raleigh",
@@ -329,7 +426,11 @@
     "lon": -78.64
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "high",
+    "tornado": "medium"
+   }
   },
   {
    "id": "washington",
@@ -341,7 +442,11 @@
     "lon": -77.04
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "hurricane": "medium",
+    "snow": "medium"
+   }
   },
   {
    "id": "pittsburgh",
@@ -353,7 +458,11 @@
     "lon": -79.99
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "new-york",
@@ -365,7 +474,11 @@
     "lon": -74.01
    },
    "country": "US",
-   "major": true
+   "major": true,
+   "hazards": {
+    "hurricane": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "boston",
@@ -377,7 +490,11 @@
     "lon": -71.06
    },
    "country": "US",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "calgary",
@@ -389,7 +506,11 @@
     "lon": -114.07
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "winnipeg",
@@ -401,7 +522,11 @@
     "lon": -97.14
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high",
+    "snow": "high"
+   }
   },
   {
    "id": "sault-st-marie",
@@ -413,7 +538,11 @@
     "lon": -84.35
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "toronto",
@@ -425,7 +554,11 @@
     "lon": -79.38
    },
    "country": "CA",
-   "major": true
+   "major": true,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "montreal",
@@ -437,7 +570,12 @@
     "lon": -73.57
    },
    "country": "CA",
-   "major": true
+   "major": true,
+   "hazards": {
+    "earthquake": "medium",
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "prince-rupert",
@@ -449,7 +587,12 @@
     "lon": -130.32
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "tsunami": "high",
+    "snow": "medium"
+   }
   },
   {
    "id": "jasper",
@@ -461,7 +604,10 @@
     "lon": -118.08
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "snow": "high"
+   }
   },
   {
    "id": "edmonton",
@@ -473,7 +619,11 @@
     "lon": -113.49
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "regina",
@@ -485,7 +635,11 @@
     "lon": -104.61
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "high",
+    "snow": "high"
+   }
   },
   {
    "id": "churchill",
@@ -497,7 +651,10 @@
     "lon": -94.17
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "snow": "high"
+   }
   },
   {
    "id": "ottawa",
@@ -509,7 +666,12 @@
     "lon": -75.7
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "tornado": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "quebec",
@@ -521,7 +683,11 @@
     "lon": -71.21
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "halifax",
@@ -533,7 +699,11 @@
     "lon": -63.58
    },
    "country": "CA",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "medium",
+    "snow": "high"
+   }
   },
   {
    "id": "hermosillo",
@@ -545,7 +715,10 @@
     "lon": -110.96
    },
    "country": "MX",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "medium"
+   }
   },
   {
    "id": "ciudad-obregon",
@@ -557,7 +730,10 @@
     "lon": -109.93
    },
    "country": "MX",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "medium"
+   }
   },
   {
    "id": "chihuahua",
@@ -569,7 +745,11 @@
     "lon": -106.07
    },
    "country": "MX",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "medium"
+   }
   },
   {
    "id": "saltillo",
@@ -581,7 +761,11 @@
     "lon": -101
    },
    "country": "MX",
-   "major": false
+   "major": false,
+   "hazards": {
+    "tornado": "medium",
+    "snow": "medium"
+   }
   },
   {
    "id": "monterrey",
@@ -593,13 +777,16 @@
     "lon": -100.32
    },
    "country": "MX",
-   "major": true
+   "major": true,
+   "hazards": {
+    "tornado": "medium"
+   }
   },
   {
    "id": "aguascalientes",
    "name": "Aguascalientes",
-   "x": 394,
-   "y": 406.8,
+   "x": 394.89,
+   "y": 406.4,
    "geo": {
     "lat": 21.88,
     "lon": -102.29
@@ -610,14 +797,18 @@
   {
    "id": "guadalajara",
    "name": "Guadalajara",
-   "x": 381.4,
-   "y": 421.3,
+   "x": 374.15,
+   "y": 421.22,
    "geo": {
     "lat": 20.66,
     "lon": -103.35
    },
    "country": "MX",
-   "major": true
+   "major": true,
+   "hazards": {
+    "earthquake": "high",
+    "volcano": "medium"
+   }
   },
   {
    "id": "ciudad-de-mexico",
@@ -629,19 +820,27 @@
     "lon": -99.13
    },
    "country": "MX",
-   "major": true
+   "major": true,
+   "hazards": {
+    "earthquake": "high",
+    "volcano": "high"
+   }
   },
   {
    "id": "veracruz",
    "name": "Veracruz",
-   "x": 466.9,
+   "x": 466.7,
    "y": 439,
    "geo": {
     "lat": 19.17,
     "lon": -96.13
    },
    "country": "MX",
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "hurricane": "high"
+   }
   },
   {
    "id": "merida",
@@ -653,7 +852,10 @@
     "lon": -89.59
    },
    "country": "MX",
-   "major": false
+   "major": false,
+   "hazards": {
+    "hurricane": "high"
+   }
   },
   {
    "id": "la-habana",
@@ -665,35 +867,85 @@
     "lon": -82.37
    },
    "country": "CU",
-   "major": true
+   "major": true,
+   "hazards": {
+    "hurricane": "high"
+   }
   },
   {
    "id": "la-paz",
    "name": "La Paz",
-   "x": 299.85,
-   "y": 378.91,
-   "major": false
+   "x": 295.04,
+   "y": 380.51,
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "tsunami": "medium",
+    "hurricane": "high"
+   },
+   "country": "MX"
   },
   {
    "id": "tijuana",
    "name": "Tijuana",
    "x": 222.82,
    "y": 282.93,
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "high"
+   },
+   "country": "MX"
   },
   {
    "id": "culiacan",
    "name": "Culiacan",
    "x": 328.98,
    "y": 364.19,
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "hurricane": "medium"
+   },
+   "country": "MX"
   },
   {
    "id": "mazatlan",
    "name": "Mazatlan",
    "x": 344.2,
    "y": 386.86,
-   "major": false
+   "major": false,
+   "hazards": {
+    "earthquake": "medium",
+    "tsunami": "medium",
+    "hurricane": "high"
+   },
+   "country": "MX"
+  },
+  {
+   "id": "acapulco",
+   "name": "Acapulco",
+   "x": 399.99,
+   "y": 452.76,
+   "major": false,
+   "hazards": {
+    "earthquake": "high",
+    "tsunami": "medium",
+    "hurricane": "high"
+   },
+   "country": "MX"
+  },
+  {
+   "id": "tuxtla",
+   "name": "Tuxtla",
+   "x": 515.46,
+   "y": 470.16,
+   "major": false,
+   "hazards": {
+    "earthquake": "high",
+    "volcano": "high",
+    "hurricane": "medium"
+   },
+   "country": "MX"
   }
  ],
  "routes": [
@@ -955,20 +1207,11 @@
    "parallelGroup": "salt-lake-city-denver"
   },
   {
-   "id": "phoenix-denver",
-   "from": "phoenix",
-   "to": "denver",
-   "length": 5,
-   "color": "white",
-   "kind": "normal",
-   "ferryLocomotives": 0
-  },
-  {
    "id": "phoenix-santa-fe",
    "from": "phoenix",
    "to": "santa-fe",
    "length": 3,
-   "color": "gray",
+   "color": "white",
    "kind": "normal",
    "ferryLocomotives": 0
   },
@@ -1045,7 +1288,31 @@
    "length": 3,
    "color": "blue",
    "kind": "normal",
-   "ferryLocomotives": 0
+   "ferryLocomotives": 0,
+   "parallelGroup": "santa-fe-oklahoma-city",
+   "slots": [
+    {
+     "x": 372.67,
+     "y": 242.04,
+     "angle": 0.0562,
+     "length": 28.18,
+     "width": 5.6
+    },
+    {
+     "x": 401.4,
+     "y": 243.66,
+     "angle": 0.0562,
+     "length": 28.18,
+     "width": 5.6
+    },
+    {
+     "x": 430.12,
+     "y": 245.27,
+     "angle": 0.0562,
+     "length": 28.18,
+     "width": 5.6
+    }
+   ]
   },
   {
    "id": "el-paso-oklahoma-city",
@@ -1070,7 +1337,7 @@
    "from": "el-paso",
    "to": "houston",
    "length": 6,
-   "color": "green",
+   "color": "blue",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "el-paso-houston",
@@ -1260,7 +1527,7 @@
    "color": "gray",
    "kind": "normal",
    "ferryLocomotives": 0,
-   "bend": 4.7
+   "bend": 3.3
   },
   {
    "id": "little-rock-saint-louis",
@@ -1317,8 +1584,9 @@
    "to": "miami",
    "length": 6,
    "color": "red",
-   "kind": "normal",
-   "ferryLocomotives": 0
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "bend": -6.8
   },
   {
    "id": "saint-louis-chicago-1",
@@ -1458,7 +1726,7 @@
    "id": "new-york-pittsburgh-1",
    "from": "new-york",
    "to": "pittsburgh",
-   "length": 2,
+   "length": 3,
    "color": "white",
    "kind": "normal",
    "ferryLocomotives": 0,
@@ -1469,7 +1737,7 @@
    "id": "new-york-pittsburgh-2",
    "from": "new-york",
    "to": "pittsburgh",
-   "length": 2,
+   "length": 3,
    "color": "green",
    "kind": "normal",
    "ferryLocomotives": 0,
@@ -1627,7 +1895,7 @@
    "from": "prince-rupert",
    "to": "vancouver",
    "length": 5,
-   "color": "gray",
+   "color": "black",
    "kind": "ferry",
    "ferryLocomotives": 1,
    "path": [
@@ -1705,11 +1973,11 @@
    "id": "edmonton-regina",
    "from": "edmonton",
    "to": "regina",
-   "length": 5,
+   "length": 4,
    "color": "purple",
    "kind": "normal",
    "ferryLocomotives": 0,
-   "bend": -14
+   "bend": -3.6
   },
   {
    "id": "regina-winnipeg",
@@ -1746,7 +2014,7 @@
    "from": "churchill",
    "to": "regina",
    "length": 6,
-   "color": "gray",
+   "color": "black",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "churchill-regina",
@@ -1801,7 +2069,8 @@
    "color": "purple",
    "kind": "normal",
    "ferryLocomotives": 0,
-   "bend": -6.7
+   "parallelGroup": "quebec-halifax",
+   "bend": -6.8
   },
   {
    "id": "quebec-boston",
@@ -1818,7 +2087,7 @@
    "from": "halifax",
    "to": "boston",
    "length": 4,
-   "color": "gray",
+   "color": "orange",
    "kind": "ferry",
    "ferryLocomotives": 1,
    "parallelGroup": "halifax-boston",
@@ -1922,7 +2191,7 @@
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "monterrey-houston",
-   "bend": -1.6
+   "bend": 4.8
   },
   {
    "id": "monterrey-veracruz",
@@ -1931,7 +2200,8 @@
    "length": 5,
    "color": "black",
    "kind": "normal",
-   "ferryLocomotives": 0
+   "ferryLocomotives": 0,
+   "bend": 4.3
   },
   {
    "id": "aguascalientes-guadalajara-1",
@@ -1957,7 +2227,7 @@
    "id": "aguascalientes-ciudad-de-mexico-1",
    "from": "aguascalientes",
    "to": "ciudad-de-mexico",
-   "length": 3,
+   "length": 2,
    "color": "blue",
    "kind": "normal",
    "ferryLocomotives": 0,
@@ -1968,7 +2238,7 @@
    "id": "aguascalientes-ciudad-de-mexico-2",
    "from": "aguascalientes",
    "to": "ciudad-de-mexico",
-   "length": 3,
+   "length": 2,
    "color": "purple",
    "kind": "normal",
    "ferryLocomotives": 0,
@@ -1979,16 +2249,17 @@
    "id": "guadalajara-ciudad-de-mexico",
    "from": "guadalajara",
    "to": "ciudad-de-mexico",
-   "length": 3,
+   "length": 2,
    "color": "red",
    "kind": "tunnel",
-   "ferryLocomotives": 0
+   "ferryLocomotives": 0,
+   "bend": -1.6
   },
   {
    "id": "ciudad-de-mexico-veracruz",
    "from": "ciudad-de-mexico",
    "to": "veracruz",
-   "length": 2,
+   "length": 1,
    "color": "white",
    "kind": "tunnel",
    "ferryLocomotives": 0
@@ -1997,31 +2268,74 @@
    "id": "veracruz-merida",
    "from": "veracruz",
    "to": "merida",
-   "length": 5,
+   "length": 4,
    "color": "orange",
    "kind": "normal",
    "ferryLocomotives": 0,
-   "parallelGroup": "veracruz-merida",
-   "bend": 29.7
+   "bend": 16.5
   },
   {
    "id": "veracruz-houston",
    "from": "veracruz",
    "to": "houston",
    "length": 7,
-   "color": "gray",
+   "color": "purple",
    "kind": "ferry",
    "ferryLocomotives": 2,
-   "bend": 4.7
+   "bend": 9.9
   },
   {
    "id": "new-orleans-merida",
    "from": "new-orleans",
    "to": "merida",
    "length": 6,
-   "color": "gray",
+   "color": "yellow",
    "kind": "ferry",
    "ferryLocomotives": 2,
+   "slots": [
+    {
+     "x": 542.5,
+     "y": 324.2,
+     "angle": 1.3215,
+     "length": 14.75,
+     "width": 5.6
+    },
+    {
+     "x": 545.97,
+     "y": 339.96,
+     "angle": 1.3896,
+     "length": 14.75,
+     "width": 5.6
+    },
+    {
+     "x": 548.14,
+     "y": 355.96,
+     "angle": 1.4747,
+     "length": 14.75,
+     "width": 5.6
+    },
+    {
+     "x": 548.73,
+     "y": 372.08,
+     "angle": 1.5598,
+     "length": 14.75,
+     "width": 5.6
+    },
+    {
+     "x": 548.55,
+     "y": 388.21,
+     "angle": 1.6449,
+     "length": 14.75,
+     "width": 5.6
+    },
+    {
+     "x": 546.79,
+     "y": 404.26,
+     "angle": 1.713,
+     "length": 14.75,
+     "width": 5.6
+    }
+   ],
    "bend": -7.3
   },
   {
@@ -2029,7 +2343,7 @@
    "from": "merida",
    "to": "la-habana",
    "length": 4,
-   "color": "gray",
+   "color": "white",
    "kind": "ferry",
    "ferryLocomotives": 1,
    "parallelGroup": "merida-la-habana"
@@ -2038,10 +2352,11 @@
    "id": "la-habana-miami",
    "from": "la-habana",
    "to": "miami",
-   "length": 3,
-   "color": "gray",
+   "length": 2,
+   "color": "orange",
    "kind": "ferry",
-   "ferryLocomotives": 1
+   "ferryLocomotives": 1,
+   "parallelGroup": "la-habana-miami"
   },
   {
    "id": "calgary-regina",
@@ -2079,7 +2394,7 @@
    "from": "churchill",
    "to": "winnipeg",
    "length": 4,
-   "color": "gray",
+   "color": "white",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "churchill-winnipeg",
@@ -2090,7 +2405,7 @@
    "from": "ottawa",
    "to": "sault-st-marie",
    "length": 5,
-   "color": "gray",
+   "color": "yellow",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "ottawa-sault-st-marie",
@@ -2111,29 +2426,18 @@
    "from": "halifax",
    "to": "boston",
    "length": 4,
-   "color": "gray",
+   "color": "green",
    "kind": "ferry",
    "ferryLocomotives": 1,
    "parallelGroup": "halifax-boston",
    "bend": -7.3
   },
   {
-   "id": "veracruz-merida-2",
-   "from": "veracruz",
-   "to": "merida",
-   "length": 5,
-   "color": "gray",
-   "kind": "normal",
-   "ferryLocomotives": 0,
-   "parallelGroup": "veracruz-merida",
-   "bend": 29.7
-  },
-  {
    "id": "merida-la-habana-2",
    "from": "merida",
    "to": "la-habana",
    "length": 4,
-   "color": "gray",
+   "color": "green",
    "kind": "ferry",
    "ferryLocomotives": 1,
    "parallelGroup": "merida-la-habana"
@@ -2143,18 +2447,18 @@
    "from": "monterrey",
    "to": "houston",
    "length": 3,
-   "color": "gray",
+   "color": "red",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "monterrey-houston",
-   "bend": -1.6
+   "bend": 4.8
   },
   {
    "id": "el-paso-houston-2",
    "from": "el-paso",
    "to": "houston",
    "length": 6,
-   "color": "gray",
+   "color": "black",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "el-paso-houston",
@@ -2165,7 +2469,7 @@
    "from": "hermosillo",
    "to": "phoenix",
    "length": 3,
-   "color": "gray",
+   "color": "black",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "hermosillo-phoenix"
@@ -2193,7 +2497,7 @@
    "from": "tijuana",
    "to": "la-paz",
    "length": 6,
-   "color": "gray",
+   "color": "white",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "tijuana-la-paz",
@@ -2204,7 +2508,7 @@
    "from": "tijuana",
    "to": "la-paz",
    "length": 6,
-   "color": "gray",
+   "color": "blue",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "tijuana-la-paz",
@@ -2215,7 +2519,7 @@
    "from": "la-paz",
    "to": "ciudad-obregon",
    "length": 2,
-   "color": "gray",
+   "color": "purple",
    "kind": "ferry",
    "ferryLocomotives": 1,
    "bend": 3.6
@@ -2225,7 +2529,7 @@
    "from": "churchill",
    "to": "regina",
    "length": 6,
-   "color": "gray",
+   "color": "yellow",
    "kind": "normal",
    "ferryLocomotives": 0,
    "parallelGroup": "churchill-regina",
@@ -2285,20 +2589,10 @@
    "id": "mazatlan-guadalajara",
    "from": "mazatlan",
    "to": "guadalajara",
-   "length": 3,
-   "color": "gray",
+   "length": 2,
+   "color": "yellow",
    "kind": "normal",
    "ferryLocomotives": 0
-  },
-  {
-   "id": "la-paz-guadalajara",
-   "from": "la-paz",
-   "to": "guadalajara",
-   "length": 5,
-   "color": "gray",
-   "kind": "normal",
-   "ferryLocomotives": 0,
-   "bend": 5.6
   },
   {
    "id": "mazatlan-saltillo",
@@ -2309,6 +2603,108 @@
    "kind": "tunnel",
    "ferryLocomotives": 0,
    "bend": -4.8
+  },
+  {
+   "id": "la-habana-miami-2",
+   "from": "la-habana",
+   "to": "miami",
+   "length": 2,
+   "color": "black",
+   "kind": "ferry",
+   "ferryLocomotives": 1,
+   "parallelGroup": "la-habana-miami"
+  },
+  {
+   "id": "la-paz-acapulco",
+   "from": "la-paz",
+   "to": "acapulco",
+   "length": 6,
+   "color": "black",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "la-paz-acapulco",
+   "bend": 5.6
+  },
+  {
+   "id": "la-paz-acapulco-2",
+   "from": "la-paz",
+   "to": "acapulco",
+   "length": 6,
+   "color": "green",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "la-paz-acapulco",
+   "bend": 5.6
+  },
+  {
+   "id": "guadalajara-acapulco",
+   "from": "guadalajara",
+   "to": "acapulco",
+   "length": 2,
+   "color": "orange",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -2.8
+  },
+  {
+   "id": "tuxtla-veracruz",
+   "from": "tuxtla",
+   "to": "veracruz",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": -7.4
+  },
+  {
+   "id": "tuxtla-merida",
+   "from": "tuxtla",
+   "to": "merida",
+   "length": 3,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 14.1
+  },
+  {
+   "id": "acapulco-ciudad-de-mexico",
+   "from": "acapulco",
+   "to": "ciudad-de-mexico",
+   "length": 1,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0
+  },
+  {
+   "id": "acapulco-tuxtla",
+   "from": "acapulco",
+   "to": "tuxtla",
+   "length": 5,
+   "color": "white",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "bend": 10.1
+  },
+  {
+   "id": "quebec-halifax-2",
+   "from": "quebec",
+   "to": "halifax",
+   "length": 5,
+   "color": "red",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "quebec-halifax",
+   "bend": -6.8
+  },
+  {
+   "id": "santa-fe-oklahoma-city-2",
+   "from": "santa-fe",
+   "to": "oklahoma-city",
+   "length": 3,
+   "color": "gray",
+   "kind": "normal",
+   "ferryLocomotives": 0,
+   "parallelGroup": "santa-fe-oklahoma-city"
   }
  ],
  "tickets": [

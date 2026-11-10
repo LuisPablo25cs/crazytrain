@@ -11,6 +11,10 @@ import { Overlays } from './ui/Overlays.js';
 // Dev-only map editor, loaded only when someone opens /editor.
 const EditorScreen = lazy(() => import('./editor/EditorScreen.js').then((m) => ({ default: m.EditorScreen })));
 
+const TicketsPage = lazy(() => import('./editor/TicketsPage.js').then((m) => ({ default: m.TicketsPage })));
+
+const AnimationsPage = lazy(() => import('./animations/AnimationsPage.js').then((m) => ({ default: m.AnimationsPage })));
+
 function usePath(): [string, (path: string) => void] {
   const [path, setPath] = useState(() => location.pathname);
   useEffect(() => {
@@ -39,6 +43,22 @@ export function App() {
     return (
       <Suspense fallback={<main className="center-screen">Loading the editor…</main>}>
         <EditorScreen />
+      </Suspense>
+    );
+  }
+
+  if (path === '/tickets') {
+    return (
+      <Suspense fallback={<main className="center-screen">Loading…</main>}>
+        <TicketsPage />
+      </Suspense>
+    );
+  }
+
+  if (path === '/animations') {
+    return (
+      <Suspense fallback={<main className="center-screen">Loading…</main>}>
+        <AnimationsPage />
       </Suspense>
     );
   }

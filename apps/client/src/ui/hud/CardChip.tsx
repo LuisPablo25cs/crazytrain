@@ -18,7 +18,8 @@ export function cardArtUrl(card: Card): string {
 /** A train card drawn with its artwork. Gray (any color) has no card, so it stays a plain chip. */
 export function CardChip({ card, count, size = 'normal', disabled, title, onClick }: CardChipProps) {
   const label = `${CARD_NAMES[card]}${count !== undefined ? ` × ${count}` : ''}`;
-  const art = card === 'gray' ? undefined : { backgroundImage: `url(${cardArtUrl(card)})` };
+  // Gray has no card; the excavator has no art yet (placeholder chip until it arrives).
+  const art = card === 'gray' || card === 'excavator' ? undefined : { backgroundImage: `url(${cardArtUrl(card)})` };
   const content = (
     <>
       {!art && <span className="card-letter">{CARD_LETTERS[card]}</span>}

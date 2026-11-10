@@ -8,7 +8,8 @@ const CAMERA_HEIGHT = 500;
 /** How far past the "whole map" view players can zoom in. */
 const MAX_ZOOM_FACTOR = 8;
 /** Screen pixels covered by the HUD on each side (see .hud-* in styles.css). */
-const HUD = { left: 280, right: 305, top: 64, bottom: 118 };
+// The bottom dock is outside the board area, so the map may reach the bottom edge.
+const HUD = { left: 280, right: 305, top: 64, bottom: 0 };
 
 export interface CameraFocus {
   x: number;

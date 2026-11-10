@@ -1,0 +1,34 @@
+{
+ "effect": "tornado",
+ "output": {
+  "width": 480,
+  "height": 360,
+  "seconds": 4,
+  "fps": 20,
+  "seed": 7,
+  "transparent": false
+ },
+ "params": {
+  "height": 1,
+  "width": 1,
+  "bend": 1,
+  "spin": 6,
+  "sway": 1,
+  "debris": 46,
+  "dust": 22,
+  "rain": 80,
+  "bolts": 2,
+  "farm": true,
+  "skyTop": "#2f3b3a",
+  "skyBottom": "#8c9a86",
+  "cloud": "#3d4646",
+  "cloudLight": "#5f6b67",
+  "funnel": "#7d847c",
+  "funnelDark": "#555c56",
+  "field": "#7f8f4f",
+  "fieldDark": "#5f6f45",
+  "barn": "#9b3b2a",
+  "dustColor": "#9c8b6e",
+  "flash": "#eef3ff"
+ }
+}

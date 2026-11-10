@@ -7,6 +7,8 @@ import type {
   GameResults,
   GameState,
   Hand,
+  DisasterZone,
+  RouteDamage,
   StationState,
   TurnState,
 } from './types.js';
@@ -52,6 +54,13 @@ export interface GameView {
   stations: StationState[];
   /** Present only when the game is finished; reveals every ticket. */
   results: GameResults | null;
+  /** Seasons mode (all public): the calendar and what disasters left behind. */
+  month: number;
+  zones: DisasterZone[];
+  damage: Record<string, RouteDamage>;
+  blocked: Record<string, number>;
+  abandoned: Record<string, number>;
+  recolored: Record<string, 'gray'>;
 }
 
 /**
@@ -98,6 +107,12 @@ export function viewFor(state: GameState, viewer: number | null): GameView {
     routeOwners: { ...state.routeOwners },
     stations: state.stations.map((s) => ({ ...s })),
     results: state.results ? structuredClone(state.results) : null,
+    month: state.month,
+    zones: structuredClone(state.zones),
+    damage: structuredClone(state.damage),
+    blocked: { ...state.blocked },
+    abandoned: { ...state.abandoned },
+    recolored: { ...state.recolored },
   };
 }
 

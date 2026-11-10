@@ -2,11 +2,13 @@ import { useMemo, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import type { BoardShape, GameEvent, MapIndex, StationState, Theme } from '@rails/shared';
 import { CameraRig } from './CameraRig.js';
+import { useCityLabelArt } from './cityLabelArt.js';
 import { Cities } from './Cities.js';
 import { LabelLayer, LabelProjector } from './Labels.js';
 import { buildSlots, Routes } from './Routes.js';
 import { Terrain } from './Terrain.js';
 import { Trains } from './Trains.js';
+import { Zones } from './Zones.js';
 
 export interface BoardSceneProps {
   map: MapIndex;
@@ -36,6 +38,7 @@ export function BoardScene(props: BoardSceneProps) {
   const [zoomedIn, setZoomedIn] = useState(false);
   const owners = props.board?.routeOwners ?? {};
   const labelRefs = useRef(new Map<string, HTMLDivElement>());
+  const labelArt = useCityLabelArt();
 
   return (
     <div className="board">
@@ -74,7 +77,10 @@ export function BoardScene(props: BoardSceneProps) {
           theme={theme}
           lastEvents={props.lastEvents}
           highlighted={props.highlightedRoutes}
+          damage={props.board?.damage}
+          blocked={props.board?.blocked}
         />
+        {props.board?.zones && <Zones zones={props.board.zones} month={props.board.month ?? 0} />}
         <Cities
           map={map}
           theme={theme}
@@ -98,6 +104,7 @@ export function BoardScene(props: BoardSceneProps) {
         theme={theme}
         showMinor={zoomedIn}
         emphasized={props.highlightedCities}
+        art={labelArt}
       />
     </div>
   );

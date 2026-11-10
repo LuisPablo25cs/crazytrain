@@ -1,6 +1,9 @@
 import {
+  type Hazard,
+  type HazardLevel,
   indexMap,
   suggestTicketPoints,
+  ticketCities,
   type City,
   type MapDefinition,
   type MapIndex,
@@ -287,7 +290,9 @@ export function renameCityWithId(doc: MapDoc, cityId: string, name: string): { d
         };
       }),
       tickets: renamed.tickets.map((t) =>
-        t.from === cityId || t.to === cityId ? { ...t, id: swapInId(t.id), from: swap(t.from), to: swap(t.to) } : t,
+        ticketCities(t).includes(cityId)
+          ? { ...t, id: swapInId(t.id), from: swap(t.from), to: swap(t.to), ...(t.via ? { via: swap(t.via) } : {}) }
+          : t,
       ),
     },
   };
@@ -297,13 +302,24 @@ export function setCityMajor(doc: MapDoc, cityId: string, major: boolean): MapDo
   return updateCity(doc, cityId, (c) => ({ ...c, major }));
 }
 
+/** Set how likely one natural disaster is at a city (Seasons mode); null removes it. */
+export function setCityHazard(doc: MapDoc, cityId: string, hazard: Hazard, level: HazardLevel | null): MapDoc {
+  return updateCity(doc, cityId, (c) => {
+    const hazards = { ...c.hazards };
+    if (level) hazards[hazard] = level;
+    else delete hazards[hazard];
+    const { hazards: _old, ...rest } = c;
+    return Object.keys(hazards).length ? { ...rest, hazards } : rest;
+  });
+}
+
 /** Delete a city with its routes and tickets. */
 export function deleteCity(doc: MapDoc, cityId: string): { doc: MapDoc; routes: number; tickets: number } {
   const routes = doc.routes.filter((r) => r.from === cityId || r.to === cityId).map((r) => r.id);
   let next: MapDoc = { ...doc, cities: doc.cities.filter((c) => c.id !== cityId) };
   for (const id of routes) next = deleteRoute(next, id);
-  const tickets = next.tickets.filter((t) => t.from === cityId || t.to === cityId).length;
-  next = { ...next, tickets: next.tickets.filter((t) => t.from !== cityId && t.to !== cityId) };
+  const tickets = next.tickets.filter((t) => ticketCities(t).includes(cityId)).length;
+  next = { ...next, tickets: next.tickets.filter((t) => !ticketCities(t).includes(cityId)) };
   return { doc: next, routes: routes.length, tickets };
 }
 
@@ -386,7 +402,7 @@ export function recalcTicketPoints(doc: MapDoc): MapDoc {
   return {
     ...doc,
     tickets: doc.tickets.map((t) => {
-      const points = suggestTicketPoints(index, t.from, t.to);
+      const points = suggestTicketPoints(index, t.from, t.to, t.via);
       return points === null ? t : { ...t, points: Math.max(1, points) };
     }),
   };
@@ -399,7 +415,9 @@ export interface History {
   future: MapDoc[];
 }
 
-const LIMIT = 200;
+/** How many past changes undo can step back through. */
+export const HISTORY_LIMIT = 30;
+const LIMIT = HISTORY_LIMIT;
 
 export function commit(h: History, next: MapDoc): History {
   if (next === h.present) return h;

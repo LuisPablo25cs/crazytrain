@@ -1,12 +1,23 @@
 import { LOCOMOTIVE } from '../map/schema.js';
 import type { MapIndex } from '../map/graph.js';
 import { cardsAvailable } from './cards.js';
-import { routePaymentOptions, stationPaymentOptions } from './payments.js';
-import { routeClaimError, type BoardShape } from './routes.js';
+import { repairPaymentOptions, routePaymentOptions, stationPaymentOptions } from './payments.js';
+import { routeClaimError, routeStatus, type BoardShape } from './routes.js';
+import { effectiveRoute, excavatorsNeeded, repairCost, repairError } from './seasons.js';
 import type { GameState, PlayerState } from './types.js';
 
 export function boardOf(state: GameState): BoardShape {
-  return { rules: state.rules, routeOwners: state.routeOwners, playerCount: state.players.length };
+  return {
+    rules: state.rules,
+    routeOwners: state.routeOwners,
+    playerCount: state.players.length,
+    month: state.month,
+    zones: state.zones,
+    damage: state.damage,
+    blocked: state.blocked,
+    abandoned: state.abandoned,
+    recolored: state.recolored,
+  };
 }
 
 /** Cost of the player's next station, or null when they have none left. */
@@ -35,9 +46,15 @@ export function hasLegalNonPassAction(state: GameState, map: MapIndex, player: n
   if (cardsAvailable(state) > 0 || state.market.some((c) => c !== null)) return true;
   if (state.regularTickets.length > 0) return true;
   const board = boardOf(state);
-  for (const route of map.map.routes) {
-    if (routeClaimError(board, map, route.id, player, p.trains) !== null) continue;
-    if (routePaymentOptions(route, p.hand, state.rules).length > 0) return true;
+  for (const base of map.map.routes) {
+    const route = effectiveRoute(board, map, base.id)!;
+    if (routeClaimError(board, map, route.id, player, p.trains) === null) {
+      if (routePaymentOptions(route, p.hand, state.rules, excavatorsNeeded(board, map, route)).length > 0) return true;
+    }
+    if (repairError(board, map, route.id, player, p.trains) === null && routeStatus(board, map, route.id, player).kind !== 'closed') {
+      const cost = repairCost(board, map, route.id);
+      if (cost && repairPaymentOptions(route, cost, p.hand, state.rules).length > 0) return true;
+    }
   }
   const cost = nextStationCost(state, p);
   if (cost !== null && stationPaymentOptions(cost, p.hand).length > 0 && stationCities(state, map, player).length > 0) {
