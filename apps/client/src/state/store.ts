@@ -2,6 +2,8 @@ import { createStore } from 'zustand/vanilla';
 import { useStore } from 'zustand';
 import {
   indexMap,
+  type CardColor,
+  type CardCounts,
   type GameEvent,
   type GameMessage,
   type GameView,
@@ -30,6 +32,10 @@ export interface UiState {
   selectedRoute: string | null;
   selectedCity: string | null;
   highlightCities: string[];
+  /** Classic HUD: the hand color the player picked; the claim popover pays with it first. */
+  handColor: CardColor | 'locomotive' | null;
+  /** Classic HUD: my latest claim, shown with the CLAIMED stamp while the train rolls in. */
+  claimed: { routeId: string; payment: CardCounts; at: number } | null;
   mode: BoardMode;
   /** Ask the board camera to look at a map-space point. `nonce` makes repeats re-trigger. */
   focus: { x: number; y: number; zoom: number; nonce: number } | null;
@@ -53,6 +59,8 @@ export const initialUi: UiState = {
   selectedRoute: null,
   selectedCity: null,
   highlightCities: [],
+  handColor: null,
+  claimed: null,
   mode: { kind: 'normal' },
   focus: null,
 };

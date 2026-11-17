@@ -1,0 +1,426 @@
+{
+ "acapulco": {
+  "fill": "#ecd38f",
+  "name": [
+   533,
+   160
+  ],
+  "ring": "#4386de"
+ },
+ "boston": {
+  "fill": "#5292e1",
+  "name": [
+   588,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "calgary": {
+  "fill": "#5292e1",
+  "name": [
+   453,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "charleston": {
+  "fill": "#ecd38f",
+  "name": [
+   453,
+   110
+  ],
+  "ring": "#4386de"
+ },
+ "chihuahua": {
+  "fill": "#62625a",
+  "name": [
+   604,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "churchill": {
+  "fill": "#5292e1",
+  "name": [
+   681,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "ciudad-de-mexico": {
+  "fill": "#da5501",
+  "name": [
+   853,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "ciudad-obregon": {
+  "fill": "#fcb354",
+  "name": [
+   310,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "culiacan": {
+  "fill": "#62625a",
+  "name": [
+   558,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "dallas": {
+  "fill": "#62625a",
+  "name": [
+   412,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "denver": {
+  "fill": "#5292e1",
+  "name": [
+   615,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "duluth": {
+  "fill": "#5292e1",
+  "name": [
+   505,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "edmonton": {
+  "fill": "#5292e1",
+  "name": [
+   777,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "halifax": {
+  "fill": "#5292e1",
+  "name": [
+   453,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "helena": {
+  "fill": "#5292e1",
+  "name": [
+   498,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "hermosillo": {
+  "fill": "#fcb354",
+  "name": [
+   535,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "jasper": {
+  "fill": "#5292e1",
+  "name": [
+   511,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "kansas-city": {
+  "fill": "#62625a",
+  "name": [
+   636,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "la-habana": {
+  "fill": "#62625a",
+  "name": [
+   597,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "la-paz": {
+  "fill": "#ecd38f",
+  "name": [
+   442,
+   160
+  ],
+  "ring": "#4386de"
+ },
+ "little-rock": {
+  "fill": "#62625a",
+  "name": [
+   621,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "los-angeles": {
+  "fill": "#fcb354",
+  "name": [
+   549,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "mazatlan": {
+  "fill": "#ecd38f",
+  "name": [
+   450,
+   135
+  ],
+  "ring": "#4386de"
+ },
+ "merida": {
+  "fill": "#62625a",
+  "name": [
+   445,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "miami": {
+  "fill": "#ecd38f",
+  "name": [
+   412,
+   160
+  ],
+  "ring": "#4386de"
+ },
+ "monterrey": {
+  "fill": "#62625a",
+  "name": [
+   716,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "montreal": {
+  "fill": "#5292e1",
+  "name": [
+   728,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "nashville": {
+  "fill": "#62625a",
+  "name": [
+   540,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "new-orleans": {
+  "fill": "#62625a",
+  "name": [
+   675,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "new-york": {
+  "fill": "#5292e1",
+  "name": [
+   681,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "oklahoma-city": {
+  "fill": "#62625a",
+  "name": [
+   607,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "omaha": {
+  "fill": "#5292e1",
+  "name": [
+   529,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "ottawa": {
+  "fill": "#5292e1",
+  "name": [
+   643,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "phoenix": {
+  "fill": "#da5501",
+  "name": [
+   580,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "pittsburgh": {
+  "fill": "#5292e1",
+  "name": [
+   633,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "portland": {
+  "fill": "#da5501",
+  "name": [
+   608,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "prince-rupert": {
+  "fill": "#5292e1",
+  "name": [
+   920,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "quebec": {
+  "fill": "#5292e1",
+  "name": [
+   664,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "raleigh": {
+  "fill": "#62625a",
+  "name": [
+   464,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "regina": {
+  "fill": "#5292e1",
+  "name": [
+   427,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "saint-louis": {
+  "fill": "#62625a",
+  "name": [
+   630,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "salt-lake-city": {
+  "fill": "#5292e1",
+  "name": [
+   747,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "saltillo": {
+  "fill": "#62625a",
+  "name": [
+   470,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "san-francisco": {
+  "fill": "#fcb354",
+  "name": [
+   641,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "santa-fe": {
+  "fill": "#5292e1",
+  "name": [
+   709,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "sault-st-marie": {
+  "fill": "#5292e1",
+  "name": [
+   1010,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "tijuana": {
+  "fill": "#ecd38f",
+  "name": [
+   457,
+   160
+  ],
+  "ring": "#4386de"
+ },
+ "toronto": {
+  "fill": "#5292e1",
+  "name": [
+   665,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "tuxtla": {
+  "fill": "#da5501",
+  "name": [
+   493,
+   160
+  ],
+  "ring": "#720301"
+ },
+ "vancouver": {
+  "fill": "#5292e1",
+  "name": [
+   896,
+   160
+  ],
+  "ring": "#b0dbed"
+ },
+ "veracruz": {
+  "fill": "#62625a",
+  "name": [
+   518,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "washington": {
+  "fill": "#62625a",
+  "name": [
+   674,
+   160
+  ],
+  "ring": "#4a4a48"
+ },
+ "winnipeg": {
+  "fill": "#5292e1",
+  "name": [
+   450,
+   160
+  ],
+  "ring": "#b0dbed"
+ }
+}

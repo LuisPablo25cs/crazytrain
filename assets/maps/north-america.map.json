@@ -877,75 +877,75 @@
    "name": "La Paz",
    "x": 295.04,
    "y": 380.51,
+   "country": "MX",
    "major": false,
    "hazards": {
     "earthquake": "medium",
     "tsunami": "medium",
     "hurricane": "high"
-   },
-   "country": "MX"
+   }
   },
   {
    "id": "tijuana",
    "name": "Tijuana",
    "x": 222.82,
    "y": 282.93,
+   "country": "MX",
    "major": false,
    "hazards": {
     "earthquake": "high"
-   },
-   "country": "MX"
+   }
   },
   {
    "id": "culiacan",
    "name": "Culiacan",
    "x": 328.98,
    "y": 364.19,
+   "country": "MX",
    "major": false,
    "hazards": {
     "earthquake": "medium",
     "hurricane": "medium"
-   },
-   "country": "MX"
+   }
   },
   {
    "id": "mazatlan",
    "name": "Mazatlan",
    "x": 344.2,
    "y": 386.86,
+   "country": "MX",
    "major": false,
    "hazards": {
     "earthquake": "medium",
     "tsunami": "medium",
     "hurricane": "high"
-   },
-   "country": "MX"
+   }
   },
   {
    "id": "acapulco",
    "name": "Acapulco",
    "x": 399.99,
    "y": 452.76,
+   "country": "MX",
    "major": false,
    "hazards": {
     "earthquake": "high",
     "tsunami": "medium",
     "hurricane": "high"
-   },
-   "country": "MX"
+   }
   },
   {
    "id": "tuxtla",
    "name": "Tuxtla",
    "x": 515.46,
    "y": 470.16,
+   "country": "MX",
    "major": false,
    "hazards": {
     "earthquake": "high",
     "volcano": "high",
     "hurricane": "medium"
-   },
-   "country": "MX"
+   }
   }
  ],
  "routes": [
@@ -1292,27 +1292,28 @@
    "parallelGroup": "santa-fe-oklahoma-city",
    "slots": [
     {
-     "x": 372.67,
-     "y": 242.04,
-     "angle": 0.0562,
-     "length": 28.18,
+     "x": 370.97,
+     "y": 246.41,
+     "angle": 0.007,
+     "length": 28.12,
      "width": 5.6
     },
     {
-     "x": 401.4,
-     "y": 243.66,
-     "angle": 0.0562,
-     "length": 28.18,
-     "width": 5.6
+     "x": 400.49,
+     "y": 246.9,
+     "angle": 0.0251,
+     "length": 28.12,
+     "width": 5.1
     },
     {
-     "x": 430.12,
-     "y": 245.27,
-     "angle": 0.0562,
-     "length": 28.18,
+     "x": 429.99,
+     "y": 247.95,
+     "angle": 0.0451,
+     "length": 28.12,
      "width": 5.6
     }
-   ]
+   ],
+   "bend": -0.8
   },
   {
    "id": "el-paso-oklahoma-city",
@@ -1545,7 +1546,8 @@
    "length": 3,
    "color": "white",
    "kind": "normal",
-   "ferryLocomotives": 0
+   "ferryLocomotives": 0,
+   "bend": 5
   },
   {
    "id": "little-rock-new-orleans",
@@ -2704,189 +2706,134 @@
    "color": "gray",
    "kind": "normal",
    "ferryLocomotives": 0,
-   "parallelGroup": "santa-fe-oklahoma-city"
+   "parallelGroup": "santa-fe-oklahoma-city",
+   "bend": -0.8
   }
  ],
  "tickets": [
   {
-   "id": "denver-el-paso",
-   "from": "denver",
-   "to": "el-paso",
-   "points": 4,
-   "deck": "regular"
-  },
-  {
-   "id": "kansas-city-houston",
-   "from": "kansas-city",
-   "to": "houston",
-   "points": 5,
-   "deck": "regular"
-  },
-  {
-   "id": "new-york-atlanta",
+   "id": "new-york-merida",
    "from": "new-york",
-   "to": "atlanta",
-   "points": 6,
+   "to": "merida",
+   "points": 15,
    "deck": "regular"
   },
   {
-   "id": "chicago-new-orleans",
+   "id": "halifax-denver",
+   "from": "halifax",
+   "to": "denver",
+   "points": 19,
+   "deck": "regular"
+  },
+  {
+   "id": "pittsburgh-chihuahua",
+   "from": "pittsburgh",
+   "to": "chihuahua",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "vancouver-monterrey",
+   "from": "vancouver",
+   "to": "monterrey",
+   "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "saltillo-little-rock",
+   "from": "saltillo",
+   "to": "little-rock",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "chicago-guadalajara",
    "from": "chicago",
-   "to": "new-orleans",
-   "points": 7,
+   "to": "guadalajara",
+   "points": 14,
    "deck": "regular"
   },
   {
-   "id": "calgary-salt-lake-city",
-   "from": "calgary",
-   "to": "salt-lake-city",
-   "points": 7,
+   "id": "quebec-charleston",
+   "from": "quebec",
+   "to": "charleston",
+   "points": 11,
    "deck": "regular"
   },
   {
-   "id": "helena-los-angeles",
-   "from": "helena",
+   "id": "raleigh-los-angeles",
+   "from": "raleigh",
    "to": "los-angeles",
-   "points": 8,
+   "points": 17,
    "deck": "regular"
   },
   {
-   "id": "duluth-houston",
-   "from": "duluth",
-   "to": "houston",
-   "points": 8,
-   "deck": "regular"
-  },
-  {
-   "id": "sault-st-marie-nashville",
-   "from": "sault-st-marie",
-   "to": "nashville",
-   "points": 8,
-   "deck": "regular"
-  },
-  {
-   "id": "montreal-atlanta",
-   "from": "montreal",
-   "to": "atlanta",
-   "points": 9,
-   "deck": "regular"
-  },
-  {
-   "id": "sault-st-marie-oklahoma-city",
-   "from": "sault-st-marie",
+   "id": "guadalajara-oklahoma-city",
+   "from": "guadalajara",
    "to": "oklahoma-city",
    "points": 9,
    "deck": "regular"
   },
   {
-   "id": "seattle-los-angeles",
-   "from": "seattle",
-   "to": "los-angeles",
-   "points": 9,
-   "deck": "regular"
-  },
-  {
-   "id": "chicago-santa-fe",
-   "from": "chicago",
+   "id": "ottawa-santa-fe",
+   "from": "ottawa",
    "to": "santa-fe",
-   "points": 9,
+   "points": 15,
    "deck": "regular"
   },
   {
-   "id": "duluth-el-paso",
-   "from": "duluth",
-   "to": "el-paso",
+   "id": "la-habana-saint-louis",
+   "from": "la-habana",
+   "to": "saint-louis",
    "points": 10,
    "deck": "regular"
   },
   {
-   "id": "toronto-miami",
-   "from": "toronto",
-   "to": "miami",
-   "points": 10,
-   "deck": "regular"
-  },
-  {
-   "id": "portland-phoenix",
-   "from": "portland",
-   "to": "phoenix",
-   "points": 11,
-   "deck": "regular"
-  },
-  {
-   "id": "dallas-new-york",
-   "from": "dallas",
-   "to": "new-york",
-   "points": 11,
-   "deck": "regular"
-  },
-  {
-   "id": "denver-pittsburgh",
-   "from": "denver",
-   "to": "pittsburgh",
-   "points": 11,
-   "deck": "regular"
-  },
-  {
-   "id": "winnipeg-little-rock",
-   "from": "winnipeg",
-   "to": "little-rock",
-   "points": 11,
-   "deck": "regular"
-  },
-  {
-   "id": "winnipeg-houston",
-   "from": "winnipeg",
-   "to": "houston",
-   "points": 12,
-   "deck": "regular"
-  },
-  {
-   "id": "boston-miami",
-   "from": "boston",
-   "to": "miami",
-   "points": 12,
-   "deck": "regular"
-  },
-  {
-   "id": "vancouver-santa-fe",
-   "from": "vancouver",
-   "to": "santa-fe",
-   "points": 13,
-   "deck": "regular"
-  },
-  {
-   "id": "calgary-phoenix",
-   "from": "calgary",
-   "to": "phoenix",
-   "points": 13,
-   "deck": "regular"
-  },
-  {
-   "id": "montreal-new-orleans",
+   "id": "montreal-guadalajara",
    "from": "montreal",
-   "to": "new-orleans",
-   "points": 13,
+   "to": "guadalajara",
+   "points": 21,
    "deck": "regular"
   },
   {
-   "id": "los-angeles-chicago",
-   "from": "los-angeles",
-   "to": "chicago",
-   "points": 16,
+   "id": "winnipeg-prince-rupert",
+   "from": "winnipeg",
+   "to": "prince-rupert",
+   "points": 15,
    "deck": "regular"
   },
   {
-   "id": "san-francisco-atlanta",
-   "from": "san-francisco",
-   "to": "atlanta",
+   "id": "toronto-portland",
+   "from": "toronto",
+   "to": "portland",
+   "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "jasper-helena",
+   "from": "jasper",
+   "to": "helena",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-de-mexico-washington",
+   "from": "ciudad-de-mexico",
+   "to": "washington",
    "points": 17,
    "deck": "regular"
   },
   {
-   "id": "portland-nashville",
+   "id": "el-paso-saint-louis",
+   "from": "el-paso",
+   "to": "saint-louis",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "portland-culiacan",
    "from": "portland",
-   "to": "nashville",
+   "to": "culiacan",
    "points": 17,
    "deck": "regular"
   },
@@ -2894,224 +2841,1334 @@
    "id": "vancouver-montreal",
    "from": "vancouver",
    "to": "montreal",
+   "points": 22,
+   "deck": "regular"
+  },
+  {
+   "id": "mazatlan-santa-fe",
+   "from": "mazatlan",
+   "to": "santa-fe",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "acapulco-vancouver",
+   "from": "acapulco",
+   "to": "vancouver",
+   "points": 23,
+   "deck": "regular"
+  },
+  {
+   "id": "tuxtla-las-vegas",
+   "from": "tuxtla",
+   "to": "las-vegas",
    "points": 20,
    "deck": "regular"
   },
   {
-   "id": "los-angeles-miami",
-   "from": "los-angeles",
-   "to": "miami",
+   "id": "prince-rupert-helena",
+   "from": "prince-rupert",
+   "to": "helena",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-de-mexico-denver",
+   "from": "ciudad-de-mexico",
+   "to": "denver",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "omaha-denver",
+   "from": "omaha",
+   "to": "denver",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "acapulco-merida",
+   "from": "acapulco",
+   "to": "merida",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "santa-fe-pittsburgh",
+   "from": "santa-fe",
+   "to": "pittsburgh",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "duluth-montreal",
+   "from": "duluth",
+   "to": "montreal",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "hermosillo-salt-lake-city",
+   "from": "hermosillo",
+   "to": "salt-lake-city",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "houston-los-angeles",
+   "from": "houston",
+   "to": "los-angeles",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "oklahoma-city-hermosillo",
+   "from": "oklahoma-city",
+   "to": "hermosillo",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "sault-st-marie-calgary",
+   "from": "sault-st-marie",
+   "to": "calgary",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "merida-vancouver",
+   "from": "merida",
+   "to": "vancouver",
+   "points": 25,
+   "deck": "regular"
+  },
+  {
+   "id": "new-york-guadalajara",
+   "from": "new-york",
+   "to": "guadalajara",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "quebec-helena",
+   "from": "quebec",
+   "to": "helena",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "ottawa-kansas-city",
+   "from": "ottawa",
+   "to": "kansas-city",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "atlanta-dallas",
+   "from": "atlanta",
+   "to": "dallas",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-obregon-el-paso",
+   "from": "ciudad-obregon",
+   "to": "el-paso",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "el-paso-edmonton",
+   "from": "el-paso",
+   "to": "edmonton",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "san-francisco-la-habana",
+   "from": "san-francisco",
+   "to": "la-habana",
+   "points": 24,
+   "deck": "regular"
+  },
+  {
+   "id": "tuxtla-ciudad-obregon",
+   "from": "tuxtla",
+   "to": "ciudad-obregon",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "portland-new-orleans",
+   "from": "portland",
+   "to": "new-orleans",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "pittsburgh-san-francisco",
+   "from": "pittsburgh",
+   "to": "san-francisco",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "jasper-saint-louis",
+   "from": "jasper",
+   "to": "saint-louis",
+   "points": 16,
+   "deck": "regular"
+  },
+  {
+   "id": "merida-sault-st-marie",
+   "from": "merida",
+   "to": "sault-st-marie",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "chicago-montreal",
+   "from": "chicago",
+   "to": "montreal",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "aguascalientes-washington",
+   "from": "aguascalientes",
+   "to": "washington",
+   "points": 15,
+   "deck": "regular"
+  },
+  {
+   "id": "monterrey-new-york",
+   "from": "monterrey",
+   "to": "new-york",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "merida-winnipeg",
+   "from": "merida",
+   "to": "winnipeg",
+   "points": 19,
+   "deck": "regular"
+  },
+  {
+   "id": "new-york-phoenix",
+   "from": "new-york",
+   "to": "phoenix",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "san-francisco-new-york",
+   "from": "san-francisco",
+   "to": "new-york",
+   "points": 21,
+   "deck": "regular"
+  },
+  {
+   "id": "san-francisco-edmonton",
+   "from": "san-francisco",
+   "to": "edmonton",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "denver-raleigh",
+   "from": "denver",
+   "to": "raleigh",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "las-vegas-kansas-city",
+   "from": "las-vegas",
+   "to": "kansas-city",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-obregon-calgary",
+   "from": "ciudad-obregon",
+   "to": "calgary",
+   "points": 16,
+   "deck": "regular"
+  },
+  {
+   "id": "miami-guadalajara",
+   "from": "miami",
+   "to": "guadalajara",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "calgary-vancouver",
+   "from": "calgary",
+   "to": "vancouver",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "tijuana-aguascalientes",
+   "from": "tijuana",
+   "to": "aguascalientes",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "charleston-ottawa",
+   "from": "charleston",
+   "to": "ottawa",
+   "points": 8,
+   "deck": "regular"
+  },
+  {
+   "id": "washington-vancouver",
+   "from": "washington",
+   "to": "vancouver",
+   "points": 22,
+   "deck": "regular"
+  },
+  {
+   "id": "regina-aguascalientes",
+   "from": "regina",
+   "to": "aguascalientes",
    "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "monterrey-chicago",
+   "from": "monterrey",
+   "to": "chicago",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "washington-nashville",
+   "from": "washington",
+   "to": "nashville",
+   "points": 5,
+   "deck": "regular"
+  },
+  {
+   "id": "toronto-acapulco",
+   "from": "toronto",
+   "to": "acapulco",
+   "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "santa-fe-acapulco",
+   "from": "santa-fe",
+   "to": "acapulco",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "montreal-regina",
+   "from": "montreal",
+   "to": "regina",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "little-rock-hermosillo",
+   "from": "little-rock",
+   "to": "hermosillo",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "raleigh-phoenix",
+   "from": "raleigh",
+   "to": "phoenix",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "guadalajara-toronto",
+   "from": "guadalajara",
+   "to": "toronto",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "omaha-churchill",
+   "from": "omaha",
+   "to": "churchill",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "portland-calgary-churchill",
+   "from": "portland",
+   "via": "calgary",
+   "to": "churchill",
+   "points": 16,
+   "deck": "long"
+  },
+  {
+   "id": "guadalajara-houston-pittsburgh",
+   "from": "guadalajara",
+   "via": "houston",
+   "to": "pittsburgh",
+   "points": 16,
+   "deck": "long"
+  },
+  {
+   "id": "los-angeles-salt-lake-city-dallas",
+   "from": "los-angeles",
+   "via": "salt-lake-city",
+   "to": "dallas",
+   "points": 13,
+   "deck": "long"
+  },
+  {
+   "id": "washington-santa-fe-chihuahua",
+   "from": "washington",
+   "via": "santa-fe",
+   "to": "chihuahua",
+   "points": 17,
+   "deck": "long"
+  },
+  {
+   "id": "la-habana-veracruz-la-paz",
+   "from": "la-habana",
+   "via": "veracruz",
+   "to": "la-paz",
+   "points": 16,
+   "deck": "long"
+  },
+  {
+   "id": "toronto-atlanta-new-orleans",
+   "from": "toronto",
+   "via": "atlanta",
+   "to": "new-orleans",
+   "points": 9,
+   "deck": "long"
+  },
+  {
+   "id": "hermosillo-new-orleans-chicago",
+   "from": "hermosillo",
+   "via": "new-orleans",
+   "to": "chicago",
+   "points": 19,
+   "deck": "long"
+  },
+  {
+   "id": "edmonton-ottawa-boston",
+   "from": "edmonton",
+   "via": "ottawa",
+   "to": "boston",
+   "points": 20,
+   "deck": "long"
+  },
+  {
+   "id": "los-angeles-phoenix-oklahoma-city",
+   "from": "los-angeles",
+   "via": "phoenix",
+   "to": "oklahoma-city",
+   "points": 9,
+   "deck": "long"
+  },
+  {
+   "id": "miami-charleston-aguascalientes",
+   "from": "miami",
+   "via": "charleston",
+   "to": "aguascalientes",
+   "points": 16,
+   "deck": "long"
+  },
+  {
+   "id": "la-paz-denver-chicago",
+   "from": "la-paz",
+   "via": "denver",
+   "to": "chicago",
+   "points": 18,
+   "deck": "long"
+  },
+  {
+   "id": "salt-lake-city-helena-montreal",
+   "from": "salt-lake-city",
+   "via": "helena",
+   "to": "montreal",
+   "points": 19,
+   "deck": "long"
+  },
+  {
+   "id": "vancouver-chihuahua-saltillo",
+   "from": "vancouver",
+   "via": "chihuahua",
+   "to": "saltillo",
+   "points": 21,
+   "deck": "long"
+  },
+  {
+   "id": "quebec-raleigh-monterrey",
+   "from": "quebec",
+   "via": "raleigh",
+   "to": "monterrey",
+   "points": 19,
+   "deck": "long"
+  },
+  {
+   "id": "seattle-tijuana-chihuahua",
+   "from": "seattle",
+   "via": "tijuana",
+   "to": "chihuahua",
+   "points": 19,
+   "deck": "long"
+  },
+  {
+   "id": "new-orleans-jasper-vancouver",
+   "from": "new-orleans",
+   "via": "jasper",
+   "to": "vancouver",
+   "points": 21,
+   "deck": "long"
+  },
+  {
+   "id": "montreal-saltillo-hermosillo",
+   "from": "montreal",
+   "via": "saltillo",
+   "to": "hermosillo",
+   "points": 25,
+   "deck": "long"
+  },
+  {
+   "id": "san-francisco-portland-prince-rupert",
+   "from": "san-francisco",
+   "via": "portland",
+   "to": "prince-rupert",
+   "points": 12,
+   "deck": "long"
+  },
+  {
+   "id": "calgary-saint-louis-guadalajara",
+   "from": "calgary",
+   "via": "saint-louis",
+   "to": "guadalajara",
+   "points": 26,
+   "deck": "long"
+  },
+  {
+   "id": "new-york-phoenix-culiacan",
+   "from": "new-york",
+   "via": "phoenix",
+   "to": "culiacan",
+   "points": 23,
+   "deck": "long"
+  },
+  {
+   "id": "los-angeles-boston-quebec",
+   "from": "los-angeles",
+   "via": "boston",
+   "to": "quebec",
+   "points": 25,
+   "deck": "long"
+  },
+  {
+   "id": "prince-rupert-salt-lake-city-sault-st-marie",
+   "from": "prince-rupert",
+   "via": "salt-lake-city",
+   "to": "sault-st-marie",
+   "points": 26,
+   "deck": "long"
+  },
+  {
+   "id": "dallas-tijuana-san-francisco",
+   "from": "dallas",
+   "via": "tijuana",
+   "to": "san-francisco",
+   "points": 15,
+   "deck": "long"
+  },
+  {
+   "id": "guadalajara-hermosillo-el-paso",
+   "from": "guadalajara",
+   "via": "hermosillo",
+   "to": "el-paso",
+   "points": 11,
+   "deck": "long"
+  },
+  {
+   "id": "ciudad-de-mexico-santa-fe-jasper",
+   "from": "ciudad-de-mexico",
+   "via": "santa-fe",
+   "to": "jasper",
+   "points": 24,
+   "deck": "long"
+  },
+  {
+   "id": "pittsburgh-saint-louis-merida",
+   "from": "pittsburgh",
+   "via": "saint-louis",
+   "to": "merida",
+   "points": 15,
+   "deck": "long"
+  },
+  {
+   "id": "monterrey-dallas-charleston",
+   "from": "monterrey",
+   "via": "dallas",
+   "to": "charleston",
+   "points": 12,
+   "deck": "long"
+  },
+  {
+   "id": "saltillo-little-rock-charleston",
+   "from": "saltillo",
+   "via": "little-rock",
+   "to": "charleston",
+   "points": 13,
+   "deck": "long"
+  },
+  {
+   "id": "ciudad-obregon-tijuana-las-vegas",
+   "from": "ciudad-obregon",
+   "via": "tijuana",
+   "to": "las-vegas",
+   "points": 11,
+   "deck": "long"
+  },
+  {
+   "id": "el-paso-culiacan-acapulco",
+   "from": "el-paso",
+   "via": "culiacan",
+   "to": "acapulco",
+   "points": 11,
+   "deck": "long"
+  },
+  {
+   "id": "nashville-tijuana",
+   "from": "nashville",
+   "to": "tijuana",
+   "points": 15,
+   "deck": "regular"
+  },
+  {
+   "id": "montreal-los-angeles",
+   "from": "montreal",
+   "to": "los-angeles",
+   "points": 22,
+   "deck": "regular"
+  },
+  {
+   "id": "little-rock-nashville",
+   "from": "little-rock",
+   "to": "nashville",
+   "points": 3,
+   "deck": "regular"
+  },
+  {
+   "id": "dallas-toronto",
+   "from": "dallas",
+   "to": "toronto",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "mazatlan-acapulco",
+   "from": "mazatlan",
+   "to": "acapulco",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "sault-st-marie-veracruz",
+   "from": "sault-st-marie",
+   "to": "veracruz",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "la-habana-la-paz",
+   "from": "la-habana",
+   "to": "la-paz",
+   "points": 16,
+   "deck": "regular"
+  },
+  {
+   "id": "seattle-chicago",
+   "from": "seattle",
+   "to": "chicago",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "halifax-nashville",
+   "from": "halifax",
+   "to": "nashville",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "las-vegas-chicago",
+   "from": "las-vegas",
+   "to": "chicago",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "veracruz-san-francisco",
+   "from": "veracruz",
+   "to": "san-francisco",
+   "points": 18,
    "deck": "regular"
   },
   {
    "id": "los-angeles-new-york",
    "from": "los-angeles",
    "to": "new-york",
-   "points": 21,
+   "points": 20,
    "deck": "regular"
   },
   {
-   "id": "seattle-new-york",
-   "from": "seattle",
-   "to": "new-york",
-   "points": 22,
+   "id": "winnipeg-boston",
+   "from": "winnipeg",
+   "to": "boston",
+   "points": 13,
    "deck": "regular"
   },
   {
-   "id": "prince-rupert-calgary",
-   "from": "prince-rupert",
-   "to": "calgary",
-   "points": 7,
+   "id": "saltillo-charleston",
+   "from": "saltillo",
+   "to": "charleston",
+   "points": 11,
    "deck": "regular"
   },
   {
-   "id": "edmonton-winnipeg",
-   "from": "edmonton",
+   "id": "houston-saint-louis",
+   "from": "houston",
+   "to": "saint-louis",
+   "points": 5,
+   "deck": "regular"
+  },
+  {
+   "id": "jasper-regina",
+   "from": "jasper",
+   "to": "regina",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "denver-la-paz",
+   "from": "denver",
+   "to": "la-paz",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "el-paso-winnipeg",
+   "from": "el-paso",
    "to": "winnipeg",
-   "points": 7,
+   "points": 14,
    "deck": "regular"
   },
   {
-   "id": "churchill-duluth",
-   "from": "churchill",
+   "id": "ciudad-obregon-vancouver",
+   "from": "ciudad-obregon",
+   "to": "vancouver",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "hermosillo-mazatlan",
+   "from": "hermosillo",
+   "to": "mazatlan",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "kansas-city-ciudad-obregon",
+   "from": "kansas-city",
+   "to": "ciudad-obregon",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "aguascalientes-calgary",
+   "from": "aguascalientes",
+   "to": "calgary",
+   "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "aguascalientes-winnipeg",
+   "from": "aguascalientes",
+   "to": "winnipeg",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "san-francisco-acapulco",
+   "from": "san-francisco",
+   "to": "acapulco",
+   "points": 16,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-de-mexico-edmonton",
+   "from": "ciudad-de-mexico",
+   "to": "edmonton",
+   "points": 23,
+   "deck": "regular"
+  },
+  {
+   "id": "boston-duluth",
+   "from": "boston",
    "to": "duluth",
    "points": 10,
    "deck": "regular"
   },
   {
-   "id": "regina-denver",
-   "from": "regina",
-   "to": "denver",
-   "points": 8,
+   "id": "tijuana-las-vegas",
+   "from": "tijuana",
+   "to": "las-vegas",
+   "points": 3,
    "deck": "regular"
   },
   {
-   "id": "jasper-seattle",
-   "from": "jasper",
-   "to": "seattle",
-   "points": 5,
-   "deck": "regular"
-  },
-  {
-   "id": "ottawa-new-york",
-   "from": "ottawa",
-   "to": "new-york",
-   "points": 4,
-   "deck": "regular"
-  },
-  {
-   "id": "quebec-chicago",
-   "from": "quebec",
-   "to": "chicago",
-   "points": 9,
-   "deck": "regular"
-  },
-  {
-   "id": "halifax-pittsburgh",
-   "from": "halifax",
-   "to": "pittsburgh",
-   "points": 8,
-   "deck": "regular"
-  },
-  {
-   "id": "hermosillo-los-angeles",
-   "from": "hermosillo",
-   "to": "los-angeles",
-   "points": 6,
-   "deck": "regular"
-  },
-  {
-   "id": "chihuahua-denver",
-   "from": "chihuahua",
-   "to": "denver",
-   "points": 6,
-   "deck": "regular"
-  },
-  {
-   "id": "monterrey-kansas-city",
+   "id": "monterrey-ciudad-de-mexico",
    "from": "monterrey",
-   "to": "kansas-city",
-   "points": 9,
-   "deck": "regular"
-  },
-  {
-   "id": "guadalajara-el-paso",
-   "from": "guadalajara",
-   "to": "el-paso",
-   "points": 10,
-   "deck": "regular"
-  },
-  {
-   "id": "ciudad-de-mexico-dallas",
-   "from": "ciudad-de-mexico",
-   "to": "dallas",
-   "points": 9,
-   "deck": "regular"
-  },
-  {
-   "id": "veracruz-new-orleans",
-   "from": "veracruz",
-   "to": "new-orleans",
-   "points": 8,
-   "deck": "regular"
-  },
-  {
-   "id": "merida-miami",
-   "from": "merida",
-   "to": "miami",
-   "points": 6,
-   "deck": "regular"
-  },
-  {
-   "id": "la-habana-atlanta",
-   "from": "la-habana",
-   "to": "atlanta",
-   "points": 8,
-   "deck": "regular"
-  },
-  {
-   "id": "saltillo-houston",
-   "from": "saltillo",
-   "to": "houston",
+   "to": "ciudad-de-mexico",
    "points": 5,
    "deck": "regular"
   },
   {
-   "id": "aguascalientes-phoenix",
-   "from": "aguascalientes",
-   "to": "phoenix",
+   "id": "salt-lake-city-new-orleans",
+   "from": "salt-lake-city",
+   "to": "new-orleans",
    "points": 11,
    "deck": "regular"
   },
   {
-   "id": "ciudad-obregon-las-vegas",
-   "from": "ciudad-obregon",
-   "to": "las-vegas",
+   "id": "omaha-dallas",
+   "from": "omaha",
+   "to": "dallas",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "kansas-city-seattle",
+   "from": "kansas-city",
+   "to": "seattle",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "portland-la-paz",
+   "from": "portland",
+   "to": "la-paz",
+   "points": 15,
+   "deck": "regular"
+  },
+  {
+   "id": "veracruz-tuxtla",
+   "from": "veracruz",
+   "to": "tuxtla",
+   "points": 3,
+   "deck": "regular"
+  },
+  {
+   "id": "miami-edmonton",
+   "from": "miami",
+   "to": "edmonton",
+   "points": 23,
+   "deck": "regular"
+  },
+  {
+   "id": "washington-la-habana",
+   "from": "washington",
+   "to": "la-habana",
    "points": 9,
    "deck": "regular"
   },
   {
-   "id": "prince-rupert-miami",
-   "from": "prince-rupert",
+   "id": "churchill-miami",
+   "from": "churchill",
    "to": "miami",
+   "points": 20,
+   "deck": "regular"
+  },
+  {
+   "id": "los-angeles-la-habana",
+   "from": "los-angeles",
+   "to": "la-habana",
+   "points": 21,
+   "deck": "regular"
+  },
+  {
+   "id": "prince-rupert-churchill",
+   "from": "prince-rupert",
+   "to": "churchill",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "washington-miami",
+   "from": "washington",
+   "to": "miami",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "edmonton-omaha",
+   "from": "edmonton",
+   "to": "omaha",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "oklahoma-city-mazatlan",
+   "from": "oklahoma-city",
+   "to": "mazatlan",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "mazatlan-duluth",
+   "from": "mazatlan",
+   "to": "duluth",
+   "points": 15,
+   "deck": "regular"
+  },
+  {
+   "id": "salt-lake-city-raleigh",
+   "from": "salt-lake-city",
+   "to": "raleigh",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "quebec-omaha",
+   "from": "quebec",
+   "to": "omaha",
+   "points": 13,
+   "deck": "regular"
+  },
+  {
+   "id": "chihuahua-boston",
+   "from": "chihuahua",
+   "to": "boston",
+   "points": 19,
+   "deck": "regular"
+  },
+  {
+   "id": "jasper-portland",
+   "from": "jasper",
+   "to": "portland",
+   "points": 5,
+   "deck": "regular"
+  },
+  {
+   "id": "los-angeles-seattle",
+   "from": "los-angeles",
+   "to": "seattle",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "edmonton-seattle",
+   "from": "edmonton",
+   "to": "seattle",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "miami-halifax",
+   "from": "miami",
+   "to": "halifax",
+   "points": 15,
+   "deck": "regular"
+  },
+  {
+   "id": "new-orleans-duluth",
+   "from": "new-orleans",
+   "to": "duluth",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "ciudad-de-mexico-los-angeles",
+   "from": "ciudad-de-mexico",
+   "to": "los-angeles",
+   "points": 14,
+   "deck": "regular"
+  },
+  {
+   "id": "sault-st-marie-raleigh",
+   "from": "sault-st-marie",
+   "to": "raleigh",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "seattle-culiacan",
+   "from": "seattle",
+   "to": "culiacan",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "seattle-monterrey",
+   "from": "seattle",
+   "to": "monterrey",
+   "points": 19,
+   "deck": "regular"
+  },
+  {
+   "id": "toronto-edmonton",
+   "from": "toronto",
+   "to": "edmonton",
+   "points": 15,
+   "deck": "regular"
+  },
+  {
+   "id": "seattle-merida",
+   "from": "seattle",
+   "to": "merida",
+   "points": 24,
+   "deck": "regular"
+  },
+  {
+   "id": "salt-lake-city-ciudad-de-mexico",
+   "from": "salt-lake-city",
+   "to": "ciudad-de-mexico",
+   "points": 17,
+   "deck": "regular"
+  },
+  {
+   "id": "phoenix-atlanta",
+   "from": "phoenix",
+   "to": "atlanta",
+   "points": 12,
+   "deck": "regular"
+  },
+  {
+   "id": "acapulco-washington",
+   "from": "acapulco",
+   "to": "washington",
+   "points": 18,
+   "deck": "regular"
+  },
+  {
+   "id": "toronto-la-habana",
+   "from": "toronto",
+   "to": "la-habana",
+   "points": 11,
+   "deck": "regular"
+  },
+  {
+   "id": "monterrey-little-rock",
+   "from": "monterrey",
+   "to": "little-rock",
+   "points": 6,
+   "deck": "regular"
+  },
+  {
+   "id": "phoenix-helena",
+   "from": "phoenix",
+   "to": "helena",
+   "points": 9,
+   "deck": "regular"
+  },
+  {
+   "id": "chicago-miami",
+   "from": "chicago",
+   "to": "miami",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "quebec-regina",
+   "from": "quebec",
+   "to": "regina",
+   "points": 16,
+   "deck": "regular"
+  },
+  {
+   "id": "san-francisco-miami",
+   "from": "san-francisco",
+   "to": "miami",
+   "points": 22,
+   "deck": "regular"
+  },
+  {
+   "id": "new-york-toronto",
+   "from": "new-york",
+   "to": "toronto",
+   "points": 5,
+   "deck": "regular"
+  },
+  {
+   "id": "montreal-ciudad-de-mexico",
+   "from": "montreal",
+   "to": "ciudad-de-mexico",
+   "points": 22,
+   "deck": "regular"
+  },
+  {
+   "id": "culiacan-oklahoma-city",
+   "from": "culiacan",
+   "to": "oklahoma-city",
+   "points": 10,
+   "deck": "regular"
+  },
+  {
+   "id": "la-habana-merida",
+   "from": "la-habana",
+   "to": "merida",
+   "points": 4,
+   "deck": "regular"
+  },
+  {
+   "id": "halifax-ottawa",
+   "from": "halifax",
+   "to": "ottawa",
+   "points": 7,
+   "deck": "regular"
+  },
+  {
+   "id": "ottawa-ciudad-obregon-acapulco",
+   "from": "ottawa",
+   "via": "ciudad-obregon",
+   "to": "acapulco",
    "points": 27,
    "deck": "long"
   },
   {
-   "id": "halifax-los-angeles",
+   "id": "duluth-sault-st-marie-la-habana",
+   "from": "duluth",
+   "via": "sault-st-marie",
+   "to": "la-habana",
+   "points": 16,
+   "deck": "long"
+  },
+  {
+   "id": "halifax-quebec-toronto",
    "from": "halifax",
-   "to": "los-angeles",
-   "points": 26,
+   "via": "quebec",
+   "to": "toronto",
+   "points": 10,
    "deck": "long"
   },
   {
-   "id": "churchill-ciudad-de-mexico",
-   "from": "churchill",
-   "to": "ciudad-de-mexico",
-   "points": 26,
+   "id": "mazatlan-aguascalientes-new-york",
+   "from": "mazatlan",
+   "via": "aguascalientes",
+   "to": "new-york",
+   "points": 20,
    "deck": "long"
   },
   {
-   "id": "vancouver-merida",
-   "from": "vancouver",
-   "to": "merida",
-   "points": 26,
+   "id": "little-rock-calgary-vancouver",
+   "from": "little-rock",
+   "via": "calgary",
+   "to": "vancouver",
+   "points": 18,
    "deck": "long"
   },
   {
-   "id": "quebec-guadalajara",
-   "from": "quebec",
-   "to": "guadalajara",
-   "points": 25,
+   "id": "nashville-oklahoma-city-monterrey",
+   "from": "nashville",
+   "via": "oklahoma-city",
+   "to": "monterrey",
+   "points": 10,
    "deck": "long"
   },
   {
-   "id": "la-habana-seattle",
-   "from": "la-habana",
+   "id": "merida-tuxtla-halifax",
+   "from": "merida",
+   "via": "tuxtla",
+   "to": "halifax",
+   "points": 24,
+   "deck": "long"
+  },
+  {
+   "id": "new-york-houston-tuxtla",
+   "from": "new-york",
+   "via": "houston",
+   "to": "tuxtla",
+   "points": 21,
+   "deck": "long"
+  },
+  {
+   "id": "saint-louis-atlanta-veracruz",
+   "from": "saint-louis",
+   "via": "atlanta",
+   "to": "veracruz",
+   "points": 15,
+   "deck": "long"
+  },
+  {
+   "id": "houston-phoenix-seattle",
+   "from": "houston",
+   "via": "phoenix",
    "to": "seattle",
-   "points": 25,
+   "points": 20,
    "deck": "long"
   },
   {
-   "id": "hermosillo-montreal",
-   "from": "hermosillo",
-   "to": "montreal",
+   "id": "veracruz-saltillo-chicago",
+   "from": "veracruz",
+   "via": "saltillo",
+   "to": "chicago",
+   "points": 16,
+   "deck": "long"
+  },
+  {
+   "id": "churchill-chihuahua-ciudad-de-mexico",
+   "from": "churchill",
+   "via": "chihuahua",
+   "to": "ciudad-de-mexico",
+   "points": 28,
+   "deck": "long"
+  },
+  {
+   "id": "churchill-omaha-ciudad-de-mexico",
+   "from": "churchill",
+   "via": "omaha",
+   "to": "ciudad-de-mexico",
+   "points": 23,
+   "deck": "long"
+  },
+  {
+   "id": "miami-raleigh-la-paz",
+   "from": "miami",
+   "via": "raleigh",
+   "to": "la-paz",
    "points": 22,
    "deck": "long"
   },
   {
-   "id": "veracruz-calgary",
-   "from": "veracruz",
-   "to": "calgary",
+   "id": "nashville-helena-san-francisco",
+   "from": "nashville",
+   "via": "helena",
+   "to": "san-francisco",
+   "points": 20,
+   "deck": "long"
+  },
+  {
+   "id": "pittsburgh-nashville-la-habana",
+   "from": "pittsburgh",
+   "via": "nashville",
+   "to": "la-habana",
+   "points": 11,
+   "deck": "long"
+  },
+  {
+   "id": "las-vegas-tijuana-montreal",
+   "from": "las-vegas",
+   "via": "tijuana",
+   "to": "montreal",
+   "points": 24,
+   "deck": "long"
+  },
+  {
+   "id": "winnipeg-helena-seattle",
+   "from": "winnipeg",
+   "via": "helena",
+   "to": "seattle",
+   "points": 12,
+   "deck": "long"
+  },
+  {
+   "id": "washington-atlanta-houston",
+   "from": "washington",
+   "via": "atlanta",
+   "to": "houston",
+   "points": 9,
+   "deck": "long"
+  },
+  {
+   "id": "prince-rupert-regina-sault-st-marie",
+   "from": "prince-rupert",
+   "via": "regina",
+   "to": "sault-st-marie",
    "points": 21,
    "deck": "long"
   },
   {
-   "id": "jasper-new-york",
+   "id": "miami-new-orleans-culiacan",
+   "from": "miami",
+   "via": "new-orleans",
+   "to": "culiacan",
+   "points": 16,
+   "deck": "long"
+  },
+  {
+   "id": "ottawa-winnipeg-edmonton",
+   "from": "ottawa",
+   "via": "winnipeg",
+   "to": "edmonton",
+   "points": 17,
+   "deck": "long"
+  },
+  {
+   "id": "toronto-charleston-la-paz",
+   "from": "toronto",
+   "via": "charleston",
+   "to": "la-paz",
+   "points": 23,
+   "deck": "long"
+  },
+  {
+   "id": "edmonton-duluth-kansas-city",
+   "from": "edmonton",
+   "via": "duluth",
+   "to": "kansas-city",
+   "points": 14,
+   "deck": "long"
+  },
+  {
+   "id": "guadalajara-tuxtla-boston",
+   "from": "guadalajara",
+   "via": "tuxtla",
+   "to": "boston",
+   "points": 26,
+   "deck": "long"
+  },
+  {
+   "id": "merida-atlanta-regina",
+   "from": "merida",
+   "via": "atlanta",
+   "to": "regina",
+   "points": 23,
+   "deck": "long"
+  },
+  {
+   "id": "washington-kansas-city-santa-fe",
+   "from": "washington",
+   "via": "kansas-city",
+   "to": "santa-fe",
+   "points": 13,
+   "deck": "long"
+  },
+  {
+   "id": "jasper-denver-monterrey",
    "from": "jasper",
-   "to": "new-york",
-   "points": 21,
+   "via": "denver",
+   "to": "monterrey",
+   "points": 19,
+   "deck": "long"
+  },
+  {
+   "id": "little-rock-mazatlan-acapulco",
+   "from": "little-rock",
+   "via": "mazatlan",
+   "to": "acapulco",
+   "points": 14,
+   "deck": "long"
+  },
+  {
+   "id": "chicago-omaha-el-paso",
+   "from": "chicago",
+   "via": "omaha",
+   "to": "el-paso",
+   "points": 12,
    "deck": "long"
   }
  ],

@@ -38,7 +38,7 @@ describe('map editor endpoints', () => {
     const saved: MapDefinition[] = [];
     const url = await listen(createHttpApp({ extraRoutes: editorRoutes({ mapFile, onSaved: (m) => saved.push(m) }) }));
     const { map } = (await (await fetch(`${url}/api/editor`)).json()) as { map: MapDefinition };
-    expect(map.cities).toHaveLength(55);
+    expect(map.cities).toHaveLength(61);
 
     // A new city with a new route, and a recolored, longer route.
     map.cities.push({ id: 'atlantis', name: 'Atlantis', x: 900, y: 500, major: false });

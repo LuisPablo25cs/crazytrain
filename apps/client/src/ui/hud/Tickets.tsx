@@ -5,7 +5,7 @@ import { ticketProgress } from './affordances.js';
 import { TicketArt } from './TicketArt.js';
 
 /** Move the camera to show every city of a ticket and ring them. */
-function focusCities(ticketId: string, map: MapIndex): void {
+export function focusCities(ticketId: string, map: MapIndex): void {
   const t = map.tickets.get(ticketId);
   const cities = t ? ticketCities(t).map((c) => map.cities.get(c)) : [];
   if (!t || cities.some((c) => !c)) return;
@@ -61,11 +61,11 @@ export function TicketCards({ view, map }: { view: GameView; map: MapIndex }) {
             >
               {t && (
                 <TicketArt
+                  ticketId={t.id}
                   names={ticketCities(t).map((c) => map.cities.get(c)?.name ?? c)}
                   points={t.points}
                   long={t.deck === 'long'}
                   done={done}
-                  style={map.map.ticketStyle}
                 />
               )}
             </button>

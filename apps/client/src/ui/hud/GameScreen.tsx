@@ -21,6 +21,8 @@ import { TunnelPrompt } from './TunnelPrompt.js';
 import { DisasterCard, SeasonClock } from './Seasons.js';
 import { TurnBanner } from './TurnBanner.js';
 import { nextStationCost } from '@rails/shared';
+import { ClassicHud } from './classic/ClassicHud.js';
+import { ClaimPopover, TunnelPopover } from './classic/ClaimPopover.js';
 
 /**
  * In-game layout: the board fills the window; the HUD sits on top in fixed regions.
@@ -60,9 +62,11 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
   const stationCost = me ? nextStationCost(view, view.players[me.index]!) : null;
   const choosingInitial = view.phase === 'initialTickets' && me && !view.players[me.index]!.keptInitial;
   const choosingDrawn = view.turn.kind === 'choosingTickets' && can.isMyTurn;
+  // Classic mode uses the Night Express HUD; Seasons keeps its own.
+  const classic = view.rules.mode !== 'seasons';
 
   return (
-    <div className={`game ${me && view.phase !== 'finished' ? 'has-dock' : ''}`}>
+    <div className={`game ${classic ? 'classic-ui' : me && view.phase !== 'finished' ? 'has-dock' : ''}`}>
       <BoardScene
         map={map.index}
         theme={theme}
@@ -83,64 +87,77 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
         onBackgroundClick={() => ui.selectedRoute && setUi({ selectedRoute: null })}
       />
 
-      <header className="hud-top">
-        <TurnBanner view={view} can={can} theme={theme} />
-        <SeasonClock view={view} />
-        <CitySearch map={map.index} />
-        <button
-          className="secondary small"
-          onClick={() => setUi({ focus: resetViewFocus(map.doc.width, map.doc.height, (store.getState().ui.focus?.nonce ?? 0) + 1) })}
-        >
-          {S.resetView}
-        </button>
-        <ThemePicker />
-        <button className="secondary small" onClick={() => void leaveRoom().then(onLeave)}>
-          {S.leave}
-        </button>
-      </header>
+      {classic ? (
+        <ClassicHud view={view} room={room} map={map} theme={theme} can={can} onLeave={onLeave} />
+      ) : (
+        <>
+          <header className="hud-top">
+            <TurnBanner view={view} can={can} theme={theme} />
+            <SeasonClock view={view} />
+            <CitySearch map={map.index} />
+            <button
+              className="secondary small"
+              onClick={() => setUi({ focus: resetViewFocus(map.doc.width, map.doc.height, (store.getState().ui.focus?.nonce ?? 0) + 1) })}
+            >
+              {S.resetView}
+            </button>
+            <ThemePicker />
+            <button className="secondary small" onClick={() => void leaveRoom().then(onLeave)}>
+              {S.leave}
+            </button>
+          </header>
 
-      <aside className="hud-left">
-        <Scoreboard view={view} room={room} theme={theme} />
-      </aside>
+          <aside className="hud-left">
+            <Scoreboard view={view} room={room} theme={theme} />
+          </aside>
 
-      <aside className="hud-right">
-        <EventLog view={view} map={map.index} />
-      </aside>
+          <aside className="hud-right">
+            <EventLog view={view} map={map.index} />
+          </aside>
 
-      {me && view.phase !== 'finished' && (
-        <footer className="hud-bottom">
-          <TicketCards view={view} map={map.index} />
-          <Hand hand={me.hand} excavators={view.rules.mode === 'seasons'} />
-          <Market view={view} can={can} />
-          <div className="actions">
-            {view.rules.expansions.stations && (
-              <button
-                className={ui.mode.kind === 'station' ? 'primary' : 'secondary'}
-                disabled={!myTurnStart || can.station !== null}
-                title={can.station ?? (stationCost !== null ? S.stationCost(stationCost) : undefined)}
-                onClick={() =>
-                  setUi(ui.mode.kind === 'station' ? { mode: { kind: 'normal' }, selectedCity: null } : { mode: { kind: 'station' }, selectedRoute: null })
-                }
-              >
-                {ui.mode.kind === 'station' ? S.cancel : S.buildStation}
-                {stationCost !== null && ui.mode.kind !== 'station' && <span className="muted"> ({stationCost})</span>}
-              </button>
-            )}
-            {can.pass === null && (
-              <button className="secondary" onClick={() => void sendAction({ type: 'pass' })}>
-                {S.pass}
-              </button>
-            )}
-            {ui.mode.kind === 'station' && <p className="hint">{S.stationPick}</p>}
-          </div>
-        </footer>
+          {me && view.phase !== 'finished' && (
+            <footer className="hud-bottom">
+              <TicketCards view={view} map={map.index} />
+              <Hand hand={me.hand} excavators={view.rules.mode === 'seasons'} />
+              <Market view={view} can={can} />
+              <div className="actions">
+                {view.rules.expansions.stations && (
+                  <button
+                    className={ui.mode.kind === 'station' ? 'primary' : 'secondary'}
+                    disabled={!myTurnStart || can.station !== null}
+                    title={can.station ?? (stationCost !== null ? S.stationCost(stationCost) : undefined)}
+                    onClick={() =>
+                      setUi(ui.mode.kind === 'station' ? { mode: { kind: 'normal' }, selectedCity: null } : { mode: { kind: 'station' }, selectedRoute: null })
+                    }
+                  >
+                    {ui.mode.kind === 'station' ? S.cancel : S.buildStation}
+                    {stationCost !== null && ui.mode.kind !== 'station' && <span className="muted"> ({stationCost})</span>}
+                  </button>
+                )}
+                {can.pass === null && (
+                  <button className="secondary" onClick={() => void sendAction({ type: 'pass' })}>
+                    {S.pass}
+                  </button>
+                )}
+                {ui.mode.kind === 'station' && <p className="hint">{S.stationPick}</p>}
+              </div>
+            </footer>
+          )}
+        </>
       )}
 
-      {ui.selectedRoute && view.phase === 'playing' && ui.mode.kind === 'normal' && (
-        <ClaimDialog routeId={ui.selectedRoute} view={view} map={map.index} can={can} />
-      )}
-      {(choosingInitial || choosingDrawn) && <TicketChoice key={`${view.turnNumber}-${me?.offeredTickets.join()}`} view={view} map={map.index} />}
-      {view.turn.kind === 'tunnel' && <TunnelPrompt view={view} map={map.index} />}
+      {ui.selectedRoute &&
+        view.phase === 'playing' &&
+        ui.mode.kind === 'normal' &&
+        !(classic && view.turn.kind === 'tunnel') &&
+        (classic ? (
+          <ClaimPopover key={ui.selectedRoute} routeId={ui.selectedRoute} view={view} map={map.index} can={can} />
+        ) : (
+          <ClaimDialog routeId={ui.selectedRoute} view={view} map={map.index} can={can} />
+        ))}
+      {(choosingInitial || choosingDrawn) && <TicketChoice key={`${view.turnNumber}-${me?.offeredTickets.join()}`} view={view} map={map.index} classic={classic} />}
+      {view.turn.kind === 'tunnel' &&
+        (classic ? <TunnelPopover view={view} map={map.index} /> : <TunnelPrompt view={view} map={map.index} />)}
       {ui.mode.kind === 'station' && ui.selectedCity && myTurnStart && (
         <StationDialog key={ui.selectedCity} cityId={ui.selectedCity} view={view} map={map.index} />
       )}

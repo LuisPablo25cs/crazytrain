@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import type { BoardShape, GameEvent, MapIndex, StationState, Theme } from '@rails/shared';
 import { CameraRig } from './CameraRig.js';
-import { useCityLabelArt } from './cityLabelArt.js';
+import { useCityLabelArt, useCityPins } from './cityLabelArt.js';
 import { Cities } from './Cities.js';
 import { LabelLayer, LabelProjector } from './Labels.js';
 import { buildSlots, Routes } from './Routes.js';
@@ -39,6 +39,14 @@ export function BoardScene(props: BoardSceneProps) {
   const owners = props.board?.routeOwners ?? {};
   const labelRefs = useRef(new Map<string, HTMLDivElement>());
   const labelArt = useCityLabelArt();
+  // Seasons mode draws every city as a marker with its name lettering (plain name while it has none);
+  // Classic keeps its look.
+  const seasons = props.board?.rules.mode === 'seasons';
+  const pinArt = useCityPins(seasons);
+  const pins = useMemo(
+    () => (seasons ? new Map(map.map.cities.map((c) => [c.id, pinArt.get(c.id) ?? null])) : undefined),
+    [seasons, pinArt, map],
+  );
 
   return (
     <div className="board">
@@ -79,6 +87,7 @@ export function BoardScene(props: BoardSceneProps) {
           highlighted={props.highlightedRoutes}
           damage={props.board?.damage}
           blocked={props.board?.blocked}
+          spawn={seasons ? 'drop' : 'roll'}
         />
         {props.board?.zones && <Zones zones={props.board.zones} month={props.board.month ?? 0} />}
         <Cities
@@ -89,6 +98,7 @@ export function BoardScene(props: BoardSceneProps) {
           highlighted={props.highlightedCities}
           selected={props.selectedCity}
           onCityClick={props.onCityClick}
+          hideModels={pins}
         />
         <CameraRig
           width={map.map.width}
@@ -96,7 +106,7 @@ export function BoardScene(props: BoardSceneProps) {
           focus={props.focus}
           onZoomChange={setZoomedIn}
         />
-        <LabelProjector cities={map.map.cities} refs={labelRefs} />
+        <LabelProjector cities={map.map.cities} refs={labelRefs} centered={pins} />
       </Canvas>
       <LabelLayer
         cities={map.map.cities}
@@ -104,7 +114,10 @@ export function BoardScene(props: BoardSceneProps) {
         theme={theme}
         showMinor={zoomedIn}
         emphasized={props.highlightedCities}
-        art={labelArt}
+        // Classic mode writes every name in the rounded lettering instead of the label pictures.
+        art={seasons ? labelArt : undefined}
+        pins={pins}
+        rounded={!seasons}
       />
     </div>
   );

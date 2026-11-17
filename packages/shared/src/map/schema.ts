@@ -146,48 +146,6 @@ export const TerrainSchema = z.object({
 });
 export type Terrain = z.infer<typeof TerrainSchema>;
 
-/**
- * How ticket text sits on the ticket artwork. Positions and sizes are in the artwork's drawing
- * space, 1000 units wide. Missing values use DEFAULT_TICKET_STYLE.
- */
-export const TicketStyleSchema = z.object({
-  /** The curved city line: where its middle sits, size, longest width, bend and letter spacing. */
-  cityX: z.number().optional(),
-  cityY: z.number().optional(),
-  citySize: z.number().positive().optional(),
-  cityMaxWidth: z.number().positive().optional(),
-  /** Degrees of arc the city line spans. 0 is straight; larger bends it more. */
-  cityCurve: z.number().min(0).max(180).optional(),
-  citySpacing: z.number().optional(),
-  numberX: z.number().optional(),
-  numberY: z.number().optional(),
-  numberSize: z.number().positive().optional(),
-  numberAngle: z.number().optional(),
-});
-export type TicketStyle = z.infer<typeof TicketStyleSchema>;
-export type ResolvedTicketStyle = Required<TicketStyle>;
-
-export const DEFAULT_TICKET_STYLE: ResolvedTicketStyle = {
-  cityX: 443,
-  cityY: 291,
-  citySize: 18,
-  cityMaxWidth: 215,
-  cityCurve: 55,
-  citySpacing: 1,
-  numberX: 791,
-  numberY: 369,
-  numberSize: 68,
-  numberAngle: -33,
-};
-
-export function resolveTicketStyle(style?: TicketStyle): ResolvedTicketStyle {
-  const out = { ...DEFAULT_TICKET_STYLE };
-  for (const [key, value] of Object.entries(style ?? {})) {
-    if (typeof value === 'number') (out as Record<string, number>)[key] = value;
-  }
-  return out;
-}
-
 /** How the board draws slots when a route has no hand-placed ones. */
 export const MapDisplaySchema = z.object({
   slotWidth: z.number().positive().optional(),
@@ -211,8 +169,6 @@ export const MapSchema = z.object({
   /** Optional rules overrides for this map (KTD14). */
   rules: RulesOverrideSchema.optional(),
   display: MapDisplaySchema.optional(),
-  /** Where ticket text sits on the ticket artwork (set in the hidden /tickets page). */
-  ticketStyle: TicketStyleSchema.optional(),
   /** Set by the map editor. `npm run build:map` will not overwrite an edited map without --force. */
   edited: z.boolean().optional(),
 });

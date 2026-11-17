@@ -12,9 +12,11 @@ interface CitiesProps {
   highlighted: Set<string>;
   selected: string | null;
   onCityClick?: (cityId: string) => void;
+  /** Cities whose model is drawn as art in the label layer instead (Seasons); they stay clickable. */
+  hideModels?: Map<string, unknown>;
 }
 
-function CityModel({ city, theme, ring, clickable, onClick }: { city: City; theme: Theme; ring: 'none' | 'soft' | 'strong'; clickable: boolean; onClick?: () => void }) {
+function CityModel({ city, theme, ring, clickable, onClick, hidden }: { city: City; theme: Theme; ring: 'none' | 'soft' | 'strong'; clickable: boolean; onClick?: () => void; hidden?: boolean }) {
   const [hover, setHover] = useState(false);
   const r = city.major ? 5 : 3.8;
   const h = city.major ? 4.2 : 2.6;
@@ -32,18 +34,28 @@ function CityModel({ city, theme, ring, clickable, onClick }: { city: City; them
       onPointerOver={clickable ? () => setHover(true) : undefined}
       onPointerOut={clickable ? () => setHover(false) : undefined}
     >
-      <mesh position={[0, 0.3, 0]}>
-        <cylinderGeometry args={[r + 1, r + 1.4, 0.6, 7]} />
-        <meshStandardMaterial color="#d8cbb0" flatShading />
-      </mesh>
-      <mesh position={[0, 0.6 + h / 2, 0]}>
-        <cylinderGeometry args={[r * 0.75, r, h, 6]} />
-        <meshStandardMaterial color={city.major ? theme.board.majorCity : theme.board.city} flatShading />
-      </mesh>
-      <mesh position={[0, 0.6 + h + 1, 0]}>
-        <coneGeometry args={[r * 0.8, 2.2, 6]} />
-        <meshStandardMaterial color="#5a3c2c" flatShading />
-      </mesh>
+      {hidden ? (
+        // Invisible, so the city can still be clicked (station building) under its art.
+        <mesh position={[0, 0.3, 0]}>
+          <cylinderGeometry args={[r + 1.4, r + 1.4, 0.6, 12]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+      ) : (
+        <>
+          <mesh position={[0, 0.3, 0]}>
+            <cylinderGeometry args={[r + 1, r + 1.4, 0.6, 7]} />
+            <meshStandardMaterial color="#d8cbb0" flatShading />
+          </mesh>
+          <mesh position={[0, 0.6 + h / 2, 0]}>
+            <cylinderGeometry args={[r * 0.75, r, h, 6]} />
+            <meshStandardMaterial color={city.major ? theme.board.majorCity : theme.board.city} flatShading />
+          </mesh>
+          <mesh position={[0, 0.6 + h + 1, 0]}>
+            <coneGeometry args={[r * 0.8, 2.2, 6]} />
+            <meshStandardMaterial color="#5a3c2c" flatShading />
+          </mesh>
+        </>
+      )}
       {(ring !== 'none' || hover) && (
         <mesh position={[0, 0.7, 0]} rotation-x={-Math.PI / 2}>
           <ringGeometry args={[r + 2, r + (ring === 'strong' || hover ? 4.2 : 3.2), 20]} />
@@ -70,7 +82,7 @@ function StationModel({ x, y, color }: { x: number; y: number; color: string }) 
 }
 
 /** City models and stations. Labels live in a DOM layer (see Labels.tsx). */
-export function Cities({ map, theme, stations, playerColors, highlighted, selected, onCityClick }: CitiesProps) {
+export function Cities({ map, theme, stations, playerColors, highlighted, selected, onCityClick, hideModels }: CitiesProps) {
   return (
     <group>
       {map.map.cities.map((c) => {
@@ -78,7 +90,7 @@ export function Cities({ map, theme, stations, playerColors, highlighted, select
         const clickable = !!onCityClick && highlighted.has(c.id);
         return (
           <group key={c.id}>
-            <CityModel city={c} theme={theme} ring={ring} clickable={clickable} onClick={() => onCityClick?.(c.id)} />
+            <CityModel city={c} theme={theme} ring={ring} clickable={clickable} onClick={() => onCityClick?.(c.id)} hidden={hideModels?.has(c.id)} />
           </group>
         );
       })}

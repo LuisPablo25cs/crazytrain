@@ -1,36 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import {
-  DEFAULT_TICKET_STYLE,
-  indexMap,
-  MapSchema,
-  resolveTicketStyle,
-  suggestTicketPoints,
-  ticketCities,
-  validateMap,
-  type MapDefinition,
-  type Ticket,
-  type TicketStyle,
-} from '@rails/shared';
+import { indexMap, MapSchema, suggestTicketPoints, ticketCities, validateMap, type MapDefinition, type Ticket } from '@rails/shared';
 import { TicketArt } from '../ui/hud/TicketArt.js';
 
 /**
  * Hidden page (/tickets, only while the editor is on): pick two cities, or three for a triple
- * ticket, see the ticket as players will, and add it to the map file.
+ * ticket, and add it to the map file; and see every ticket as players will. A new ticket shows as a
+ * plain card until its picture is made in Canva and added with tools/assets/prepare-tickets.py.
  */
-/** Sliders for how the text sits on the ticket. Units are the artwork's 1000-wide drawing space. */
-const TUNING: { group: string; key: keyof TicketStyle; label: string; min: number; max: number; step: number }[] = [
-  { group: 'City names', key: 'cityX', label: 'Position across', min: 0, max: 1000, step: 1 },
-  { group: 'City names', key: 'cityY', label: 'Position down', min: 0, max: 460, step: 1 },
-  { group: 'City names', key: 'citySize', label: 'Text size', min: 8, max: 60, step: 0.5 },
-  { group: 'City names', key: 'cityMaxWidth', label: 'Longest line', min: 80, max: 700, step: 5 },
-  { group: 'City names', key: 'cityCurve', label: 'Curve (0 is straight)', min: 0, max: 180, step: 1 },
-  { group: 'City names', key: 'citySpacing', label: 'Letter spacing', min: -2, max: 12, step: 0.25 },
-  { group: 'Points number', key: 'numberX', label: 'Position across', min: 0, max: 1000, step: 1 },
-  { group: 'Points number', key: 'numberY', label: 'Position down', min: 0, max: 460, step: 1 },
-  { group: 'Points number', key: 'numberSize', label: 'Text size', min: 20, max: 200, step: 1 },
-  { group: 'Points number', key: 'numberAngle', label: 'Tilt (degrees)', min: -90, max: 90, step: 1 },
-];
-
 export function TicketsPage() {
   const [doc, setDoc] = useState<MapDefinition | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +16,6 @@ export function TicketsPage() {
   const [to, setTo] = useState('');
   const [points, setPoints] = useState<number | null>(null);
   const [deck, setDeck] = useState<'regular' | 'long'>('regular');
-  const [style, setStyle] = useState<TicketStyle>({});
 
   useEffect(() => {
     fetch('/api/editor')
@@ -48,7 +23,6 @@ export function TicketsPage() {
         if (!res.ok) throw new Error('The map editor is off. Start the game with "npm run dev" (it turns the editor on).');
         const map = MapSchema.parse(((await res.json()) as { map: unknown }).map);
         setDoc(map);
-        setStyle(map.ticketStyle ?? {});
         const sorted = [...map.cities].sort((a, b) => a.name.localeCompare(b.name));
         setFrom(sorted[0]?.id ?? '');
         setTo(sorted[1]?.id ?? '');
@@ -139,56 +113,14 @@ export function TicketsPage() {
         {status && <pre className="editor-status">{status}</pre>}
         <p className="small-print">
           A triple ticket scores when the player's tracks join all three cities, in any order. The map file changes right away; avoid
-          editing the map in /editor at the same moment.
+          editing the map in /editor at the same moment. A new ticket shows as a plain card until its picture is added (see
+          assets/tickets/tickets.json and tools/assets/prepare-tickets.py).
         </p>
-      </section>
-
-      <section className="panel tickets-tuning">
-        <h2>Text on the ticket</h2>
-        {['City names', 'Points number'].map((group) => (
-          <fieldset key={group}>
-            <legend>{group}</legend>
-            {TUNING.filter((t) => t.group === group).map((t) => {
-              const value = resolveTicketStyle(style)[t.key];
-              return (
-                <label key={t.key} className="tuning-row">
-                  <span>{t.label}</span>
-                  <input
-                    type="range"
-                    min={t.min}
-                    max={t.max}
-                    step={t.step}
-                    value={value}
-                    onChange={(e) => setStyle({ ...style, [t.key]: Number(e.target.value) })}
-                  />
-                  <input
-                    type="number"
-                    step={t.step}
-                    value={value}
-                    onChange={(e) => e.target.value !== '' && setStyle({ ...style, [t.key]: Number(e.target.value) })}
-                  />
-                </label>
-              );
-            })}
-          </fieldset>
-        ))}
-        <div className="row">
-          <button
-            className="primary"
-            disabled={JSON.stringify(style) === JSON.stringify(doc.ticketStyle ?? {})}
-            onClick={() => void put({ ...doc, ticketStyle: style }, 'Saved the text layout. Every ticket in the game uses it.')}
-          >
-            Save layout
-          </button>
-          <button className="secondary" onClick={() => setStyle({})} title={`Back to the starting values (${DEFAULT_TICKET_STYLE.cityCurve}° curve and so on)`}>
-            Reset
-          </button>
-        </div>
       </section>
 
       <section className="tickets-preview">
         {draft ? (
-          <TicketArt names={ticketCities(draft).map(name)} points={draft.points} long={draft.deck === 'long'} style={style} />
+          <TicketArt names={ticketCities(draft).map(name)} points={draft.points} long={draft.deck === 'long'} />
         ) : (
           <p>Pick different cities.</p>
         )}
@@ -210,7 +142,7 @@ export function TicketsPage() {
                   setDeck(t.deck);
                 }}
               >
-                <TicketArt names={ticketCities(t).map(name)} points={t.points} long={t.deck === 'long'} style={style} />
+                <TicketArt ticketId={t.id} names={ticketCities(t).map(name)} points={t.points} long={t.deck === 'long'} />
               </button>
               <button
                 className="secondary small"

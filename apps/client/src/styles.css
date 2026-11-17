@@ -438,6 +438,61 @@ label {
   height: auto;
 }
 
+/* A ticket's own picture (assets/web/tickets), with the done mark over it. */
+.ticket-art {
+  position: relative;
+}
+/* A ticket with no picture yet: a plain card of the same shape. */
+.ticket-plain {
+  aspect-ratio: 855 / 394;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0 1.2em;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #9a6a2a, #b58340 50%, #946226);
+  color: #2b2117;
+  font-family: Cardo, serif;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 2px #6b4718;
+  container-type: inline-size;
+}
+.ticket-plain-points {
+  font-size: 12cqw;
+  min-width: 1.6em;
+  text-align: center;
+}
+.ticket-plain.long .ticket-plain-points {
+  color: #8a2b22;
+}
+.ticket-plain-cities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 4.5cqw;
+}
+.ticket-picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ticket-picture .ticket-done {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%) rotate(-6deg);
+  padding: 0.05em 0.5em;
+  border: 2px solid #2e7d32;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.85);
+  color: #2e7d32;
+  font: 700 0.9em Cardo, serif;
+  white-space: nowrap;
+}
+
 .event-log h2 {
   display: flex;
   justify-content: space-between;
@@ -757,18 +812,63 @@ label {
   gap: 0.8rem;
 }
 
+.modal.ticket-choice {
+  width: min(760px, 94vw);
+  max-height: 92vh;
+  overflow: auto;
+}
+
+/* The offered tickets as their pictures, two per row; click one to keep it or give it back. */
 .ticket-choices {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 0.8rem;
 }
 
-.ticket-choices label {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.6rem;
+.ticket-choice-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  border-radius: 8px;
+  transition:
+    opacity 0.15s,
+    filter 0.15s,
+    transform 0.15s;
+}
+.ticket-choice-card:hover {
+  transform: translateY(-2px);
+}
+.ticket-choice-card input {
+  position: absolute;
+  top: 8%;
+  right: 13%;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin: 0;
+  z-index: 1;
+  accent-color: #2e7d32;
+}
+.ticket-choice-card.dropped {
+  opacity: 0.45;
+  filter: grayscale(0.7);
+}
+.ticket-choice-card .ticket-art {
+  filter: drop-shadow(0 3px 5px rgb(0 0 0 / 0.3));
+}
+.ticket-choice-tag {
+  position: absolute;
+  left: 50%;
+  bottom: -0.2rem;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: #8a2b22;
+  color: #fff;
 }
 
 .claim-dialog {
@@ -1380,4 +1480,967 @@ label {
 .preview-strike select {
   padding: 0.15rem;
   font-size: 0.8rem;
+}
+
+/* Seasons-mode city pins (assets/web/city-pins): the element sits on the city; its images are placed around it. */
+.city-pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  user-select: none;
+}
+.city-pin img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+.city-pin-marker {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  border-style: solid;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 6px 2px rgba(255, 255, 255, 0.45),
+    0 1px 2px rgba(0, 0, 0, 0.45);
+}
+.city-pin-name {
+  transition: opacity 0.25s;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+}
+/* A city with no lettering yet: its plain name, placed like the lettering. */
+.city-pin-text {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  line-height: 1.1;
+  filter: none;
+}
+
+/* ===================================================================================
+   Classic HUD · Night Express (Figma: Crazy Train · Classic UI). Scoped to .classic-ui,
+   so Seasons mode keeps its own look. Tokens mirror the Figma variables.
+   =================================================================================== */
+.classic-ui {
+  --nx-ground: #0a1a20;
+  --nx-panel: #0f2a33;
+  --nx-brass: #d8b25a;
+  --nx-brass-light: #e2c377;
+  --nx-ivory: #f4ebd3;
+  --nx-parchment: #e7dbbd;
+  --nx-mist: #c9d6d4;
+  --nx-ink: #0a1a20;
+  --nx-ink-soft: #2a3b40;
+  --nx-signal-red: #c5402f;
+  --nx-alert: #ff9c8a;
+  --nx-success: #9fd79a;
+  --nx-stamp-green: #1f5c2a;
+  --nx-plate: rgb(10 26 32 / 0.92);
+  --nx-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --nx-display: 'Marcellus SC', Georgia, serif;
+  --nx-serif: 'Marcellus', Georgia, serif;
+  --nx-sans: 'Josefin Sans', system-ui, sans-serif;
+  font-family: var(--nx-sans);
+  color: var(--nx-ivory);
+}
+
+.classic-ui .nx-caps {
+  font-family: var(--nx-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.classic-ui .nx-plate {
+  display: inline-block;
+  padding: 9px 14px 7px;
+  background: var(--nx-plate);
+  border: 1px solid var(--nx-brass);
+  color: var(--nx-brass-light);
+  white-space: nowrap;
+}
+
+.classic-ui .nx-panel {
+  background: var(--nx-plate);
+  border: 1px solid var(--nx-brass);
+  padding: 12px 14px 14px;
+}
+
+.classic-ui .nx-left,
+.classic-ui .nx-right,
+.classic-ui .nx-header,
+.classic-ui .nx-bottom-left,
+.classic-ui .nx-bottom-center,
+.classic-ui .nx-actions {
+  position: absolute;
+  z-index: 20;
+}
+
+/* Header plaque */
+.classic-ui .nx-header {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 28px;
+  text-align: center;
+  background: var(--nx-plate);
+  border: 1px solid var(--nx-brass);
+  pointer-events: none;
+}
+.classic-ui .nx-header h1 {
+  margin: 0;
+  font: 400 24px/1.2 var(--nx-display);
+  letter-spacing: 6px;
+  color: var(--nx-brass-light);
+  white-space: nowrap;
+}
+.classic-ui .nx-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.classic-ui .nx-header p.last-round {
+  color: var(--nx-alert);
+}
+
+/* Player plaques */
+.classic-ui .nx-left {
+  top: 24px;
+  left: 24px;
+  width: 236px;
+}
+.classic-ui .nx-players ol {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.classic-ui .nx-plaque {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding-right: 12px;
+  background: var(--nx-plate);
+  border: 1px solid rgb(216 178 90 / 0.5);
+  position: relative;
+}
+.classic-ui .compact .nx-plaque {
+  height: 34px;
+}
+.classic-ui .nx-plaque.active {
+  border: 2px solid var(--nx-brass-light);
+}
+.classic-ui .nx-plaque.away {
+  opacity: 0.55;
+}
+.classic-ui .nx-plaque-color {
+  align-self: stretch;
+  width: 10px;
+  flex: none;
+}
+.classic-ui .nx-plaque-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 17px var(--nx-serif);
+}
+.classic-ui .compact .nx-plaque-name {
+  font-size: 15px;
+}
+.classic-ui .nx-you {
+  margin-left: 6px;
+  font: 700 10px var(--nx-sans);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--nx-brass-light);
+}
+.classic-ui .nx-plaque-trains {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nx-mist);
+  white-space: nowrap;
+}
+.classic-ui .nx-plaque-trains.low {
+  color: var(--nx-alert);
+}
+.classic-ui .nx-plaque-score {
+  font: 22px var(--nx-serif);
+  color: var(--nx-brass-light);
+  min-width: 26px;
+  text-align: right;
+}
+.classic-ui .compact .nx-plaque-score {
+  font-size: 18px;
+}
+.classic-ui .nx-skip {
+  position: absolute;
+  right: -8px;
+  top: -10px;
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 0;
+  background: var(--nx-signal-red);
+}
+.classic-ui .nx-round {
+  padding: 7px 12px 5px;
+  border-color: rgb(216 178 90 / 0.5);
+}
+
+/* Right column: tools, market, log */
+.classic-ui .nx-right {
+  top: 24px;
+  right: 24px;
+  width: 260px;
+  max-height: calc(100% - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.classic-ui .nx-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.classic-ui .nx-tools .city-search,
+.classic-ui .nx-tools .theme-picker {
+  background: var(--nx-plate);
+  border: 1px solid rgb(216 178 90 / 0.5);
+  color: var(--nx-ivory);
+  padding: 2px 6px;
+  font-size: 12px;
+}
+.classic-ui .nx-tools input,
+.classic-ui .nx-tools select {
+  background: transparent;
+  color: var(--nx-ivory);
+  border: 0;
+  font: inherit;
+}
+.classic-ui .nx-tools option {
+  color: #000;
+}
+.classic-ui .nx-tool {
+  border-radius: 0;
+  padding: 6px 10px 4px;
+  background: var(--nx-plate);
+  border: 1px solid rgb(216 178 90 / 0.5);
+  color: var(--nx-brass-light);
+  font: 700 11px var(--nx-sans);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.classic-ui .nx-market h2 {
+  margin: 0 0 10px;
+  color: var(--nx-brass-light);
+}
+.classic-ui .nx-market-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 84px);
+  gap: 10px;
+}
+.classic-ui .nx-market-card {
+  width: 84px;
+  height: 125px;
+  padding: 0;
+  border-radius: 6px;
+  background: none;
+  transition:
+    transform 0.16s var(--nx-ease),
+    filter 0.16s;
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.55));
+}
+.classic-ui .nx-market-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.classic-ui .nx-market-card:not(:disabled):hover {
+  transform: translateY(-4px);
+}
+.classic-ui .nx-market-card:disabled {
+  opacity: 1;
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.55)) saturate(0.6) brightness(0.8);
+}
+.classic-ui .nx-market-card.empty {
+  border: 1px dashed rgb(216 178 90 / 0.4);
+  filter: none;
+}
+.classic-ui .nx-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: var(--nx-panel);
+  border: 1px solid var(--nx-brass);
+  box-shadow: 3px 3px 0 rgb(216 178 90 / 0.5);
+  color: var(--nx-brass-light);
+}
+.classic-ui .nx-deck-count {
+  font: 22px var(--nx-serif);
+  color: var(--nx-ivory);
+}
+.classic-ui .nx-right .event-log {
+  width: 100%;
+  border-radius: 0;
+  background: var(--nx-plate);
+  border: 1px solid rgb(216 178 90 / 0.5);
+  color: var(--nx-ivory);
+  box-shadow: none;
+  padding: 10px 12px;
+  max-height: 180px;
+}
+.classic-ui .nx-right .event-log h2 {
+  font: 700 12px var(--nx-sans);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--nx-brass-light);
+}
+.classic-ui .nx-right .event-log li {
+  border-bottom-color: rgb(244 235 211 / 0.08);
+}
+.classic-ui .nx-right .event-log .log-toggle {
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid rgb(216 178 90 / 0.5);
+  color: var(--nx-brass-light);
+}
+
+/* Ticket fan (bottom left) */
+.classic-ui .nx-bottom-left {
+  left: 24px;
+  bottom: 24px;
+}
+.classic-ui .nx-fan {
+  position: relative;
+  width: 380px;
+  height: 300px;
+}
+.classic-ui .nx-fan.empty {
+  height: auto;
+}
+.classic-ui .nx-fan-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.classic-ui .nx-fan-ticket {
+  position: absolute;
+  width: 300px;
+  height: 138px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  pointer-events: auto;
+  transform-origin: 0 100%;
+  transition:
+    left 0.36s var(--nx-ease),
+    top 0.36s var(--nx-ease),
+    transform 0.36s var(--nx-ease),
+    filter 0.3s;
+  filter: drop-shadow(0 8px 14px rgb(0 0 0 / 0.7));
+}
+.classic-ui .nx-fan-ticket.behind {
+  filter: drop-shadow(0 8px 14px rgb(0 0 0 / 0.7)) brightness(0.6);
+}
+.classic-ui .nx-fan-ticket .ticket-art {
+  width: 300px;
+}
+.classic-ui .nx-fan-controls {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.classic-ui .nx-fan-controls .nx-plate {
+  padding: 15px 14px 13px;
+}
+.classic-ui .nx-square {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nx-plate);
+  border: 1px solid var(--nx-brass);
+}
+.classic-ui .nx-square svg {
+  fill: none;
+  stroke: var(--nx-brass-light);
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The complete stamp on tickets, in the HUD's green */
+.classic-ui .ticket-picture .ticket-done {
+  left: auto;
+  right: 17%;
+  bottom: 7%;
+  transform: rotate(-7deg);
+  padding: 2px 10px 0;
+  border: 2px solid var(--nx-stamp-green);
+  border-radius: 0;
+  background: rgb(244 235 211 / 0.94);
+  color: var(--nx-stamp-green);
+  font: 700 12px var(--nx-sans);
+  letter-spacing: 2px;
+}
+
+/* Hand fan (bottom center) */
+.classic-ui .nx-bottom-center {
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+}
+.classic-ui .nx-hand {
+  position: relative;
+  display: flex;
+  padding: 40px 10px 0;
+}
+.classic-ui .nx-hand-card {
+  position: relative;
+  width: 84px;
+  height: 125px;
+  margin-right: -12px;
+  padding: 0;
+  border-radius: 6px;
+  background: none;
+  transform-origin: 50% 100%;
+  transition:
+    transform 0.18s var(--nx-ease),
+    filter 0.18s;
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.6));
+}
+.classic-ui .nx-hand-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.classic-ui .nx-hand-card.empty img {
+  filter: grayscale(0.8) brightness(0.55);
+}
+.classic-ui .nx-hand-card.lifted {
+  filter: drop-shadow(0 0 10px rgb(226 195 119 / 0.85)) drop-shadow(0 14px 18px rgb(0 0 0 / 0.6));
+}
+.classic-ui .nx-hand-card.picked {
+  outline: 2px solid var(--nx-brass-light);
+  outline-offset: 2px;
+}
+.classic-ui .nx-count {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  min-width: 28px;
+  height: 24px;
+  padding: 3px 7px 0;
+  background: var(--nx-ground);
+  border: 1px solid var(--nx-brass);
+  color: var(--nx-brass-light);
+  font: 15px/20px var(--nx-serif);
+  text-align: center;
+}
+
+/* Actions (bottom right) */
+.classic-ui .nx-actions {
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.classic-ui .nx-hint {
+  margin: 0;
+  padding: 6px 10px;
+  background: var(--nx-plate);
+  border: 1px solid rgb(216 178 90 / 0.5);
+  font-size: 13px;
+}
+.classic-ui .nx-btn {
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 0;
+  font: 700 14px var(--nx-sans);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.16s var(--nx-ease);
+}
+.classic-ui .nx-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+.classic-ui .nx-btn:not(:disabled):active {
+  transform: scale(0.96);
+}
+.classic-ui .nx-btn.primary {
+  background: var(--nx-brass);
+  color: var(--nx-ink);
+}
+.classic-ui .nx-btn.dark {
+  background: var(--nx-panel);
+  color: var(--nx-ivory);
+}
+.classic-ui .nx-btn.outline {
+  background: transparent;
+  border: 1px solid var(--nx-ink);
+  color: var(--nx-ink);
+}
+.classic-ui .nx-btn.outline.light {
+  background: var(--nx-plate);
+  border-color: var(--nx-brass);
+  color: var(--nx-ivory);
+}
+.classic-ui .nx-btn:disabled {
+  opacity: 1;
+  background: #d9cfb4;
+  color: var(--nx-ink-soft);
+  border: 0;
+}
+.classic-ui .nx-btn.primary:disabled {
+  background: #20343b;
+  color: var(--nx-mist);
+}
+.classic-ui .nx-btn.big {
+  height: 52px;
+  padding: 0 32px;
+  font-size: 15px;
+}
+
+/* Claim popover */
+.classic-ui .nx-pop {
+  position: absolute;
+  z-index: 40;
+  right: 304px;
+  top: 120px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px 16px;
+  background: var(--nx-ivory);
+  color: var(--nx-ink);
+  box-shadow:
+    0 0 0 1px var(--nx-brass),
+    0 16px 34px rgb(0 0 0 / 0.6);
+  animation: nx-pop 0.22s var(--nx-ease) both;
+  transform-origin: 50% 0;
+}
+.classic-ui .nx-pop.medium {
+  width: 320px;
+}
+@keyframes nx-pop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.classic-ui .nx-pop-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.classic-ui .nx-pop-title h2 {
+  flex: 1;
+  margin: 0;
+  font: 17px var(--nx-serif);
+}
+.classic-ui .nx-close {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  color: var(--nx-ink-soft);
+  font-size: 15px;
+  border-radius: 0;
+}
+.classic-ui .nx-facts {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.classic-ui .nx-pips {
+  display: flex;
+  flex: none;
+  gap: 3px;
+}
+.classic-ui .nx-pip {
+  width: 11px;
+  height: 8px;
+  border: 1px solid var(--nx-ink);
+}
+.classic-ui .pip-red {
+  background: var(--card-red);
+}
+.classic-ui .pip-orange {
+  background: var(--card-orange);
+}
+.classic-ui .pip-yellow {
+  background: var(--card-yellow);
+}
+.classic-ui .pip-green {
+  background: var(--card-green);
+}
+.classic-ui .pip-blue {
+  background: var(--card-blue);
+}
+.classic-ui .pip-purple {
+  background: var(--card-purple);
+}
+.classic-ui .pip-black {
+  background: var(--card-black);
+}
+.classic-ui .pip-white {
+  background: var(--card-white);
+}
+.classic-ui .pip-gray {
+  background: var(--card-gray);
+}
+.classic-ui .nx-facts-text {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nx-ink-soft);
+}
+.classic-ui .nx-points {
+  padding: 3px 8px 1px;
+  background: var(--nx-panel);
+  color: var(--nx-brass-light);
+  font: 17px var(--nx-serif);
+}
+.classic-ui .nx-badge {
+  align-self: flex-start;
+  padding: 3px 8px 1px;
+  background: var(--nx-panel);
+  color: #7fb8d8;
+}
+.classic-ui .nx-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--nx-ink-soft);
+}
+.classic-ui .nx-alert {
+  color: var(--nx-signal-red);
+}
+.classic-ui .nx-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.classic-ui .nx-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 4px 8px 4px 5px;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid rgb(42 59 64 / 0.35);
+  color: var(--nx-ink);
+  font: 600 12px var(--nx-sans);
+}
+.classic-ui .nx-chip img {
+  width: 18px;
+  height: 27px;
+  object-fit: contain;
+}
+.classic-ui .nx-chip.on {
+  border: 2px solid var(--nx-ink);
+  background: var(--nx-parchment);
+}
+.classic-ui .nx-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--nx-ink-soft);
+}
+.classic-ui .nx-stepper .nx-caps {
+  flex: 1;
+}
+.classic-ui .nx-step {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--nx-ink);
+  color: var(--nx-ink);
+  font: 700 16px var(--nx-sans);
+}
+.classic-ui .nx-step-value {
+  min-width: 18px;
+  text-align: center;
+  font: 20px var(--nx-serif);
+}
+.classic-ui .nx-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px 10px;
+  background: var(--nx-parchment);
+  color: var(--nx-ink-soft);
+}
+.classic-ui .nx-strip-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.classic-ui .nx-mini {
+  width: 24px;
+  height: 36px;
+  border-radius: 3px;
+  animation: nx-deal 0.24s var(--nx-ease) both;
+}
+.classic-ui .nx-mini img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.classic-ui .nx-mini.ghost {
+  border: 1.5px dashed rgb(42 59 64 / 0.6);
+}
+@keyframes nx-deal {
+  0% {
+    transform: translateY(-14px) rotate(-8deg);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+.classic-ui .nx-note {
+  margin: 0;
+  padding: 7px 10px 5px;
+  background: var(--nx-signal-red);
+  color: var(--nx-ivory);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.classic-ui .nx-note.quiet {
+  background: var(--nx-parchment);
+  color: var(--nx-ink-soft);
+}
+.classic-ui .nx-pop-actions {
+  display: flex;
+  gap: 8px;
+}
+.classic-ui .nx-pop-actions .nx-btn {
+  flex: 1;
+}
+.classic-ui .nx-flash .nx-pop {
+  pointer-events: none;
+}
+.classic-ui .nx-stamp {
+  position: absolute;
+  right: 22px;
+  top: 64px;
+  padding: 5px 12px 3px;
+  background: rgb(244 235 211 / 0.94);
+  border: 2px solid var(--nx-stamp-green);
+  color: var(--nx-stamp-green);
+  animation: nx-stamp 0.32s 0.08s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+@keyframes nx-stamp {
+  0% {
+    transform: rotate(8deg) scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(8deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Choose tickets */
+.classic-ui .nx-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(10 26 32 / 0.78);
+}
+.classic-ui .nx-dialog {
+  width: min(920px, calc(100vw - 48px));
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px 32px;
+  background: rgb(10 26 32 / 0.96);
+  border: 1px solid var(--nx-brass);
+  box-shadow:
+    inset 0 0 0 3px var(--nx-ground),
+    inset 0 0 0 4px rgb(216 178 90 / 0.55),
+    0 20px 50px rgb(0 0 0 / 0.7);
+}
+.classic-ui .nx-dialog header {
+  text-align: center;
+}
+.classic-ui .nx-dialog h2 {
+  margin: 0 0 6px;
+  font: 400 28px var(--nx-display);
+  letter-spacing: 4px;
+  color: var(--nx-brass-light);
+}
+.classic-ui .nx-dialog header p,
+.classic-ui .nx-dialog footer p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.classic-ui .nx-offers {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px 24px;
+}
+.classic-ui .nx-offer {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  text-align: left;
+}
+.classic-ui .nx-offer .ticket-art {
+  transition: filter 0.2s;
+}
+.classic-ui .nx-offer.kept .ticket-art {
+  filter: drop-shadow(0 8px 14px rgb(0 0 0 / 0.7));
+}
+.classic-ui .nx-offer.returning .ticket-art {
+  filter: grayscale(0.85) brightness(0.55);
+}
+.classic-ui .nx-check {
+  position: absolute;
+  right: 15%;
+  top: 14px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--nx-ground);
+  background: rgb(244 235 211 / 0.85);
+}
+.classic-ui .nx-offer.kept .nx-check {
+  background: var(--nx-success);
+}
+.classic-ui .nx-check svg {
+  fill: none;
+  stroke: var(--nx-ground);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.classic-ui .nx-triple {
+  position: absolute;
+  left: 12px;
+  top: -9px;
+  padding: 3px 9px 1px;
+  background: var(--nx-signal-red);
+  color: #fff;
+  font-size: 11px;
+}
+.classic-ui .nx-tag {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  padding: 4px 12px 2px;
+  font-size: 11px;
+  white-space: nowrap;
+  background: var(--nx-brass);
+  color: var(--nx-ink);
+}
+.classic-ui .nx-offer.returning .nx-tag {
+  background: var(--nx-ground);
+  color: var(--nx-mist);
+  border: 1px solid rgb(216 178 90 / 0.5);
+}
+.classic-ui .nx-dialog footer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.classic-ui .nx-dialog footer p {
+  flex: 1;
+}
+
+.classic-ui :focus-visible {
+  outline: 2px solid var(--nx-brass-light);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .classic-ui .nx-pop,
+  .classic-ui .nx-mini,
+  .classic-ui .nx-stamp {
+    animation-duration: 0.01s;
+    animation-delay: 0s;
+  }
+  .classic-ui .nx-hand-card,
+  .classic-ui .nx-fan-ticket,
+  .classic-ui .nx-market-card,
+  .classic-ui .nx-btn {
+    transition: none;
+  }
+}
+
+/* Classic city names: white rounded lettering, matching the Canva city art */
+.city-label.rounded {
+  font-family: 'Fredoka', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #f4fbff;
+  text-shadow:
+    -1px -1px 0 #0d2230,
+    1px -1px 0 #0d2230,
+    -1px 1px 0 #0d2230,
+    1px 1px 0 #0d2230,
+    0 2px 3px rgb(13 34 48 / 0.7);
+}
+.city-label.rounded.major {
+  font-size: 16px;
 }

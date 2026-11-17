@@ -14,6 +14,12 @@ const MEXICO = [
   'ciudad-de-mexico',
   'veracruz',
   'merida',
+  'la-paz',
+  'tijuana',
+  'culiacan',
+  'mazatlan',
+  'acapulco',
+  'tuxtla',
 ];
 const REFERENCE = [
   'vancouver', 'seattle', 'portland', 'san-francisco', 'los-angeles', 'las-vegas', 'phoenix', 'el-paso',
@@ -34,7 +40,12 @@ describe('North America starter map', () => {
   it('holds every city named in R15', () => {
     const ids = new Set(starter.cities.map((c) => c.id));
     for (const id of [...REFERENCE, ...CANADA, ...MEXICO, 'la-habana']) expect(ids, id).toContain(id);
-    expect(ids.size).toBe(55);
+    expect(ids.size).toBe(61);
+  });
+
+  it('connects every one of the 61 cities by at least one route', () => {
+    const linked = new Set(starter.routes.flatMap((r) => [r.from, r.to]));
+    for (const c of starter.cities) expect(linked, c.id).toContain(c.id);
   });
 
   it('has at least 9 long tickets, enough for 7 players', () => {

@@ -57,6 +57,7 @@ export const S = {
   ticketsLeft: (n: number) => `${n} left`,
   hand: 'Your cards',
   keepTickets: 'Keep selected tickets',
+  longTicket: 'Triple ticket',
   chooseTickets: (min: number) => `Choose tickets to keep (at least ${min})`,
   waitingTickets: (n: number) => `Waiting for ${n} player(s) to choose tickets…`,
   claim: 'Claim',
@@ -230,3 +231,54 @@ export function describeEvent(e: GameEvent, names: string[], map: MapIndex | nul
       return `The ash settled: ${routeName(e.routeId)} is gray and free again.`;
   }
 }
+
+/** Classic HUD (Night Express design) wording. */
+export const NX = {
+  title: 'Crazy Train Express',
+  market: 'Market',
+  deck: 'Deck',
+  round: (round: number, deck: number) => `Round ${round} · Deck ${deck}`,
+  trainsLeft: (n: number) => `${n} trains`,
+  lastTrains: (n: number) => `${n} left`,
+  drawTickets: (n: number) => `Draw tickets · ${n}`,
+  ticketCounter: (front: number, total: number, done: number) =>
+    `${front} / ${total} · ${done} complete`,
+  ticketCount: (total: number, done: number) =>
+    `${total} ticket${total === 1 ? '' : 's'} · ${done} complete`,
+  noTickets: 'No tickets yet',
+  prevTicket: 'Previous ticket',
+  nextTicket: 'Next ticket',
+  spaces: (n: number) => `${n} space${n === 1 ? '' : 's'}`,
+  payWith: 'Pay with',
+  locomotives: 'Locomotives',
+  addLoco: 'Use one more locomotive',
+  removeLoco: 'Use one less locomotive',
+  toPay: 'To pay',
+  claim: (points: number) => `Claim · +${points}`,
+  dig: 'Dig · draw 3',
+  claimed: 'Claimed',
+  claimedPoints: (points: number) => `Claimed · +${points}`,
+  notEnough: 'Not enough cards',
+  cannotClaim: 'Cannot claim',
+  ferryNeeds: (n: number) => `Ferry · ${n} locomotive${n === 1 ? '' : 's'} needed`,
+  tunnel: 'Tunnel',
+  tunnelTurnedUp: 'The tunnel turned up',
+  laidDown: 'Laid down',
+  moreToPay: (n: number) => `${n} more to pay`,
+  payMore: (n: number) => `Pay ${n} more`,
+  giveUp: 'Give up',
+  cannotPayExtra: 'You cannot pay the extra cards.',
+  digging: (name: string) => `${name} is digging a tunnel…`,
+  missing: (n: number, color: string) =>
+    `You need ${n} more ${color} card${n === 1 ? '' : 's'} or locomotives.`,
+  chooseTitle: 'Choose Your Tickets',
+  chooseHelp: (min: number) => `Keep at least ${min}. Returned tickets go under the deck.`,
+  keeping: 'Keeping',
+  returning: 'Returning',
+  triple: 'Triple',
+  keepSummary: (kept: number, total: number, points: number) =>
+    `Keeping ${kept} of ${total}: worth +${points} if you finish them, −${points} if you do not.`,
+  keepAtLeast: (min: number) => `Keep at least ${min} tickets to continue.`,
+  keepButton: (n: number) => `Keep ${n} ticket${n === 1 ? '' : 's'}`,
+  keepMinButton: (min: number) => `Keep at least ${min}`,
+};

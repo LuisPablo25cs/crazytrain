@@ -1,0 +1,1665 @@
+{
+ "$comment": "The game's destination tickets, one per ticket picture downloaded from the Canva designs 'tickets-1' and 'tickets-2' (PNG, transparent background, all pages) into assets/tickets/<design>/. 'art' is the picture of each ticket; triple tickets (with 'via') are the long deck. Run python tools/assets/prepare-tickets.py after downloading the pictures again.",
+ "tickets": [
+  {
+   "id": "new-york-merida",
+   "from": "new-york",
+   "to": "merida",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-1/1.png"
+  },
+  {
+   "id": "halifax-denver",
+   "from": "halifax",
+   "to": "denver",
+   "points": 19,
+   "deck": "regular",
+   "art": "tickets-1/2.png"
+  },
+  {
+   "id": "pittsburgh-chihuahua",
+   "from": "pittsburgh",
+   "to": "chihuahua",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-1/3.png"
+  },
+  {
+   "id": "vancouver-monterrey",
+   "from": "vancouver",
+   "to": "monterrey",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-1/4.png"
+  },
+  {
+   "id": "saltillo-little-rock",
+   "from": "saltillo",
+   "to": "little-rock",
+   "points": 7,
+   "deck": "regular",
+   "art": "tickets-1/5.png"
+  },
+  {
+   "id": "chicago-guadalajara",
+   "from": "chicago",
+   "to": "guadalajara",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-1/6.png"
+  },
+  {
+   "id": "quebec-charleston",
+   "from": "quebec",
+   "to": "charleston",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-1/7.png"
+  },
+  {
+   "id": "raleigh-los-angeles",
+   "from": "raleigh",
+   "to": "los-angeles",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-1/8.png"
+  },
+  {
+   "id": "guadalajara-oklahoma-city",
+   "from": "guadalajara",
+   "to": "oklahoma-city",
+   "points": 9,
+   "deck": "regular",
+   "art": "tickets-1/9.png"
+  },
+  {
+   "id": "ottawa-santa-fe",
+   "from": "ottawa",
+   "to": "santa-fe",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-1/10.png"
+  },
+  {
+   "id": "la-habana-saint-louis",
+   "from": "la-habana",
+   "to": "saint-louis",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-1/11.png"
+  },
+  {
+   "id": "montreal-guadalajara",
+   "from": "montreal",
+   "to": "guadalajara",
+   "points": 21,
+   "deck": "regular",
+   "art": "tickets-1/12.png"
+  },
+  {
+   "id": "winnipeg-prince-rupert",
+   "from": "winnipeg",
+   "to": "prince-rupert",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-1/13.png"
+  },
+  {
+   "id": "toronto-portland",
+   "from": "toronto",
+   "to": "portland",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-1/14.png"
+  },
+  {
+   "id": "jasper-helena",
+   "from": "jasper",
+   "to": "helena",
+   "points": 6,
+   "deck": "regular",
+   "art": "tickets-1/15.png"
+  },
+  {
+   "id": "ciudad-de-mexico-washington",
+   "from": "ciudad-de-mexico",
+   "to": "washington",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-1/16.png"
+  },
+  {
+   "id": "el-paso-saint-louis",
+   "from": "el-paso",
+   "to": "saint-louis",
+   "points": 8,
+   "deck": "regular",
+   "art": "tickets-1/17.png"
+  },
+  {
+   "id": "portland-culiacan",
+   "from": "portland",
+   "to": "culiacan",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-1/18.png"
+  },
+  {
+   "id": "vancouver-montreal",
+   "from": "vancouver",
+   "to": "montreal",
+   "points": 22,
+   "deck": "regular",
+   "art": "tickets-1/19.png"
+  },
+  {
+   "id": "mazatlan-santa-fe",
+   "from": "mazatlan",
+   "to": "santa-fe",
+   "points": 9,
+   "deck": "regular",
+   "art": "tickets-1/20.png"
+  },
+  {
+   "id": "acapulco-vancouver",
+   "from": "acapulco",
+   "to": "vancouver",
+   "points": 23,
+   "deck": "regular",
+   "art": "tickets-1/21.png"
+  },
+  {
+   "id": "tuxtla-las-vegas",
+   "from": "tuxtla",
+   "to": "las-vegas",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-1/22.png"
+  },
+  {
+   "id": "prince-rupert-helena",
+   "from": "prince-rupert",
+   "to": "helena",
+   "points": 12,
+   "deck": "regular",
+   "art": "tickets-1/23.png"
+  },
+  {
+   "id": "ciudad-de-mexico-denver",
+   "from": "ciudad-de-mexico",
+   "to": "denver",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-1/24.png"
+  },
+  {
+   "id": "omaha-denver",
+   "from": "omaha",
+   "to": "denver",
+   "points": 4,
+   "deck": "regular",
+   "art": "tickets-1/25.png"
+  },
+  {
+   "id": "acapulco-merida",
+   "from": "acapulco",
+   "to": "merida",
+   "points": 6,
+   "deck": "regular",
+   "art": "tickets-1/26.png"
+  },
+  {
+   "id": "santa-fe-pittsburgh",
+   "from": "santa-fe",
+   "to": "pittsburgh",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-1/27.png"
+  },
+  {
+   "id": "duluth-montreal",
+   "from": "duluth",
+   "to": "montreal",
+   "points": 8,
+   "deck": "regular",
+   "art": "tickets-1/28.png"
+  },
+  {
+   "id": "hermosillo-salt-lake-city",
+   "from": "hermosillo",
+   "to": "salt-lake-city",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-1/29.png"
+  },
+  {
+   "id": "houston-los-angeles",
+   "from": "houston",
+   "to": "los-angeles",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-1/30.png"
+  },
+  {
+   "id": "oklahoma-city-hermosillo",
+   "from": "oklahoma-city",
+   "to": "hermosillo",
+   "points": 9,
+   "deck": "regular",
+   "art": "tickets-1/31.png"
+  },
+  {
+   "id": "sault-st-marie-calgary",
+   "from": "sault-st-marie",
+   "to": "calgary",
+   "points": 13,
+   "deck": "regular",
+   "art": "tickets-1/32.png"
+  },
+  {
+   "id": "merida-vancouver",
+   "from": "merida",
+   "to": "vancouver",
+   "points": 25,
+   "deck": "regular",
+   "art": "tickets-1/33.png"
+  },
+  {
+   "id": "new-york-guadalajara",
+   "from": "new-york",
+   "to": "guadalajara",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-1/34.png"
+  },
+  {
+   "id": "quebec-helena",
+   "from": "quebec",
+   "to": "helena",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-1/35.png"
+  },
+  {
+   "id": "ottawa-kansas-city",
+   "from": "ottawa",
+   "to": "kansas-city",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-1/36.png"
+  },
+  {
+   "id": "atlanta-dallas",
+   "from": "atlanta",
+   "to": "dallas",
+   "points": 6,
+   "deck": "regular",
+   "art": "tickets-1/37.png"
+  },
+  {
+   "id": "ciudad-obregon-el-paso",
+   "from": "ciudad-obregon",
+   "to": "el-paso",
+   "points": 4,
+   "deck": "regular",
+   "art": "tickets-1/38.png"
+  },
+  {
+   "id": "el-paso-edmonton",
+   "from": "el-paso",
+   "to": "edmonton",
+   "points": 13,
+   "deck": "regular",
+   "art": "tickets-1/39.png"
+  },
+  {
+   "id": "san-francisco-la-habana",
+   "from": "san-francisco",
+   "to": "la-habana",
+   "points": 24,
+   "deck": "regular",
+   "art": "tickets-1/40.png"
+  },
+  {
+   "id": "tuxtla-ciudad-obregon",
+   "from": "tuxtla",
+   "to": "ciudad-obregon",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-1/41.png"
+  },
+  {
+   "id": "portland-new-orleans",
+   "from": "portland",
+   "to": "new-orleans",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-1/42.png"
+  },
+  {
+   "id": "pittsburgh-san-francisco",
+   "from": "pittsburgh",
+   "to": "san-francisco",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-1/43.png"
+  },
+  {
+   "id": "jasper-saint-louis",
+   "from": "jasper",
+   "to": "saint-louis",
+   "points": 16,
+   "deck": "regular",
+   "art": "tickets-1/44.png"
+  },
+  {
+   "id": "merida-sault-st-marie",
+   "from": "merida",
+   "to": "sault-st-marie",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-1/45.png"
+  },
+  {
+   "id": "chicago-montreal",
+   "from": "chicago",
+   "to": "montreal",
+   "points": 7,
+   "deck": "regular",
+   "art": "tickets-1/46.png"
+  },
+  {
+   "id": "aguascalientes-washington",
+   "from": "aguascalientes",
+   "to": "washington",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-1/47.png"
+  },
+  {
+   "id": "monterrey-new-york",
+   "from": "monterrey",
+   "to": "new-york",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-1/48.png"
+  },
+  {
+   "id": "merida-winnipeg",
+   "from": "merida",
+   "to": "winnipeg",
+   "points": 19,
+   "deck": "regular",
+   "art": "tickets-1/49.png"
+  },
+  {
+   "id": "new-york-phoenix",
+   "from": "new-york",
+   "to": "phoenix",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-1/50.png"
+  },
+  {
+   "id": "san-francisco-new-york",
+   "from": "san-francisco",
+   "to": "new-york",
+   "points": 21,
+   "deck": "regular",
+   "art": "tickets-1/51.png"
+  },
+  {
+   "id": "san-francisco-edmonton",
+   "from": "san-francisco",
+   "to": "edmonton",
+   "points": 12,
+   "deck": "regular",
+   "art": "tickets-1/52.png"
+  },
+  {
+   "id": "denver-raleigh",
+   "from": "denver",
+   "to": "raleigh",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-1/53.png"
+  },
+  {
+   "id": "las-vegas-kansas-city",
+   "from": "las-vegas",
+   "to": "kansas-city",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-1/54.png"
+  },
+  {
+   "id": "ciudad-obregon-calgary",
+   "from": "ciudad-obregon",
+   "to": "calgary",
+   "points": 16,
+   "deck": "regular",
+   "art": "tickets-1/55.png"
+  },
+  {
+   "id": "miami-guadalajara",
+   "from": "miami",
+   "to": "guadalajara",
+   "points": 13,
+   "deck": "regular",
+   "art": "tickets-1/56.png"
+  },
+  {
+   "id": "calgary-vancouver",
+   "from": "calgary",
+   "to": "vancouver",
+   "points": 4,
+   "deck": "regular",
+   "art": "tickets-1/57.png"
+  },
+  {
+   "id": "tijuana-aguascalientes",
+   "from": "tijuana",
+   "to": "aguascalientes",
+   "points": 12,
+   "deck": "regular",
+   "art": "tickets-1/58.png"
+  },
+  {
+   "id": "charleston-ottawa",
+   "from": "charleston",
+   "to": "ottawa",
+   "points": 8,
+   "deck": "regular",
+   "art": "tickets-1/59.png"
+  },
+  {
+   "id": "washington-vancouver",
+   "from": "washington",
+   "to": "vancouver",
+   "points": 22,
+   "deck": "regular",
+   "art": "tickets-1/60.png"
+  },
+  {
+   "id": "regina-aguascalientes",
+   "from": "regina",
+   "to": "aguascalientes",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-1/61.png"
+  },
+  {
+   "id": "monterrey-chicago",
+   "from": "monterrey",
+   "to": "chicago",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-1/62.png"
+  },
+  {
+   "id": "washington-nashville",
+   "from": "washington",
+   "to": "nashville",
+   "points": 5,
+   "deck": "regular",
+   "art": "tickets-1/63.png"
+  },
+  {
+   "id": "toronto-acapulco",
+   "from": "toronto",
+   "to": "acapulco",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-1/64.png"
+  },
+  {
+   "id": "santa-fe-acapulco",
+   "from": "santa-fe",
+   "to": "acapulco",
+   "points": 13,
+   "deck": "regular",
+   "art": "tickets-1/65.png"
+  },
+  {
+   "id": "montreal-regina",
+   "from": "montreal",
+   "to": "regina",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-1/66.png"
+  },
+  {
+   "id": "little-rock-hermosillo",
+   "from": "little-rock",
+   "to": "hermosillo",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-1/67.png"
+  },
+  {
+   "id": "raleigh-phoenix",
+   "from": "raleigh",
+   "to": "phoenix",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-1/68.png"
+  },
+  {
+   "id": "guadalajara-toronto",
+   "from": "guadalajara",
+   "to": "toronto",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-1/69.png"
+  },
+  {
+   "id": "omaha-churchill",
+   "from": "omaha",
+   "to": "churchill",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-1/70.png"
+  },
+  {
+   "id": "portland-calgary-churchill",
+   "from": "portland",
+   "via": "calgary",
+   "to": "churchill",
+   "points": 16,
+   "deck": "long",
+   "art": "tickets-1/71.png"
+  },
+  {
+   "id": "guadalajara-houston-pittsburgh",
+   "from": "guadalajara",
+   "via": "houston",
+   "to": "pittsburgh",
+   "points": 16,
+   "deck": "long",
+   "art": "tickets-1/72.png"
+  },
+  {
+   "id": "los-angeles-salt-lake-city-dallas",
+   "from": "los-angeles",
+   "via": "salt-lake-city",
+   "to": "dallas",
+   "points": 13,
+   "deck": "long",
+   "art": "tickets-1/73.png"
+  },
+  {
+   "id": "washington-santa-fe-chihuahua",
+   "from": "washington",
+   "via": "santa-fe",
+   "to": "chihuahua",
+   "points": 17,
+   "deck": "long",
+   "art": "tickets-1/74.png"
+  },
+  {
+   "id": "la-habana-veracruz-la-paz",
+   "from": "la-habana",
+   "via": "veracruz",
+   "to": "la-paz",
+   "points": 16,
+   "deck": "long",
+   "art": "tickets-1/75.png"
+  },
+  {
+   "id": "toronto-atlanta-new-orleans",
+   "from": "toronto",
+   "via": "atlanta",
+   "to": "new-orleans",
+   "points": 9,
+   "deck": "long",
+   "art": "tickets-1/76.png"
+  },
+  {
+   "id": "hermosillo-new-orleans-chicago",
+   "from": "hermosillo",
+   "via": "new-orleans",
+   "to": "chicago",
+   "points": 19,
+   "deck": "long",
+   "art": "tickets-1/77.png"
+  },
+  {
+   "id": "edmonton-ottawa-boston",
+   "from": "edmonton",
+   "via": "ottawa",
+   "to": "boston",
+   "points": 20,
+   "deck": "long",
+   "art": "tickets-1/78.png"
+  },
+  {
+   "id": "los-angeles-phoenix-oklahoma-city",
+   "from": "los-angeles",
+   "via": "phoenix",
+   "to": "oklahoma-city",
+   "points": 9,
+   "deck": "long",
+   "art": "tickets-1/79.png"
+  },
+  {
+   "id": "miami-charleston-aguascalientes",
+   "from": "miami",
+   "via": "charleston",
+   "to": "aguascalientes",
+   "points": 16,
+   "deck": "long",
+   "art": "tickets-1/80.png"
+  },
+  {
+   "id": "la-paz-denver-chicago",
+   "from": "la-paz",
+   "via": "denver",
+   "to": "chicago",
+   "points": 18,
+   "deck": "long",
+   "art": "tickets-1/81.png"
+  },
+  {
+   "id": "salt-lake-city-helena-montreal",
+   "from": "salt-lake-city",
+   "via": "helena",
+   "to": "montreal",
+   "points": 19,
+   "deck": "long",
+   "art": "tickets-1/82.png"
+  },
+  {
+   "id": "vancouver-chihuahua-saltillo",
+   "from": "vancouver",
+   "via": "chihuahua",
+   "to": "saltillo",
+   "points": 21,
+   "deck": "long",
+   "art": "tickets-1/83.png"
+  },
+  {
+   "id": "quebec-raleigh-monterrey",
+   "from": "quebec",
+   "via": "raleigh",
+   "to": "monterrey",
+   "points": 19,
+   "deck": "long",
+   "art": "tickets-1/84.png"
+  },
+  {
+   "id": "seattle-tijuana-chihuahua",
+   "from": "seattle",
+   "via": "tijuana",
+   "to": "chihuahua",
+   "points": 19,
+   "deck": "long",
+   "art": "tickets-1/85.png"
+  },
+  {
+   "id": "new-orleans-jasper-vancouver",
+   "from": "new-orleans",
+   "via": "jasper",
+   "to": "vancouver",
+   "points": 21,
+   "deck": "long",
+   "art": "tickets-1/86.png"
+  },
+  {
+   "id": "montreal-saltillo-hermosillo",
+   "from": "montreal",
+   "via": "saltillo",
+   "to": "hermosillo",
+   "points": 25,
+   "deck": "long",
+   "art": "tickets-1/87.png"
+  },
+  {
+   "id": "san-francisco-portland-prince-rupert",
+   "from": "san-francisco",
+   "via": "portland",
+   "to": "prince-rupert",
+   "points": 12,
+   "deck": "long",
+   "art": "tickets-1/88.png"
+  },
+  {
+   "id": "calgary-saint-louis-guadalajara",
+   "from": "calgary",
+   "via": "saint-louis",
+   "to": "guadalajara",
+   "points": 26,
+   "deck": "long",
+   "art": "tickets-1/89.png"
+  },
+  {
+   "id": "new-york-phoenix-culiacan",
+   "from": "new-york",
+   "via": "phoenix",
+   "to": "culiacan",
+   "points": 23,
+   "deck": "long",
+   "art": "tickets-1/90.png"
+  },
+  {
+   "id": "los-angeles-boston-quebec",
+   "from": "los-angeles",
+   "via": "boston",
+   "to": "quebec",
+   "points": 25,
+   "deck": "long",
+   "art": "tickets-1/91.png"
+  },
+  {
+   "id": "prince-rupert-salt-lake-city-sault-st-marie",
+   "from": "prince-rupert",
+   "via": "salt-lake-city",
+   "to": "sault-st-marie",
+   "points": 26,
+   "deck": "long",
+   "art": "tickets-1/92.png"
+  },
+  {
+   "id": "dallas-tijuana-san-francisco",
+   "from": "dallas",
+   "via": "tijuana",
+   "to": "san-francisco",
+   "points": 15,
+   "deck": "long",
+   "art": "tickets-1/93.png"
+  },
+  {
+   "id": "guadalajara-hermosillo-el-paso",
+   "from": "guadalajara",
+   "via": "hermosillo",
+   "to": "el-paso",
+   "points": 11,
+   "deck": "long",
+   "art": "tickets-1/94.png"
+  },
+  {
+   "id": "ciudad-de-mexico-santa-fe-jasper",
+   "from": "ciudad-de-mexico",
+   "via": "santa-fe",
+   "to": "jasper",
+   "points": 24,
+   "deck": "long",
+   "art": "tickets-1/95.png"
+  },
+  {
+   "id": "pittsburgh-saint-louis-merida",
+   "from": "pittsburgh",
+   "via": "saint-louis",
+   "to": "merida",
+   "points": 15,
+   "deck": "long",
+   "art": "tickets-1/96.png"
+  },
+  {
+   "id": "monterrey-dallas-charleston",
+   "from": "monterrey",
+   "via": "dallas",
+   "to": "charleston",
+   "points": 12,
+   "deck": "long",
+   "art": "tickets-1/97.png"
+  },
+  {
+   "id": "saltillo-little-rock-charleston",
+   "from": "saltillo",
+   "via": "little-rock",
+   "to": "charleston",
+   "points": 13,
+   "deck": "long",
+   "art": "tickets-1/98.png"
+  },
+  {
+   "id": "ciudad-obregon-tijuana-las-vegas",
+   "from": "ciudad-obregon",
+   "via": "tijuana",
+   "to": "las-vegas",
+   "points": 11,
+   "deck": "long",
+   "art": "tickets-1/99.png"
+  },
+  {
+   "id": "el-paso-culiacan-acapulco",
+   "from": "el-paso",
+   "via": "culiacan",
+   "to": "acapulco",
+   "points": 11,
+   "deck": "long",
+   "art": "tickets-1/100.png"
+  },
+  {
+   "id": "nashville-tijuana",
+   "from": "nashville",
+   "to": "tijuana",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-2/1.png"
+  },
+  {
+   "id": "montreal-los-angeles",
+   "from": "montreal",
+   "to": "los-angeles",
+   "points": 22,
+   "deck": "regular",
+   "art": "tickets-2/2.png"
+  },
+  {
+   "id": "little-rock-nashville",
+   "from": "little-rock",
+   "to": "nashville",
+   "points": 3,
+   "deck": "regular",
+   "art": "tickets-2/3.png"
+  },
+  {
+   "id": "dallas-toronto",
+   "from": "dallas",
+   "to": "toronto",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-2/4.png"
+  },
+  {
+   "id": "mazatlan-acapulco",
+   "from": "mazatlan",
+   "to": "acapulco",
+   "points": 4,
+   "deck": "regular",
+   "art": "tickets-2/5.png"
+  },
+  {
+   "id": "sault-st-marie-veracruz",
+   "from": "sault-st-marie",
+   "to": "veracruz",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-2/6.png"
+  },
+  {
+   "id": "la-habana-la-paz",
+   "from": "la-habana",
+   "to": "la-paz",
+   "points": 16,
+   "deck": "regular",
+   "art": "tickets-2/7.png"
+  },
+  {
+   "id": "seattle-chicago",
+   "from": "seattle",
+   "to": "chicago",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-2/8.png"
+  },
+  {
+   "id": "halifax-nashville",
+   "from": "halifax",
+   "to": "nashville",
+   "points": 12,
+   "deck": "regular",
+   "art": "tickets-2/9.png"
+  },
+  {
+   "id": "las-vegas-chicago",
+   "from": "las-vegas",
+   "to": "chicago",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-2/10.png"
+  },
+  {
+   "id": "veracruz-san-francisco",
+   "from": "veracruz",
+   "to": "san-francisco",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-2/11.png"
+  },
+  {
+   "id": "los-angeles-new-york",
+   "from": "los-angeles",
+   "to": "new-york",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-2/12.png"
+  },
+  {
+   "id": "winnipeg-boston",
+   "from": "winnipeg",
+   "to": "boston",
+   "points": 13,
+   "deck": "regular",
+   "art": "tickets-2/13.png"
+  },
+  {
+   "id": "saltillo-charleston",
+   "from": "saltillo",
+   "to": "charleston",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-2/14.png"
+  },
+  {
+   "id": "houston-saint-louis",
+   "from": "houston",
+   "to": "saint-louis",
+   "points": 5,
+   "deck": "regular",
+   "art": "tickets-2/15.png"
+  },
+  {
+   "id": "jasper-regina",
+   "from": "jasper",
+   "to": "regina",
+   "points": 6,
+   "deck": "regular",
+   "art": "tickets-2/16.png"
+  },
+  {
+   "id": "denver-la-paz",
+   "from": "denver",
+   "to": "la-paz",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-2/17.png"
+  },
+  {
+   "id": "el-paso-winnipeg",
+   "from": "el-paso",
+   "to": "winnipeg",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-2/18.png"
+  },
+  {
+   "id": "ciudad-obregon-vancouver",
+   "from": "ciudad-obregon",
+   "to": "vancouver",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-2/19.png"
+  },
+  {
+   "id": "hermosillo-mazatlan",
+   "from": "hermosillo",
+   "to": "mazatlan",
+   "points": 4,
+   "deck": "regular",
+   "art": "tickets-2/20.png"
+  },
+  {
+   "id": "kansas-city-ciudad-obregon",
+   "from": "kansas-city",
+   "to": "ciudad-obregon",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-2/21.png"
+  },
+  {
+   "id": "aguascalientes-calgary",
+   "from": "aguascalientes",
+   "to": "calgary",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-2/22.png"
+  },
+  {
+   "id": "aguascalientes-winnipeg",
+   "from": "aguascalientes",
+   "to": "winnipeg",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-2/23.png"
+  },
+  {
+   "id": "san-francisco-acapulco",
+   "from": "san-francisco",
+   "to": "acapulco",
+   "points": 16,
+   "deck": "regular",
+   "art": "tickets-2/24.png"
+  },
+  {
+   "id": "ciudad-de-mexico-edmonton",
+   "from": "ciudad-de-mexico",
+   "to": "edmonton",
+   "points": 23,
+   "deck": "regular",
+   "art": "tickets-2/25.png"
+  },
+  {
+   "id": "boston-duluth",
+   "from": "boston",
+   "to": "duluth",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-2/26.png"
+  },
+  {
+   "id": "tijuana-las-vegas",
+   "from": "tijuana",
+   "to": "las-vegas",
+   "points": 3,
+   "deck": "regular",
+   "art": "tickets-2/27.png"
+  },
+  {
+   "id": "monterrey-ciudad-de-mexico",
+   "from": "monterrey",
+   "to": "ciudad-de-mexico",
+   "points": 5,
+   "deck": "regular",
+   "art": "tickets-2/28.png"
+  },
+  {
+   "id": "salt-lake-city-new-orleans",
+   "from": "salt-lake-city",
+   "to": "new-orleans",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-2/29.png"
+  },
+  {
+   "id": "omaha-dallas",
+   "from": "omaha",
+   "to": "dallas",
+   "points": 4,
+   "deck": "regular",
+   "art": "tickets-2/30.png"
+  },
+  {
+   "id": "kansas-city-seattle",
+   "from": "kansas-city",
+   "to": "seattle",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-2/31.png"
+  },
+  {
+   "id": "portland-la-paz",
+   "from": "portland",
+   "to": "la-paz",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-2/32.png"
+  },
+  {
+   "id": "veracruz-tuxtla",
+   "from": "veracruz",
+   "to": "tuxtla",
+   "points": 3,
+   "deck": "regular",
+   "art": "tickets-2/33.png"
+  },
+  {
+   "id": "miami-edmonton",
+   "from": "miami",
+   "to": "edmonton",
+   "points": 23,
+   "deck": "regular",
+   "art": "tickets-2/34.png"
+  },
+  {
+   "id": "washington-la-habana",
+   "from": "washington",
+   "to": "la-habana",
+   "points": 9,
+   "deck": "regular",
+   "art": "tickets-2/35.png"
+  },
+  {
+   "id": "churchill-miami",
+   "from": "churchill",
+   "to": "miami",
+   "points": 20,
+   "deck": "regular",
+   "art": "tickets-2/36.png"
+  },
+  {
+   "id": "los-angeles-la-habana",
+   "from": "los-angeles",
+   "to": "la-habana",
+   "points": 21,
+   "deck": "regular",
+   "art": "tickets-2/37.png"
+  },
+  {
+   "id": "prince-rupert-churchill",
+   "from": "prince-rupert",
+   "to": "churchill",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-2/38.png"
+  },
+  {
+   "id": "washington-miami",
+   "from": "washington",
+   "to": "miami",
+   "points": 7,
+   "deck": "regular",
+   "art": "tickets-2/39.png"
+  },
+  {
+   "id": "edmonton-omaha",
+   "from": "edmonton",
+   "to": "omaha",
+   "points": 12,
+   "deck": "regular",
+   "art": "tickets-2/40.png"
+  },
+  {
+   "id": "oklahoma-city-mazatlan",
+   "from": "oklahoma-city",
+   "to": "mazatlan",
+   "points": 9,
+   "deck": "regular",
+   "art": "tickets-2/41.png"
+  },
+  {
+   "id": "mazatlan-duluth",
+   "from": "mazatlan",
+   "to": "duluth",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-2/42.png"
+  },
+  {
+   "id": "salt-lake-city-raleigh",
+   "from": "salt-lake-city",
+   "to": "raleigh",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-2/43.png"
+  },
+  {
+   "id": "quebec-omaha",
+   "from": "quebec",
+   "to": "omaha",
+   "points": 13,
+   "deck": "regular",
+   "art": "tickets-2/44.png"
+  },
+  {
+   "id": "chihuahua-boston",
+   "from": "chihuahua",
+   "to": "boston",
+   "points": 19,
+   "deck": "regular",
+   "art": "tickets-2/45.png"
+  },
+  {
+   "id": "jasper-portland",
+   "from": "jasper",
+   "to": "portland",
+   "points": 5,
+   "deck": "regular",
+   "art": "tickets-2/46.png"
+  },
+  {
+   "id": "los-angeles-seattle",
+   "from": "los-angeles",
+   "to": "seattle",
+   "points": 9,
+   "deck": "regular",
+   "art": "tickets-2/47.png"
+  },
+  {
+   "id": "edmonton-seattle",
+   "from": "edmonton",
+   "to": "seattle",
+   "points": 6,
+   "deck": "regular",
+   "art": "tickets-2/48.png"
+  },
+  {
+   "id": "miami-halifax",
+   "from": "miami",
+   "to": "halifax",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-2/49.png"
+  },
+  {
+   "id": "new-orleans-duluth",
+   "from": "new-orleans",
+   "to": "duluth",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-2/50.png"
+  },
+  {
+   "id": "ciudad-de-mexico-los-angeles",
+   "from": "ciudad-de-mexico",
+   "to": "los-angeles",
+   "points": 14,
+   "deck": "regular",
+   "art": "tickets-2/51.png"
+  },
+  {
+   "id": "sault-st-marie-raleigh",
+   "from": "sault-st-marie",
+   "to": "raleigh",
+   "points": 6,
+   "deck": "regular",
+   "art": "tickets-2/52.png"
+  },
+  {
+   "id": "seattle-culiacan",
+   "from": "seattle",
+   "to": "culiacan",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-2/53.png"
+  },
+  {
+   "id": "seattle-monterrey",
+   "from": "seattle",
+   "to": "monterrey",
+   "points": 19,
+   "deck": "regular",
+   "art": "tickets-2/54.png"
+  },
+  {
+   "id": "toronto-edmonton",
+   "from": "toronto",
+   "to": "edmonton",
+   "points": 15,
+   "deck": "regular",
+   "art": "tickets-2/55.png"
+  },
+  {
+   "id": "seattle-merida",
+   "from": "seattle",
+   "to": "merida",
+   "points": 24,
+   "deck": "regular",
+   "art": "tickets-2/56.png"
+  },
+  {
+   "id": "salt-lake-city-ciudad-de-mexico",
+   "from": "salt-lake-city",
+   "to": "ciudad-de-mexico",
+   "points": 17,
+   "deck": "regular",
+   "art": "tickets-2/57.png"
+  },
+  {
+   "id": "phoenix-atlanta",
+   "from": "phoenix",
+   "to": "atlanta",
+   "points": 12,
+   "deck": "regular",
+   "art": "tickets-2/58.png"
+  },
+  {
+   "id": "acapulco-washington",
+   "from": "acapulco",
+   "to": "washington",
+   "points": 18,
+   "deck": "regular",
+   "art": "tickets-2/59.png"
+  },
+  {
+   "id": "toronto-la-habana",
+   "from": "toronto",
+   "to": "la-habana",
+   "points": 11,
+   "deck": "regular",
+   "art": "tickets-2/60.png"
+  },
+  {
+   "id": "monterrey-little-rock",
+   "from": "monterrey",
+   "to": "little-rock",
+   "points": 6,
+   "deck": "regular",
+   "art": "tickets-2/61.png"
+  },
+  {
+   "id": "phoenix-helena",
+   "from": "phoenix",
+   "to": "helena",
+   "points": 9,
+   "deck": "regular",
+   "art": "tickets-2/62.png"
+  },
+  {
+   "id": "chicago-miami",
+   "from": "chicago",
+   "to": "miami",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-2/63.png"
+  },
+  {
+   "id": "quebec-regina",
+   "from": "quebec",
+   "to": "regina",
+   "points": 16,
+   "deck": "regular",
+   "art": "tickets-2/64.png"
+  },
+  {
+   "id": "san-francisco-miami",
+   "from": "san-francisco",
+   "to": "miami",
+   "points": 22,
+   "deck": "regular",
+   "art": "tickets-2/65.png"
+  },
+  {
+   "id": "new-york-toronto",
+   "from": "new-york",
+   "to": "toronto",
+   "points": 5,
+   "deck": "regular",
+   "art": "tickets-2/66.png"
+  },
+  {
+   "id": "montreal-ciudad-de-mexico",
+   "from": "montreal",
+   "to": "ciudad-de-mexico",
+   "points": 22,
+   "deck": "regular",
+   "art": "tickets-2/67.png"
+  },
+  {
+   "id": "culiacan-oklahoma-city",
+   "from": "culiacan",
+   "to": "oklahoma-city",
+   "points": 10,
+   "deck": "regular",
+   "art": "tickets-2/68.png"
+  },
+  {
+   "id": "la-habana-merida",
+   "from": "la-habana",
+   "to": "merida",
+   "points": 4,
+   "deck": "regular",
+   "art": "tickets-2/69.png"
+  },
+  {
+   "id": "halifax-ottawa",
+   "from": "halifax",
+   "to": "ottawa",
+   "points": 7,
+   "deck": "regular",
+   "art": "tickets-2/70.png"
+  },
+  {
+   "id": "ottawa-ciudad-obregon-acapulco",
+   "from": "ottawa",
+   "via": "ciudad-obregon",
+   "to": "acapulco",
+   "points": 27,
+   "deck": "long",
+   "art": "tickets-2/71.png"
+  },
+  {
+   "id": "duluth-sault-st-marie-la-habana",
+   "from": "duluth",
+   "via": "sault-st-marie",
+   "to": "la-habana",
+   "points": 16,
+   "deck": "long",
+   "art": "tickets-2/72.png"
+  },
+  {
+   "id": "halifax-quebec-toronto",
+   "from": "halifax",
+   "via": "quebec",
+   "to": "toronto",
+   "points": 10,
+   "deck": "long",
+   "art": "tickets-2/73.png"
+  },
+  {
+   "id": "mazatlan-aguascalientes-new-york",
+   "from": "mazatlan",
+   "via": "aguascalientes",
+   "to": "new-york",
+   "points": 20,
+   "deck": "long",
+   "art": "tickets-2/74.png"
+  },
+  {
+   "id": "little-rock-calgary-vancouver",
+   "from": "little-rock",
+   "via": "calgary",
+   "to": "vancouver",
+   "points": 18,
+   "deck": "long",
+   "art": "tickets-2/75.png"
+  },
+  {
+   "id": "nashville-oklahoma-city-monterrey",
+   "from": "nashville",
+   "via": "oklahoma-city",
+   "to": "monterrey",
+   "points": 10,
+   "deck": "long",
+   "art": "tickets-2/76.png"
+  },
+  {
+   "id": "merida-tuxtla-halifax",
+   "from": "merida",
+   "via": "tuxtla",
+   "to": "halifax",
+   "points": 24,
+   "deck": "long",
+   "art": "tickets-2/77.png"
+  },
+  {
+   "id": "new-york-houston-tuxtla",
+   "from": "new-york",
+   "via": "houston",
+   "to": "tuxtla",
+   "points": 21,
+   "deck": "long",
+   "art": "tickets-2/78.png"
+  },
+  {
+   "id": "saint-louis-atlanta-veracruz",
+   "from": "saint-louis",
+   "via": "atlanta",
+   "to": "veracruz",
+   "points": 15,
+   "deck": "long",
+   "art": "tickets-2/79.png"
+  },
+  {
+   "id": "houston-phoenix-seattle",
+   "from": "houston",
+   "via": "phoenix",
+   "to": "seattle",
+   "points": 20,
+   "deck": "long",
+   "art": "tickets-2/80.png"
+  },
+  {
+   "id": "veracruz-saltillo-chicago",
+   "from": "veracruz",
+   "via": "saltillo",
+   "to": "chicago",
+   "points": 16,
+   "deck": "long",
+   "art": "tickets-2/81.png"
+  },
+  {
+   "id": "churchill-chihuahua-ciudad-de-mexico",
+   "from": "churchill",
+   "via": "chihuahua",
+   "to": "ciudad-de-mexico",
+   "points": 28,
+   "deck": "long",
+   "art": "tickets-2/82.png"
+  },
+  {
+   "id": "churchill-omaha-ciudad-de-mexico",
+   "from": "churchill",
+   "via": "omaha",
+   "to": "ciudad-de-mexico",
+   "points": 23,
+   "deck": "long",
+   "art": "tickets-2/83.png"
+  },
+  {
+   "id": "miami-raleigh-la-paz",
+   "from": "miami",
+   "via": "raleigh",
+   "to": "la-paz",
+   "points": 22,
+   "deck": "long",
+   "art": "tickets-2/84.png"
+  },
+  {
+   "id": "nashville-helena-san-francisco",
+   "from": "nashville",
+   "via": "helena",
+   "to": "san-francisco",
+   "points": 20,
+   "deck": "long",
+   "art": "tickets-2/85.png"
+  },
+  {
+   "id": "pittsburgh-nashville-la-habana",
+   "from": "pittsburgh",
+   "via": "nashville",
+   "to": "la-habana",
+   "points": 11,
+   "deck": "long",
+   "art": "tickets-2/86.png"
+  },
+  {
+   "id": "las-vegas-tijuana-montreal",
+   "from": "las-vegas",
+   "via": "tijuana",
+   "to": "montreal",
+   "points": 24,
+   "deck": "long",
+   "art": "tickets-2/87.png"
+  },
+  {
+   "id": "winnipeg-helena-seattle",
+   "from": "winnipeg",
+   "via": "helena",
+   "to": "seattle",
+   "points": 12,
+   "deck": "long",
+   "art": "tickets-2/88.png"
+  },
+  {
+   "id": "washington-atlanta-houston",
+   "from": "washington",
+   "via": "atlanta",
+   "to": "houston",
+   "points": 9,
+   "deck": "long",
+   "art": "tickets-2/89.png"
+  },
+  {
+   "id": "prince-rupert-regina-sault-st-marie",
+   "from": "prince-rupert",
+   "via": "regina",
+   "to": "sault-st-marie",
+   "points": 21,
+   "deck": "long",
+   "art": "tickets-2/90.png"
+  },
+  {
+   "id": "miami-new-orleans-culiacan",
+   "from": "miami",
+   "via": "new-orleans",
+   "to": "culiacan",
+   "points": 16,
+   "deck": "long",
+   "art": "tickets-2/91.png"
+  },
+  {
+   "id": "ottawa-winnipeg-edmonton",
+   "from": "ottawa",
+   "via": "winnipeg",
+   "to": "edmonton",
+   "points": 17,
+   "deck": "long",
+   "art": "tickets-2/92.png"
+  },
+  {
+   "id": "toronto-charleston-la-paz",
+   "from": "toronto",
+   "via": "charleston",
+   "to": "la-paz",
+   "points": 23,
+   "deck": "long",
+   "art": "tickets-2/93.png"
+  },
+  {
+   "id": "edmonton-duluth-kansas-city",
+   "from": "edmonton",
+   "via": "duluth",
+   "to": "kansas-city",
+   "points": 14,
+   "deck": "long",
+   "art": "tickets-2/94.png"
+  },
+  {
+   "id": "guadalajara-tuxtla-boston",
+   "from": "guadalajara",
+   "via": "tuxtla",
+   "to": "boston",
+   "points": 26,
+   "deck": "long",
+   "art": "tickets-2/95.png"
+  },
+  {
+   "id": "merida-atlanta-regina",
+   "from": "merida",
+   "via": "atlanta",
+   "to": "regina",
+   "points": 23,
+   "deck": "long",
+   "art": "tickets-2/96.png"
+  },
+  {
+   "id": "washington-kansas-city-santa-fe",
+   "from": "washington",
+   "via": "kansas-city",
+   "to": "santa-fe",
+   "points": 13,
+   "deck": "long",
+   "art": "tickets-2/97.png"
+  },
+  {
+   "id": "jasper-denver-monterrey",
+   "from": "jasper",
+   "via": "denver",
+   "to": "monterrey",
+   "points": 19,
+   "deck": "long",
+   "art": "tickets-2/98.png"
+  },
+  {
+   "id": "little-rock-mazatlan-acapulco",
+   "from": "little-rock",
+   "via": "mazatlan",
+   "to": "acapulco",
+   "points": 14,
+   "deck": "long",
+   "art": "tickets-2/99.png"
+  },
+  {
+   "id": "chicago-omaha-el-paso",
+   "from": "chicago",
+   "via": "omaha",
+   "to": "el-paso",
+   "points": 12,
+   "deck": "long",
+   "art": "tickets-2/100.png"
+  }
+ ]
+}

@@ -113,6 +113,8 @@ The editor only runs when the server is started with `--editor` (as `npm run dev
 
 Slot images live in `assets/train_placeholders` as `<color>_<def|ferry|tunnel>.png`. Pink is the game's "purple" card color.
 
+The tickets come from the Canva designs "tickets-1" and "tickets-2" (200 tickets: 140 regular, and 60 triple tickets that make up the long deck). `assets/tickets/tickets.json` lists each ticket with its picture; the map's `tickets` hold the same ids, cities and points. To update the pictures, download both designs as PNG with a transparent background (all pages) into `assets/tickets/tickets-1` and `assets/tickets/tickets-2`, then run `python tools/assets/prepare-tickets.py` (needs numpy and Pillow). It writes `assets/web/tickets/<ticket-id>.webp`. Players choose their tickets from these pictures. A ticket made in the hidden /tickets page shows as a plain card until its picture is added.
+
 Train cards live in `assets/train_cards` (`<Color>.png`, with `rainbow.png` as the locomotive).
 
 After changing any artwork, run `python tools/assets/prepare-art.py` (needs Pillow). It writes small web copies to `assets/web/slots` and `assets/web/cards`, which the server serves at `/art`, and lists any image that is missing. Grey slots can be named `grey_*` or `gray_*`.
@@ -146,6 +148,14 @@ ground needs **excavator** cards, a few of which are in the deck. All the number
 To try it, open the editor's **Player view**, which starts in Seasons mode and has a **Strike** button to
 make any disaster hit any city right away. The announcement animations come from `assets/animations`;
 run `python tools/assets/prepare-art.py` after changing them.
+
+Seasons mode draws each city as a round marker in the city's hazard color with the name lettering above
+it; Classic keeps its own look. The board draws the marker itself (same size and gap for every city), so
+the lettering in the Canva design "Assets Crazy Train-1" (pages 40-98) has no marker. To update it, download
+those pages as PNG with a transparent background, save the zip as `assets/city_placeholders/Assets Crazy Train-1.zip`,
+and run `python tools/assets/prepare-city-pins.py`. New numbered files go in `assets/city_placeholders/cities.json`
+with their marker color (files named `TODO <City> (...)` are matched by name). The script prints the cities
+that still have no placeholder.
 
 ## Animations
 

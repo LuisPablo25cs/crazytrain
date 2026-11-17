@@ -602,46 +602,6 @@
         }
       }
     },
-    "ticketStyle": {
-      "type": "object",
-      "properties": {
-        "cityX": {
-          "type": "number"
-        },
-        "cityY": {
-          "type": "number"
-        },
-        "citySize": {
-          "type": "number",
-          "exclusiveMinimum": 0
-        },
-        "cityMaxWidth": {
-          "type": "number",
-          "exclusiveMinimum": 0
-        },
-        "cityCurve": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 180
-        },
-        "citySpacing": {
-          "type": "number"
-        },
-        "numberX": {
-          "type": "number"
-        },
-        "numberY": {
-          "type": "number"
-        },
-        "numberSize": {
-          "type": "number",
-          "exclusiveMinimum": 0
-        },
-        "numberAngle": {
-          "type": "number"
-        }
-      }
-    },
     "edited": {
       "type": "boolean"
     }

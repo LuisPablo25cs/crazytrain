@@ -26,8 +26,6 @@ export function createHttpApp(options: HttpOptions = {}): express.Express {
   // Which optional art exists, so the client never asks for a file that is not there.
   app.get('/api/art', (_req, res) => {
     res.set('Cache-Control', 'no-cache');
-    const fonts = artDir && existsSync(join(artDir, 'fonts')) ? readdirSync(join(artDir, 'fonts')) : [];
-    const numberFont = fonts.find((f) => /rosella/i.test(f)) ?? fonts[0];
     // City label art (assets/web/cities/<city-id>.webp, from tools/assets/prepare-city-labels.py).
     const cityLabels =
       artDir && existsSync(join(artDir, 'cities'))
@@ -35,10 +33,18 @@ export function createHttpApp(options: HttpOptions = {}): express.Express {
             .filter((f) => f.endsWith('.webp'))
             .map((f) => f.slice(0, -'.webp'.length))
         : [];
+    // One picture per ticket (assets/web/tickets/<ticket-id>.webp, from tools/assets/prepare-tickets.py).
+    const tickets =
+      artDir && existsSync(join(artDir, 'tickets'))
+        ? readdirSync(join(artDir, 'tickets'))
+            .filter((f) => f.endsWith('.webp'))
+            .map((f) => f.slice(0, -'.webp'.length))
+        : [];
     res.json({
-      ticketTemplate: !!artDir && existsSync(join(artDir, 'ui', 'ticket.webp')),
-      numberFont: numberFont ? `/art/fonts/${numberFont}` : null,
+      tickets,
       cityLabels,
+      // Seasons-mode city markers and names (assets/web/city-pins, from tools/assets/prepare-city-pins.py).
+      cityPins: !!artDir && existsSync(join(artDir, 'city-pins', 'index.json')),
     });
   });
   if (artDir && existsSync(artDir)) {
