@@ -3,10 +3,11 @@ import { leaveRoom, sendOrToast } from '../../net/socket.js';
 import { useClient } from '../../state/store.js';
 import { useTheme } from '../../theme/ThemeProvider.js';
 import { playerHex } from '../../theme/themes.js';
-import { S } from '../strings.js';
+import { S, colorName } from '../strings.js';
 import { MapPicker } from './MapPicker.js';
 import { RulesPanel } from './RulesPanel.js';
 import { ThemePicker } from './ThemePicker.js';
+import { LanguagePicker } from './LanguagePicker.js';
 
 export function Lobby({ onLeave }: { onLeave: () => void }) {
   const room = useClient((s) => s.room)!;
@@ -72,8 +73,8 @@ export function Lobby({ onLeave }: { onLeave: () => void }) {
                 key={c}
                 role="radio"
                 aria-checked={me.color === c}
-                aria-label={c}
-                title={c}
+                aria-label={colorName(c)}
+                title={colorName(c)}
                 disabled={takenColors.has(c)}
                 className={`swatch ${me.color === c ? 'selected' : ''}`}
                 style={{ background: playerHex(theme, c) }}
@@ -96,6 +97,7 @@ export function Lobby({ onLeave }: { onLeave: () => void }) {
           <p className="muted">{S.waitingForHost}</p>
         )}
         <ThemePicker />
+        <LanguagePicker />
         <button
           className="secondary"
           onClick={() => {

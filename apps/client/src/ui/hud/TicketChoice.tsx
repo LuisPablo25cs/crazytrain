@@ -12,6 +12,8 @@ export function TicketChoice({ view, map, classic = false }: { view: GameView; m
   const minKeep = Math.min(initial ? view.rules.tickets.initialKeepMin : view.rules.tickets.drawKeepMin, offered.length);
   const [kept, setKept] = useState<Set<string>>(() => new Set(offered));
   const [busy, setBusy] = useState(false);
+  // Classic: the window can be minimized to a tab to look at the map; the choice is kept meanwhile.
+  const [hidden, setHidden] = useState(false);
 
   const toggle = (id: string) => {
     const next = new Set(kept);
@@ -31,10 +33,37 @@ export function TicketChoice({ view, map, classic = false }: { view: GameView; m
   if (classic) {
     const keptPoints = offered.reduce((n, id) => n + (kept.has(id) ? (map.tickets.get(id)?.points ?? 0) : 0), 0);
     const blocked = kept.size < minKeep;
+    const keptCities = () => offered.filter((id) => kept.has(id)).flatMap((id) => ticketCities(map.tickets.get(id)!));
+    if (hidden) {
+      return (
+        <button
+          className="nx-choice-tab"
+          onClick={() => {
+            setHidden(false);
+            setUi({ highlightCities: [] });
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M3 10l5-5 5 5" />
+          </svg>
+          {NX.showChoice(kept.size)}
+        </button>
+      );
+    }
     return (
       <div className="nx-scrim">
         <div className="nx-dialog" role="dialog" aria-modal="true" aria-labelledby="ticket-choice-title">
           <header>
+            <button
+              className="nx-btn outline light nx-hide-choice"
+              onClick={() => {
+                setHidden(true);
+                // The cities of the kept tickets stay lit on the map while it is minimized.
+                setUi({ highlightCities: keptCities() });
+              }}
+            >
+              {NX.hideChoice}
+            </button>
             <h2 id="ticket-choice-title">{NX.chooseTitle}</h2>
             <p>{NX.chooseHelp(minKeep)}</p>
           </header>
@@ -49,7 +78,7 @@ export function TicketChoice({ view, map, classic = false }: { view: GameView; m
                   <button
                     className={`nx-offer ${keep ? 'kept' : 'returning'}`}
                     aria-pressed={keep}
-                    aria-label={`${names.join(' to ')}, ${t.points} points, ${keep ? NX.keeping : NX.returning}`}
+                    aria-label={`${NX.ticketLabel(names, t.points)}, ${keep ? NX.keeping : NX.returning}`}
                     onClick={() => toggle(id)}
                     onMouseEnter={() => setUi({ highlightCities: ticketCities(t) })}
                     onMouseLeave={() => setUi({ highlightCities: [] })}

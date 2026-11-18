@@ -170,15 +170,12 @@ export function validateMap(input: unknown): MapValidationResult {
 
   if (rules) {
     const maxPlayers = rules.players.max;
-    if (rules.expansions.longTickets && rules.tickets.initialLong > 0) {
-      const needed = maxPlayers * rules.tickets.initialLong;
-      if (stats.tickets.long < needed) {
-        errors.push({ path: 'tickets', message: `needs at least ${needed} long tickets for ${maxPlayers} players, has ${stats.tickets.long}` });
-      }
-    }
-    const neededRegular = maxPlayers * rules.tickets.initialRegular;
-    if (stats.tickets.regular < neededRegular) {
-      errors.push({ path: 'tickets', message: `needs at least ${neededRegular} regular tickets for ${maxPlayers} players, has ${stats.tickets.regular}` });
+    // Triple tickets share the deck with the others (see createGame), so the deal is counted on both.
+    const triples = rules.expansions.longTickets;
+    const needed = maxPlayers * (rules.tickets.initialRegular + (triples ? rules.tickets.initialLong : 0));
+    const have = stats.tickets.regular + (triples ? stats.tickets.long : 0);
+    if (have < needed) {
+      errors.push({ path: 'tickets', message: `needs at least ${needed} tickets for ${maxPlayers} players, has ${have}` });
     }
   }
 

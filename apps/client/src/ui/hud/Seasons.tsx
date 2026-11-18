@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { monthOfYear, type GameEvent, type GameView, type Hazard, type MapIndex } from '@rails/shared';
-import { HAZARD_EFFECTS, HAZARD_NAMES, monthLabel } from '../strings.js';
+import { HAZARD_EFFECTS, HAZARD_NAMES, monthLabel, T } from '../strings.js';
 
 const WINTER = [11, 0, 1];
 
@@ -10,11 +10,11 @@ export function SeasonClock({ view }: { view: GameView }) {
   const left = view.rules.seasons.years * 12 - view.month;
   const winter = WINTER.includes(monthOfYear(view.month));
   return (
-    <div className={`season-clock ${winter ? 'winter' : ''}`} role="status" title="Each round is one month">
-      {winter && <span aria-label="winter">❄</span>}
+    <div className={`season-clock ${winter ? 'winter' : ''}`} role="status" title={T.misc.clockTitle}>
+      {winter && <span aria-label={T.misc.winter}>❄</span>}
       <strong>{monthLabel(view.month)}</strong>
       <span className="muted">
-        {left} month{left === 1 ? '' : 's'} left
+        {T.misc.monthsLeft(left)}
       </span>
     </div>
   );
@@ -44,16 +44,16 @@ export function DisasterCard({ events, map }: { events: GameEvent[]; map: MapInd
     return r ? `${map.cities.get(r.from)?.name} – ${map.cities.get(r.to)?.name}` : id;
   };
   const lines = [
-    ...shown.damaged.map((id) => `${routeName(id)} damaged`),
-    ...shown.lost.map((id) => `${routeName(id)} washed away`),
-    ...shown.blocked.map((id) => `${routeName(id)} under ash`),
+    ...shown.damaged.map((id) => T.misc.damagedLine(routeName(id))),
+    ...shown.lost.map((id) => T.misc.washedLine(routeName(id))),
+    ...shown.blocked.map((id) => T.misc.ashLine(routeName(id))),
   ];
   return (
-    <div className="disaster-card panel" role="alertdialog" aria-label={`${HAZARD_NAMES[shown.kind]} near ${city}`} onClick={() => setShown(null)}>
+    <div className="disaster-card panel" role="alertdialog" aria-label={T.misc.near(HAZARD_NAMES[shown.kind], city)} onClick={() => setShown(null)}>
       <img src={disasterGif(shown.kind)} alt="" onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')} />
       <div>
         <h2>
-          {HAZARD_NAMES[shown.kind]} near {city}!
+          {T.misc.near(HAZARD_NAMES[shown.kind], city)}!
         </h2>
         <p>{HAZARD_EFFECTS[shown.kind]}</p>
         {lines.length ? (
@@ -61,12 +61,12 @@ export function DisasterCard({ events, map }: { events: GameEvent[]; map: MapInd
             {lines.slice(0, 8).map((l) => (
               <li key={l}>{l}</li>
             ))}
-            {lines.length > 8 && <li>…and {lines.length - 8} more</li>}
+            {lines.length > 8 && <li>{T.misc.andMore(lines.length - 8)}</li>}
           </ul>
         ) : (
-          <p className="muted">No track was hit this time.</p>
+          <p className="muted">{T.misc.noTrackHit}</p>
         )}
-        <p className="muted small-print">Click to close</p>
+        <p className="muted small-print">{T.misc.clickToClose}</p>
       </div>
     </div>
   );

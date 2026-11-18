@@ -1,7 +1,7 @@
 import { effectiveRoute, routeStatus, type CardCounts, type GameView, type MapIndex } from '@rails/shared';
 import { sendAction } from '../../net/socket.js';
 import { setUi } from '../../state/store.js';
-import { CARD_NAMES, HAZARD_NAMES, monthLabel, S } from '../strings.js';
+import { CARD_NAMES, HAZARD_NAMES, monthLabel, S, T } from '../strings.js';
 import { boardOfView, claimInfo, repairInfo, type Affordances } from './affordances.js';
 import { CardChip, CardSet } from './CardChip.js';
 
@@ -43,12 +43,12 @@ export function ClaimDialog({ routeId, view, map, can }: { routeId: string; view
   const notes: string[] = [];
   if (status.kind === 'owned') notes.push(S.owned(view.players[status.owner]?.name ?? '?'));
   if (damage) {
-    const pieces = damage.cause === 'earthquake' ? 'the whole line' : `${damage.broken.length} of ${route.length} pieces`;
-    notes.push(`${HAZARD_NAMES[damage.cause]} damage: ${pieces} broken. Lost if not repaired by ${monthLabel(damage.deadline)}.`);
+    const pieces = damage.cause === 'earthquake' ? T.misc.wholeLine : T.misc.piecesOf(damage.broken.length, route.length);
+    notes.push(T.misc.damageNote(HAZARD_NAMES[damage.cause], pieces, monthLabel(damage.deadline)));
   }
-  if (view.blocked[routeId] !== undefined) notes.push(`Under volcanic ash until ${monthLabel(view.blocked[routeId])}; then it turns gray and free.`);
-  if (view.recolored[routeId]) notes.push('A volcano turned this route gray: any color builds it.');
-  if (status.kind === 'abandoned') notes.push(`An earthquake broke it and its owner gave up. Repair it (${status.cost} card(s)) to claim it.`);
+  if (view.blocked[routeId] !== undefined) notes.push(T.misc.ashNote(monthLabel(view.blocked[routeId])));
+  if (view.recolored[routeId]) notes.push(T.misc.grayNote);
+  if (status.kind === 'abandoned') notes.push(T.misc.abandonedNote(status.cost));
 
   const repairing = repair && (repair.claim || status.kind === 'owned');
   const reason = repairing ? (can.claim ?? repair.reason) : status.kind === 'owned' ? null : (can.claim ?? info.reason);
@@ -65,7 +65,7 @@ export function ClaimDialog({ routeId, view, map, can }: { routeId: string; view
       <p className="route-facts">
         <CardChip card={route.color} size="small" /> {route.length} · {CARD_NAMES[route.color]}
         {kind && <span className="badge">{kind}</span>}
-        {route.parallelGroup && <span className="muted"> · lane {route.id.split('-').pop()}</span>}
+        {route.parallelGroup && <span className="muted"> · {T.misc.lane(route.id.split('-').pop() ?? '')}</span>}
       </p>
       {notes.map((n) => (
         <p key={n} className="route-note">
@@ -77,10 +77,10 @@ export function ClaimDialog({ routeId, view, map, can }: { routeId: string; view
           <p className="muted">{reason}</p>
         ) : (
           <>
-            <p>{repair.claim ? 'Repair to claim it with:' : `Repair (${repair.cost.excavators ? `${repair.cost.excavators} excavator(s)` : `${repair.cost.cards} card(s)`}) with:`}</p>
+            <p>{repair.claim ? T.misc.repairToClaim : T.misc.repairWith(repair.cost.excavators ? T.misc.excavatorsN(repair.cost.excavators) : T.misc.cardsN(repair.cost.cards))}</p>
             <PaymentList
               options={repair.options}
-              label={repair.claim ? 'Repair & claim' : 'Repair'}
+              label={repair.claim ? T.misc.repairAndClaim : T.misc.repair}
               onPay={(payment) => void sendAction({ type: 'repairRoute', routeId, payment }).then((ok) => ok && close())}
             />
           </>
@@ -91,7 +91,7 @@ export function ClaimDialog({ routeId, view, map, can }: { routeId: string; view
         <>
           <p>
             {S.payWith}
-            {excavators > 0 && <span className="muted"> (disaster ground: +{excavators} excavator)</span>}
+            {excavators > 0 && <span className="muted">{T.misc.disasterGround(excavators)}</span>}
           </p>
           <PaymentList
             options={info.options}

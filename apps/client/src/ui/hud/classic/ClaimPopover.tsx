@@ -15,7 +15,7 @@ import {
 } from '@rails/shared';
 import { sendAction } from '../../../net/socket.js';
 import { setUi, useClient } from '../../../state/store.js';
-import { CARD_NAMES, NX, S } from '../../strings.js';
+import { CARD_NAMES, NX, S, T, useLang } from '../../strings.js';
 import { boardOfView, claimInfo, type Affordances } from '../affordances.js';
 import { cardArtUrl } from '../CardChip.js';
 import { CardStrip, paymentCards } from './MiniCard.js';
@@ -116,7 +116,8 @@ export function ClaimPopover({
   const picked = useClient((s) => s.ui.handColor);
   const board = boardOfView(view);
   const route = effectiveRoute(board, map, routeId);
-  const info = useMemo(() => (route ? claimInfo(route, view, map) : null), [route, view, map]);
+  const lang = useLang();
+  const info = useMemo(() => (route ? claimInfo(route, view, map) : null), [route, view, map, lang]);
   const groups = useMemo(() => groupOptions(info?.options ?? []), [info]);
   const colors = [...groups.keys()];
   const [color, setColor] = useState<PayColor | null>(() =>
@@ -145,6 +146,35 @@ export function ClaimPopover({
     );
   }
 
+  // A double route's other lane is taken: the rule, not a mistake, so a calm note (fix E).
+  if (status.kind === 'closed' || status.kind === 'blockedForYou') {
+    const lanes = route.parallelGroup ? (map.groups.get(route.parallelGroup) ?? []) : [];
+    const holders = lanes
+      .map((l) => view.routeOwners[l.id])
+      .filter((o): o is number => o !== undefined)
+      .map((o) => view.players[o]?.name ?? '?');
+    const L = T.lanes;
+    return (
+      <Shell title={title} onClose={close}>
+        <Facts route={route} points={points} />
+        <div className="nx-strip nx-lane-note">
+          <span className="nx-caps">{L.closedTitle}</span>
+          <span className="nx-lane-text">
+            {status.kind === 'blockedForYou' ? L.mineNote : L.closedNote(holders.join(', '), view.players.length)}
+          </span>
+        </div>
+        <div className="nx-pop-actions">
+          <button className="nx-btn outline" onClick={() => setUi({ selectedRoute: null, rulesTab: 'special' })}>
+            {L.why}
+          </button>
+          <button className="nx-btn dark" onClick={close}>
+            {L.ok}
+          </button>
+        </div>
+      </Shell>
+    );
+  }
+
   const reason = can.claim ?? info.reason;
   if (reason) {
     const short = reason === S.noPayment ? shortfall(route, view) : null;
@@ -165,7 +195,7 @@ export function ClaimPopover({
           </div>
         )}
         <p className="nx-note">
-          {short ? NX.missing(short.missing, CARD_NAMES[short.color].toLowerCase()) : reason}
+          {short ? NX.missing(short.missing, short.color) : reason}
         </p>
         <div className="nx-pop-actions">
           <button className="nx-btn" disabled>

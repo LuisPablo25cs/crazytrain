@@ -5,7 +5,7 @@ import { store, useClient } from './state/store.js';
 import { Home } from './ui/lobby/Home.js';
 import { Lobby } from './ui/lobby/Lobby.js';
 import { GameScreen } from './ui/hud/GameScreen.js';
-import { S } from './ui/strings.js';
+import { S, T, tr, useLang } from './ui/strings.js';
 import { Overlays } from './ui/Overlays.js';
 
 // Dev-only map editor, loaded only when someone opens /editor.
@@ -31,6 +31,8 @@ function usePath(): [string, (path: string) => void] {
 }
 
 export function App() {
+  // Re-render every screen when the player switches language.
+  useLang();
   const [path, navigate] = usePath();
   const code = roomCodeFromPath(path);
   const kicked = useClient((s) => s.kicked);
@@ -41,7 +43,7 @@ export function App() {
 
   if (path === '/editor') {
     return (
-      <Suspense fallback={<main className="center-screen">Loading the editor…</main>}>
+      <Suspense fallback={<main className="center-screen">{T.misc.loadingEditor}</main>}>
         <EditorScreen />
       </Suspense>
     );
@@ -49,7 +51,7 @@ export function App() {
 
   if (path === '/tickets') {
     return (
-      <Suspense fallback={<main className="center-screen">Loading…</main>}>
+      <Suspense fallback={<main className="center-screen">{T.misc.loading}</main>}>
         <TicketsPage />
       </Suspense>
     );
@@ -57,7 +59,7 @@ export function App() {
 
   if (path === '/animations') {
     return (
-      <Suspense fallback={<main className="center-screen">Loading…</main>}>
+      <Suspense fallback={<main className="center-screen">{T.misc.loading}</main>}>
         <AnimationsPage />
       </Suspense>
     );
@@ -69,7 +71,7 @@ export function App() {
       <main className="center-screen">
         <div className="panel narrow">
           <h1>{S.kickedTitle}</h1>
-          <p>{kicked}</p>
+          <p>{tr(kicked)}</p>
           <button
             onClick={() => {
               store.setState({ kicked: null });
@@ -106,7 +108,7 @@ function RoomScreen({ code, onLeave }: { code: string; onLeave: () => void }) {
     setBusy(true);
     const reply = await joinRoom(code, nickname);
     setBusy(false);
-    setError(reply.ok ? null : reply.error);
+    setError(reply.ok ? null : tr(reply.error));
   };
 
   // A stored token means we were here before: rejoin the same seat without asking (R4).

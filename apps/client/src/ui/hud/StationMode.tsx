@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nextStationCost, stationPaymentOptions, type GameView, type MapIndex } from '@rails/shared';
 import { sendAction } from '../../net/socket.js';
 import { setUi } from '../../state/store.js';
-import { S } from '../strings.js';
+import { S, T } from '../strings.js';
 import { CardSet } from './CardChip.js';
 
 /**
@@ -20,7 +20,7 @@ export function StationDialog({ cityId, view, map }: { cityId: string; view: Gam
   const options = stationPaymentOptions(cost, me.hand);
   const owner = (routeId: string) => {
     const o = view.routeOwners[routeId];
-    return o === undefined ? 'unclaimed' : (view.players[o]?.name ?? '?');
+    return o === undefined ? T.misc.unclaimed : (view.players[o]?.name ?? '?');
   };
 
   return (
@@ -43,7 +43,7 @@ export function StationDialog({ cityId, view, map }: { cityId: string; view: Gam
             })}
           </select>
         </label>
-        <p className="muted small-print">The chosen route counts for your tickets at the end only if another player owns it then.</p>
+        <p className="muted small-print">{T.misc.borrowNote}</p>
         <ul className="payment-options">
           {options.map((payment, i) => (
             <li key={i}>

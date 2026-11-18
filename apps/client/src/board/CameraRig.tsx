@@ -2,6 +2,7 @@ import { useEffect, useRef, type ComponentRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { MapControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { registerCamera, reportZoomLimits } from './cameraControl.js';
 
 /** Height of the top-down camera above the board. Any value above the tallest model works. */
 const CAMERA_HEIGHT = 500;
@@ -56,6 +57,39 @@ export function CameraRig({ width, height, focus, onZoomChange }: CameraRigProps
     if (focus) goal.current = { x: focus.x, z: focus.y, zoom: size.height / focus.zoom };
   }, [focus, size.height]);
 
+  // Zoom buttons and keys (cameraControl), and double-click to zoom in on the point under the cursor.
+  const gl = useThree((s) => s.gl);
+  useEffect(() => {
+    const zoomAt = (factor: number, at?: { x: number; z: number }) => {
+      const c = controls.current;
+      if (!c) return;
+      const from = goal.current?.zoom ?? camera.zoom;
+      const to = THREE.MathUtils.clamp(from * factor, c.minZoom, c.maxZoom);
+      const tx = goal.current?.x ?? c.target.x;
+      const tz = goal.current?.z ?? c.target.z;
+      // Keep the chosen point where it is on screen while zooming toward it.
+      const keep = at ? 1 - from / to : 0;
+      goal.current = { x: tx + ((at?.x ?? tx) - tx) * keep, z: tz + ((at?.z ?? tz) - tz) * keep, zoom: to };
+    };
+    registerCamera({
+      zoomBy: (factor) => zoomAt(factor),
+      fit: () => {
+        goal.current = { x: width / 2, z: height / 2, zoom: controls.current?.minZoom ?? camera.zoom };
+      },
+    });
+    const el = gl.domElement;
+    const onDouble = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const p = new THREE.Vector3(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1, 0).unproject(camera);
+      zoomAt(1.6, { x: p.x, z: p.z });
+    };
+    el.addEventListener('dblclick', onDouble);
+    return () => {
+      el.removeEventListener('dblclick', onDouble);
+      registerCamera(null);
+    };
+  }, [camera, gl, width, height]);
+
   useFrame(() => {
     const c = controls.current;
     if (!c || !(camera instanceof THREE.OrthographicCamera)) return;
@@ -65,8 +99,11 @@ export function CameraRig({ width, height, focus, onZoomChange }: CameraRigProps
       const g = goal.current;
       c.target.x += (g.x - c.target.x) * 0.18;
       c.target.z += (g.z - c.target.z) * 0.18;
-      camera.zoom += (THREE.MathUtils.clamp(g.zoom, c.minZoom, c.maxZoom) - camera.zoom) * 0.18;
-      if (Math.abs(g.x - c.target.x) < 0.5 && Math.abs(g.z - c.target.z) < 0.5) goal.current = null;
+      const want = THREE.MathUtils.clamp(g.zoom, c.minZoom, c.maxZoom);
+      camera.zoom += (want - camera.zoom) * 0.18;
+      // Done once both the center and the zoom have arrived (a zoom alone keeps the same center).
+      const arrived = Math.abs(g.x - c.target.x) < 0.5 && Math.abs(g.z - c.target.z) < 0.5 && Math.abs(want - camera.zoom) < want * 0.002;
+      if (arrived) goal.current = null;
     }
     camera.zoom = THREE.MathUtils.clamp(camera.zoom, c.minZoom, c.maxZoom);
     camera.updateProjectionMatrix();
@@ -79,6 +116,7 @@ export function CameraRig({ width, height, focus, onZoomChange }: CameraRigProps
     t.y = 0;
     camera.position.set(t.x, CAMERA_HEIGHT, t.z);
     c.update();
+    reportZoomLimits({ atMin: camera.zoom <= minZoom * 1.01, atMax: camera.zoom >= minZoom * MAX_ZOOM_FACTOR * 0.99 });
     const zoomed = camera.zoom > minZoom * 1.8;
     if (zoomed !== zoomedIn.current) {
       zoomedIn.current = zoomed;

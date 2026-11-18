@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ALL_CARDS } from '../map/schema.js';
 import type { GameEvent } from '../engine/types.js';
 import type { GameView } from '../engine/view.js';
-import { GameModeSchema, type ExpansionToggles, type GameMode } from '../rules/schema.js';
+import { DoubleRoutesSchema, GameModeSchema, type DoubleRoutes, type ExpansionToggles, type GameMode } from '../rules/schema.js';
 
 /** Largest map document a host may upload, in bytes of JSON. */
 export const MAX_MAP_UPLOAD_BYTES = 2_000_000;
@@ -44,7 +44,12 @@ export const IntentSchema = z.discriminatedUnion('type', [
       .partial(),
   }),
   /** Classic or Seasons, and how many years a Seasons game lasts. */
-  z.object({ type: z.literal('setMode'), mode: GameModeSchema, years: z.number().int().min(1).max(10).optional() }),
+  z.object({
+    type: z.literal('setMode'),
+    mode: GameModeSchema,
+    years: z.number().int().min(1).max(10).optional(),
+    doubleRoutes: DoubleRoutesSchema.optional(),
+  }),
   /** `map: null` returns to the starter map. The map document is validated separately. */
   z.object({ type: z.literal('setMap'), map: z.unknown().nullable() }),
   z.object({ type: z.literal('setColor'), color: z.string().min(1).max(30) }),
@@ -81,6 +86,8 @@ export interface RoomView {
   mode: GameMode;
   /** Seasons mode: game length in years. */
   years: number;
+  /** Whether double routes follow the lane table or are always both open. */
+  doubleRoutes: DoubleRoutes;
   map: { id: string; name: string; cityCount: number; routeCount: number; custom: boolean };
   limits: { minPlayers: number; maxPlayers: number; playerColors: string[] };
 }

@@ -4,9 +4,9 @@ import { useClient } from '../../state/store.js';
 import { describeEvent, S } from '../strings.js';
 
 /** Recent actions in plain language: the durable record of what happened on other turns. */
-export function EventLog({ view, map }: { view: GameView; map: MapIndex }) {
+export function EventLog({ view, map, defaultOpen = true }: { view: GameView; map: MapIndex; defaultOpen?: boolean }) {
   const log = useClient((s) => s.log);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(defaultOpen);
   const end = useRef<HTMLLIElement>(null);
   const names = view.players.map((p) => p.name);
   const lines = log
@@ -26,7 +26,7 @@ export function EventLog({ view, map }: { view: GameView; map: MapIndex }) {
           className="small secondary log-toggle"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
-          title={open ? 'Minimize the log' : 'Show the log'}
+          title={open ? S.logMinimize : S.logShow}
         >
           {open ? '–' : '+'}
         </button>

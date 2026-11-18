@@ -4,7 +4,8 @@ import { resetViewFocus } from '../../board/CameraRig.js';
 import { leaveRoom, sendAction } from '../../net/socket.js';
 import { setUi, store, useClient } from '../../state/store.js';
 import { useTheme } from '../../theme/ThemeProvider.js';
-import { S } from '../strings.js';
+import { S, useLang } from '../strings.js';
+import { LanguagePicker } from '../lobby/LanguagePicker.js';
 import { ThemePicker } from '../lobby/ThemePicker.js';
 import { affordances, boardOfView, stationCandidates } from './affordances.js';
 import { CitySearch } from './CitySearch.js';
@@ -47,7 +48,9 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
   }, []);
 
   const view = game?.view;
-  const can = useMemo(() => (view && map ? affordances(view, map.index) : null), [view, map]);
+  // The affordances hold sentences, so they are rebuilt when the language changes.
+  const lang = useLang();
+  const can = useMemo(() => (view && map ? affordances(view, map.index) : null), [view, map, lang]);
   const stationCities = useMemo(
     () => (view && map && ui.mode.kind === 'station' ? new Set(stationCandidates(view, map.index)) : null),
     [view, map, ui.mode],
@@ -85,6 +88,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
         onSelectRoute={(id) => ui.mode.kind === 'normal' && setUi({ selectedRoute: id })}
         onCityClick={ui.mode.kind === 'station' ? (id) => setUi({ selectedCity: id }) : undefined}
         onBackgroundClick={() => ui.selectedRoute && setUi({ selectedRoute: null })}
+        focusPlayer={classic ? ui.focusPlayer : null}
       />
 
       {classic ? (
@@ -102,6 +106,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
               {S.resetView}
             </button>
             <ThemePicker />
+            <LanguagePicker />
             <button className="secondary small" onClick={() => void leaveRoom().then(onLeave)}>
               {S.leave}
             </button>

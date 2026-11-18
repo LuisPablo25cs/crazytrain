@@ -16,6 +16,14 @@ export const GAME_MODES = ['classic', 'seasons'] as const;
 export const GameModeSchema = z.enum(GAME_MODES);
 export type GameMode = z.infer<typeof GameModeSchema>;
 
+/**
+ * Double routes in the lobby: `rule` keeps the map's lane table (the board game: one lane with 2–3
+ * players, both with 4+); `both` opens every lane at any player count.
+ */
+export const DOUBLE_ROUTE_CHOICES = ['rule', 'both'] as const;
+export const DoubleRoutesSchema = z.enum(DOUBLE_ROUTE_CHOICES);
+export type DoubleRoutes = z.infer<typeof DoubleRoutesSchema>;
+
 const month = () => int().min(0).max(11);
 const months = () => z.array(month());
 const share = () => z.number().min(0).max(1);

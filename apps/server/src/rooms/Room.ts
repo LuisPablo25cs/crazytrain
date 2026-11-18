@@ -13,6 +13,7 @@ import {
   type Action,
   type ClientAction,
   type ExpansionToggles,
+  type DoubleRoutes,
   type GameMode,
   type GameEvent,
   type GameMessage,
@@ -63,6 +64,7 @@ export class Room {
   toggles: ExpansionToggles;
   mode: GameMode = 'classic';
   years: number;
+  doubleRoutes: DoubleRoutes = 'rule';
   game: { state: GameState; version: number } | null = null;
   lastActivity: number;
   finishedAt: number | null = null;
@@ -94,7 +96,7 @@ export class Room {
 
   /** What the lobby chose besides the expansion toggles. */
   private lobby() {
-    return { mode: this.mode, years: this.years };
+    return { mode: this.mode, years: this.years, doubleRoutes: this.doubleRoutes };
   }
 
   connectedSeats(): Seat[] {
@@ -233,11 +235,12 @@ export class Room {
     return OK;
   }
 
-  setMode(seat: Seat, mode: GameMode, years?: number): IntentReply {
+  setMode(seat: Seat, mode: GameMode, years?: number, doubleRoutes?: DoubleRoutes): IntentReply {
     const denied = this.requireHostInLobby(seat);
     if (denied) return denied;
     this.mode = mode;
     if (years !== undefined) this.years = years;
+    if (doubleRoutes !== undefined) this.doubleRoutes = doubleRoutes;
     this.touch();
     this.broadcastRoom();
     return OK;
@@ -398,6 +401,7 @@ export class Room {
       toggles: { ...this.toggles },
       mode: this.mode,
       years: this.years,
+      doubleRoutes: this.doubleRoutes,
       map: {
         id: this.map.id,
         name: this.map.name,

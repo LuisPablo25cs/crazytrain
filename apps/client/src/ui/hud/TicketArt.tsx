@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '@fontsource/cardo/400.css';
 import '@fontsource/cardo/700.css';
+import { NX } from '../strings.js';
 
 /** A ticket's own picture (from the Canva ticket designs, made web-sized by tools/assets/prepare-tickets.py). */
 export function ticketPictureUrl(ticketId: string): string {
@@ -49,7 +50,7 @@ export interface TicketArtProps {
 export function TicketArt({ names, points, long, done, className, ticketId }: TicketArtProps) {
   const pictures = useTicketPictures();
   const [broken, setBroken] = useState(false);
-  const label = `${names.join(' to ')}, ${points} points`;
+  const label = NX.ticketLabel(names, points);
   const classes = `ticket-art ${long ? 'long' : ''} ${done ? 'done' : ''} ${className ?? ''}`;
   const pictured = !!ticketId && !broken && !!pictures?.has(ticketId);
   return (
@@ -66,7 +67,7 @@ export function TicketArt({ names, points, long, done, className, ticketId }: Ti
           </span>
         </>
       )}
-      {done && <span className="ticket-done">✓ DONE</span>}
+      {done && <span className="ticket-done">✓ {NX.done.toUpperCase()}</span>}
     </span>
   );
 }

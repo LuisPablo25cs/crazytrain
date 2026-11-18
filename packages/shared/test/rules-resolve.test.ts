@@ -58,3 +58,17 @@ describe('openLanes', () => {
     expect(openLanes(rules, 6)).toBe(3);
   });
 });
+
+describe('double routes lobby choice', () => {
+  it('keeps the lane table by default: one lane with 3 players, both with 4', () => {
+    const rules = resolveRules(undefined, undefined, undefined, { doubleRoutes: 'rule' });
+    expect(openLanes(rules, 3)).toBe(1);
+    expect(openLanes(rules, 4)).toBeGreaterThan(1);
+  });
+
+  it('opens every lane at any player count when the host picks "both"', () => {
+    const rules = resolveRules(undefined, undefined, undefined, { doubleRoutes: 'both' });
+    expect(openLanes(rules, 2)).toBeGreaterThan(1);
+    expect(openLanes(rules, 3)).toBeGreaterThan(1);
+  });
+});

@@ -1,5 +1,5 @@
 import type { Card, CardCounts } from '@rails/shared';
-import { CARD_NAMES } from '../../strings.js';
+import { CARD_NAMES, NX } from '../../strings.js';
 import { cardArtUrl } from '../CardChip.js';
 
 /** A small train card with its artwork; `ghost` marks a card the player is missing. */
@@ -14,7 +14,7 @@ export function MiniCard({
 }) {
   const delay = { animationDelay: `${index * 60}ms` };
   if (ghost || !card)
-    return <span className="nx-mini ghost" style={delay} aria-label="missing card" />;
+    return <span className="nx-mini ghost" style={delay} aria-label={NX.missingCard} />;
   return (
     <span className="nx-mini" style={delay} title={CARD_NAMES[card]}>
       <img src={cardArtUrl(card)} alt={CARD_NAMES[card]} draggable={false} />

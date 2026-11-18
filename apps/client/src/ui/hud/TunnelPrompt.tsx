@@ -1,6 +1,6 @@
 import { tunnelExtraOptions, type GameView, type MapIndex } from '@rails/shared';
 import { sendAction } from '../../net/socket.js';
-import { S } from '../strings.js';
+import { NX, S, T } from '../strings.js';
 import { CardChip, CardSet } from './CardChip.js';
 
 /** The tunnel reveal, shown to everyone. Only the active player can pay or withdraw (R8). */
@@ -25,7 +25,7 @@ export function TunnelPrompt({ view, map }: { view: GameView; map: MapIndex }) {
         ))}
       </div>
       <p>
-        Laid down: <CardSet cards={turn.payment} />
+        {T.misc.laidDownColon} <CardSet cards={turn.payment} />
       </p>
     </>
   );
@@ -47,7 +47,7 @@ export function TunnelPrompt({ view, map }: { view: GameView; map: MapIndex }) {
             ))}
           </ul>
         ) : (
-          <p className="muted">You cannot pay the extra cards.</p>
+          <p className="muted">{NX.cannotPayExtra}</p>
         )}
         <button className="secondary" onClick={() => void sendAction({ type: 'withdrawTunnel' })}>
           {S.withdraw}

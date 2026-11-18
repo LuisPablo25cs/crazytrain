@@ -53,6 +53,7 @@ function roomFor(state: GameState, doc: MapDefinition, viewer: number): RoomView
     toggles: state.rules.expansions,
     mode: state.rules.mode,
     years: state.rules.seasons.years,
+    doubleRoutes: 'rule',
     map: { id: doc.id, name: doc.name, cityCount: doc.cities.length, routeCount: doc.routes.length, custom: true },
     limits: { minPlayers: state.rules.players.min, maxPlayers: state.rules.players.max, playerColors: state.rules.playerColors },
   };

@@ -56,17 +56,12 @@ describe('validateMap', () => {
     expect(errs[0]).toContain('island-b');
   });
 
-  it('fails when there are fewer long tickets than 7 players need', () => {
+  it('fails when the one ticket deck cannot deal to 7 players', () => {
     const map = fixture();
-    let removed = 0;
-    map.tickets = map.tickets.filter((t) => {
-      if (t.deck === 'long' && removed < 2) {
-        removed += 1;
-        return false;
-      }
-      return true;
-    });
-    expect(messages(map).some((m) => m.includes('needs at least 7 long tickets') && m.includes('has 5'))).toBe(true);
+    const have = map.tickets.length;
+    const needed = 7 * 4;
+    map.tickets = map.tickets.slice(0, Math.min(have, needed) - 3);
+    expect(messages(map).some((m) => m.includes(`needs at least ${needed} tickets`))).toBe(true);
   });
 
   it('rejects a route of length 11 when the scoring table stops at 10', () => {

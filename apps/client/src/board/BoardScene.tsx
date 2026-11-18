@@ -9,6 +9,8 @@ import { buildSlots, Routes } from './Routes.js';
 import { Terrain } from './Terrain.js';
 import { Trains } from './Trains.js';
 import { Zones } from './Zones.js';
+import { PingArrow, PingProjector, PingRing, useRivalPing } from './RivalPing.js';
+import { playerHex } from '../theme/themes.js';
 
 export interface BoardSceneProps {
   map: MapIndex;
@@ -29,6 +31,8 @@ export interface BoardSceneProps {
   onSelectRoute: (id: string) => void;
   onCityClick?: (id: string) => void;
   onBackgroundClick?: () => void;
+  /** Classic HUD: the player whose plaque is pointed at; other trains dim. */
+  focusPlayer?: number | null;
 }
 
 /** The board, seen flat from above. Everything it draws comes from map and theme data (R18, R19). */
@@ -47,6 +51,18 @@ export function BoardScene(props: BoardSceneProps) {
     () => (seasons ? new Map(map.map.cities.map((c) => [c.id, pinArt.get(c.id) ?? null])) : undefined),
     [seasons, pinArt, map],
   );
+  // Classic mode: point out rival claims (a ring on the route, an arrow at the edge when off screen),
+  // draw claimed track as a dark rail bed and closed lanes as hatched, and give each player a roof mark.
+  const classic = !!props.board && !seasons;
+  const ping = useRivalPing(
+    props.lastEvents,
+    props.viewer,
+    slots,
+    map,
+    (p) => playerHex(theme, props.playerColors[p] ?? ''),
+    classic,
+  );
+  const arrow = useRef<HTMLButtonElement>(null);
 
   return (
     <div className="board">
@@ -77,6 +93,7 @@ export function BoardScene(props: BoardSceneProps) {
           selected={props.selectedRoute}
           onHover={props.onHoverRoute}
           onSelect={props.onSelectRoute}
+          classic={classic}
         />
         <Trains
           slots={slots}
@@ -88,7 +105,11 @@ export function BoardScene(props: BoardSceneProps) {
           damage={props.board?.damage}
           blocked={props.board?.blocked}
           spawn={seasons ? 'drop' : 'roll'}
+          classic={classic}
+          focusPlayer={props.focusPlayer ?? null}
         />
+        {classic && <PingRing ping={ping} />}
+        {classic && <PingProjector ping={ping} arrow={arrow} />}
         {props.board?.zones && <Zones zones={props.board.zones} month={props.board.month ?? 0} />}
         <Cities
           map={map}
@@ -112,13 +133,15 @@ export function BoardScene(props: BoardSceneProps) {
         cities={map.map.cities}
         refs={labelRefs}
         theme={theme}
-        showMinor={zoomedIn}
+        // Classic mode names every city at every zoom; Seasons shows minor cities once zoomed in.
+        showMinor={zoomedIn || !seasons}
         emphasized={props.highlightedCities}
         // Classic mode writes every name in the rounded lettering instead of the label pictures.
         art={seasons ? labelArt : undefined}
         pins={pins}
         rounded={!seasons}
       />
+      {classic && <PingArrow ping={ping} arrow={arrow} />}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useTheme } from '../../theme/ThemeProvider.js';
-import { S } from '../strings.js';
+import { S, T } from '../strings.js';
 
 export function ThemePicker() {
   const { theme, themes, setTheme } = useTheme();
@@ -9,7 +9,7 @@ export function ThemePicker() {
       <select value={theme.id} onChange={(e) => setTheme(e.target.value)}>
         {themes.map((t) => (
           <option key={t.id} value={t.id}>
-            {t.name}
+            {T.themes[t.id] ?? t.name}
           </option>
         ))}
       </select>

@@ -6,19 +6,24 @@ import {
   type RoomView,
   type Theme,
 } from '@rails/shared';
-import { resetViewFocus } from '../../../board/CameraRig.js';
 import { leaveRoom, sendAction } from '../../../net/socket.js';
-import { setUi, store, useClient } from '../../../state/store.js';
+import { setUi, useClient } from '../../../state/store.js';
+import { LanguagePicker } from '../../lobby/LanguagePicker.js';
 import { ThemePicker } from '../../lobby/ThemePicker.js';
-import { NX, S } from '../../strings.js';
+import { NX, S, T } from '../../strings.js';
 import type { Affordances } from '../affordances.js';
 import { CitySearch } from '../CitySearch.js';
 import { EventLog } from '../EventLog.js';
+import { ActivityFeed } from './ActivityFeed.js';
 import { ClaimedFlash } from './ClaimPopover.js';
+import { FirstTimeHints } from './FirstTimeHints.js';
 import { HandFan } from './HandFan.js';
 import { MarketBlock } from './MarketBlock.js';
 import { PlayerPlaques } from './PlayerPlaques.js';
+import { RouteTooltip } from './RouteTooltip.js';
+import { RulesSheet } from './RulesSheet.js';
 import { TicketFan } from './TicketFan.js';
+import { ZoomControl } from './ZoomControl.js';
 import './fonts.js';
 
 /** How long my CLAIMED popover stays while the train rolls in. */
@@ -58,10 +63,22 @@ export function ClassicHud({ view, room, map, theme, can, onLeave }: ClassicHudP
 
   return (
     <>
-      <header className="nx-header" role="status">
-        <h1>{NX.title}</h1>
-        <p className={view.lastRound ? 'last-round' : ''}>{can.banner}</p>
+      <header className="nx-header">
+        <div className="nx-header-text" role="status">
+          <h1>{NX.title}</h1>
+          <p className={view.lastRound ? 'last-round' : ''}>{can.banner}</p>
+        </div>
+        <button
+          className={`nx-rules-btn ${ui.rulesTab ? 'on' : ''}`}
+          aria-label={T.rulesPanel.open}
+          aria-expanded={ui.rulesTab !== null}
+          title={T.rulesPanel.open}
+          onClick={() => setUi({ rulesTab: ui.rulesTab ? null : 'turn' })}
+        >
+          ?
+        </button>
       </header>
+      <ActivityFeed view={view} map={map.index} theme={theme} />
 
       <aside className="nx-left">
         <PlayerPlaques view={view} room={room} theme={theme} />
@@ -70,27 +87,15 @@ export function ClassicHud({ view, room, map, theme, can, onLeave }: ClassicHudP
       <aside className="nx-right">
         <div className="nx-tools">
           <CitySearch map={map.index} />
-          <button
-            className="nx-tool"
-            onClick={() =>
-              setUi({
-                focus: resetViewFocus(
-                  map.doc.width,
-                  map.doc.height,
-                  (store.getState().ui.focus?.nonce ?? 0) + 1,
-                ),
-              })
-            }
-          >
-            {S.resetView}
-          </button>
           <ThemePicker />
+          <LanguagePicker />
           <button className="nx-tool" onClick={() => void leaveRoom().then(onLeave)}>
             {S.leave}
           </button>
         </div>
         <MarketBlock view={view} can={can} />
-        <EventLog view={view} map={map.index} />
+        {/* Rival moves now show as toasts; the log stays as history, folded until opened. */}
+        <EventLog view={view} map={map.index} defaultOpen={false} />
       </aside>
 
       {playing && (
@@ -142,6 +147,15 @@ export function ClassicHud({ view, room, map, theme, can, onLeave }: ClassicHudP
           </div>
         </>
       )}
+
+      <ZoomControl />
+      <RouteTooltip view={view} map={map.index} />
+      <FirstTimeHints
+        view={view}
+        map={map.index}
+        hidden={ui.rulesTab !== null || (me?.offeredTickets.length ?? 0) > 0}
+      />
+      <RulesSheet view={view} map={map.index} />
 
       {claimed && (
         <ClaimedFlash

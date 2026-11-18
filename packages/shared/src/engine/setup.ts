@@ -26,9 +26,14 @@ export function createGame({ map, rules, players, seed }: CreateGameOptions): { 
   }
   const events: GameEvent[] = [];
   const holder = { rng: seed >>> 0 };
-  const regular = shuffle(holder, map.map.tickets.filter((t) => t.deck === 'regular').map((t) => t.id));
-  const long = shuffle(holder, map.map.tickets.filter((t) => t.deck === 'long').map((t) => t.id));
-  const longPerPlayer = rules.expansions.longTickets ? rules.tickets.initialLong : 0;
+  // One ticket deck: with triple tickets on, they are shuffled in with the others and come up at
+  // random, at the start and on every draw. The deal size keeps its extra ticket per player.
+  const triples = rules.expansions.longTickets;
+  const deck = shuffle(
+    holder,
+    map.map.tickets.filter((t) => t.deck === 'regular' || (triples && t.deck === 'long')).map((t) => t.id),
+  );
+  const dealt = rules.tickets.initialRegular + (triples ? rules.tickets.initialLong : 0);
 
   const state: GameState = {
     rules,
@@ -37,7 +42,7 @@ export function createGame({ map, rules, players, seed }: CreateGameOptions): { 
     drawPile: shuffle(holder, buildDeck(rules)),
     discard: [],
     market: Array.from({ length: rules.market.size }, () => null),
-    regularTickets: regular,
+    regularTickets: deck,
     routeOwners: {},
     stations: [],
     phase: 'initialTickets',
@@ -64,10 +69,7 @@ export function createGame({ map, rules, players, seed }: CreateGameOptions): { 
       const card = drawCard(state, events);
       if (card) hand[card] += 1;
     }
-    const offered = [
-      ...state.regularTickets.splice(0, rules.tickets.initialRegular),
-      ...long.splice(0, longPerPlayer),
-    ];
+    const offered = state.regularTickets.splice(0, dealt);
     return {
       name: p.name,
       color: p.color,

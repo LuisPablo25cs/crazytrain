@@ -66,7 +66,7 @@ export function TicketFan({ view, map }: { view: GameView; map: MapIndex }) {
                 transform: `rotate(${sp[2]}deg)`,
                 zIndex: n - r,
               }}
-              aria-label={`${names.join(' to ')}, ${t.points} points${progress.get(id) ? ', complete' : ''}`}
+              aria-label={`${NX.ticketLabel(names, t.points)}${progress.get(id) ? `, ${NX.complete}` : ''}`}
               aria-current={r === 0}
               onMouseEnter={() => setUi({ highlightCities: ticketCities(t) })}
               onMouseLeave={() => setUi({ highlightCities: [] })}

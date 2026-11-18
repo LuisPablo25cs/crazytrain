@@ -118,12 +118,10 @@ function keepInitialTickets(ctx: Ctx, player: number, ids: string[]): void {
 }
 
 function keepInitial(ctx: Ctx, player: number, kept: string[], returned: string[]): void {
-  const { s, map } = ctx;
+  const { s } = ctx;
   const p = s.players[player]!;
-  for (const id of returned) {
-    // Returned regular tickets go to the bottom of the deck. Long tickets leave the game.
-    if (map.tickets.get(id)?.deck === 'regular') s.regularTickets.push(id);
-  }
+  // Returned tickets, triples too, go to the bottom of the one ticket deck.
+  s.regularTickets.push(...returned);
   p.tickets.push(...kept);
   p.offeredTickets = [];
   p.keptInitial = true;

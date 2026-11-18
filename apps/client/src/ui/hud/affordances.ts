@@ -20,7 +20,7 @@ import {
   type MapIndex,
   type Route,
 } from '@rails/shared';
-import { S } from '../strings.js';
+import { S, T, tr } from '../strings.js';
 
 export function boardOfView(view: GameView): BoardShape {
   return {
@@ -54,7 +54,7 @@ export function affordances(view: GameView, map: MapIndex): Affordances {
   const me = view.me;
   const current = view.players[view.currentPlayer];
   const isMyTurn = view.phase === 'playing' && me !== null && me.index === view.currentPlayer;
-  const notYourTurn = view.phase === 'playing' ? S.turnOf(current?.name ?? '?') : 'Choose your tickets first';
+  const notYourTurn = view.phase === 'playing' ? S.turnOf(current?.name ?? '?') : T.misc.chooseTicketsFirst;
   const none = (reason: string): Affordances => ({
     isMyTurn,
     banner: reason,
@@ -80,16 +80,16 @@ export function affordances(view: GameView, map: MapIndex): Affordances {
     return {
       ...none(reason),
       banner: `${S.yourTurn}: ${S.drawSecond.toLowerCase()}.${last}`,
-      drawBlind: view.drawPileCount + view.discardCount > 0 ? null : 'the draw pile is empty',
+      drawBlind: view.drawPileCount + view.discardCount > 0 ? null : T.misc.drawPileEmpty,
       faceUp: (slot) => {
         const card = view.market[slot];
-        if (!card) return 'empty slot';
-        return card === LOCOMOTIVE ? 'a face-up locomotive cannot be your second card' : null;
+        if (!card) return T.misc.emptySlot;
+        return card === LOCOMOTIVE ? T.misc.locoSecond : null;
       },
     };
   }
-  if (turn.kind === 'choosingTickets') return { ...none('choose your tickets'), banner: S.chooseTickets(view.rules.tickets.drawKeepMin) };
-  if (turn.kind === 'tunnel') return { ...none('resolve the tunnel'), banner: S.tunnelExtra(turn.extra) };
+  if (turn.kind === 'choosingTickets') return { ...none(T.misc.chooseYourTickets), banner: S.chooseTickets(view.rules.tickets.drawKeepMin) };
+  if (turn.kind === 'tunnel') return { ...none(T.misc.resolveTunnel), banner: S.tunnelExtra(turn.extra) };
 
   const stationCost = nextStationCost(view, view.players[me.index]!);
   const anyClaim = map.map.routes.some((r) => claimInfo(r, view, map).options.length > 0 || repairInfo(r.id, view, map)?.options.length);
@@ -98,18 +98,18 @@ export function affordances(view: GameView, map: MapIndex): Affordances {
   return {
     isMyTurn,
     banner: `${S.yourTurn}!${last}`,
-    drawBlind: view.drawPileCount + view.discardCount > 0 ? null : 'the draw pile is empty',
-    drawTickets: view.ticketDeckCount > 0 ? null : 'the ticket deck is empty',
+    drawBlind: view.drawPileCount + view.discardCount > 0 ? null : T.misc.drawPileEmpty,
+    drawTickets: view.ticketDeckCount > 0 ? null : T.misc.ticketDeckEmpty,
     claim: null,
     station: !view.rules.expansions.stations
-      ? 'stations are off in this game'
+      ? T.misc.stationsOff
       : stationCost === null
         ? S.noStations
         : stationPaymentOptions(stationCost, me.hand).length === 0
-          ? `you need ${stationCost} card(s) of one color`
+          ? T.misc.stationNeeds(stationCost)
           : null,
-    pass: anyAction ? 'you can still take an action' : null,
-    faceUp: (slot) => (view.market[slot] ? null : 'empty slot'),
+    pass: anyAction ? T.misc.canStillAct : null,
+    faceUp: (slot) => (view.market[slot] ? null : T.misc.emptySlot),
   };
 }
 
@@ -122,18 +122,18 @@ export interface ClaimInfo {
 /** Payment options for a route and, when there are none, the reason in plain words. */
 export function claimInfo(route: Route, view: GameView, map: MapIndex): ClaimInfo {
   const me = view.me;
-  if (!me) return { options: [], reason: 'you are not playing' };
+  if (!me) return { options: [], reason: T.misc.notPlaying };
   const trains = view.players[me.index]!.trains;
   const board = boardOfView(view);
   const blocked = routeClaimError(board, map, route.id, me.index, trains);
-  if (blocked) return { options: [], reason: blocked };
+  if (blocked) return { options: [], reason: tr(blocked) };
   const live = effectiveRoute(board, map, route.id) ?? route;
   const excavators = excavatorsNeeded(board, map, live);
   const options = routePaymentOptions(live, me.hand, view.rules, excavators);
   if (options.length > 0) return { options, reason: null };
-  if (excavators > me.hand[EXCAVATOR]) return { options, reason: `building here needs ${excavators} excavator card(s)` };
+  if (excavators > me.hand[EXCAVATOR]) return { options, reason: T.misc.needExcavators(excavators) };
   if (route.kind === 'ferry' && view.rules.expansions.ferries && me.hand[LOCOMOTIVE] < route.ferryLocomotives) {
-    return { options, reason: `this ferry needs ${route.ferryLocomotives} locomotive(s)` };
+    return { options, reason: T.misc.ferryNeedsLocos(route.ferryLocomotives) };
   }
   return { options, reason: S.noPayment };
 }
@@ -187,12 +187,12 @@ export function repairInfo(routeId: string, view: GameView, map: MapIndex): Repa
   if (!claim && view.routeOwners[routeId] !== me.index) return null;
   const route = effectiveRoute(board, map, routeId)!;
   const blocked = repairError(board, map, routeId, me.index, view.players[me.index]!.trains);
-  if (blocked) return { cost, options: [], reason: blocked, claim };
+  if (blocked) return { cost, options: [], reason: tr(blocked), claim };
   const options = repairPaymentOptions(route, cost, me.hand, view.rules);
   const reason = options.length
     ? null
     : cost.excavators
-      ? `you need ${cost.excavators} excavator card(s)`
-      : `you need ${cost.cards} ${route.color === 'gray' ? 'cards of one color' : `${route.color} cards`} (or locomotives)`;
+      ? T.misc.repairNeedsExcavators(cost.excavators)
+      : T.misc.repairNeedsCards(cost.cards, route.color === 'gray' ? null : route.color);
   return { cost, options, reason, claim };
 }

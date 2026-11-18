@@ -1,6 +1,7 @@
 import { DEFAULT_RULES } from './defaults.js';
 import {
   RulesConfigSchema,
+  type DoubleRoutes,
   type ExpansionToggles,
   type GameMode,
   type RulesConfig,
@@ -30,6 +31,7 @@ export class RulesError extends Error {}
 export interface LobbyChoices {
   mode?: GameMode;
   years?: number;
+  doubleRoutes?: DoubleRoutes;
 }
 
 /**
@@ -46,6 +48,7 @@ export function resolveRules(
   if (toggles) merged = deepMerge(merged, { expansions: toggles });
   if (lobby?.mode) merged = deepMerge(merged, { mode: lobby.mode });
   if (lobby?.years) merged = deepMerge(merged, { seasons: { years: lobby.years } });
+  if (lobby?.doubleRoutes === 'both') merged = deepMerge(merged, { parallelLanes: [{ minPlayers: 1, lanes: 99 }] });
   const parsed = RulesConfigSchema.safeParse(merged);
   if (!parsed.success) {
     const detail = parsed.error.issues

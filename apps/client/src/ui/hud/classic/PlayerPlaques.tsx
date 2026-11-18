@@ -1,7 +1,9 @@
 import type { GameView, RoomView, Theme } from '@rails/shared';
 import { sendOrToast } from '../../../net/socket.js';
 import { playerHex } from '../../../theme/themes.js';
-import { NX, S } from '../../strings.js';
+import { NX, S, T } from '../../strings.js';
+import { markInk, markPath } from '../../../board/playerMarks.js';
+import { setUi, useClient } from '../../../state/store.js';
 
 /** At this many trains or fewer the last round is near, so the count turns coral. */
 const LOW_TRAINS = 2;
@@ -20,6 +22,7 @@ export function PlayerPlaques({
   theme: Theme;
 }) {
   const isHost = room.hostSeatId === room.you;
+  const activity = useClient((s) => s.ui.activity);
   const compact = view.players.length > 4;
   const round = Math.floor(view.turnNumber / Math.max(1, view.players.length)) + 1;
   return (
@@ -32,16 +35,24 @@ export function PlayerPlaques({
           const waitingOnThem =
             (isCurrent || (view.phase === 'initialTickets' && !p.keptInitial)) && !connected;
           const low = p.trains <= LOW_TRAINS;
+          const hex = playerHex(theme, p.color);
+          const acting = activity?.player === p.index;
           const stats = `${p.trains} ${S.trains} · ${p.handCount} ${S.cards} · ${p.ticketCount} ${S.tickets.toLowerCase()}${
             view.rules.expansions.stations ? ` · ${p.stationsLeft} ${S.stations}` : ''
           }`;
           return (
             <li
               key={p.index}
-              className={`nx-plaque ${isCurrent ? 'active' : ''} ${connected ? '' : 'away'}`}
+              className={`nx-plaque ${isCurrent ? 'active' : ''} ${connected ? '' : 'away'} ${acting ? 'acting' : ''}`}
               title={stats}
+              onMouseEnter={() => setUi({ focusPlayer: p.index })}
+              onMouseLeave={() => setUi({ focusPlayer: null })}
             >
-              <span className="nx-plaque-color" style={{ background: playerHex(theme, p.color) }} />
+              <span className="nx-plaque-color" style={{ background: hex }}>
+                <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d={markPath(p.index, 16)} fill={markInk(hex)} fillRule="evenodd" />
+                </svg>
+              </span>
               <span className="nx-plaque-name">
                 {p.name}
                 {seat?.id === room.you && <span className="nx-you">{S.you}</span>}
@@ -51,6 +62,7 @@ export function PlayerPlaques({
               >
                 {!connected ? S.away : low ? NX.lastTrains(p.trains) : NX.trainsLeft(p.trains)}
               </span>
+              {acting && activity && <span className="nx-badge-act nx-caps">{T.activity.badge[activity.kind]}</span>}
               <span className="nx-plaque-score" aria-label={`${p.routePoints} ${S.points}`}>
                 {p.routePoints}
               </span>

@@ -1,5 +1,5 @@
 import { useClient } from '../state/store.js';
-import { S } from './strings.js';
+import { S, tr } from './strings.js';
 
 /** Connection banner and toasts, shown above every screen. */
 export function Overlays() {
@@ -15,7 +15,7 @@ export function Overlays() {
       )}
       {toast && (
         <div className={`toast ${toast.kind}`} role="alert" key={toast.id}>
-          {toast.text}
+          {tr(toast.text)}
         </div>
       )}
     </>

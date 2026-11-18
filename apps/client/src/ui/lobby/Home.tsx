@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { createRoom, session } from '../../net/socket.js';
 import { useClient } from '../../state/store.js';
-import { S } from '../strings.js';
+import { S, T, tr } from '../strings.js';
+import { LanguagePicker } from './LanguagePicker.js';
 import { ThemePicker } from './ThemePicker.js';
 
 export function Home({ onEnter }: { onEnter: (code: string) => void }) {
@@ -17,7 +18,7 @@ export function Home({ onEnter }: { onEnter: (code: string) => void }) {
     const reply = await createRoom(name.trim());
     setBusy(false);
     if (reply.ok && reply.code) onEnter(reply.code);
-    else setError(reply.ok ? 'no room code' : reply.error);
+    else setError(reply.ok ? T.misc.noRoomCode : tr(reply.error));
   };
 
   return (
@@ -55,6 +56,7 @@ export function Home({ onEnter }: { onEnter: (code: string) => void }) {
         </form>
         {error && <p className="error">{error}</p>}
         <ThemePicker />
+        <LanguagePicker />
       </div>
     </main>
   );

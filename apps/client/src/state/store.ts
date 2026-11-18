@@ -26,6 +26,8 @@ export interface Toast {
 }
 
 export type BoardMode = { kind: 'normal' } | { kind: 'station' };
+export type ActivityKind = 'card' | 'route' | 'tickets' | 'station' | 'tunnel' | 'pass';
+export type RulesTab = 'turn' | 'score' | 'special';
 
 export interface UiState {
   hoveredRoute: string | null;
@@ -36,6 +38,12 @@ export interface UiState {
   handColor: CardColor | 'locomotive' | null;
   /** Classic HUD: my latest claim, shown with the CLAIMED stamp while the train rolls in. */
   claimed: { routeId: string; payment: CardCounts; at: number } | null;
+  /** Classic HUD: a rival's latest action, shown as a badge on their plaque for a moment. */
+  activity: { player: number; kind: ActivityKind; at: number } | null;
+  /** Classic HUD: the player whose plaque is pointed at; their trains stay lit, the rest dim. */
+  focusPlayer: number | null;
+  /** Classic HUD: the rules panel's open tab, or null when it is closed. */
+  rulesTab: RulesTab | null;
   mode: BoardMode;
   /** Ask the board camera to look at a map-space point. `nonce` makes repeats re-trigger. */
   focus: { x: number; y: number; zoom: number; nonce: number } | null;
@@ -61,6 +69,9 @@ export const initialUi: UiState = {
   highlightCities: [],
   handColor: null,
   claimed: null,
+  activity: null,
+  focusPlayer: null,
+  rulesTab: null,
   mode: { kind: 'normal' },
   focus: null,
 };

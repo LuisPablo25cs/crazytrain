@@ -56,6 +56,79 @@ function slotQuad(): THREE.PlaneGeometry {
 
 const tmp = new THREE.Object3D();
 
+/** Classic mode art keys for slots that do not show their route color. */
+const RAIL_BED = '__rail';
+const CLOSED = '__closed';
+
+/** A texture drawn once on a canvas: `draw` paints a w×h image that runs lengthwise along x. */
+function canvasTexture(w: number, h: number, draw: (g: CanvasRenderingContext2D) => void): THREE.Texture | undefined {
+  if (typeof document === 'undefined') return undefined;
+  const c = document.createElement('canvas');
+  c.width = w;
+  c.height = h;
+  const g = c.getContext('2d');
+  if (!g) return undefined;
+  draw(g);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 4;
+  return t;
+}
+
+/** Claimed track: a dark rail bed with ties, so the only color left on it is the owner's train. */
+function railBedTexture() {
+  return canvasTexture(128, 48, (g) => {
+    g.fillStyle = '#1c2d33';
+    g.fillRect(0, 0, 128, 48);
+    g.fillStyle = '#2b4047';
+    for (let x = 4; x < 128; x += 16) g.fillRect(x, 4, 6, 40);
+    g.strokeStyle = '#0a1a20';
+    g.lineWidth = 6;
+    g.strokeRect(0, 0, 128, 48);
+  });
+}
+
+/** A lane closed by the double-route rule: hatched, so it reads as shut rather than faded. */
+function closedTexture() {
+  return canvasTexture(128, 48, (g) => {
+    g.fillStyle = '#17272c';
+    g.fillRect(0, 0, 128, 48);
+    g.strokeStyle = '#3a4c52';
+    g.lineWidth = 7;
+    for (let x = -48; x < 176; x += 16) {
+      g.beginPath();
+      g.moveTo(x, 48);
+      g.lineTo(x + 48, 0);
+      g.stroke();
+    }
+    g.strokeStyle = '#5e6e72';
+    g.lineWidth = 5;
+    g.strokeRect(0, 0, 128, 48);
+  });
+}
+
+/** The lock badge drawn in the middle of a closed lane. */
+function lockTexture() {
+  return canvasTexture(64, 64, (g) => {
+    g.fillStyle = '#0a1a20';
+    g.beginPath();
+    g.arc(32, 32, 30, 0, Math.PI * 2);
+    g.fill();
+    g.strokeStyle = '#c9d6d4';
+    g.lineWidth = 3;
+    g.stroke();
+    g.lineWidth = 4;
+    g.lineJoin = 'round';
+    g.strokeRect(20, 30, 24, 17);
+    g.beginPath();
+    g.moveTo(25, 30);
+    g.lineTo(25, 24);
+    g.arc(32, 24, 7, Math.PI, 0);
+    g.lineTo(39, 30);
+    g.stroke();
+  });
+}
+
 function place(mesh: THREE.InstancedMesh, i: number, s: SlotTransform, y: number, length: number, width: number): void {
   tmp.position.set(s.x, y, s.y);
   tmp.rotation.set(0, -s.angle, 0);
@@ -126,26 +199,37 @@ interface RoutesProps {
   selected: string | null;
   onHover: (routeId: string | null) => void;
   onSelect: (routeId: string) => void;
+  /** Classic mode: claimed track turns into a dark rail bed and closed lanes are hatched with a lock. */
+  classic?: boolean;
 }
 
 /**
  * Route slots drawn with the slot artwork (assets/web/slots), one instanced mesh per image.
  * Closed lanes are dimmed; the hovered and selected routes get a glow behind their slots.
  */
-export function Routes({ map, slots, theme, board, viewer, hovered, selected, onHover, onSelect }: RoutesProps) {
+export function Routes({ map, slots, theme, board, viewer, hovered, selected, onHover, onSelect, classic = false }: RoutesProps) {
   const groups = useMemo(() => {
     const byKey = new Map<string, { route: Route; slots: Slot[] }>();
     for (const s of slots) {
       // A volcano may have turned the route gray.
       const route = (board ? effectiveRoute(board, map, s.routeId) : undefined) ?? map.routes.get(s.routeId)!;
-      const key = slotArtKey(route);
+      const status = classic && board ? routeStatus(board, map, s.routeId, viewer).kind : null;
+      const key = status === 'owned' ? RAIL_BED : status === 'closed' || status === 'blockedForYou' ? CLOSED : slotArtKey(route);
       const g = byKey.get(key) ?? { route, slots: [] };
       g.slots.push(s);
       byKey.set(key, g);
     }
     return [...byKey.entries()].map(([key, g]) => ({ key, ...g }));
-  }, [slots, map, board]);
-  const textures = useSlotTextures(useMemo(() => groups.map((g) => g.key).sort(), [groups]));
+  }, [slots, map, board, viewer, classic]);
+  const art = useSlotTextures(
+    useMemo(() => groups.map((g) => g.key).filter((k) => !k.startsWith('__')).sort(), [groups]),
+  );
+  const drawn = useMemo(() => ({ [RAIL_BED]: railBedTexture(), [CLOSED]: closedTexture() }), []);
+  const textures = useMemo(() => {
+    const all = new Map(art);
+    for (const [k, t] of Object.entries(drawn)) if (t) all.set(k, t);
+    return all;
+  }, [art, drawn]);
 
   const tintsByKey = useMemo(() => {
     const out = new Map<string, THREE.Color[]>();
@@ -165,6 +249,7 @@ export function Routes({ map, slots, theme, board, viewer, hovered, selected, on
           if (status.kind === 'ash' || (status.kind === 'owned' && status.blocked)) return ash;
           if (status.kind === 'abandoned') return cracked;
           if (status.kind === 'winter') return frost;
+          if (g.key === RAIL_BED || g.key === CLOSED) return white;
           return status.kind === 'closed' || status.kind === 'blockedForYou' ? dim : white;
         }),
       );
@@ -210,8 +295,43 @@ export function Routes({ map, slots, theme, board, viewer, hovered, selected, on
     m.computeBoundingSphere();
   }, [ferrySlots]);
 
+  // Classic mode: one lock in the middle of each closed lane.
+  const lockSlots = useMemo(() => {
+    if (!classic || !board) return [];
+    const byRoute = new Map<string, Slot[]>();
+    for (const s of slots) {
+      const kind = routeStatus(board, map, s.routeId, viewer).kind;
+      if (kind !== 'closed' && kind !== 'blockedForYou') continue;
+      byRoute.set(s.routeId, [...(byRoute.get(s.routeId) ?? []), s]);
+    }
+    return [...byRoute.values()].map((list) => list.sort((a, b) => a.index - b.index)[Math.floor((list.length - 1) / 2)]!);
+  }, [classic, board, slots, map, viewer]);
+  const lockMesh = useRef<THREE.InstancedMesh>(null);
+  const lockQuad = useMemo(() => new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2), []);
+  const lockTex = useMemo(() => lockTexture(), []);
+  useLayoutEffect(() => {
+    const m = lockMesh.current;
+    if (!m) return;
+    lockSlots.forEach((s, i) => {
+      // Upright on screen, whatever the lane's angle.
+      tmp.position.set(s.x, SLOT_Y + 1.2, s.y);
+      tmp.rotation.set(0, 0, 0);
+      const size = Math.max(s.width * 1.9, 8);
+      tmp.scale.set(size, 1, size);
+      tmp.updateMatrix();
+      m.setMatrixAt(i, tmp.matrix);
+    });
+    m.instanceMatrix.needsUpdate = true;
+    m.computeBoundingSphere();
+  }, [lockSlots]);
+
   return (
     <group>
+      {lockSlots.length > 0 && lockTex && (
+        <instancedMesh key={`lock${lockSlots.length}`} ref={lockMesh} args={[lockQuad, undefined, lockSlots.length]} raycast={() => null} renderOrder={5}>
+          <meshBasicMaterial map={lockTex} transparent depthTest={false} toneMapped={false} />
+        </instancedMesh>
+      )}
       {glowSlots.length > 0 && (
         <instancedMesh key={glowSlots.length} ref={glow} args={[plainQuad, undefined, glowSlots.length]} raycast={() => null}>
           <meshBasicMaterial color={theme.board.highlight} toneMapped={false} />
