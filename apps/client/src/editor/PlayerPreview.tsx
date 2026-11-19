@@ -43,6 +43,7 @@ function roomFor(state: GameState, doc: MapDefinition, viewer: number): RoomView
     connected: true,
     isHost: i === 0,
     playerIndex: i,
+    removed: false,
   }));
   return {
     code: 'EDITOR',
@@ -54,6 +55,8 @@ function roomFor(state: GameState, doc: MapDefinition, viewer: number): RoomView
     mode: state.rules.mode,
     years: state.rules.seasons.years,
     doubleRoutes: 'rule',
+    trainsPerPlayer: state.rules.trainsPerPlayer,
+    defaultTrains: state.rules.trainsPerPlayer,
     map: { id: doc.id, name: doc.name, cityCount: doc.cities.length, routeCount: doc.routes.length, custom: true },
     limits: { minPlayers: state.rules.players.min, maxPlayers: state.rules.players.max, playerColors: state.rules.playerColors },
   };

@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { connect, joinRoom, session } from './net/socket.js';
 import { roomCodeFromPath } from './net/session.js';
 import { store, useClient } from './state/store.js';
-import { Home } from './ui/lobby/Home.js';
+import { Home, Invite } from './ui/lobby/Home.js';
 import { Lobby } from './ui/lobby/Lobby.js';
 import { GameScreen } from './ui/hud/GameScreen.js';
 import { S, T, tr, useLang } from './ui/strings.js';
@@ -99,7 +99,6 @@ export function App() {
 function RoomScreen({ code, onLeave }: { code: string; onLeave: () => void }) {
   const room = useClient((s) => s.room);
   const connection = useClient((s) => s.connection);
-  const [name, setName] = useState(session.name());
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const inRoom = room?.code === code;
@@ -117,34 +116,7 @@ function RoomScreen({ code, onLeave }: { code: string; onLeave: () => void }) {
   }, [code, connection]);
 
   if (!inRoom) {
-    return (
-      <main className="center-screen">
-        <form
-          className="panel narrow"
-          onSubmit={(e) => {
-            e.preventDefault();
-            void enter(name.trim());
-          }}
-        >
-          <h1>
-            {S.joinTitle} <span className="code">{code}</span>
-          </h1>
-          <label>
-            {S.yourName}
-            <input value={name} maxLength={20} autoFocus onChange={(e) => setName(e.target.value)} />
-          </label>
-          {error && <p className="error">{error}</p>}
-          <div className="row">
-            <button type="submit" disabled={busy || !name.trim() || connection !== 'connected'}>
-              {connection === 'connected' ? S.joinRoom : S.connecting}
-            </button>
-            <button type="button" className="secondary" onClick={onLeave}>
-              {S.backHome}
-            </button>
-          </div>
-        </form>
-      </main>
-    );
+    return <Invite code={code} busy={busy} error={error} onBack={onLeave} onJoin={(nickname) => void enter(nickname)} />;
   }
   if (room.phase === 'lobby') return <Lobby onLeave={onLeave} />;
   return <GameScreen onLeave={onLeave} />;

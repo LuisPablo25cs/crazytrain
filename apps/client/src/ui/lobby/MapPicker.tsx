@@ -3,6 +3,7 @@ import { MAX_MAP_UPLOAD_BYTES } from '@rails/shared';
 import { send } from '../../net/socket.js';
 import { useClient } from '../../state/store.js';
 import { S, T, tr } from '../strings.js';
+import { BACKDROP } from './Home.js';
 
 export function MapPicker({ isHost }: { isHost: boolean }) {
   const map = useClient((s) => s.room!.map);
@@ -30,22 +31,22 @@ export function MapPicker({ isHost }: { isHost: boolean }) {
   };
 
   return (
-    <section className="panel">
-      <h2>{S.map}</h2>
-      <p>
-        <strong>{map.name}</strong> {map.custom && <span className="badge">{S.customMap}</span>}
-        <span className="muted">
-          {' '}
-          · {T.misc.mapCounts(map.cityCount, map.routeCount)}
-        </span>
-      </p>
+    <section className="lobby-box lobby-map" aria-label={S.map}>
+      {!map.custom && <img src={BACKDROP} alt="" className="lobby-map-preview" onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')} />}
+      <div className="lobby-map-text">
+        <span className="nx-caps">{T.lobby.map}</span>
+        <strong>
+          {map.name} {map.custom && <span className="lobby-badge">{S.customMap}</span>}
+        </strong>
+        <span>{T.lobby.mapStats(map.cityCount, map.routeCount)}</span>
+      </div>
       {isHost && (
-        <div className="row">
-          <button className="secondary" disabled={busy} onClick={() => fileInput.current?.click()}>
+        <div className="lobby-map-actions">
+          <button className="nx-btn outline light" disabled={busy} onClick={() => fileInput.current?.click()}>
             {S.uploadMap}
           </button>
           {map.custom && (
-            <button className="secondary" disabled={busy} onClick={() => void send({ type: 'setMap', map: null })}>
+            <button className="nx-btn outline light" disabled={busy} onClick={() => void send({ type: 'setMap', map: null })}>
               {S.starterMap}
             </button>
           )}
@@ -62,7 +63,7 @@ export function MapPicker({ isHost }: { isHost: boolean }) {
           />
         </div>
       )}
-      {errors && <pre className="error map-errors">{errors}</pre>}
+      {errors && <pre className="start-error map-errors">{errors}</pre>}
     </section>
   );
 }

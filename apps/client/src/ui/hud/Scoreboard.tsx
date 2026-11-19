@@ -1,7 +1,7 @@
 import type { GameView, RoomView, Theme } from '@rails/shared';
 import { sendOrToast } from '../../net/socket.js';
 import { playerHex } from '../../theme/themes.js';
-import { S } from '../strings.js';
+import { S, T } from '../strings.js';
 
 /** Public player info; a disconnected player is marked and the host can skip them (R5). */
 export function Scoreboard({ view, room, theme }: { view: GameView; room: RoomView; theme: Theme }) {
@@ -14,7 +14,9 @@ export function Scoreboard({ view, room, theme }: { view: GameView; room: RoomVi
           const seat = room.seats.find((s) => s.playerIndex === p.index);
           const connected = seat?.connected ?? false;
           const isCurrent = view.phase === 'playing' && view.currentPlayer === p.index;
-          const waitingOnThem = (isCurrent || (view.phase === 'initialTickets' && !p.keptInitial)) && !connected;
+          const removed = seat?.removed ?? false;
+          const waitingOnThem = (isCurrent || (view.phase === 'initialTickets' && !p.keptInitial)) && !connected && !removed;
+          const canKick = isHost && !!seat && seat.id !== room.you && !removed && view.phase !== 'finished';
           return (
             <li key={p.index} className={`${isCurrent ? 'current' : ''} ${connected ? '' : 'away'}`}>
               <span className="dot" style={{ background: playerHex(theme, p.color) }} />
@@ -22,7 +24,11 @@ export function Scoreboard({ view, room, theme }: { view: GameView; room: RoomVi
                 {p.name}
                 {seat?.id === room.you && <span className="badge you">{S.you}</span>}
                 {seat?.isHost && <span className="badge">{S.host}</span>}
-                {!connected && <span className="badge warn">{S.away}</span>}
+                {removed ? (
+                  <span className="badge warn">{T.kick.removed}</span>
+                ) : (
+                  !connected && <span className="badge warn">{S.away}</span>
+                )}
               </span>
               <span className="points">
                 {p.routePoints} {S.points}
@@ -34,6 +40,17 @@ export function Scoreboard({ view, room, theme }: { view: GameView; room: RoomVi
               {isHost && waitingOnThem && seat && (
                 <button className="small danger" onClick={() => void sendOrToast({ type: 'skipPlayer', seatId: seat.id })}>
                   {S.skip}
+                </button>
+              )}
+              {canKick && (
+                <button
+                  className="small secondary"
+                  title={T.lobby.remove(p.name)}
+                  onClick={() => {
+                    if (confirm(`${T.kick.title(p.name)}\n${T.kick.text}`)) void sendOrToast({ type: 'kick', seatId: seat.id });
+                  }}
+                >
+                  {T.kick.button}
                 </button>
               )}
             </li>

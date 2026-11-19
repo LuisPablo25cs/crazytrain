@@ -24,6 +24,7 @@ import { TurnBanner } from './TurnBanner.js';
 import { nextStationCost } from '@rails/shared';
 import { ClassicHud } from './classic/ClassicHud.js';
 import { ClaimPopover, TunnelPopover } from './classic/ClaimPopover.js';
+import { RotatePrompt, usePhone } from './classic/phone.js';
 
 /**
  * In-game layout: the board fills the window; the HUD sits on top in fixed regions.
@@ -38,6 +39,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
   const lastEvents = useClient((s) => s.lastEvents);
   const { theme } = useTheme();
   const [trail, setTrail] = useState<string[]>([]);
+  const phone = usePhone();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -69,7 +71,9 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
   const classic = view.rules.mode !== 'seasons';
 
   return (
-    <div className={`game ${classic ? 'classic-ui' : me && view.phase !== 'finished' ? 'has-dock' : ''}`}>
+    <div
+      className={`game ${classic ? `classic-ui ${phone ? 'phone' : ''}` : me && view.phase !== 'finished' ? 'has-dock' : ''}`}
+    >
       <BoardScene
         map={map.index}
         theme={theme}
@@ -167,6 +171,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
         <StationDialog key={ui.selectedCity} cityId={ui.selectedCity} view={view} map={map.index} />
       )}
       <DisasterCard events={lastEvents} map={map.index} />
+      <RotatePrompt />
       {view.phase === 'finished' && (
         <EndScreen view={view} map={map.index} room={room} theme={theme} onHighlight={setTrail} onLeave={onLeave} />
       )}

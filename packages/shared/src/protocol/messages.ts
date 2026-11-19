@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { ALL_CARDS } from '../map/schema.js';
 import type { GameEvent } from '../engine/types.js';
 import type { GameView } from '../engine/view.js';
+import { TRAINS_RANGE } from '../rules/resolve.js';
 import { DoubleRoutesSchema, GameModeSchema, type DoubleRoutes, type ExpansionToggles, type GameMode } from '../rules/schema.js';
 
 /** Largest map document a host may upload, in bytes of JSON. */
@@ -52,6 +53,11 @@ export const IntentSchema = z.discriminatedUnion('type', [
   }),
   /** `map: null` returns to the starter map. The map document is validated separately. */
   z.object({ type: z.literal('setMap'), map: z.unknown().nullable() }),
+  /** Game settings the host picks before the start. `trainsPerPlayer: null` returns to the default. */
+  z.object({
+    type: z.literal('setSettings'),
+    trainsPerPlayer: z.number().int().min(TRAINS_RANGE.min).max(TRAINS_RANGE.max).nullable(),
+  }),
   z.object({ type: z.literal('setColor'), color: z.string().min(1).max(30) }),
   z.object({ type: z.literal('kick'), seatId: id }),
   z.object({ type: z.literal('startGame') }),
@@ -74,6 +80,8 @@ export interface SeatView {
   isHost: boolean;
   /** Player index in the game, or null in the lobby. */
   playerIndex: number | null;
+  /** The host removed this player during the game: their turns are skipped and they cannot rejoin. */
+  removed: boolean;
 }
 
 export interface RoomView {
@@ -88,6 +96,9 @@ export interface RoomView {
   years: number;
   /** Whether double routes follow the lane table or are always both open. */
   doubleRoutes: DoubleRoutes;
+  /** Trains each player starts with, and the number the map gives without a lobby choice. */
+  trainsPerPlayer: number;
+  defaultTrains: number;
   map: { id: string; name: string; cityCount: number; routeCount: number; custom: boolean };
   limits: { minPlayers: number; maxPlayers: number; playerColors: string[] };
 }

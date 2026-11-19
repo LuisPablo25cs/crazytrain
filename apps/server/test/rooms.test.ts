@@ -132,3 +132,66 @@ describe('map images', () => {
     }
   });
 });
+
+describe('lobby settings and removing players', () => {
+  function room3() {
+    const ctx = setup();
+    const created = ctx.manager.handle('s1', { type: 'createRoom', name: 'Ana' });
+    const code = created.ok ? created.code! : '';
+    const b = ctx.manager.handle('s2', { type: 'joinRoom', code, name: 'Beto' });
+    ctx.manager.handle('s3', { type: 'joinRoom', code, name: 'Carla' });
+    const room = ctx.manager.rooms.get(code)!;
+    return { ...ctx, room, betoId: b.ok ? b.seatId! : '', betoToken: b.ok ? b.token! : '', code };
+  }
+
+  it('lets the host set trains per player before the start, and the game uses it', () => {
+    const { manager, room } = room3();
+    expect(manager.handle('s2', { type: 'setSettings', trainsPerPlayer: 20 }).ok).toBe(false);
+    expect(manager.handle('s1', { type: 'setSettings', trainsPerPlayer: 20 })).toEqual({ ok: true });
+    expect(room.roomView(room.seats[0]!).trainsPerPlayer).toBe(20);
+    manager.handle('s1', { type: 'startGame' });
+    expect(room.game!.state.players.every((p) => p.trains === 20)).toBe(true);
+    expect(manager.handle('s1', { type: 'setSettings', trainsPerPlayer: 30 }).ok).toBe(false);
+  });
+
+  it('returns to the default trains with null', () => {
+    const { manager, room } = room3();
+    manager.handle('s1', { type: 'setSettings', trainsPerPlayer: 20 });
+    manager.handle('s1', { type: 'setSettings', trainsPerPlayer: null });
+    const view = room.roomView(room.seats[0]!);
+    expect(view.trainsPerPlayer).toBe(view.defaultTrains);
+  });
+
+  it('removes a player during a game: they cannot rejoin and their turns are skipped', () => {
+    const { manager, room, betoId, betoToken, code } = room3();
+    manager.handle('s1', { type: 'startGame' });
+    expect(manager.handle('s2', { type: 'kick', seatId: '' + room.seats[0]!.id }).ok).toBe(false);
+    expect(manager.handle('s1', { type: 'kick', seatId: betoId })).toEqual({ ok: true });
+    const beto = room.seatById(betoId)!;
+    expect(beto.removed).toBe(true);
+    expect(beto.socketId).toBeNull();
+    // Beto's initial ticket choice was made for him.
+    expect(room.game!.state.players[beto.playerIndex!]!.keptInitial).toBe(true);
+    expect(manager.handle('s9', { type: 'joinRoom', code, name: 'Beto', token: betoToken }).ok).toBe(false);
+    // Everyone else keeps their initial tickets; play never stops on Beto.
+    for (const [socket, seat] of [
+      ['s1', room.seats[0]!],
+      ['s3', room.seats[2]!],
+    ] as const) {
+      const offered = room.game!.state.players[seat.playerIndex!]!.offeredTickets;
+      manager.handle(socket, {
+        type: 'gameAction',
+        action: { type: 'keepInitialTickets', ticketIds: offered.slice(0, 2) },
+        expectedVersion: room.game!.version,
+      });
+    }
+    for (let turn = 0; turn < 6; turn++) {
+      const st = room.game!.state;
+      expect(st.currentPlayer).not.toBe(beto.playerIndex);
+      const socket = st.currentPlayer === room.seats[0]!.playerIndex ? 's1' : 's3';
+      for (let d = 0; d < 2 && room.game!.state.currentPlayer === st.currentPlayer; d++) {
+        manager.handle(socket, { type: 'gameAction', action: { type: 'drawBlind' }, expectedVersion: room.game!.version });
+      }
+    }
+  });
+});

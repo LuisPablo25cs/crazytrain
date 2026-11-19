@@ -32,7 +32,12 @@ export interface LobbyChoices {
   mode?: GameMode;
   years?: number;
   doubleRoutes?: DoubleRoutes;
+  /** Trains each player starts with; unset keeps the map's or the default number. */
+  trainsPerPlayer?: number;
 }
+
+/** The trains-per-player choices the lobby offers. */
+export const TRAINS_RANGE = { min: 10, max: 99 } as const;
 
 /**
  * Resolve the rules for one game (KTD14): defaults, then map overrides, then lobby toggles.
@@ -48,6 +53,7 @@ export function resolveRules(
   if (toggles) merged = deepMerge(merged, { expansions: toggles });
   if (lobby?.mode) merged = deepMerge(merged, { mode: lobby.mode });
   if (lobby?.years) merged = deepMerge(merged, { seasons: { years: lobby.years } });
+  if (lobby?.trainsPerPlayer) merged = deepMerge(merged, { trainsPerPlayer: lobby.trainsPerPlayer });
   if (lobby?.doubleRoutes === 'both') merged = deepMerge(merged, { parallelLanes: [{ minPlayers: 1, lanes: 99 }] });
   const parsed = RulesConfigSchema.safeParse(merged);
   if (!parsed.success) {

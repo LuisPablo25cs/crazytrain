@@ -2898,3 +2898,1373 @@ label {
     animation: none;
   }
 }
+
+/* ===================================================================================
+   Start screen and lobby (Night Express). Root: main.classic-ui.station
+   =================================================================================== */
+.station {
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--nx-ground);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px 56px;
+}
+.station-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.station > *:not(.station-backdrop) {
+  position: relative;
+}
+.station-tools {
+  position: absolute !important;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.station-tools .theme-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 10px;
+  background: var(--nx-plate);
+  border: 1px solid rgb(216 178 90 / 0.5);
+  color: var(--nx-ivory);
+  font-size: 12px;
+}
+.station-tools select {
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--nx-ivory);
+  font: inherit;
+}
+.station-tools option {
+  color: #000;
+}
+.station-status {
+  position: absolute !important;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--nx-mist);
+  white-space: nowrap;
+}
+.station-status span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--nx-alert);
+}
+.station-status.on span {
+  background: var(--nx-success);
+}
+
+/* Start card */
+.start-card {
+  width: min(560px, 100%);
+  box-sizing: border-box;
+  padding: 34px 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgb(10 26 32 / 0.95);
+  border: 1px solid var(--nx-brass);
+  box-shadow:
+    inset 0 0 0 3px var(--nx-ground),
+    inset 0 0 0 4px rgb(216 178 90 / 0.55),
+    0 24px 60px rgb(0 0 0 / 0.7);
+}
+.start-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.start-brand img {
+  height: 74px;
+  border-radius: 4px;
+  transform: rotate(-6deg);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 0.6);
+}
+.start-brand h1 {
+  margin: 6px 0 0;
+  font: 400 36px var(--nx-display);
+  letter-spacing: 6px;
+  color: var(--nx-brass-light);
+}
+.start-brand p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--nx-mist);
+}
+.start-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.start-field > .nx-caps,
+.start-field > label.nx-caps {
+  color: var(--nx-brass-light);
+}
+.start-input {
+  height: 52px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border: 1px solid rgb(216 178 90 / 0.6);
+  border-radius: 0;
+  background: var(--nx-panel);
+  color: var(--nx-ivory);
+  font: 20px var(--nx-serif);
+  min-width: 0;
+}
+.start-input::placeholder {
+  color: rgb(201 214 212 / 0.55);
+}
+.start-input.code {
+  flex: 1;
+  font-size: 24px;
+  letter-spacing: 10px;
+}
+.start-row {
+  display: flex;
+  gap: 10px;
+}
+.classic-ui .nx-btn.grow {
+  flex: 1;
+}
+.classic-ui .nx-btn.big {
+  height: 56px;
+}
+.start-or {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--nx-mist);
+  font-size: 13px;
+}
+.start-or::before,
+.start-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgb(216 178 90 / 0.35);
+}
+.start-help {
+  font-size: 13px;
+  color: var(--nx-mist);
+}
+.start-error {
+  margin: 0;
+  padding: 8px 12px 6px;
+  background: var(--nx-signal-red);
+  color: var(--nx-ivory);
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+.start-invite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--nx-brass-light);
+}
+
+/* Room code as a brass ticket stub */
+.room-stub {
+  display: flex;
+  align-items: stretch;
+  min-height: 60px;
+  background: #c9963f;
+  color: #2a1a08;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.5);
+}
+.room-stub-code,
+.room-stub.small {
+  padding: 8px 18px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.room-stub.small {
+  min-height: 0;
+  padding: 6px 14px 4px;
+}
+.room-stub-code {
+  border-right: 2px dashed rgb(42 26 8 / 0.45);
+}
+.room-stub .nx-caps {
+  font-size: 11px;
+}
+.room-code {
+  font: 28px/1 var(--nx-serif);
+  letter-spacing: 6px;
+}
+.room-stub-link {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.room-stub-link code {
+  font: 600 14px var(--nx-sans);
+  white-space: nowrap;
+}
+.room-stub .nx-btn.dark {
+  height: 40px;
+  font-size: 12px;
+}
+
+/* Lobby layout */
+.station.lobby-nx {
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 22px 32px 0;
+}
+.lobby-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px 36px;
+  padding-right: 340px;
+}
+.lobby-brand h1 {
+  margin: 0;
+  font: 400 30px var(--nx-display);
+  letter-spacing: 6px;
+  color: var(--nx-brass-light);
+  white-space: nowrap;
+}
+.lobby-brand p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--nx-mist);
+}
+.classic-ui .lobby-leave {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  height: 40px;
+  font-size: 12px;
+}
+.lobby-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(380px, 560px) minmax(0, 1fr);
+  gap: 28px;
+  margin: 26px 0 0;
+  padding-bottom: 110px;
+}
+.lobby-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.lobby-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.lobby-heading h2 {
+  margin: 0;
+  font: 400 22px var(--nx-display);
+  letter-spacing: 3px;
+  color: var(--nx-brass-light);
+}
+.lobby-heading span {
+  font-size: 14px;
+  color: var(--nx-mist);
+}
+.lobby-seats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.lobby-seat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  background: rgb(10 26 32 / 0.92);
+  border: 1px solid rgb(216 178 90 / 0.5);
+  animation: lobby-in 0.3s var(--nx-ease) both;
+}
+@keyframes lobby-in {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+.lobby-seat.mine {
+  border: 2px solid var(--nx-brass-light);
+}
+.lobby-seat.away {
+  opacity: 0.6;
+}
+.lobby-seat.free {
+  border: 1px dashed rgb(216 178 90 / 0.3);
+  background: rgb(10 26 32 / 0.45);
+  animation: none;
+}
+.lobby-seat-strip {
+  align-self: stretch;
+  width: 30px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lobby-seat.free .lobby-seat-strip {
+  border-right: 1px dashed rgb(216 178 90 / 0.35);
+}
+.lobby-seat-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 18px var(--nx-serif);
+}
+.lobby-seat.free .lobby-seat-name {
+  font: 14px var(--nx-sans);
+  color: rgb(201 214 212 / 0.7);
+}
+.lobby-badge {
+  padding: 4px 8px 2px;
+  font: 700 10px var(--nx-sans);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid var(--nx-brass-light);
+  color: var(--nx-brass-light);
+}
+.lobby-badge.host {
+  background: var(--nx-brass);
+  border-color: var(--nx-brass);
+  color: var(--nx-ink);
+}
+.lobby-badge.away {
+  border-color: var(--nx-alert);
+  color: var(--nx-alert);
+}
+.classic-ui .lobby-kick {
+  width: 36px;
+  height: 36px;
+  border-color: rgb(201 214 212 / 0.4);
+  color: var(--nx-mist);
+}
+.lobby-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  background: rgb(15 42 51 / 0.92);
+  border: 1px solid rgb(216 178 90 / 0.4);
+}
+.lobby-box.tight {
+  gap: 0;
+  padding: 2px 12px;
+}
+.lobby-box > .nx-caps,
+.lobby-group > .nx-caps {
+  color: var(--nx-brass-light);
+}
+.lobby-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lobby-swatch {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--nx-ground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+.lobby-swatch:not(:disabled):hover {
+  transform: scale(1.08);
+}
+.lobby-swatch.on {
+  border: 3px solid var(--nx-brass-light);
+  box-shadow:
+    0 0 0 3px var(--nx-ground),
+    0 0 0 5px var(--nx-brass-light);
+}
+.lobby-swatch:disabled {
+  opacity: 0.3;
+}
+.lobby-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--nx-mist);
+}
+.lobby-journey {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.lobby-options.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 14px;
+}
+.lobby-option {
+  border-radius: 0;
+  border: 1px solid rgb(216 178 90 / 0.35);
+  background: rgb(15 42 51 / 0.92);
+  color: var(--nx-ivory);
+  text-align: left;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.lobby-option:not(:disabled):hover {
+  border-color: var(--nx-brass-light);
+}
+.lobby-option:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.lobby-option.on {
+  border: 2px solid var(--nx-brass-light);
+  background: rgb(216 178 90 / 0.12);
+}
+.lobby-option.tall {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 84px;
+  padding: 12px 14px;
+}
+.lobby-option.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 8px 12px;
+}
+.lobby-option.small {
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+.lobby-option-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 20px var(--nx-serif);
+}
+.lobby-option-text,
+.lobby-option-body span {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--nx-mist);
+}
+.lobby-option-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+.lobby-option-body strong {
+  font-size: 15px;
+}
+.lobby-dot {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid var(--nx-brass-light);
+}
+.lobby-option.on .lobby-dot {
+  background: radial-gradient(var(--nx-brass-light) 0 45%, transparent 50%);
+}
+.lobby-years {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--nx-mist);
+}
+.lobby-group,
+.lobby-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lobby-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 6px 0;
+  border: 0;
+  border-bottom: 1px solid rgb(216 178 90 / 0.15);
+  border-radius: 0;
+  background: transparent;
+  color: var(--nx-ivory);
+}
+.lobby-switch:last-child {
+  border-bottom: 0;
+}
+.lobby-switch:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.lobby-track {
+  flex: none;
+  position: relative;
+  width: 46px;
+  height: 26px;
+  box-sizing: border-box;
+  border-radius: 13px;
+  background: #20343b;
+  border: 1px solid rgb(201 214 212 / 0.4);
+  transition: background 0.15s;
+}
+.lobby-track span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--nx-mist);
+  transition: left 0.15s;
+}
+.lobby-track.on {
+  background: var(--nx-brass);
+  border-color: var(--nx-brass-light);
+}
+.lobby-track.on span {
+  left: 23px;
+  background: var(--nx-ink);
+}
+.lobby-map {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.lobby-map-preview {
+  width: 150px;
+  height: 88px;
+  object-fit: cover;
+  border: 1px solid rgb(216 178 90 / 0.5);
+}
+.lobby-map-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+}
+.lobby-map-text strong {
+  font: 400 20px var(--nx-serif);
+}
+.lobby-map-text > span:last-child {
+  font-size: 13px;
+  color: var(--nx-mist);
+}
+.lobby-map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.lobby-map-actions .nx-btn {
+  height: 44px;
+  font-size: 12px;
+}
+.lobby-map .map-errors {
+  flex-basis: 100%;
+  max-height: 160px;
+  overflow: auto;
+}
+.lobby-foot {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  min-height: 80px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgb(10 26 32 / 0.96);
+  border-top: 1px solid var(--nx-brass);
+}
+.lobby-foot p {
+  flex: 1;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.classic-ui .lobby-go {
+  padding: 0 30px;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+.lobby-go.ready {
+  animation: lobby-glow 1.8s ease-in-out infinite;
+}
+@keyframes lobby-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(226 195 119 / 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgb(226 195 119 / 0);
+  }
+}
+.lobby-wait {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 22px;
+  border: 1px solid rgb(216 178 90 / 0.5);
+  color: var(--nx-brass-light);
+  font: 700 14px var(--nx-sans);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.lobby-nx .station-status {
+  display: none;
+}
+@media (max-width: 1100px) {
+  .lobby-main {
+    grid-template-columns: 1fr;
+  }
+  .lobby-top {
+    padding-right: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lobby-seat,
+  .lobby-go.ready {
+    animation: none;
+  }
+}
+
+/* ===================================================================================
+   Lobby settings (trains per player)
+   =================================================================================== */
+.lobby-setting {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+.lobby-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.classic-ui .lobby-stepper .nx-square:disabled {
+  opacity: 0.35;
+}
+.lobby-stepper-value {
+  width: 64px;
+  height: 44px;
+  box-sizing: border-box;
+  border: 1px solid var(--nx-brass);
+  border-radius: 0;
+  background: var(--nx-ground);
+  color: var(--nx-brass-light);
+  font: 22px var(--nx-serif);
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.lobby-stepper-value::-webkit-inner-spin-button,
+.lobby-stepper-value::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.lobby-stepper-value:disabled {
+  opacity: 1;
+  border-color: rgb(216 178 90 / 0.4);
+}
+.classic-ui .lobby-reset {
+  height: 44px;
+  font-size: 12px;
+}
+
+/* ===================================================================================
+   Host removes a player during the game
+   =================================================================================== */
+.classic-ui .nx-plaque.removed {
+  opacity: 0.4;
+}
+.classic-ui .nx-plaque.removed .nx-plaque-name {
+  text-decoration: line-through;
+}
+.classic-ui .nx-kick {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgb(201 214 212 / 0.5);
+  background: var(--nx-ground);
+  color: var(--nx-mist);
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.classic-ui .nx-plaque:hover .nx-kick,
+.classic-ui .nx-kick:focus-visible {
+  opacity: 1;
+}
+.classic-ui .nx-kick:hover {
+  border-color: var(--nx-alert);
+  color: var(--nx-alert);
+}
+.classic-ui .nx-kick-confirm {
+  position: relative;
+  z-index: 30;
+  margin: 0 0 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--nx-ivory);
+  color: var(--nx-ink);
+  box-shadow:
+    0 0 0 1px var(--nx-brass),
+    0 12px 26px rgb(0 0 0 / 0.6);
+}
+.classic-ui .nx-kick-confirm strong {
+  font: 18px var(--nx-serif);
+}
+.classic-ui .nx-kick-confirm p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.classic-ui .nx-kick-confirm div {
+  display: flex;
+  gap: 8px;
+}
+.classic-ui .nx-kick-confirm .nx-btn {
+  height: 40px;
+  font-size: 12px;
+}
+.classic-ui .nx-kick-confirm .nx-btn.danger {
+  background: var(--nx-signal-red);
+  color: #fff;
+}
+.classic-ui .nx-kick-confirm .nx-btn.outline.light {
+  border: 1px solid var(--nx-ink);
+  color: var(--nx-ink);
+  background: transparent;
+}
+
+/* ===================================================================================
+   Phone: held upright, the game asks to be turned sideways
+   =================================================================================== */
+.nx-rotate {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 32px;
+  text-align: center;
+  background: #0a1a20;
+  color: #f4ebd3;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+}
+.nx-rotate h2 {
+  margin: 0;
+  font: 400 26px 'Marcellus SC', Georgia, serif;
+  letter-spacing: 4px;
+  color: #e2c377;
+}
+.nx-rotate p {
+  margin: 0;
+  max-width: 300px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #c9d6d4;
+}
+.nx-rotate svg {
+  fill: none;
+  stroke: #e2c377;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nx-rotate-phone {
+  transform-origin: 48px 48px;
+  animation: nx-rotate 2.4s var(--nx-ease, ease) infinite;
+}
+@keyframes nx-rotate {
+  0%,
+  25% {
+    transform: none;
+  }
+  55%,
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+/* ===================================================================================
+   Phone layout (landscape, about 844 × 390). Root: .game.classic-ui.phone
+   Status pill top center · player chips left · rail right · hand strip bottom ·
+   market, tickets and log as sheets · claim card as a bottom sheet.
+   =================================================================================== */
+.classic-ui.phone .nx-header {
+  top: 8px;
+  height: 40px;
+  max-width: calc(100% - 200px);
+}
+.classic-ui.phone .nx-header-text {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0 14px;
+}
+.classic-ui.phone .nx-header p {
+  margin: 0;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.classic-ui.phone .nx-rules-btn {
+  width: 44px;
+  flex: none;
+  font-size: 20px;
+}
+.classic-ui.phone .nx-menu-btn svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+.classic-ui.phone .nx-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menu popover under the status pill */
+.classic-ui .nx-phone-menu {
+  position: absolute;
+  z-index: 46;
+  top: 54px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  max-height: calc(100% - 70px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--nx-plate);
+  border: 1px solid var(--nx-brass);
+  box-shadow: 0 14px 30px rgb(0 0 0 / 0.6);
+  animation: nx-pop 0.2s var(--nx-ease) both;
+}
+.classic-ui .nx-phone-menu > button,
+.classic-ui .nx-phone-menu > .city-search,
+.classic-ui .nx-phone-menu > .language-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-bottom: 1px solid rgb(216 178 90 / 0.2);
+  border-radius: 0;
+  background: transparent;
+  color: var(--nx-ivory);
+  font: 600 14px var(--nx-sans);
+  text-align: left;
+}
+.classic-ui .nx-phone-menu input,
+.classic-ui .nx-phone-menu select {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  background: transparent;
+  border: 0;
+  color: var(--nx-ivory);
+  font: 16px var(--nx-sans);
+}
+.classic-ui .nx-phone-menu option {
+  color: #000;
+}
+.classic-ui .nx-phone-menu > button.danger {
+  color: var(--nx-alert);
+  border-bottom: 0;
+}
+
+/* Player chips on the left: folded to color + mark + score, a tap opens them */
+.classic-ui.phone .nx-left {
+  top: 8px;
+  left: 8px;
+  width: auto;
+  max-height: calc(100% - 96px);
+  overflow-y: auto;
+}
+.classic-ui.phone .nx-players {
+  position: relative;
+}
+.classic-ui.phone .nx-players-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.classic-ui.phone .nx-players:not(.folded) .nx-players-toggle {
+  /* Opened: the toggle only covers the list, so the remove buttons and dialog stay reachable. */
+  bottom: auto;
+  height: 100%;
+  z-index: 0;
+}
+.classic-ui.phone .nx-players:not(.folded) ol {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+.classic-ui.phone .nx-players:not(.folded) .nx-kick,
+.classic-ui.phone .nx-players:not(.folded) .nx-skip {
+  pointer-events: auto;
+}
+.classic-ui.phone .nx-players ol {
+  gap: 5px;
+  margin: 0;
+}
+.classic-ui.phone .nx-plaque {
+  height: 40px;
+  gap: 8px;
+  width: 210px;
+}
+.classic-ui.phone .nx-plaque-name {
+  font-size: 15px;
+}
+.classic-ui.phone .nx-plaque-score {
+  font-size: 18px;
+}
+.classic-ui.phone .folded .nx-plaque {
+  width: 52px;
+  padding-right: 6px;
+  gap: 4px;
+}
+.classic-ui.phone .folded .nx-plaque-name,
+.classic-ui.phone .folded .nx-plaque-trains,
+.classic-ui.phone .folded .nx-badge-act {
+  display: none;
+}
+.classic-ui.phone .folded .nx-plaque-score {
+  min-width: 0;
+  flex: 1;
+  text-align: center;
+}
+.classic-ui.phone .nx-kick {
+  opacity: 1;
+  position: static;
+  transform: none;
+  flex: none;
+  width: 30px;
+  height: 30px;
+}
+.classic-ui.phone .nx-kick-confirm {
+  width: 240px;
+  margin: 8px 0 0;
+}
+
+/* Rail on the right: Market, Tickets, zoom */
+.classic-ui .nx-rail {
+  position: absolute;
+  z-index: 20;
+  top: 8px;
+  right: 8px;
+  bottom: 86px;
+  width: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.classic-ui .nx-rail-btn {
+  height: 52px;
+  padding: 2px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 0;
+  border: 1px solid var(--nx-brass);
+  background: var(--nx-plate);
+  color: var(--nx-brass-light);
+  font: 700 10px var(--nx-sans);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.classic-ui .nx-rail-btn span {
+  font: 18px var(--nx-serif);
+  letter-spacing: 0;
+  color: var(--nx-ivory);
+}
+.classic-ui .nx-rail-btn.on {
+  background: var(--nx-brass);
+  color: var(--nx-ink);
+}
+.classic-ui .nx-rail-btn.on span {
+  color: var(--nx-ink);
+}
+.classic-ui .nx-rail-btn:disabled {
+  opacity: 0.45;
+}
+.classic-ui.phone .nx-phone-hint {
+  position: absolute;
+  z-index: 21;
+  left: 50%;
+  bottom: 96px;
+  transform: translateX(-50%);
+}
+.classic-ui.phone .nx-zoom {
+  position: static;
+  transform: none;
+  margin-top: auto;
+}
+.classic-ui.phone .nx-zoom-btn {
+  width: 100%;
+  height: 44px;
+}
+.classic-ui.phone .nx-zoom-btn.fit {
+  display: none;
+}
+
+/* Hand strip along the bottom */
+.classic-ui.phone .nx-bottom-center {
+  bottom: 14px;
+  max-width: calc(100% - 200px);
+}
+.classic-ui.phone .nx-hand {
+  padding: 10px 4px 0;
+  gap: 4px;
+}
+.classic-ui.phone .nx-hand-card {
+  width: 46px;
+  height: 68px;
+  margin-right: 0;
+  border-radius: 4px;
+}
+.classic-ui.phone .nx-hand-card.picked {
+  outline-offset: 1px;
+}
+.classic-ui.phone .nx-count {
+  bottom: -9px;
+  min-width: 22px;
+  height: 19px;
+  padding: 2px 5px 0;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+/* Pass / station buttons sit by the hand, on the right */
+.classic-ui.phone .nx-actions {
+  right: 92px;
+  bottom: 14px;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.classic-ui.phone .nx-actions .nx-btn {
+  height: 44px;
+  padding: 0 12px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* Toasts: smaller, under the status pill */
+.classic-ui.phone .nx-feed {
+  top: 56px;
+}
+.classic-ui.phone .nx-toast {
+  height: 40px;
+  padding: 0 12px 0 6px;
+  gap: 8px;
+  font-size: 13px;
+}
+.classic-ui.phone .nx-toast img {
+  height: 30px;
+}
+
+/* Sheets (market right, tickets left, log right) */
+.classic-ui .nx-sheet-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 44;
+  background: rgb(10 26 32 / 0.35);
+}
+.classic-ui .nx-sheet {
+  position: absolute;
+  z-index: 45;
+  top: 0;
+  bottom: 0;
+  width: min(380px, 70%);
+  box-sizing: border-box;
+  padding: 10px 14px 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgb(10 26 32 / 0.97);
+  box-shadow: 0 0 30px rgb(0 0 0 / 0.6);
+}
+.classic-ui .nx-sheet.right {
+  right: 0;
+  border-left: 1px solid var(--nx-brass);
+  animation: nx-slide 0.22s var(--nx-ease) both;
+}
+.classic-ui .nx-sheet.left {
+  left: 0;
+  border-right: 1px solid var(--nx-brass);
+  animation: nx-slide-left 0.22s var(--nx-ease) both;
+}
+@keyframes nx-slide-left {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+.classic-ui .nx-sheet > header {
+  display: flex;
+  align-items: center;
+}
+.classic-ui .nx-sheet h2 {
+  flex: 1;
+  margin: 0;
+  color: var(--nx-brass-light);
+}
+.classic-ui .nx-sheet .nx-square svg {
+  stroke: var(--nx-ivory);
+}
+.classic-ui .nx-sheet .nx-market {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.classic-ui .nx-sheet .nx-market h2 {
+  display: none;
+}
+.classic-ui .nx-sheet .nx-market-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.classic-ui .nx-sheet .nx-market-card {
+  width: 100%;
+  height: 92px;
+}
+.classic-ui .nx-sheet > .nx-btn {
+  flex: none;
+  width: 100%;
+  height: 48px;
+}
+.classic-ui .nx-sheet .event-log {
+  flex: 1;
+  border: 0;
+  background: none;
+  color: var(--nx-ivory);
+  box-shadow: none;
+  padding: 0;
+}
+.classic-ui .nx-sheet .event-log h2,
+.classic-ui .nx-sheet .event-log .log-toggle {
+  display: none;
+}
+.classic-ui .nx-sheet-empty {
+  margin: 0;
+  color: var(--nx-mist);
+}
+.classic-ui .nx-phone-tickets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.classic-ui .nx-phone-tickets button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.6));
+}
+.classic-ui .nx-phone-tickets .ticket-art {
+  width: 100%;
+}
+
+/* Claiming a route: the popover becomes a card along the bottom, over the hand */
+.classic-ui.phone .nx-pop {
+  position: fixed;
+  left: 50%;
+  right: auto;
+  top: auto;
+  bottom: 0;
+  width: min(520px, calc(100% - 180px));
+  max-height: calc(100% - 56px);
+  overflow-y: auto;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  padding: 10px 16px 12px;
+  gap: 8px;
+  animation: nx-sheet-up 0.24s var(--nx-ease) both;
+}
+.classic-ui.phone .nx-pop.medium {
+  width: min(560px, calc(100% - 180px));
+}
+@keyframes nx-sheet-up {
+  from {
+    transform: translate(-50%, 40px);
+    opacity: 0;
+  }
+}
+.classic-ui.phone .nx-pop .nx-btn {
+  height: 48px;
+}
+
+/* Ticket choice: the dialog fills the short screen */
+.classic-ui.phone .nx-dialog {
+  width: calc(100vw - 24px);
+  max-height: calc(100vh - 24px);
+  gap: 12px;
+  padding: 14px 18px;
+}
+.classic-ui.phone .nx-dialog h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.classic-ui.phone .nx-dialog header p,
+.classic-ui.phone .nx-dialog footer p {
+  font-size: 13px;
+}
+.classic-ui.phone .nx-offers {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 22px 14px;
+  padding: 6px 0;
+}
+.classic-ui.phone .nx-choice-tab {
+  bottom: 96px;
+  height: 44px;
+}
+.classic-ui.phone .nx-hide-choice {
+  height: 36px;
+}
+
+/* Rules: the side panel takes the full height and most of the width */
+.classic-ui.phone .nx-rules {
+  width: min(520px, 100%);
+  padding: 12px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-rotate-phone,
+  .classic-ui .nx-sheet,
+  .classic-ui .nx-phone-menu,
+  .classic-ui.phone .nx-pop {
+    animation: none;
+  }
+}
+
+/* The start screen and lobby on a phone: tighter edges, everything scrolls */
+@media (max-width: 900px), (max-height: 500px) {
+  /* The desktop minimum width would push a phone screen sideways. */
+  body {
+    min-width: 0;
+  }
+  .station {
+    padding: 64px 12px 56px;
+  }
+  .station.lobby-nx {
+    padding: 14px 12px 0;
+  }
+  .station-tools {
+    top: 8px;
+    right: 12px;
+  }
+  .lobby-top {
+    padding-top: 46px;
+    gap: 12px 20px;
+  }
+  .classic-ui .lobby-leave {
+    top: 0;
+    left: 0;
+    right: auto;
+  }
+  .lobby-brand h1 {
+    font-size: 22px;
+    letter-spacing: 4px;
+  }
+  .room-stub {
+    max-width: 100%;
+  }
+  .room-stub-link code {
+    display: none;
+  }
+  .lobby-main {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 18px;
+    padding-bottom: 96px;
+  }
+  .lobby-options.two {
+    grid-template-columns: 1fr;
+  }
+  .lobby-top {
+    padding-right: 0;
+  }
+  .lobby-foot {
+    padding: 0 12px;
+    min-height: 68px;
+  }
+  .lobby-foot p {
+    font-size: 13px;
+  }
+}

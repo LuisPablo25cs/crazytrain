@@ -12,7 +12,7 @@ type HandCard = (typeof CARDS)[number];
  * scales it to 1.14 and lights it; its neighbors step 14px aside. Clicking picks that color, so the
  * claim popover pays with it first.
  */
-export function HandFan({ hand }: { hand: Hand }) {
+export function HandFan({ hand, flat = false }: { hand: Hand; flat?: boolean }) {
   const picked = useClient((s) => s.ui.handColor);
   const [hover, setHover] = useState<number | null>(null);
   const mid = (CARDS.length - 1) / 2;
@@ -28,18 +28,19 @@ export function HandFan({ hand }: { hand: Hand }) {
         const count = hand[card];
         const off = i - mid;
         let x = 0;
-        let y = off * off * 1.2;
-        let rot = -off * 2.2;
+        // Flat (phone): a straight strip, no hover lift; the picked card rises a little.
+        let y = flat ? 0 : off * off * 1.2;
+        let rot = flat ? 0 : -off * 2.2;
         let scale = 1;
-        const lifted = hover === i;
+        const lifted = !flat && hover === i;
         if (lifted) {
           y -= 34;
           rot = 0;
           scale = 1.14;
-        } else if (hover !== null && Math.abs(i - hover) === 1) {
+        } else if (!flat && hover !== null && Math.abs(i - hover) === 1) {
           x = (i - hover) * 14;
         } else if (picked === card) {
-          y -= 14;
+          y -= flat ? 8 : 14;
         }
         return (
           <button

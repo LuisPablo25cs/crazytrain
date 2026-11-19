@@ -10,7 +10,10 @@ const CAMERA_HEIGHT = 500;
 const MAX_ZOOM_FACTOR = 8;
 /** Screen pixels covered by the HUD on each side (see .hud-* in styles.css). */
 // The bottom dock is outside the board area, so the map may reach the bottom edge.
-const HUD = { left: 280, right: 305, top: 64, bottom: 0 };
+const DESKTOP_HUD = { left: 280, right: 305, top: 64, bottom: 0 };
+/** The phone layout (ui/hud/classic/phone.tsx): player chips left, rail right, status top, hand strip bottom. */
+const PHONE_HUD = { left: 60, right: 92, top: 48, bottom: 78 };
+const hudFor = (w: number, h: number) => (w <= 900 || h <= 500 ? PHONE_HUD : DESKTOP_HUD);
 
 export interface CameraFocus {
   x: number;
@@ -35,6 +38,7 @@ interface CameraRigProps {
 export function CameraRig({ width, height, focus, onZoomChange }: CameraRigProps) {
   const controls = useRef<ComponentRef<typeof MapControls>>(null);
   const { camera, size } = useThree();
+  const HUD = hudFor(size.width, size.height);
   const goal = useRef<{ x: number; z: number; zoom: number } | null>(null);
   const zoomedIn = useRef<boolean | null>(null);
   // The smallest zoom shows the whole map in the area the HUD leaves free.

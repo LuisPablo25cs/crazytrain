@@ -35,6 +35,8 @@ export interface Seat {
   /** Player index once the game starts. */
   playerIndex: number | null;
   disconnectedAt: number | null;
+  /** Removed by the host during a game: the seat keeps its player, but its turns are skipped. */
+  removed: boolean;
 }
 
 /** How a room talks to sockets. The socket layer implements it; tests can fake it. */
@@ -65,6 +67,8 @@ export class Room {
   mode: GameMode = 'classic';
   years: number;
   doubleRoutes: DoubleRoutes = 'rule';
+  /** Trains per player chosen in the lobby; null keeps the map's number. */
+  trainsPerPlayer: number | null = null;
   game: { state: GameState; version: number } | null = null;
   lastActivity: number;
   finishedAt: number | null = null;
@@ -96,7 +100,12 @@ export class Room {
 
   /** What the lobby chose besides the expansion toggles. */
   private lobby() {
-    return { mode: this.mode, years: this.years, doubleRoutes: this.doubleRoutes };
+    return {
+      mode: this.mode,
+      years: this.years,
+      doubleRoutes: this.doubleRoutes,
+      trainsPerPlayer: this.trainsPerPlayer ?? undefined,
+    };
   }
 
   connectedSeats(): Seat[] {
@@ -135,6 +144,7 @@ export class Room {
       socketId,
       playerIndex: null,
       disconnectedAt: null,
+      removed: false,
     };
     this.seats.push(seat);
     if (!this.hostSeatId) this.hostSeatId = seat.id;
@@ -246,6 +256,20 @@ export class Room {
     return OK;
   }
 
+  setSettings(seat: Seat, trainsPerPlayer: number | null): IntentReply {
+    const denied = this.requireHostInLobby(seat);
+    if (denied) return denied;
+    const threshold = resolveRules(this.map.rules, this.toggles, undefined, { ...this.lobby(), trainsPerPlayer: undefined })
+      .lastRoundTrainThreshold;
+    if (trainsPerPlayer !== null && trainsPerPlayer <= threshold) {
+      return fail(`players need more than ${threshold} trains`, 'invalid');
+    }
+    this.trainsPerPlayer = trainsPerPlayer;
+    this.touch();
+    this.broadcastRoom();
+    return OK;
+  }
+
   setMap(seat: Seat, doc: unknown): IntentReply {
     const denied = this.requireHostInLobby(seat);
     if (denied) return denied;
@@ -299,15 +323,60 @@ export class Room {
     return OK;
   }
 
+  /**
+   * The host removes a player. In the lobby the seat goes away. During a game the player stays on the
+   * board (their trains and score remain) but can no longer rejoin, and their turns are skipped.
+   */
   kick(seat: Seat, targetId: string): IntentReply {
-    const denied = this.requireHostInLobby(seat);
-    if (denied) return denied;
+    if (!this.isHost(seat)) return fail('only the host can do that', 'forbidden');
+    if (this.phase === 'finished') return fail('the game is over', 'invalid');
     const target = this.seatById(targetId);
     if (!target) return fail('no such player', 'notFound');
     if (target === seat) return fail('you cannot remove yourself; leave instead', 'invalid');
-    if (target.socketId) this.transport.detach(target.socketId, 'The host removed you from the room.');
-    this.removeSeat(target);
+    if (this.phase === 'lobby') {
+      if (target.socketId) this.transport.detach(target.socketId, 'The host removed you from the room.');
+      this.removeSeat(target);
+      return OK;
+    }
+    if (target.removed) return fail('that player was already removed', 'invalid');
+    target.removed = true;
+    target.token = newToken(); // the old token can no longer reclaim the seat
+    if (target.socketId) this.transport.detach(target.socketId, 'The host removed you from the game.');
+    target.socketId = null;
+    target.disconnectedAt = this.options.now();
+    this.touch();
+    const events = this.skipRemoved();
+    this.broadcastRoom();
+    if (events.length) {
+      this.game!.version += 1;
+      this.afterApply(events);
+    }
     return OK;
+  }
+
+  /** Skip every pending turn or ticket choice that belongs to a removed player. Mutates the game. */
+  private skipRemoved(): GameEvent[] {
+    const game = this.game;
+    if (!game) return [];
+    const events: GameEvent[] = [];
+    const removed = (index: number) => this.seats.some((s) => s.removed && s.playerIndex === index);
+    // Bounded: every skip either finishes a choice or ends a turn.
+    for (let guard = 0; guard < 4 * game.state.players.length + 4; guard++) {
+      const st = game.state;
+      let who: number | null = null;
+      if (st.phase === 'initialTickets') {
+        who = st.players.findIndex((p, i) => !p.keptInitial && removed(i));
+        if (who < 0) who = null;
+      } else if (st.phase === 'playing' && removed(st.currentPlayer)) {
+        who = st.currentPlayer;
+      }
+      if (who === null) break;
+      const result = applyAction(st, this.mapIndex, who, { type: 'skip' });
+      if (!result.ok) break;
+      game.state = result.state;
+      events.push(...result.events);
+    }
+    return events;
   }
 
   startGame(seat: Seat): IntentReply {
@@ -340,6 +409,7 @@ export class Room {
     if (this.phase !== 'finished') return fail('the game is not finished', 'invalid');
     this.game = null;
     this.finishedAt = null;
+    for (const s of this.seats.filter((x) => x.removed)) this.removeSeat(s);
     for (const s of this.seats) s.playerIndex = null;
     this.touch();
     this.broadcastRoom();
@@ -374,11 +444,16 @@ export class Room {
     if (!result.ok) return fail(result.error, 'invalid');
     game.state = result.state;
     game.version += 1;
+    this.afterApply([...result.events, ...this.skipRemoved()]);
+    return OK;
+  }
+
+  private afterApply(events: GameEvent[]): void {
+    const game = this.game!;
     if (game.state.phase === 'finished') this.finishedAt = this.options.now();
     this.touch();
-    this.broadcastGame(result.events);
+    this.broadcastGame(events);
     if (game.state.phase === 'finished') this.broadcastRoom();
-    return OK;
   }
 
   // --- Outgoing messages ---------------------------------------------------
@@ -397,11 +472,15 @@ export class Room {
         connected: s.socketId !== null,
         isHost: s.id === this.hostSeatId,
         playerIndex: s.playerIndex,
+        removed: s.removed,
       })),
       toggles: { ...this.toggles },
       mode: this.mode,
       years: this.years,
       doubleRoutes: this.doubleRoutes,
+      trainsPerPlayer: rules.trainsPerPlayer,
+      defaultTrains: resolveRules(this.map.rules, this.toggles, undefined, { ...this.lobby(), trainsPerPlayer: undefined })
+        .trainsPerPlayer,
       map: {
         id: this.map.id,
         name: this.map.name,

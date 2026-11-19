@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   nextStationCost,
   type GameView,
@@ -24,6 +24,7 @@ import { RouteTooltip } from './RouteTooltip.js';
 import { RulesSheet } from './RulesSheet.js';
 import { TicketFan } from './TicketFan.js';
 import { ZoomControl } from './ZoomControl.js';
+import { PhoneLog, PhoneMenu, PhoneTickets, clearHighlights, usePhone, type PhoneSheet } from './phone.js';
 import './fonts.js';
 
 /** How long my CLAIMED popover stays while the train rolls in. */
@@ -60,6 +61,182 @@ export function ClassicHud({ view, room, map, theme, can, onLeave }: ClassicHudP
   const playing = me && view.phase !== 'finished';
   const myTurnStart = can.isMyTurn && view.turn.kind === 'await';
   const stationCost = me ? nextStationCost(view, view.players[me.index]!) : null;
+  const phone = usePhone();
+  const [sheet, setSheetState] = useState<PhoneSheet>(null);
+  const setSheet = (next: PhoneSheet) => {
+    if (sheet === 'tickets' && next !== 'tickets') clearHighlights();
+    setSheetState(next);
+  };
+  // A new turn closes the market; picking a route closes any sheet so the claim card shows.
+  useEffect(() => setSheetState((s) => (s === 'market' ? null : s)), [view.turnNumber]);
+  useEffect(() => {
+    if (ui.selectedRoute) setSheetState(null);
+  }, [ui.selectedRoute]);
+  useEffect(() => {
+    if (!phone) setSheetState(null);
+  }, [phone]);
+
+  const stationButton = view.rules.expansions.stations && (
+    <button
+      className="nx-btn outline light"
+      disabled={!myTurnStart || can.station !== null}
+      title={can.station ?? (stationCost !== null ? S.stationCost(stationCost) : undefined)}
+      onClick={() =>
+        setUi(
+          ui.mode.kind === 'station'
+            ? { mode: { kind: 'normal' }, selectedCity: null }
+            : { mode: { kind: 'station' }, selectedRoute: null },
+        )
+      }
+    >
+      {ui.mode.kind === 'station' ? S.cancel : `${S.buildStation}${stationCost !== null ? ` · ${stationCost}` : ''}`}
+    </button>
+  );
+  const passButton = can.pass === null && (
+    <button className="nx-btn outline light" onClick={() => void sendAction({ type: 'pass' })}>
+      {S.pass}
+    </button>
+  );
+  const drawTicketsButton = (
+    <button
+      className="nx-btn primary"
+      disabled={can.drawTickets !== null}
+      title={can.drawTickets ?? undefined}
+      onClick={() => {
+        setSheet(null);
+        void sendAction({ type: 'drawTickets' });
+      }}
+    >
+      {NX.drawTickets(view.ticketDeckCount)}
+    </button>
+  );
+  const P = T.phone;
+
+  if (phone) {
+    const sheetTitle =
+      sheet === 'market' ? P.market : sheet === 'tickets' ? P.tickets : sheet === 'log' ? P.log : '';
+    return (
+      <>
+        <header className="nx-header">
+          <div className="nx-header-text" role="status">
+            <p className={view.lastRound ? 'last-round' : ''}>{can.banner}</p>
+          </div>
+          <button
+            className={`nx-rules-btn ${ui.rulesTab ? 'on' : ''}`}
+            aria-label={T.rulesPanel.open}
+            aria-expanded={ui.rulesTab !== null}
+            onClick={() => setUi({ rulesTab: ui.rulesTab ? null : 'turn' })}
+          >
+            ?
+          </button>
+          <button
+            className={`nx-rules-btn nx-menu-btn ${sheet === 'menu' ? 'on' : ''}`}
+            aria-label={P.menu}
+            aria-expanded={sheet === 'menu'}
+            onClick={() => setSheet(sheet === 'menu' ? null : 'menu')}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M3 5h12M3 9h12M3 13h12" />
+            </svg>
+          </button>
+        </header>
+        {sheet === 'menu' && <PhoneMenu map={map.index} onSheet={setSheet} onLeave={onLeave} />}
+        <ActivityFeed view={view} map={map.index} theme={theme} />
+
+        <aside className="nx-left">
+          <PlayerPlaques view={view} room={room} theme={theme} phone />
+        </aside>
+
+        <nav className="nx-rail" aria-label={S.market}>
+          <button
+            className={`nx-rail-btn ${sheet === 'market' ? 'on' : ''}`}
+            aria-expanded={sheet === 'market'}
+            onClick={() => setSheet(sheet === 'market' ? null : 'market')}
+          >
+            {P.market}
+            <span>{view.market.filter(Boolean).length}</span>
+          </button>
+          {me && (
+            <button
+              className={`nx-rail-btn ${sheet === 'tickets' ? 'on' : ''}`}
+              aria-expanded={sheet === 'tickets'}
+              onClick={() => setSheet(sheet === 'tickets' ? null : 'tickets')}
+            >
+              {P.tickets}
+              <span>{me.tickets.length}</span>
+            </button>
+          )}
+          {playing && view.rules.expansions.stations && (
+            <button
+              className={`nx-rail-btn ${ui.mode.kind === 'station' ? 'on' : ''}`}
+              disabled={ui.mode.kind !== 'station' && (!myTurnStart || can.station !== null)}
+              title={can.station ?? undefined}
+              onClick={() =>
+                setUi(
+                  ui.mode.kind === 'station'
+                    ? { mode: { kind: 'normal' }, selectedCity: null }
+                    : { mode: { kind: 'station' }, selectedRoute: null },
+                )
+              }
+            >
+              {ui.mode.kind === 'station' ? S.cancel : P.station}
+              {ui.mode.kind !== 'station' && stationCost !== null && <span>{stationCost}</span>}
+            </button>
+          )}
+          {playing && can.pass === null && (
+            <button className="nx-rail-btn" onClick={() => void sendAction({ type: 'pass' })}>
+              {S.pass}
+            </button>
+          )}
+          <ZoomControl />
+        </nav>
+
+        {playing && (
+          <>
+            <div className="nx-bottom-center">
+              <HandFan hand={me.hand} flat />
+            </div>
+            {ui.mode.kind === 'station' && <p className="nx-hint nx-phone-hint">{S.stationPick}</p>}
+          </>
+        )}
+
+        {sheet && sheet !== 'menu' && (
+          <>
+            <div className="nx-sheet-scrim" aria-hidden="true" onClick={() => setSheet(null)} />
+            <section className={`nx-sheet ${sheet === 'tickets' ? 'left' : 'right'}`} role="dialog" aria-label={sheetTitle}>
+              <header>
+                <h2 className="nx-caps">{sheetTitle}</h2>
+                <button className="nx-square" aria-label={P.close} onClick={() => setSheet(null)}>
+                  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M3 3l8 8M11 3l-8 8" />
+                  </svg>
+                </button>
+              </header>
+              {sheet === 'market' && (
+                <>
+                  <MarketBlock view={view} can={can} />
+                  {playing && drawTicketsButton}
+                </>
+              )}
+              {sheet === 'tickets' && <PhoneTickets view={view} map={map.index} onDone={() => setSheetState(null)} />}
+              {sheet === 'log' && <PhoneLog view={view} map={map.index} />}
+            </section>
+          </>
+        )}
+
+        <RulesSheet view={view} map={map.index} />
+        {claimed && (
+          <ClaimedFlash
+            key={claimed.at}
+            routeId={claimed.routeId}
+            payment={claimed.payment}
+            view={view}
+            map={map.index}
+          />
+        )}
+      </>
+    );
+  }
 
   return (
     <>
@@ -108,42 +285,9 @@ export function ClassicHud({ view, room, map, theme, can, onLeave }: ClassicHudP
           </div>
           <div className="nx-actions">
             {ui.mode.kind === 'station' && <p className="nx-hint">{S.stationPick}</p>}
-            {can.pass === null && (
-              <button
-                className="nx-btn outline light"
-                onClick={() => void sendAction({ type: 'pass' })}
-              >
-                {S.pass}
-              </button>
-            )}
-            {view.rules.expansions.stations && (
-              <button
-                className="nx-btn outline light"
-                disabled={!myTurnStart || can.station !== null}
-                title={
-                  can.station ?? (stationCost !== null ? S.stationCost(stationCost) : undefined)
-                }
-                onClick={() =>
-                  setUi(
-                    ui.mode.kind === 'station'
-                      ? { mode: { kind: 'normal' }, selectedCity: null }
-                      : { mode: { kind: 'station' }, selectedRoute: null },
-                  )
-                }
-              >
-                {ui.mode.kind === 'station'
-                  ? S.cancel
-                  : `${S.buildStation}${stationCost !== null ? ` · ${stationCost}` : ''}`}
-              </button>
-            )}
-            <button
-              className="nx-btn primary"
-              disabled={can.drawTickets !== null}
-              title={can.drawTickets ?? undefined}
-              onClick={() => void sendAction({ type: 'drawTickets' })}
-            >
-              {NX.drawTickets(view.ticketDeckCount)}
-            </button>
+            {passButton}
+            {stationButton}
+            {drawTicketsButton}
           </div>
         </>
       )}

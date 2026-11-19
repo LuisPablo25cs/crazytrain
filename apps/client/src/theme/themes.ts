@@ -1,6 +1,5 @@
 import { ThemeSchema, type Theme } from '@rails/shared';
 import classic from './themes/classic.json';
-import night from './themes/night.json';
 
 /** Validate a theme file; fall back to the default theme when it is broken (R17). */
 export function loadTheme(raw: unknown, fallback?: Theme): Theme {
@@ -12,7 +11,11 @@ export function loadTheme(raw: unknown, fallback?: Theme): Theme {
 }
 
 export const DEFAULT_THEME = loadTheme(classic);
-export const THEMES: Theme[] = [DEFAULT_THEME, loadTheme(night, DEFAULT_THEME)];
+/**
+ * The dark "night" theme (themes/night.json) is switched off for now: only the default theme is offered.
+ * To bring it back, import night.json and add `loadTheme(night, DEFAULT_THEME)` here.
+ */
+export const THEMES: Theme[] = [DEFAULT_THEME];
 
 export function themeById(id: string | null): Theme {
   return THEMES.find((t) => t.id === id) ?? DEFAULT_THEME;
