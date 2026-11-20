@@ -3,6 +3,7 @@ import { ALL_CARDS } from '../map/schema.js';
 import type { GameEvent } from '../engine/types.js';
 import type { GameView } from '../engine/view.js';
 import { TRAINS_RANGE } from '../rules/resolve.js';
+import { isValidSign } from './signs.js';
 import { DoubleRoutesSchema, GameModeSchema, type DoubleRoutes, type ExpansionToggles, type GameMode } from '../rules/schema.js';
 
 /** Largest map document a host may upload, in bytes of JSON. */
@@ -58,7 +59,10 @@ export const IntentSchema = z.discriminatedUnion('type', [
     type: z.literal('setSettings'),
     trainsPerPlayer: z.number().int().min(TRAINS_RANGE.min).max(TRAINS_RANGE.max).nullable(),
   }),
+  /** A palette color id, or a mixed color as `#rrggbb`. */
   z.object({ type: z.literal('setColor'), color: z.string().min(1).max(30) }),
+  /** A shape from PLAYER_SIGNS, or `char:` and one typed character. */
+  z.object({ type: z.literal('setSign'), sign: z.string().max(24).refine(isValidSign, 'unknown sign') }),
   z.object({ type: z.literal('kick'), seatId: id }),
   z.object({ type: z.literal('startGame') }),
   z.object({ type: z.literal('gameAction'), action: ClientActionSchema, expectedVersion: z.number().int().min(0) }),
@@ -75,7 +79,10 @@ export type IntentReply =
 export interface SeatView {
   id: string;
   name: string;
+  /** A palette color id or a mixed `#rrggbb`. */
   color: string;
+  /** One of PLAYER_SIGNS. */
+  sign: string;
   connected: boolean;
   isHost: boolean;
   /** Player index in the game, or null in the lobby. */
@@ -101,6 +108,26 @@ export interface RoomView {
   defaultTrains: number;
   map: { id: string; name: string; cityCount: number; routeCount: number; custom: boolean };
   limits: { minPlayers: number; maxPlayers: number; playerColors: string[] };
+  /** Finished games in this room, newest first (kept while the room lives). */
+  history: MatchRecord[];
+}
+
+/** A finished game, as the lobby remembers it. */
+export interface MatchRecord {
+  endedAt: number;
+  mode: GameMode;
+  years: number;
+  mapName: string;
+  /** In finishing order. */
+  players: {
+    name: string;
+    color: string;
+    sign: string;
+    total: number;
+    winner: boolean;
+    ticketsDone: number;
+    tickets: number;
+  }[];
 }
 
 export interface GameMessage {

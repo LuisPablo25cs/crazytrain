@@ -37,7 +37,19 @@ export function lockLandscape(): void {
   o?.lock?.('landscape').catch(() => {});
 }
 
-async function fullScreen(): Promise<void> {
+/** Whether the game fills the screen (no browser bars). */
+export function useFullScreen(): boolean {
+  return useSyncExternalStore(
+    (onChange) => {
+      document.addEventListener('fullscreenchange', onChange);
+      return () => document.removeEventListener('fullscreenchange', onChange);
+    },
+    () => !!document.fullscreenElement,
+    () => false,
+  );
+}
+
+export async function fullScreen(): Promise<void> {
   try {
     if (!document.fullscreenElement) await document.documentElement.requestFullscreen?.();
     lockLandscape();

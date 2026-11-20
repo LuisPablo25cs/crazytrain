@@ -13,7 +13,8 @@ const MAX_ZOOM_FACTOR = 8;
 const DESKTOP_HUD = { left: 280, right: 305, top: 64, bottom: 0 };
 /** The phone layout (ui/hud/classic/phone.tsx): player chips left, rail right, status top, hand strip bottom. */
 const PHONE_HUD = { left: 60, right: 92, top: 48, bottom: 78 };
-const hudFor = (w: number, h: number) => (w <= 900 || h <= 500 ? PHONE_HUD : DESKTOP_HUD);
+const isPhone = (w: number, h: number) => w <= 900 || h <= 500;
+const hudFor = (w: number, h: number) => (isPhone(w, h) ? PHONE_HUD : DESKTOP_HUD);
 
 export interface CameraFocus {
   x: number;
@@ -42,20 +43,26 @@ export function CameraRig({ width, height, focus, onZoomChange }: CameraRigProps
   const goal = useRef<{ x: number; z: number; zoom: number } | null>(null);
   const zoomedIn = useRef<boolean | null>(null);
   // The smallest zoom shows the whole map in the area the HUD leaves free.
+  const phone = isPhone(size.width, size.height);
+  const landscape = size.width > size.height;
   const freeW = Math.max(200, size.width - HUD.left - HUD.right);
-  const freeH = Math.max(150, size.height - HUD.top - HUD.bottom);
+  // On a phone the floating pill and the hand strip may cover the map's edges: it uses the full height.
+  const freeH = Math.max(150, phone ? size.height - 8 : size.height - HUD.top - HUD.bottom);
   const minZoom = Math.min(freeW / width, freeH / height);
+  // A phone starts with the map across the whole width (a short screen would show it tiny); pan up and down.
+  const startZoom = phone ? Math.min(Math.max(minZoom, freeW / width), minZoom * MAX_ZOOM_FACTOR) : minZoom;
 
   useEffect(() => {
     camera.up.set(0, 0, -1);
     camera.position.set(width / 2, CAMERA_HEIGHT, height / 2);
     camera.lookAt(width / 2, 0, height / 2);
-    camera.zoom = minZoom;
+    camera.zoom = startZoom;
     camera.updateProjectionMatrix();
     controls.current?.target.set(width / 2, 0, height / 2);
     controls.current?.update();
-    // Only on a new map; resizing keeps the player's view and is clamped below.
-  }, [camera, width, height]);
+    // Only on a new map, or when a phone is turned (from the rotate prompt to landscape);
+    // other resizing keeps the player's view and is clamped below.
+  }, [camera, width, height, landscape]);
 
   useEffect(() => {
     if (focus) goal.current = { x: focus.x, z: focus.y, zoom: size.height / focus.zoom };

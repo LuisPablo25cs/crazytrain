@@ -3,7 +3,7 @@ import type { GameView, RoomView, Theme } from '@rails/shared';
 import { sendOrToast } from '../../../net/socket.js';
 import { playerHex } from '../../../theme/themes.js';
 import { NX, S, T } from '../../strings.js';
-import { markInk, markPath } from '../../../board/playerMarks.js';
+import { SignIcon } from './SignIcon.js';
 import { setUi, useClient } from '../../../state/store.js';
 
 /** At this many trains or fewer the last round is near, so the count turns coral. */
@@ -64,9 +64,7 @@ export function PlayerPlaques({
               onMouseLeave={() => setUi({ focusPlayer: null })}
             >
               <span className="nx-plaque-color" style={{ background: hex }}>
-                <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
-                  <path d={markPath(p.index, 16)} fill={markInk(hex)} fillRule="evenodd" />
-                </svg>
+                <SignIcon sign={seat?.sign ?? p.index} hex={hex} size={14} />
               </span>
               <span className="nx-plaque-name">
                 {p.name}

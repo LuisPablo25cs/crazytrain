@@ -5,7 +5,10 @@ import {
   formatIssues,
   GameSetupError,
   indexMap,
+  isHexColor,
+  isValidSign,
   MAX_MAP_UPLOAD_BYTES,
+  PLAYER_SIGNS,
   resolveRules,
   RulesError,
   validateMap,
@@ -21,16 +24,22 @@ import {
   type IntentReply,
   type MapDefinition,
   type MapIndex,
+  type MatchRecord,
   type RoomView,
   type RulesConfig,
 } from '@rails/shared';
 import { newSeatId, newSeed, newToken } from './codes.js';
+
+/** How many finished games a room remembers. */
+const MAX_HISTORY = 20;
 
 export interface Seat {
   id: string;
   token: string;
   name: string;
   color: string;
+  /** A shape from PLAYER_SIGNS, or `char:` and one typed character. */
+  sign: string;
   socketId: string | null;
   /** Player index once the game starts. */
   playerIndex: number | null;
@@ -69,6 +78,8 @@ export class Room {
   doubleRoutes: DoubleRoutes = 'rule';
   /** Trains per player chosen in the lobby; null keeps the map's number. */
   trainsPerPlayer: number | null = null;
+  /** Finished games, newest first. */
+  history: MatchRecord[] = [];
   game: { state: GameState; version: number } | null = null;
   lastActivity: number;
   finishedAt: number | null = null;
@@ -136,11 +147,13 @@ export class Room {
     const rules = this.rules();
     if (this.seats.length >= rules.players.max) return fail(`this room is full (${rules.players.max} players)`, 'full');
     const color = rules.playerColors.find((c) => !this.seats.some((s) => s.color === c)) ?? rules.playerColors[0]!;
+    const sign = PLAYER_SIGNS.find((m) => !this.seats.some((s) => s.sign === m)) ?? PLAYER_SIGNS[0];
     const seat: Seat = {
       id: newSeatId(),
       token: newToken(),
       name: this.uniqueName(name),
       color,
+      sign,
       socketId,
       playerIndex: null,
       disconnectedAt: null,
@@ -302,7 +315,7 @@ export class Room {
     // Keep seat colors valid for the new map's palette.
     const used = new Set<string>();
     for (const s of this.seats) {
-      if (!rules.playerColors.includes(s.color) || used.has(s.color)) {
+      if ((!isHexColor(s.color) && !rules.playerColors.includes(s.color)) || used.has(s.color)) {
         s.color = rules.playerColors.find((c) => !used.has(c) && !this.seats.some((o) => o !== s && o.color === c)) ?? s.color;
       }
       used.add(s.color);
@@ -313,11 +326,25 @@ export class Room {
     return OK;
   }
 
-  setColor(seat: Seat, color: string): IntentReply {
+  /** A palette color, or any color mixed by the player as `#rrggbb`. */
+  setColor(seat: Seat, wanted: string): IntentReply {
     if (this.phase !== 'lobby') return fail('colors are chosen in the lobby', 'started');
-    if (!this.rules().playerColors.includes(color)) return fail('unknown color', 'invalid');
+    const color = wanted.startsWith('#') ? wanted.toLowerCase() : wanted;
+    if (!isHexColor(color) && !this.rules().playerColors.includes(color)) return fail('unknown color', 'invalid');
     if (this.seats.some((s) => s !== seat && s.color === color)) return fail('that color is taken', 'invalid');
     seat.color = color;
+    this.touch();
+    this.broadcastRoom();
+    return OK;
+  }
+
+  /** A shape, or one typed character (`char:A`, `char:🚂`). */
+  setSign(seat: Seat, wanted: string): IntentReply {
+    if (this.phase !== 'lobby') return fail('signs are chosen in the lobby', 'started');
+    const sign = wanted.normalize('NFC');
+    if (!isValidSign(sign)) return fail('unknown sign', 'invalid');
+    if (this.seats.some((s) => s !== seat && s.sign === sign)) return fail('that sign is taken', 'invalid');
+    seat.sign = sign;
     this.touch();
     this.broadcastRoom();
     return OK;
@@ -450,10 +477,41 @@ export class Room {
 
   private afterApply(events: GameEvent[]): void {
     const game = this.game!;
-    if (game.state.phase === 'finished') this.finishedAt = this.options.now();
+    if (game.state.phase === 'finished' && this.finishedAt === null) {
+      this.finishedAt = this.options.now();
+      this.recordMatch();
+    }
     this.touch();
     this.broadcastGame(events);
     if (game.state.phase === 'finished') this.broadcastRoom();
+  }
+
+  /** Remember a finished game for the lobby's list of past matches. */
+  private recordMatch(): void {
+    const results = this.game?.state.results;
+    if (!results) return;
+    const players = this.game!.state.players;
+    const record: MatchRecord = {
+      endedAt: this.finishedAt ?? this.options.now(),
+      mode: this.mode,
+      years: this.years,
+      mapName: this.map.name,
+      players: results.ranking.map((i) => {
+        const seat = this.seats.find((s) => s.playerIndex === i);
+        const r = results.players[i]!;
+        return {
+          name: players[i]!.name,
+          color: players[i]!.color,
+          sign: seat?.sign ?? PLAYER_SIGNS[i % PLAYER_SIGNS.length]!,
+          total: r.total,
+          winner: results.winners.includes(i),
+          ticketsDone: r.completedTickets,
+          tickets: r.tickets.length,
+        };
+      }),
+    };
+    this.history.unshift(record);
+    this.history.length = Math.min(this.history.length, MAX_HISTORY);
   }
 
   // --- Outgoing messages ---------------------------------------------------
@@ -469,6 +527,7 @@ export class Room {
         id: s.id,
         name: s.name,
         color: s.color,
+        sign: s.sign,
         connected: s.socketId !== null,
         isHost: s.id === this.hostSeatId,
         playerIndex: s.playerIndex,
@@ -489,6 +548,7 @@ export class Room {
         custom: this.customMap,
       },
       limits: { minPlayers: rules.players.min, maxPlayers: rules.players.max, playerColors: [...rules.playerColors] },
+      history: this.history,
     };
   }
 

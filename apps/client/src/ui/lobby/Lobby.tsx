@@ -3,21 +3,15 @@ import { leaveRoom, sendOrToast } from '../../net/socket.js';
 import { useClient } from '../../state/store.js';
 import { useTheme } from '../../theme/ThemeProvider.js';
 import { playerHex } from '../../theme/themes.js';
-import { markInk, markPath } from '../../board/playerMarks.js';
-import { T, colorName } from '../strings.js';
+import { T } from '../strings.js';
 import { Station } from './Home.js';
 import { MapPicker } from './MapPicker.js';
 import { RulesPanel } from './RulesPanel.js';
 import { SettingsPanel } from './SettingsPanel.js';
+import { PlayerLook } from './PlayerLook.js';
+import { PastMatches } from './PastMatches.js';
+import { SignIcon } from '../hud/classic/SignIcon.js';
 
-/** The roof mark a seat will carry in the game (seats become players in this order). */
-function Mark({ seat, hex, size = 16 }: { seat: number; hex: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" aria-hidden="true">
-      <path d={markPath(seat, 16)} fill={markInk(hex)} fillRule="evenodd" />
-    </svg>
-  );
-}
 
 /**
  * The lobby as a departure platform: the room code as a ticket stub, passengers on the left
@@ -28,16 +22,14 @@ export function Lobby({ onLeave }: { onLeave: () => void }) {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
   const L = T.lobby;
-  const meIndex = room.seats.findIndex((s) => s.id === room.you);
-  const me = room.seats[meIndex];
+  const me = room.seats.find((s) => s.id === room.you);
   const isHost = room.hostSeatId === room.you;
   const host = room.seats.find((s) => s.id === room.hostSeatId);
   const link = `${location.origin}/r/${room.code}`;
-  const { minPlayers, maxPlayers, playerColors } = room.limits;
+  const { minPlayers, maxPlayers } = room.limits;
   const count = room.seats.length;
   const missing = Math.max(0, minPlayers - count);
   const canStart = isHost && missing === 0 && count <= maxPlayers;
-  const owners = new Map(room.seats.filter((s) => s.id !== room.you).map((s) => [s.color, s.name]));
 
   const copy = async () => {
     try {
@@ -97,7 +89,7 @@ export function Lobby({ onLeave }: { onLeave: () => void }) {
               return (
                 <li key={s.id} className={`lobby-seat ${mine ? 'mine' : ''} ${s.connected ? '' : 'away'}`}>
                   <span className="lobby-seat-strip" style={{ background: hex }}>
-                    <Mark seat={i} hex={hex} />
+                    <SignIcon sign={s.sign} hex={hex} />
                   </span>
                   <span className="lobby-seat-name">{s.name}</span>
                   {s.isHost && <span className="lobby-badge host">{T.S.host}</span>}
@@ -117,36 +109,8 @@ export function Lobby({ onLeave }: { onLeave: () => void }) {
               );
             })}
           </ol>
-          {me && (
-            <div className="lobby-box">
-              <span className="nx-caps" id="lobby-color">
-                {L.yourColor}
-              </span>
-              <div className="lobby-colors" role="radiogroup" aria-labelledby="lobby-color">
-                {playerColors.map((c) => {
-                  const owner = owners.get(c);
-                  const hex = playerHex(theme, c);
-                  const label = owner ? L.takenBy(colorName(c), owner) : colorName(c);
-                  return (
-                    <button
-                      key={c}
-                      role="radio"
-                      aria-checked={me.color === c}
-                      aria-label={label}
-                      title={label}
-                      disabled={!!owner}
-                      className={`lobby-swatch ${me.color === c ? 'on' : ''}`}
-                      style={{ background: hex }}
-                      onClick={() => void sendOrToast({ type: 'setColor', color: c })}
-                    >
-                      <Mark seat={meIndex} hex={hex} size={18} />
-                    </button>
-                  );
-                })}
-              </div>
-              <p className="lobby-note">{L.markNote}</p>
-            </div>
-          )}
+          {me && <PlayerLook room={room} me={me} />}
+          <PastMatches history={room.history} />
         </section>
 
         <section className="lobby-col" aria-labelledby="lobby-journey">

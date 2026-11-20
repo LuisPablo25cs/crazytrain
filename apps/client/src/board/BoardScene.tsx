@@ -18,6 +18,7 @@ export interface BoardSceneProps {
   board: BoardShape | null;
   viewer: number | null;
   playerColors: string[];
+  playerSigns?: (string | undefined)[];
   stations: StationState[];
   lastEvents: GameEvent[];
   hoveredRoute: string | null;
@@ -99,6 +100,7 @@ export function BoardScene(props: BoardSceneProps) {
           slots={slots}
           owners={owners}
           playerColors={props.playerColors}
+          playerSigns={props.playerSigns}
           theme={theme}
           lastEvents={props.lastEvents}
           highlighted={props.highlightedRoutes}

@@ -24,7 +24,16 @@ import { RouteTooltip } from './RouteTooltip.js';
 import { RulesSheet } from './RulesSheet.js';
 import { TicketFan } from './TicketFan.js';
 import { ZoomControl } from './ZoomControl.js';
-import { PhoneLog, PhoneMenu, PhoneTickets, clearHighlights, usePhone, type PhoneSheet } from './phone.js';
+import {
+  PhoneLog,
+  PhoneMenu,
+  PhoneTickets,
+  clearHighlights,
+  fullScreen,
+  useFullScreen,
+  usePhone,
+  type PhoneSheet,
+} from './phone.js';
 import './fonts.js';
 
 /** How long my CLAIMED popover stays while the train rolls in. */
@@ -62,6 +71,7 @@ export function ClassicHud({ view, room, map, theme, can, onLeave }: ClassicHudP
   const myTurnStart = can.isMyTurn && view.turn.kind === 'await';
   const stationCost = me ? nextStationCost(view, view.players[me.index]!) : null;
   const phone = usePhone();
+  const isFull = useFullScreen();
   const [sheet, setSheetState] = useState<PhoneSheet>(null);
   const setSheet = (next: PhoneSheet) => {
     if (sheet === 'tickets' && next !== 'tickets') clearHighlights();
@@ -186,6 +196,13 @@ export function ClassicHud({ view, room, map, theme, can, onLeave }: ClassicHudP
           {playing && can.pass === null && (
             <button className="nx-rail-btn" onClick={() => void sendAction({ type: 'pass' })}>
               {S.pass}
+            </button>
+          )}
+          {document.fullscreenEnabled && !isFull && (
+            <button className="nx-rail-btn nx-rail-full" aria-label={P.fullscreen} title={P.fullscreen} onClick={() => void fullScreen()}>
+              <svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M2 6V2h4M16 6V2h-4M2 12v4h4M16 12v4h-4" />
+              </svg>
             </button>
           )}
           <ZoomControl />

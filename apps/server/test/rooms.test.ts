@@ -195,3 +195,75 @@ describe('lobby settings and removing players', () => {
     }
   });
 });
+
+describe('signs, mixed colors and past matches', () => {
+  function room2() {
+    const ctx = setup();
+    const created = ctx.manager.handle('s1', { type: 'createRoom', name: 'Ana' });
+    const code = created.ok ? created.code! : '';
+    ctx.manager.handle('s2', { type: 'joinRoom', code, name: 'Beto' });
+    return { ...ctx, room: ctx.manager.rooms.get(code)! };
+  }
+
+  it('gives each seat a different sign and lets players change it', () => {
+    const { manager, room } = room2();
+    const [a, b] = room.seats;
+    expect(a!.sign).not.toBe(b!.sign);
+    expect(manager.handle('s2', { type: 'setSign', sign: a!.sign }).ok).toBe(false);
+    expect(manager.handle('s2', { type: 'setSign', sign: 'star' })).toEqual({ ok: true });
+    expect(room.roomView(a!).seats[1]!.sign).toBe('star');
+  });
+
+  it('accepts one typed character or emoji as a sign, not words or blanks', () => {
+    const { manager, room } = room2();
+    expect(manager.handle('s1', { type: 'setSign', sign: 'char:Ñ' })).toEqual({ ok: true });
+    expect(room.seats[0]!.sign).toBe('char:Ñ');
+    expect(manager.handle('s2', { type: 'setSign', sign: 'char:Ñ' }).ok).toBe(false);
+    expect(manager.handle('s2', { type: 'setSign', sign: 'char:👍🏽' })).toEqual({ ok: true });
+    expect(manager.handle('s2', { type: 'setSign', sign: 'char:AB' }).ok).toBe(false);
+    expect(manager.handle('s2', { type: 'setSign', sign: 'char: ' }).ok).toBe(false);
+    expect(manager.handle('s2', { type: 'setSign', sign: 'char:' }).ok).toBe(false);
+    expect(manager.handle('s2', { type: 'setSign', sign: 'gear' })).toEqual({ ok: true });
+  });
+
+  it('accepts a mixed #rrggbb color, but not one already taken', () => {
+    const { manager, room } = room2();
+    expect(manager.handle('s1', { type: 'setColor', color: '#A1B2C3' })).toEqual({ ok: true });
+    expect(room.seats[0]!.color).toBe('#a1b2c3');
+    expect(manager.handle('s2', { type: 'setColor', color: '#a1b2c3' }).ok).toBe(false);
+    expect(manager.handle('s2', { type: 'setColor', color: '#zzzzzz' }).ok).toBe(false);
+    manager.handle('s1', { type: 'startGame' });
+    expect(room.game!.state.players[0]!.color).toBe('#a1b2c3');
+  });
+
+  it('remembers a finished game for the lobby', () => {
+    const { manager, room } = room2();
+    manager.handle('s1', { type: 'startGame' });
+    for (const [socket, i] of [
+      ['s1', 0],
+      ['s2', 1],
+    ] as const) {
+      const offered = room.game!.state.players[i]!.offeredTickets;
+      manager.handle(socket, {
+        type: 'gameAction',
+        action: { type: 'keepInitialTickets', ticketIds: offered.slice(0, 2) },
+        expectedVersion: room.game!.version,
+      });
+    }
+    const st = room.game!.state;
+    room.game!.state = { ...st, lastRound: { triggeredBy: st.currentPlayer, turnsLeft: 1 } };
+    const socket = st.currentPlayer === 0 ? 's1' : 's2';
+    for (let d = 0; d < 2 && room.game!.state.phase === 'playing'; d++) {
+      manager.handle(socket, { type: 'gameAction', action: { type: 'drawBlind' }, expectedVersion: room.game!.version });
+    }
+    expect(room.game!.state.phase).toBe('finished');
+    const history = room.roomView(room.seats[0]!).history;
+    expect(history).toHaveLength(1);
+    expect(history[0]!.players.map((p) => p.name).sort()).toEqual(['Ana', 'Beto']);
+    expect(history[0]!.players.some((p) => p.winner)).toBe(true);
+    expect(history[0]!.players[0]!.sign).toBeTruthy();
+    // Back in the lobby, the record stays.
+    manager.handle('s1', { type: 'backToLobby' });
+    expect(room.roomView(room.seats[0]!).history).toHaveLength(1);
+  });
+});

@@ -22,6 +22,8 @@ export function themeById(id: string | null): Theme {
 }
 
 /** Display color for a player color id, with a stable fallback for ids a theme does not know. */
+/** A palette color from the theme, or a color the player mixed themselves (`#rrggbb`). */
 export function playerHex(theme: Theme, colorId: string): string {
+  if (/^#[0-9a-fA-F]{6}$/.test(colorId)) return colorId;
   return theme.playerColors[colorId] ?? '#888888';
 }

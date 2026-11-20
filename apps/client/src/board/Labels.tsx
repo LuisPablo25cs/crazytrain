@@ -38,7 +38,9 @@ interface Placed {
 export function LabelProjector({ cities, refs, centered }: { cities: City[]; refs: LabelRefs; centered?: Map<string, CityPin> }) {
   const { camera, size } = useThree();
   useFrame(() => {
-    const spread = !!centered?.size;
+    // Phone-sized screens: names that would overlap wait for a zoom (bigger cities win the spot).
+    const crowded = size.width <= 900 || size.height <= 500;
+    const spread = !!centered?.size || crowded;
     const blocked: Box[] = [];
     const labels: Placed[] = [];
     for (const c of cities) {

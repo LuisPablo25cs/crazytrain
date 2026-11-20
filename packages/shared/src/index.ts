@@ -21,3 +21,4 @@ export * from './engine/seasons.js';
 export * from './engine/disasters.js';
 export * from './engine/view.js';
 export * from './protocol/messages.js';
+export * from './protocol/signs.js';

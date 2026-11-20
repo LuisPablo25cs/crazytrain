@@ -15,6 +15,7 @@ import {
   type IntentReply,
   type MapDefinition,
   type DisasterKind,
+  PLAYER_SIGNS,
   type GameMode,
   type MapIndex,
   type RoomView,
@@ -44,6 +45,7 @@ function roomFor(state: GameState, doc: MapDefinition, viewer: number): RoomView
     isHost: i === 0,
     playerIndex: i,
     removed: false,
+    sign: PLAYER_SIGNS[i % PLAYER_SIGNS.length]!,
   }));
   return {
     code: 'EDITOR',
@@ -57,6 +59,7 @@ function roomFor(state: GameState, doc: MapDefinition, viewer: number): RoomView
     doubleRoutes: 'rule',
     trainsPerPlayer: state.rules.trainsPerPlayer,
     defaultTrains: state.rules.trainsPerPlayer,
+    history: [],
     map: { id: doc.id, name: doc.name, cityCount: doc.cities.length, routeCount: doc.routes.length, custom: true },
     limits: { minPlayers: state.rules.players.min, maxPlayers: state.rules.players.max, playerColors: state.rules.playerColors },
   };

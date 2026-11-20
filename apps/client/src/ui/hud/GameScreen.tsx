@@ -25,6 +25,7 @@ import { nextStationCost } from '@rails/shared';
 import { ClassicHud } from './classic/ClassicHud.js';
 import { ClaimPopover, TunnelPopover } from './classic/ClaimPopover.js';
 import { RotatePrompt, usePhone } from './classic/phone.js';
+import { playerSigns } from './classic/SignIcon.js';
 
 /**
  * In-game layout: the board fills the window; the HUD sits on top in fixed regions.
@@ -58,6 +59,8 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
     [view, map, ui.mode],
   );
   const highlighted = useMemo(() => stationCities ?? new Set(ui.highlightCities), [stationCities, ui.highlightCities]);
+  const playerCount = view?.players.length ?? 0;
+  const signs = useMemo(() => playerSigns(room, playerCount), [room, playerCount]);
 
   if (!map || !view || !can) {
     return <main className="center-screen">{S.connecting}</main>;
@@ -80,6 +83,7 @@ export function GameScreen({ onLeave }: { onLeave: () => void }) {
         board={boardOfView(view)}
         viewer={me?.index ?? null}
         playerColors={view.players.map((p) => p.color)}
+        playerSigns={signs}
         stations={view.stations}
         lastEvents={lastEvents}
         hoveredRoute={ui.hoveredRoute}

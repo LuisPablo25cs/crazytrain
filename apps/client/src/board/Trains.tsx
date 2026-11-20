@@ -4,13 +4,15 @@ import * as THREE from 'three';
 import type { GameEvent, RouteDamage, Theme } from '@rails/shared';
 import { playerHex } from '../theme/themes.js';
 import { TRAIN_LENGTH_RATIO, TRAIN_WIDTH_RATIO } from './geometry.js';
-import { markGeometry, markInk, PLAYER_MARKS } from './playerMarks.js';
+import { glyphPlane, glyphTexture, isEmoji, markGeometry, markInk, signIndex, typedChar } from './playerMarks.js';
 import { SLOT_Y, type Slot } from './Routes.js';
 
 interface TrainsProps {
   slots: Slot[];
   owners: Record<string, number>;
   playerColors: string[];
+  /** Each player's sign id (PLAYER_SIGNS), by player index; missing ones fall back to the index. */
+  playerSigns?: (string | undefined)[];
   theme: Theme;
   lastEvents: GameEvent[];
   highlighted?: string[];
@@ -70,6 +72,7 @@ export function Trains({
   slots,
   owners,
   playerColors,
+  playerSigns,
   theme,
   lastEvents,
   highlighted,
@@ -88,13 +91,28 @@ export function Trains({
   );
   const body = useMemo(() => carBody(classic), [classic]);
   const outlineBody = useMemo(() => new THREE.BoxGeometry(1, 0.5, 1).translate(0, 0.25, 0), []);
-  const markGeoms = useMemo(() => PLAYER_MARKS.map((_, i) => markGeometry(i)), []);
   // Cars of each mark shape, by index into `cars`.
+  // One roof mark per player: a shape, or a character they typed. `of` maps a player to its mark.
+  const marks = useMemo(() => {
+    const keys = playerColors.map((_, i) => {
+      const c = typedChar(playerSigns?.[i]);
+      return c ? `c${c}` : `s${signIndex(playerSigns?.[i], i)}`;
+    });
+    const unique = [...new Set(keys)];
+    const list = unique.map((k) => {
+      const char = k[0] === 'c' ? k.slice(1) : null;
+      return char
+        ? { char, emoji: isEmoji(char), geom: glyphPlane(), tex: glyphTexture(char) }
+        : { char: null, emoji: false, geom: markGeometry(Number(k.slice(1))), tex: null };
+    });
+    return { of: keys.map((k) => unique.indexOf(k)), list };
+  }, [playerSigns, playerColors]);
+  const shapeOf = useMemo(() => (owner: number) => marks.of[owner] ?? 0, [marks]);
   const byMark = useMemo(() => {
-    const out: number[][] = PLAYER_MARKS.map(() => []);
-    cars.forEach((s, i) => out[owners[s.routeId]! % PLAYER_MARKS.length]!.push(i));
+    const out: number[][] = marks.list.map(() => []);
+    cars.forEach((s, i) => out[shapeOf(owners[s.routeId]!)]!.push(i));
     return out;
-  }, [cars, owners]);
+  }, [cars, owners, shapeOf, marks]);
   const appear = useRef(new Map<string, number>());
   // Per route: its direction from the first city (slot 0) and how far apart its cars sit.
   const tracks = useMemo(() => {
@@ -136,16 +154,17 @@ export function Trains({
       if (dim) color.lerp(DIM, 0.7);
       m.setColorAt(i, color);
       if (classic) {
-        ink.set(markInk(hex));
+        const shape = shapeOf(owner);
+        // An emoji keeps its own colors (white leaves the texture as drawn).
+        ink.set(marks.list[shape]?.emoji ? '#ffffff' : markInk(hex));
         if (dim) ink.lerp(DIM, 0.7);
-        const shape = owner % PLAYER_MARKS.length;
         const k = byMark[shape]!.indexOf(i);
         markMeshes.current[shape]?.setColorAt(k, ink);
       }
     });
     if (m.instanceColor) m.instanceColor.needsUpdate = true;
     for (const mm of markMeshes.current) if (mm?.instanceColor) mm.instanceColor.needsUpdate = true;
-  }, [cars, owners, playerColors, theme, highlighted, damage, blocked, focusPlayer, classic, byMark]);
+  }, [cars, owners, playerColors, theme, highlighted, damage, blocked, focusPlayer, classic, byMark, shapeOf, marks]);
 
   useFrame(() => {
     const m = mesh.current;
@@ -192,11 +211,13 @@ export function Trains({
         tmp.scale.set((len + wid * 0.28) * k, CAR_HEIGHT * 0.5 * k, wid * 1.3 * k);
         tmp.updateMatrix();
         outline.current?.setMatrixAt(i, tmp.matrix);
-        const shape = owners[s.routeId]! % PLAYER_MARKS.length;
+        const shape = shapeOf(owners[s.routeId]!);
         const mm = markMeshes.current[shape];
         if (mm) {
           tmp.position.set(x, base + CAR_HEIGHT * ROOF_TOP + 0.05, y);
-          const size = wid * 0.62 * k;
+          // A typed character is turned so it never reads upside down.
+          if (marks.list[shape]?.char) tmp.rotation.set(0, -s.angle + (Math.cos(s.angle) < 0 ? Math.PI : 0), 0);
+          const size = wid * (marks.list[shape]?.char ? 0.7 : 0.62) * k;
           tmp.scale.set(size, 1, size);
           tmp.updateMatrix();
           mm.setMatrixAt(slotInMark.get(i)!, tmp.matrix);
@@ -224,14 +245,18 @@ export function Trains({
         byMark.map((list, shape) =>
           list.length === 0 ? null : (
             <instancedMesh
-              key={`m${shape}-${list.length}`}
+              key={`m${shape}-${marks.list[shape]!.char ?? 's'}-${list.length}`}
               ref={(el) => {
                 markMeshes.current[shape] = el;
               }}
-              args={[markGeoms[shape]!, undefined, list.length]}
+              args={[marks.list[shape]!.geom, undefined, list.length]}
               raycast={() => null}
             >
-              <meshBasicMaterial toneMapped={false} />
+              {marks.list[shape]!.tex ? (
+                <meshBasicMaterial map={marks.list[shape]!.tex} transparent alphaTest={0.35} toneMapped={false} />
+              ) : (
+                <meshBasicMaterial toneMapped={false} />
+              )}
             </instancedMesh>
           ),
         )}

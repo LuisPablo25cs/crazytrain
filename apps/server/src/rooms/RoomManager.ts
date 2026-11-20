@@ -69,6 +69,8 @@ export class RoomManager {
         return room.setMap(seat, intent.map);
       case 'setSettings':
         return room.setSettings(seat, intent.trainsPerPlayer);
+      case 'setSign':
+        return room.setSign(seat, intent.sign);
       case 'setColor':
         return room.setColor(seat, intent.color);
       case 'kick':
